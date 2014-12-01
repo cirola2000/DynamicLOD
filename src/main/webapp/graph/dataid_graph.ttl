@@ -1,0 +1,71 @@
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix sd:    <http://www.w3.org/ns/sparql-service-description#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix void:  <http://rdfs.org/ns/void#> .
+@prefix dataid: <http://dataid.dbpedia.org/ns/core#> .
+
+<http://aksw.org/dataid.ttl#Reuters-128-nif>
+        a                     dataid:Dataset , sd:Dataset , rdfs:type , void:Dataset , dcat:Dataset , prov:Entity ;
+        rdfs:label            "Reuters-128 Dataset DataID Description" ;
+        dataid:licenseName    "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" ;
+        dct:description       "Extracting Linked Data following the Semantic Web paradigm from unstructured sources has become a key driver for scientific research as well as new business models. Named Entity Recognition and Disambiguation are two basic steps in this extraction process. One key driver to realize the vision of the Semantic Web and develop highly accurate tools is the availability of data for performance validation. In this article, we present three novel, manually curated and annotated corpora, N3. Furthermore, we based them on a free licence and stored in the NLP Interchange Format for interoperability reasons. See http://aksw.org/Projects/N3NERNEDNIF.html" ;
+        dct:issued            "8-13-2014"^^xsd:date ;
+        dct:language          "English" ;
+        dct:license           <http://purl.oclc.org/NET/rdflicense/cc-by-sa> ;
+        dct:title             "Reuters-128 Dataset DataID Description" ;
+        void:exampleResource  <https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl> ;
+        void:subset           <http://aksw.org/dataid.ttl#Reuters-128-nif-626631546> ;
+        dcat:distribution     <https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl> ;
+        dcat:landingPage      <http://aksw.org/Projects/N3NERNEDNIF.html> .
+
+<http://aksw.org/dataid.ttl#News-100-nif>
+        a                     dcat:Dataset , prov:Entity , void:Dataset , dataid:Dataset , rdfs:type , sd:Dataset ;
+        rdfs:label            "News-100 Dataset DataID Description" ;
+        dataid:licenseName    "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" ;
+        dct:description       "Extracting Linked Data following the Semantic Web paradigm from unstructured sources has become a key driver for scientific research as well as new business models. Named Entity Recognition and Disambiguation are two basic steps in this extraction process. One key driver to realize the vision of the Semantic Web and develop highly accurate tools is the availability of data for performance validation. In this article, we present three novel, manually curated and annotated corpora, N3. Furthermore, we based them on a free licence and stored in the NLP Interchange Format for interoperability reasons. See http://aksw.org/Projects/N3NERNEDNIF.html" ;
+        dct:issued            "8-13-2014"^^xsd:date ;
+        dct:language          "English" ;
+        dct:license           <http://purl.oclc.org/NET/rdflicense/cc-by-sa> ;
+        dct:title             "News-100 Dataset DataID Description" ;
+        void:exampleResource  <https://raw.github.com/AKSW/n3-collection/master/News-100.ttl> ;
+        void:subset           <http://aksw.org/dataid.ttl#News-100-nif1525637537> ;
+        dcat:distribution     <https://raw.github.com/AKSW/n3-collection/master/News-100.ttl> ;
+        dcat:landingPage      <http://aksw.org/Projects/N3NERNEDNIF.html> .
+
+<https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl>
+        a               dataid:Distribution ;
+        dct:format      "ttl" ;
+        dct:title       "Reuters-128 NIF Distribution" ;
+        dcat:accessURL  "https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl" ;
+        dcat:mediaType  "text/plain" .
+
+<https://raw.github.com/AKSW/n3-collection/master/News-100.ttl>
+        a               dataid:Distribution ;
+        dct:format      "ttl" ;
+        dct:title       "News-100 NIF Distribution" ;
+        dcat:accessURL  "https://raw.github.com/AKSW/n3-collection/master/News-100.ttl" ;
+        dcat:mediaType  "text/plain" .
+
+<http://aksw.org/dataid.ttl>
+        a          void:DatasetDescription ;
+        dct:title  "DataID of Reuters-128-nif datasets" , "DataID of News-100-nif datasets" .
+
+<http://aksw.org/dataid.ttl#Reuters-128-nif-626631546>
+        a                   void:Linkset ;
+        dct:issued          "05-12-1988" ;
+        dct:modified        "05-12-1988" ;
+        void:linkPredicate  ""^^xsd:string ;
+        void:target         <http://aksw.org/dataid.ttl#News-100-nif> ;
+        void:triples        "4"^^xsd:long .
+
+<http://aksw.org/dataid.ttl#News-100-nif1525637537>
+        a                   void:Linkset ;
+        dct:issued          "05-12-1988" ;
+        dct:modified        "05-12-1988" ;
+        void:linkPredicate  ""^^xsd:string ;
+        void:target         <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
+        void:triples        "4"^^xsd:long .

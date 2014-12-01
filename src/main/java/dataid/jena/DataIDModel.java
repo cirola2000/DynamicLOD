@@ -212,8 +212,7 @@ public class DataIDModel {
 		m.add(currentDataID);
 		
 		// write updated dataid graph
-		m.write(new FileOutputStream(
-				DataIDGeneralProperties.DATAID_GRAPH_MODEL_PATH), "TURTLE");
+		m.write(new FileOutputStream(DataIDGeneralProperties.DATAID_GRAPH_MODEL_PATH), "TURTLE");
 
 		m.close();
 		currentDataID.close();

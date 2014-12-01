@@ -37,14 +37,13 @@ public class DataIDGeneralProperties {
 	public static final String FS_MODEL = MODELS_PATH+"fs_model";
 	
 	// defining dataID graph file
-	public static final String DATAID_GRAPH_MODEL_PATH = DATAID_PATH+"dataid_graph.ttl";
-
+	public static final String DATAID_GRAPH_MODEL_PATH = "src/main/webapp/graph/dataid_graph.ttl";
 	
 	
 	// defining server properties
 	public static final String MESSAGE_INFO ="info";
 	public static final String MESSAGE_LOG ="log";
 	public static final String MESSAGE_WARN ="warn";
-	public static final String MESSAGE_ERROR ="error";
+	public static final String MESSAGE_ERROR ="error"; 
 	
 }
