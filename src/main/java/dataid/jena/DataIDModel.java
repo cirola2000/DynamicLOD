@@ -1,14 +1,14 @@
 package dataid.jena;
 
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.net.URL;
 import java.util.List;
-import java.util.Random;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResIterator;
-import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
@@ -17,17 +17,16 @@ import dataid.DataIDGeneralProperties;
 import dataid.literal.SubsetModel;
 import dataid.ontology.Dataset;
 import dataid.ontology.Distribution;
-import dataid.ontology.Linkset;
+import dataid.ontology.vocabulary.NS;
 
 public class DataIDModel {
-	
+
 	private Model inModel = ModelFactory.createDefaultModel();
-	private Model outModel = ModelFactory.createDefaultModel();
 	List<SubsetModel> distributionsLinks;
 	int numberOfDistributions = 0;
 
-	
-	public List<SubsetModel> parseDistributions(List<SubsetModel> distributionsLinks) {
+	public List<SubsetModel> parseDistributions(
+			List<SubsetModel> distributionsLinks) {
 		this.distributionsLinks = distributionsLinks;
 		// select dataset
 		StmtIterator datasets = inModel.listStatements(null,
@@ -119,7 +118,8 @@ public class DataIDModel {
 					// store distribution
 					Statement distribution = stmtDistribution.next();
 
-					DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+					DataID.bean.addDisplayMessage(
+							DataIDGeneralProperties.MESSAGE_LOG,
 							"Distribution found: "
 									+ distribution.getObject().toString());
 
@@ -150,24 +150,73 @@ public class DataIDModel {
 		}
 
 	}
-	
+
 	// read dataID file and return the dataset uri
-		public String readModel(String URL) throws Exception {
-			String name = null;
+	public String readModel(String URL) throws Exception {
+		String name = null;
 
-			inModel.read(URL, null, "TTL");
-			outModel = inModel;
-			ResIterator i = inModel.listResourcesWithProperty(Dataset.dataIDType,
-					Dataset.dataIDDataset);
-			if (i.hasNext()) {
-				name = i.next().getURI().toString();
-				DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-						"Jena model created. ");
-				DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-						"Looks that this is a valid DataID file! " + name);
-			}
-
-			return name;
+		inModel.read(URL, null, "TTL");
+		ResIterator i = inModel.listResourcesWithProperty(Dataset.dataIDType,
+				Dataset.dataIDDataset);
+		if (i.hasNext()) {
+			name = i.next().getURI().toString();
+			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+					"Jena model created. ");
+			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+					"Looks that this is a valid DataID file! " + name);
 		}
+
+		return name;
+	}
+
+	public static void mergeCurrentDataIDWithDataIDGraph(String URL)
+			throws Exception {
+
+		// merge current dataID with dataid graph
+		Model m = ModelFactory.createDefaultModel();
+		try {
+			m.read(DataIDGeneralProperties.DATAID_GRAPH_MODEL_PATH, "TURTLE");
+		} catch (Exception e) {
+			
+			// case this is the first dataID graph created, set namespaces
+			m.setNsPrefix("rdfs", NS.RDFS_URI);
+			m.setNsPrefix("dcat", NS.DCAT_URI);
+			m.setNsPrefix("void", NS.VOID_URI);
+			m.setNsPrefix("sd", NS.SD_URI);
+			m.setNsPrefix("prov", NS.PROV_URI);
+			m.setNsPrefix("dct", NS.DCT_URI);
+			m.setNsPrefix("xsd", NS.XSD_URI);
+			m.setNsPrefix("foaf", NS.FOAF_URI);
+			m.setNsPrefix("dataid", NS.DATAID_URI);
+
+			e.printStackTrace();
+		}
+
+		// create a jena model of the current dataid
+		Model currentDataID = ModelFactory.createDefaultModel();
+		currentDataID.read(URL, null, "TTL");
+		
+		// check whereas current dataid has not processed
+		StmtIterator s = currentDataID.listStatements(null, Dataset.dataIDType, Dataset.dataIDDataset);
+		
+		if(s.hasNext()){
+			// get current subject and try to find it in the dataid graph 
+			StmtIterator t = m.listStatements(s.next().getSubject(), Dataset.dataIDType, Dataset.dataIDDataset);
+			
+			if(t.hasNext())
+				throw new Exception("Current dataid file already had been processed.");
+			}
+		
+		
+		// merge currente dataid with dataid graph
+		m.add(currentDataID);
+		
+		// write updated dataid graph
+		m.write(new FileOutputStream(
+				DataIDGeneralProperties.DATAID_GRAPH_MODEL_PATH), "TURTLE");
+
+		m.close();
+		currentDataID.close();
+	}
 
 }

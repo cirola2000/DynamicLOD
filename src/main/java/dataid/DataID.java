@@ -85,7 +85,7 @@ public class DataID {
 			FSModel fsMoldel = new FSModel();
 
 			// save file metadata
-			fsMoldel.addDatasetOnFS(dFile.url.toString(), dFile.saveFilePath,
+			fsMoldel.addDatasetOnFileSystem(dFile.url.toString(), dFile.saveFilePath,
 					dFile.url.toString(), dFile.contentType,
 					filter.fullFileName, p.objectFile, l.getSubset());
 
@@ -132,39 +132,17 @@ public class DataID {
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 					numberOfDistributions + " distribution(s) found");
 
-		// merge current dataID with graph dataid
-		Model m = ModelFactory.createDefaultModel();
-		try{
-			m.read(DataIDGeneralProperties.DATAID_GRAPH_MODEL_PATH, "TURTLE");
-		}
-		catch(Exception e){
-			m.setNsPrefix("rdfs", NS.RDFS_URI);
-			m.setNsPrefix("dcat", NS.DCAT_URI);
-			m.setNsPrefix("void", NS.VOID_URI);
-			m.setNsPrefix("sd", NS.SD_URI);
-			m.setNsPrefix("prov", NS.PROV_URI);
-			m.setNsPrefix("dct", NS.DCT_URI);
-			m.setNsPrefix("xsd", NS.XSD_URI);
-			m.setNsPrefix("foaf", NS.FOAF_URI);
-			m.setNsPrefix("dataid", NS.DATAID_URI);
-			
-			e.printStackTrace();
-		}
-		
-		Model currentDataID = ModelFactory.createDefaultModel();
-		currentDataID.read(URL, null, "TTL");
-		
-		m.add(currentDataID);
-		m.write(new FileOutputStream(DataIDGeneralProperties.DATAID_GRAPH_MODEL_PATH), "TURTLE");
-		
-		m.close();
+		// merge current dataid with dataID graph
+		DataIDModel.mergeCurrentDataIDWithDataIDGraph(URL);
 		
 		
 		// try to create linksets
-			makeLinksets();
+		makeLinksets();
+		
 		} catch (Exception e) {
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
 					e.getMessage());
+			e.printStackTrace();
 		}
 
 		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "end");

@@ -26,7 +26,7 @@ public class FSModel {
 //	 jena model to store data on file system
 	private static Model fsModel = ModelFactory.createDefaultModel();		
 
-	public boolean addDatasetOnFS(String subject, String path, String accessURL,
+	public boolean addDatasetOnFileSystem(String subject, String path, String accessURL,
 			String mimo, String subjectFilter, String objectFile, String subsetURI) {
 
 		try {
@@ -190,11 +190,9 @@ public class FSModel {
 						s = fsModel.listStatements(filterPath.getSubject(), FileSystem.subsetURI, (RDFNode) null);
 						if(s.hasNext())
 							linkURL = s.next().getObject().toString();
-
 						
-//						updateDataID(dataIDPath, dataIDUpdatedPath,numbersOfTriples, datasetURL, linkURL );
 						updateDataID(dataIDPath, dataIDUpdatedPath,numbersOfTriples, datasetURL, linkURL );
-					
+
 						}
 					}
 				}
