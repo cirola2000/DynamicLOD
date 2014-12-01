@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j">
+
+<body>
+
+    <ui:composition template="/templates/template.xhtml">
+
+        <ui:define name="title">DataID</ui:define>
+
+        <ui:define name="body">
+            <h:form prependId="false">
+            
+            <h:outputText value="http://localhost:8080/dataids_example/dataid-news100.ttl" /> <br />
+            <h:outputText value="http://localhost:8080/dataids_example/dataid-reuters128.ttl" /> <br />
+            <h:outputText value="http://localhost:8080/dataids_example/dataid-rss500.ttl" /> <br />
+            <h:outputText value="http://localhost:8080/dataids_example/dataid-dbpedia.ttl" /> <br />
+            
+            <h:inputText style="width:560px" id="nameInput" value="#{dataIDBean.url}"></h:inputText>
+          
+            
+        <a4j:commandButton value="AddLinksets" action="#{dataIDBean.start}" />
+
+		<a4j:push address="sampleAddress"> 
+    	<a4j:ajax event="dataavailable" render="outputDate" />
+		</a4j:push> 
+		<a4j:outputPanel id="outputDate">
+	    <h:outputText value="#{dataIDBean.display}" style="font-weight:bold" escape="false"  />
+	    
+	    
+		</a4j:outputPanel>        
+        </h:form>
+        
+        </ui:define> 
+        
+    </ui:composition>   
+    
+</body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<!-- servlet>
+		<servlet-name>Parse</servlet-name>
+		<servlet-class>dataid.server.Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Parse</servlet-name>
+		<url-pattern>/parse/*</url-pattern>
+	</servlet-mapping-->
+	<!-- File(s) appended to a request for a URL that is not mapped to a web 
+		component -->
+		
+		
+		<display-name>DataID Interface</display-name>
+
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>/dataid/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Resource Servlet - serves static resources and resources for specific 
+		components -->
+	<servlet>
+		<servlet-name>Resource Servlet</servlet-name>
+		<servlet-class>org.richfaces.webapp.ResourceServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Resource Servlet</servlet-name>
+		<url-pattern>/org.richfaces.resources/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Resource Mapping - resources will be served compressed and packed in 
+		production -->
+	<context-param>
+		<param-name>org.richfaces.resourceMapping.enabled</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<welcome-file-list>
+		<welcome-file>dataid/index.xhtml</welcome-file>
+	</welcome-file-list>
+
+	<listener>
+		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+	</listener>
+		
+
+</web-app>

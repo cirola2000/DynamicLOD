@@ -1,0 +1,35 @@
+@base <http://aksw.org/dataid.ttl> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dataid: <http://dataid.dbpedia.org/ns/core#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<> a void:DatasetDescription ;
+ dc:title "DataID of RSS-500-nif datasets" .
+
+<#RSS-500-nif>
+    dataid:licenseName "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" ;
+    dc:description "RSS 500 NIF Dataset Main Distribution" ;
+    dc:issued "8-13-2014"^^xsd:date ;
+    dc:language "English" ;
+    dc:license <http://purl.oclc.org/NET/rdflicense/cc-by-sa> ;
+    dc:title "RSS-500 Dataset DataID Description" ;
+    void:exampleResource <https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl> ;
+    a dataid:Dataset, void:Dataset, rdfs:type, dcat:Dataset, prov:Entity, sd:Dataset ;
+    rdfs:label "RSS-500 Dataset DataID Description" ;
+    dcat:distribution <https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl> ;
+    dcat:landingPage <http://aksw.org/Projects/N3NERNEDNIF.html> .
+
+
+<https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl>
+    dc:format "ttl" ;
+    dc:title "RSS-500 NIF Distribution" ;
+    a dataid:Distribution ;
+    dcat:accessURL "https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl" ;
+    dcat:mediaType "text/plain" .
