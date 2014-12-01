@@ -2,6 +2,7 @@ package dataid.server;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -26,11 +27,10 @@ public class DataIDBean implements Serializable, Runnable {
 	static private double startTime = 0;
 	static private double endTime = 0;
 
-	private String url = "http://localhost:8080/dataids_example/dataid-dbpedia.ttl";
+	private String url = "http://localhost:8080/dataids_example/dataid-news100.ttl";
 
 	private String display = "";
 
-	private Thread thread;
 
 	public String getUrl() {
 		return url;
@@ -49,19 +49,17 @@ public class DataIDBean implements Serializable, Runnable {
 	public void start() {
 		startTime = 0;
 		endTime = 0;
-
-		if (thread == null) {
-			thread = new Thread(this);
-			thread.setDaemon(true);
-			thread.start();
-		}
+		
+		Thread thread = new Thread(this);
+		thread.setDaemon(true);
+		thread.start();
+		
 	}
 
 	public void run() {
 		try {
 			this.push();
 			startDataID();
-			// System.out.println("oiii");
 
 		} catch (MessageException e) {
 			// TODO Auto-generated catch block
@@ -72,15 +70,9 @@ public class DataIDBean implements Serializable, Runnable {
 
 	public void startDataID() {
 
-		if (dataid == null) {
-			dataid = new DataID(this.getUrl(), this);
-//			DataID dataid1 = new DataID("http://localhost:8080/dataid-kore50.ttl ", this);
-//			DataID dataid2 = new DataID("http://localhost:8080/dataid-news100.ttl", this);
-//			DataID dataid3 = new DataID("http://localhost:8080/dataid-reuters128.ttl", this);
-//			DataID dataid4 = new DataID("http://localhost:8080/dataid-rss500.ttl", this);
+		dataid = new DataID(this.getUrl(), this);
 
 			
-		}
 
 	}
 
