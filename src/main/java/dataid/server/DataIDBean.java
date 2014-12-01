@@ -31,7 +31,6 @@ public class DataIDBean implements Serializable, Runnable {
 
 	private String display = "";
 
-
 	public String getUrl() {
 		return url;
 	}
@@ -49,11 +48,11 @@ public class DataIDBean implements Serializable, Runnable {
 	public void start() {
 		startTime = 0;
 		endTime = 0;
-		
+
 		Thread thread = new Thread(this);
 		thread.setDaemon(true);
 		thread.start();
-		
+
 	}
 
 	public void run() {
@@ -71,8 +70,6 @@ public class DataIDBean implements Serializable, Runnable {
 	public void startDataID() {
 
 		dataid = new DataID(this.getUrl(), this);
-
-			
 
 	}
 

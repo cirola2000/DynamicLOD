@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
     xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j">
 
@@ -20,14 +20,18 @@
           
             
         <a4j:commandButton value="AddLinksets" action="#{dataIDBean.start}" />
-
+        
 		<a4j:push address="sampleAddress"> 
-    	<a4j:ajax event="dataavailable" render="outputDate" />
+    	<a4j:ajax event="dataavailable" render="outputDate" oncomplete="document.getElementById('divDisplay').scrollTop = document.getElementById('divDisplay').scrollHeight" />
 		</a4j:push> 
 		<a4j:outputPanel id="outputDate">
+		<div style="border:1px solid; height: 500px; max-height: 500px; overflow: auto;" id="divDisplay">
+		
 	    <h:outputText value="#{dataIDBean.display}" style="font-weight:bold" escape="false"  />
 	    
+	    da2
 	    
+		 </div>
 		</a4j:outputPanel>        
         </h:form>
         
@@ -36,4 +40,11 @@
     </ui:composition>   
     
 </body>
+<script type="text/javascript">
+function scrole(){
+alert("opa");
+var objDiv = document.getElementById("divDisplay");
+document.getElementById('divDisplay').scrollTop = document.getElementById('divDisplay').scrollHeight;
+}
+</script>
 </html>
