@@ -5,13 +5,25 @@ public class SubsetModel {
 	int id;
 
 	String subsetURI;
+	
+	String datasetURI;
+
+	public String getDatasetURI() {
+		return datasetURI;
+	}
+
+	public void setDatasetURI(String datasetURI) {
+		this.datasetURI = datasetURI;
+	}
 
 	String distributionURI;
 
-	public SubsetModel(int id, String subset, String distribution) {
+	public SubsetModel(int id, String dataset, String subset, String distribution) {
 		this.id = id;
 		this.subsetURI = subset;
 		this.distributionURI = distribution;
+		this.datasetURI = dataset;
+
 	}
 
 	public int getId() {

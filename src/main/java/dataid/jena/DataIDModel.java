@@ -24,6 +24,8 @@ public class DataIDModel {
 	private Model inModel = ModelFactory.createDefaultModel();
 	List<SubsetModel> distributionsLinks;
 	int numberOfDistributions = 0;
+	public boolean someAccessURLFound = false;
+	private String datasetURI;
 
 	public List<SubsetModel> parseDistributions(
 			List<SubsetModel> distributionsLinks) {
@@ -36,6 +38,7 @@ public class DataIDModel {
 
 			Statement dataset = datasets.next();
 			System.out.println("We found a dataset: " + dataset.getSubject());
+			datasetURI = dataset.getSubject().toString();
 
 			// try to find distribution within dataset
 			StmtIterator stmtDistribution = inModel.listStatements(
@@ -63,10 +66,11 @@ public class DataIDModel {
 
 					// save distribution with accessURL to list
 					distributionsLinks.add(new SubsetModel(
-							numberOfDistributions, distribution.getSubject()
+							numberOfDistributions,datasetURI, distribution.getSubject()
 									.toString(), accessURL.getObject()
 									.toString()));
 					numberOfDistributions++;
+					someAccessURLFound = true;
 				}
 			}
 
@@ -140,10 +144,11 @@ public class DataIDModel {
 
 						// save distribution with accessURL to list
 						distributionsLinks.add(new SubsetModel(
-								numberOfDistributions, accessURL.getSubject()
+								numberOfDistributions,datasetURI, accessURL.getSubject()
 										.toString(), accessURL.getObject()
 										.toString()));
 						numberOfDistributions++;
+						someAccessURLFound = true;
 					}
 				}
 			}
@@ -199,13 +204,13 @@ public class DataIDModel {
 		// check whereas current dataid has not processed
 		StmtIterator s = currentDataID.listStatements(null, Dataset.dataIDType, Dataset.dataIDDataset);
 		
-		if(s.hasNext()){
-			// get current subject and try to find it in the dataid graph 
-			StmtIterator t = m.listStatements(s.next().getSubject(), Dataset.dataIDType, Dataset.dataIDDataset);
-			
-			if(t.hasNext())
-				throw new Exception("Current dataid file already had been processed.");
-			}
+//		if(s.hasNext()){
+//			// get current subject and try to find it in the dataid graph 
+//			StmtIterator t = m.listStatements(s.next().getSubject(), Dataset.dataIDType, Dataset.dataIDDataset);
+//			
+//			if(t.hasNext())
+//				throw new Exception("Current dataid file already had been processed.");
+//			}
 		
 		
 		// merge currente dataid with dataid graph

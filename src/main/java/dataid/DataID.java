@@ -86,8 +86,8 @@ public class DataID {
 
 			// save file metadata
 			fsMoldel.addDatasetOnFileSystem(dFile.url.toString(), dFile.saveFilePath,
-					dFile.url.toString(), dFile.contentType,
-					filter.fullFileName, p.objectFile, l.getSubset());
+					dFile.url.toString(), dFile.contentLength,
+					filter.fullFileName, p.objectFile, l.getSubset(), l.getDatasetURI());
 
 			// compare distributions using filters
 			fsMoldel.compareAllDistributions();
@@ -125,9 +125,10 @@ public class DataID {
 		
 		// parse model in order to find distributions
 		int numberOfDistributions = model.parseDistributions(distributionsLinks).size();
-		if (numberOfDistributions == 0)
-			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
-					"### 0 distribution found! ###");
+		if(!model.someAccessURLFound)
+			throw new Exception("No dcat:accessURL property found!");	
+		else if (numberOfDistributions == 0)
+			throw new Exception("### 0 distribution found! ###");	
 		else
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 					numberOfDistributions + " distribution(s) found");

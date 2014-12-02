@@ -27,7 +27,7 @@ public class FSModel {
 	private static Model fsModel = ModelFactory.createDefaultModel();		
 
 	public boolean addDatasetOnFileSystem(String subject, String path, String accessURL,
-			String mimo, String subjectFilter, String objectFile, String subsetURI) {
+			double  contentLenght, String subjectFilter, String objectFile, String subsetURI, String datasetURI) {
 
 		try {
 			fsModel = ModelFactory.createDefaultModel();
@@ -43,14 +43,13 @@ public class FSModel {
 			
 
 			r.addProperty(FileSystem.accessURL, accessURL);
-			if (mimo == null)
-				mimo = "";
-			r.addProperty(FileSystem.mediaType, mimo);
+			r.addProperty(FileSystem.byteSize, String.valueOf(contentLenght));
 			r.addProperty(FileSystem.dataIDFilePath, path);
 			r.addProperty(FileSystem.objectPath, objectFile);
 			r.addProperty(FileSystem.subjectFilterPath, subjectFilter);
 			r.addProperty(FileSystem.dataIDUpdatedFilePath, path+ ".updated"); 
 			r.addProperty(FileSystem.subsetURI, subsetURI);
+			r.addProperty(FileSystem.datasetURI, datasetURI);
 			
 
 			fsModel.write(new FileOutputStream(new File(
@@ -67,7 +66,7 @@ public class FSModel {
 	}
 	
 	private void updateDataID(String dataID, String dataIDUpdated,
-			int links,String datasetURL, String linkURL){
+			int links,String subsetURL, String linkURL, String datasetURI ){
 		
 		Model m =  ModelFactory.createDefaultModel();
 		
@@ -79,26 +78,34 @@ public class FSModel {
 			System.out.println("dataid updated file: "+dataIDUpdated);
 			System.out.println("links: "+links);
 			System.out.println("link url: "+linkURL);
-			System.out.println("dataset url: "+datasetURL);	
+			System.out.println("subset url: "+subsetURL);	
+			System.out.println("dataset url: "+subsetURL);	
 
 			
-			Resource subset = m.getResource(datasetURL);
+			Resource subset = m.getResource(subsetURL);
+			Resource dataset = m.getResource(datasetURI);
 			Random randomGenerator = new Random();
 
+			String linksetSubject = subsetURL 
+					+ randomGenerator.nextInt();
+			
 			// creating a linkset
-			Resource linkSet = m.createResource(datasetURL
-					+ randomGenerator.nextInt());
+			Resource linkSet = m.createResource(linksetSubject);
 			linkSet.addProperty(Linkset.issued, "05-12-1988");
 			linkSet.addProperty(Linkset.modified, "05-12-1988");
 			linkSet.addProperty(Dataset.dataIDType, Linkset.voidLinkset);
 			linkSet.addLiteral(Linkset.triples, links);
-			linkSet.addProperty(Linkset.target, m.getResource(linkURL));
+			linkSet.addProperty(Linkset.subjectsTarget, dataset);
+			linkSet.addProperty(Linkset.objectsTarget, m.getResource(linkURL));
+			
 			linkSet.addLiteral(Linkset.linkPredicate, "");
 
 			subset.addProperty(Linkset.voidSubset, linkSet);
 			
+			
 			try {
 				m.write(new FileOutputStream(DataIDGeneralProperties.DATAID_GRAPH_MODEL_PATH),"TURTLE");
+				m.close();
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -138,10 +145,18 @@ public class FSModel {
 					Statement filterPath = filterPathIterator.next();
 					
 					// do not compare distribution with itself
-					if(!stmtObject.getSubject().toString().equals(filterPath.getSubject().toString())){
+					if(stmtObject.getSubject().toString().equals(filterPath.getSubject().toString())){
+						System.out.println("No needs to compare the distribution with itself.");
+						System.out.println("Distribution 1: "+stmtObject.getSubject().toString());
+						System.out.println("Distribution 2: "+filterPath.getSubject().toString());
+						
+					}
+					else{
 					
-					System.out.println("Comparing "+
-					stmtObject.getObject().toString()+" with filter "+
+					System.out.println("Comparing: "+
+					stmtObject.getObject().toString());
+					System.out.println(
+					"with filter "+
 							filterPath.getObject().toString());
 					GoogleBloomFilter g = new GoogleBloomFilter();
 				
@@ -154,7 +169,7 @@ public class FSModel {
 						e.printStackTrace();
 					}
 					FileToFilter f = new FileToFilter();
-					System.out.println("Searching file  "+stmtObject.getSubject().toString());
+					System.out.println("Searching file  "+stmtObject.getObject().toString());
 				
 					int numbersOfTriples = f.searchFileOnFilter(g,stmtObject.getObject().toString());
 				
@@ -165,8 +180,10 @@ public class FSModel {
 					
 					// case there are links, update dataID file
 					if(numbersOfTriples>0){
+						
 						String dataIDPath="";
 						String dataIDUpdatedPath="";
+						String subsetURL="";
 						String datasetURL="";
 						String linkURL="";
 						
@@ -184,14 +201,19 @@ public class FSModel {
 						// get dataIDUpdated path
 						s = fsModel.listStatements(stmtObject.getSubject(), FileSystem.subsetURI, (RDFNode) null);
 						if(s.hasNext())
-							datasetURL = s.next().getObject().toString();
+							subsetURL = s.next().getObject().toString();
 						
 						// get target dataset link
-						s = fsModel.listStatements(filterPath.getSubject(), FileSystem.subsetURI, (RDFNode) null);
+						s = fsModel.listStatements(filterPath.getSubject(), FileSystem.datasetURI, (RDFNode) null);
 						if(s.hasNext())
 							linkURL = s.next().getObject().toString();
 						
-						updateDataID(dataIDPath, dataIDUpdatedPath,numbersOfTriples, datasetURL, linkURL );
+						// get dataseturl
+						s = fsModel.listStatements(stmtObject.getSubject(), FileSystem.datasetURI, (RDFNode) null);
+						if(s.hasNext())
+							datasetURL = s.next().getObject().toString();
+						
+						updateDataID(dataIDPath, dataIDUpdatedPath, numbersOfTriples, subsetURL, linkURL, datasetURL );
 
 						}
 					}

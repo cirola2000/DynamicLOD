@@ -19,8 +19,8 @@
             <h:inputText style="width:560px" id="nameInput" value="#{dataIDBean.url}"></h:inputText>
           
             
-        <a4j:commandButton value="AddLinksets" action="#{dataIDBean.start}" />
-        
+        <a4j:commandButton value="Update DataID Graph!" action="#{dataIDBean.start}" /><br />
+        <a href="http://localhost:8080/graph/dataid_graph.ttl">http://localhost:8080/graph/dataid_graph.ttl</a>
 		<a4j:push address="sampleAddress"> 
     	<a4j:ajax event="dataavailable" render="outputDate" oncomplete="document.getElementById('divDisplay').scrollTop = document.getElementById('divDisplay').scrollHeight" />
 		</a4j:push> 
@@ -28,8 +28,6 @@
 		<div style="border:1px solid; height: 500px; max-height: 500px; overflow: auto;" id="divDisplay">
 		
 	    <h:outputText value="#{dataIDBean.display}" style="font-weight:bold" escape="false"  />
-	    
-	    da2
 	    
 		 </div>
 		</a4j:outputPanel>        
@@ -40,11 +38,4 @@
     </ui:composition>   
     
 </body>
-<script type="text/javascript">
-function scrole(){
-alert("opa");
-var objDiv = document.getElementById("divDisplay");
-document.getElementById('divDisplay').scrollTop = document.getElementById('divDisplay').scrollHeight;
-}
-</script>
 </html>

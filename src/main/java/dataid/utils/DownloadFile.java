@@ -2,7 +2,6 @@ package dataid.utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -93,8 +92,8 @@ public class DownloadFile {
 							+ df.format(tmpBytesMissing / 1024 / 1024) + " MB");
 					System.out.println();
 
-					//show message each 10s
-					if(showOnDisplay==10){
+					//show message each 5s
+					if(showOnDisplay==5){
 						showOnDisplay = 0;
 					DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG, 
 							"Speed: "+(tmpBytesRead / 1024) + "kbps" + ", elapsed time: "
@@ -109,9 +108,16 @@ public class DownloadFile {
 				}
 
 			}
+			
 
 			outputStream.close();
 			inputStream.close();
+			
+			// update file length 
+			if(contentLength<1){
+				File f = new File(saveFilePath);
+				contentLength = f.length();
+			}
 
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"File downloaded: "+fileName);
 

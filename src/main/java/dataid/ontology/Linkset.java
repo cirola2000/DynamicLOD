@@ -15,8 +15,11 @@ public class Linkset {
 	public static final Property linkPredicate = property(NS.VOID_URI, "linkPredicate");
 	public static final Property triples = property(NS.VOID_URI, "triples");
 	public static final Property target = property(NS.VOID_URI, "target");
-	public static final Property voidSubset = property(NS.VOID_URI, "subset");;
-	public static final Property voidLinkset = property(NS.VOID_URI, "Linkset");;
+	public static final Property subjectsTarget = property(NS.VOID_URI, "subjectsTarget");
+	public static final Property objectsTarget = property(NS.VOID_URI, "objectsTarget");
+	public static final Property voidSubset = property(NS.VOID_URI, "subset");
+	public static final Property voidDataset = property(NS.VOID_URI, "Dataset");
+	public static final Property voidLinkset = property(NS.VOID_URI, "Linkset");
 	
 
 	public static final Property dataidContainsLinks = property(NS.DATAID_URI,
