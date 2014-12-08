@@ -1,6 +1,7 @@
 package dataid.files;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import org.apache.commons.io.FilenameUtils;
 
@@ -11,6 +12,8 @@ public class PrepareFiles {
 
 	public String subjectFile;
 	public String objectFile;
+	
+	public int objectTriples;
 	
 	
 	public String checkFileFormat(String fileName) throws Exception {
@@ -26,9 +29,11 @@ public class PrepareFiles {
 //		}
 		if(ext.equals("ttl")){
 			
+			
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"File extension is ttl! Converting ttl to nt using rapper");
 	    	RunCommand.run("rapper -i turtle "+DataIDGeneralProperties.BASE_PATH+ fileName+" -o ntriples > "+DataIDGeneralProperties.BASE_PATH+FilenameUtils.getBaseName(fileName)+".nt");
-			return FilenameUtils.getBaseName(fileName)+".nt";
+	    	
+	    	return FilenameUtils.getBaseName(fileName)+".nt";
 			
 		}		
 		else if(!ext.equals("nt")){
@@ -41,9 +46,6 @@ public class PrepareFiles {
 
 	public void separateSubjectAndObject(String fileName) {
 		
-//		fileName = fileName.replace(":", "_");
-//		fileName = fileName.replace("/", "_");
-
 		// creates 2 files, one with subjects and other with objects
 		DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Creating subject file: "
 				+ DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH

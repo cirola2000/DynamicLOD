@@ -31,6 +31,7 @@ public class DownloadAndSave {
 	public double contentLength;
 	public double contentLengthAfterDownloaded;
 	public double subjectLines=0;
+	public double objectLines=0;
 
 	Queue<String> b = new ConcurrentLinkedQueue<String>();
 	boolean done = false;
@@ -88,7 +89,8 @@ public class DownloadAndSave {
 			if (extension.equals("nt")) {
 				split_and_store.start();
 				while (-1 != (n = inputStream.read(buffer))) {
-					b.add(new String(buffer, "UTF-8"));
+					String str = new String(buffer, "UTF-8");
+					b.add(str);
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded+n;
 				}
 			}
@@ -99,62 +101,13 @@ public class DownloadAndSave {
 				while (-1 != (bytesRead = inputStream.read(buffer))) {
 					outputStream.write(buffer, 0, bytesRead);
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded+bytesRead;
+					for (int i = 0; i < bytesRead; i++) {
+				    	if (buffer[i] == '\n') objectLines++;
+				    }
 				}
 			}
 
 			done = true;
-
-			// // opens an output stream to save into file
-			// FileOutputStream outputStream = new
-			// FileOutputStream(saveFilePath);
-			//
-			// long startTime = System.currentTimeMillis();
-			// long tmpTime = 0;
-			// int tmpBytesRead = 0;
-			// double tmpBytesMissing = contentLength;
-			//
-			// int bytesRead = -1;
-			// byte[] buffer = new byte[BUFFER_SIZE];
-			//
-			// int showOnDisplay = 0;
-			//
-			// while ((bytesRead = inputStream.read(buffer)) != -1) {
-			// outputStream.write(buffer, 0, bytesRead);
-			// long timeInSecs = (System.currentTimeMillis() - startTime) /
-			// 1000;
-			// tmpBytesRead = tmpBytesRead + bytesRead;
-			// tmpBytesMissing = tmpBytesMissing - bytesRead;
-			//
-			// if (tmpTime != timeInSecs) {
-			// double speed = tmpBytesRead;
-			// System.out.println((tmpBytesRead / 1024) + "kbps");
-			// System.out.println("elapsed time: "
-			// + df.format((tmpBytesMissing / 1024 / 1024)
-			// / (speed / 1024 / 1024)) + " seconds");
-			// System.out.println("bytes missing "
-			// + df.format(tmpBytesMissing / 1024 / 1024) + " MB");
-			// System.out.println();
-			//
-			// //show message each 5s
-			// if(showOnDisplay==5){
-			// showOnDisplay = 0;
-			// DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-			// "Speed: "+(tmpBytesRead / 1024) + "kbps" + ", elapsed time: "
-			// + df.format((tmpBytesMissing / 1024 / 1024)
-			// / (speed / 1024 / 1024)) + " seconds" + ", bytes missing "
-			// + df.format(tmpBytesMissing / 1024 / 1024) + " MB");
-			// }
-			// showOnDisplay++;
-			//
-			// tmpTime = timeInSecs;
-			// tmpBytesRead = 0;
-			// }
-			//
-			// }
-			//
-			//
-			// outputStream.close();
-			// inputStream.close();
 
 			// update file length
 			if (contentLength < 1) {
@@ -212,6 +165,7 @@ public class DownloadAndSave {
 									// TODO Check if object is literal
 									object.write(new String(u2[2] + "\n")
 											.getBytes());
+									objectLines++;
 
 									count++;
 									if (count % 100000 == 0) {

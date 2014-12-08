@@ -16,7 +16,7 @@ public class FileToFilter {
 	// list of linksets
 	List<String> links = new ArrayList<String>();
 	public List<String> linksUniq = new ArrayList<String>();
-	private List<String> objectList = new ArrayList<String>();
+	public int subjectsLoadedIntoFilter = 0;
 
 	public void loadFileToFilter(GoogleBloomFilter filter, String fileName) {
 
@@ -29,12 +29,11 @@ public class FileToFilter {
 			String sCurrentLine;
 			br = new BufferedReader(new FileReader(DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+
 							fileName));
-			int count = 0;
 			while ((sCurrentLine = br.readLine()) != null) {
 				filter.add(sCurrentLine);
-				count++;
+				subjectsLoadedIntoFilter++;
 			}
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Bloom filter loaded "+count + " lines.");
+			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Bloom filter loaded "+subjectsLoadedIntoFilter + " lines.");
 			
 		} catch (Exception e) {
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
@@ -63,7 +62,6 @@ public class FileToFilter {
 //				objectList.add(sCurrentLine); 
 				if (filter.compare(sCurrentLine)) { 
 					links.add(sCurrentLine);
-					System.out.println(links.size());
 				}
 			}
 			

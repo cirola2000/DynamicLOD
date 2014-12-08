@@ -18,6 +18,10 @@ public class DynamicLODCloudEntryModel {
 	private String dataIDFilePath;
 
 	private String timeToCreateFilter;
+	
+	private String numberOfTriplesLoadedIntoFilter;
+	
+	private String numberOfObjectTriples;
 
 	public String getAccessURL() {
 		return accessURL;
@@ -81,6 +85,23 @@ public class DynamicLODCloudEntryModel {
 
 	public void setTimeToCreateFilter(String timeToCreateFilter) {
 		this.timeToCreateFilter = timeToCreateFilter;
+	}
+
+	public String getNumberOfTriplesLoadedIntoFilter() {
+		return numberOfTriplesLoadedIntoFilter;
+	}
+
+	public void setNumberOfTriplesLoadedIntoFilter(
+			String numberOfTriplesLoadedIntoFilter) {
+		this.numberOfTriplesLoadedIntoFilter = numberOfTriplesLoadedIntoFilter;
+	}
+
+	public String getNumberOfObjectTriples() {
+		return numberOfObjectTriples;
+	}
+
+	public void setNumberOfObjectTriples(String numberOfObjectTriples) {
+		this.numberOfObjectTriples = numberOfObjectTriples;
 	}
 	
 	

@@ -36,6 +36,18 @@ public class DynamicLODCloudEntry {
 	public static final Property timeToCreateFilter = ResourceFactory
 			.createProperty("http://localhost:8080/ontology#timeToCreateFilter");
 	
+	// number of triples loaded into filter
+	public static final Property numberOfTriplesLoadedIntoFilter = ResourceFactory
+			.createProperty("http://localhost:8080/ontology#triplesLoadedIntoFilter");
+	
+	// number of object triples
+		public static final Property numberOfObjectTriples = ResourceFactory
+				.createProperty("http://localhost:8080/ontology#triplesObject");
+		
+		// number of object triples
+		public static final Property comparision = ResourceFactory
+				.createProperty("http://localhost:8080/ontology#comparision");
+		
 	
 	
 	

@@ -14,8 +14,7 @@ public class Timer {
 	public String stopTimer(){
 		double time = System.currentTimeMillis()-startTime;
 		startTime = 0;
-		 DecimalFormat df = new DecimalFormat("#.##");
-		return df.format(time/10);
+		return String.format("%.2f", time/1000);
 		
 	}
 	

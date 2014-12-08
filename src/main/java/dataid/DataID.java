@@ -64,6 +64,7 @@ public class DataID {
 							+ " url.");
 
 			downloadedFile.downloadFile(subsetModel.getDistribution());
+			entry.setNumberOfObjectTriples(String.valueOf(downloadedFile.objectLines));
 
 			// check if format is ntriples
 			String ext = FilenameUtils.getExtension(downloadedFile.fileName);
@@ -74,6 +75,7 @@ public class DataID {
 				p.separateSubjectAndObject(downloadedFile.fileName);
 
 				downloadedFile.objectFilePath = p.objectFile;
+
 			}
 
 			// make a filter with subjects
@@ -94,6 +96,8 @@ public class DataID {
 			// Loading file to filter
 			f.loadFileToFilter(filter, downloadedFile.fileName);
 			entry.setTimeToCreateFilter(String.valueOf(timer.stopTimer()));
+			
+			entry.setNumberOfTriplesLoadedIntoFilter(String.valueOf(f.subjectsLoadedIntoFilter));
 
 			// save filter
 			filter.saveFilter(downloadedFile.fileName);
