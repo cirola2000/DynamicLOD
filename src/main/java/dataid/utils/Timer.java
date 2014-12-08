@@ -15,7 +15,7 @@ public class Timer {
 		double time = System.currentTimeMillis()-startTime;
 		startTime = 0;
 		 DecimalFormat df = new DecimalFormat("#.##");
-		return df.format(time/100);
+		return df.format(time/10);
 		
 	}
 	
