@@ -31,7 +31,7 @@ public class DownloadAndSave {
 	public double contentLength;
 	public double contentLengthAfterDownloaded;
 	public double subjectLines=0;
-	public double objectLines=0;
+	public int objectLines=0;
 
 	Queue<String> b = new ConcurrentLinkedQueue<String>();
 	boolean done = false;

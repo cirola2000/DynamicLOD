@@ -8,104 +8,114 @@
 @prefix void:  <http://rdfs.org/ns/void#> .
 @prefix dataid: <http://dataid.dbpedia.org/ns/core#> .
 
-<http://aksw.org/dataid.ttl#News-100-nif1368233034>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "56"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#RSS-500-nif1689371944>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:triples         "404"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#News-100-nif742605392>
+<http://aksw.org/dataid.ttl#News-100-nif1258171859>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
         void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
         void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "43"^^xsd:long .
+        void:triples         "41"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#Reuters-128-nif2017030632>
+<https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl>
+        a               dataid:Distribution ;
+        dct:format      "ttl" ;
+        dct:title       "Reuters-128 NIF Distribution" ;
+        dcat:accessURL  "https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl" ;
+        dcat:mediaType  "text/plain" .
+
+<http://aksw.org/dataid.ttl#Reuters-128-nif-1113842760>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
         void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
         void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "4"^^xsd:long .
+        void:triples         "279"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#Reuters-128-nif2140885033>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "4"^^xsd:long .
+<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9>
+        a                        prov:Entity , dcat:Dataset , dataid:Dataset , sd:Dataset , void:Dataset ;
+        rdfs:label               "DBpedia" ;
+        dataid:latestVersion     <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
+        dataid:licenseName       "Creative Commons Attribution-ShareAlike 4.0" ;
+        dataid:ontologyLocation  <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
+        dct:description          "DBpedia is a crowd-sourced community effort to extract structured information from Wikipedia and make this information available on the Web. DBpedia allows you to ask sophisticated queries against Wikipedia, and to link the different data sets on the Web to Wikipedia data. We hope that this work will make it easier for the huge amount of information in Wikipedia to be used in some new interesting ways. Furthermore, it might inspire new mechanisms for navigating, linking, and improving the encyclopedia itself." ;
+        dct:language             "en" ;
+        dct:license              <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
+        dct:publisher            <http://wiki.dbpedia.org/Association> ;
+        dct:rights               "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
+        dct:title                "DBpedia English" ;
+        void:exampleResource     <http://dbpedia.org/data/Berlin.rdf> ;
+        void:sparqlEndpoint      <http://dbpedia.org/sparql> ;
+        void:subset              <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en> ;
+        dcat:contactPoint        <http://wiki.dbpedia.org/Association> ;
+        dcat:distribution        <http://dbpedia.org/sparql> ;
+        dcat:keyword             "access-www" , "lod" , "crossdomain" , "access-bulk" , "access-api" , "rdf" , "wikipedia" ;
+        dcat:landingPage         <http://dbpedia.org/> ;
+        prov:wasDerivedFrom      <http://dumps.wikimedia.org/enwiki/20130403> ;
+        prov:wasGeneratedBy      <http://dbpedia.org/dataid.ttl#Extraction> .
 
-<http://aksw.org/dataid.ttl#Reuters-128-nif-703212090>
+<http://aksw.org/dataid.ttl#RSS-500-nif>
+        a                     prov:Entity , void:Dataset , sd:Dataset , dcat:Dataset , dataid:Dataset , rdfs:type ;
+        rdfs:label            "RSS-500 Dataset DataID Description" ;
+        dataid:licenseName    "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" ;
+        dct:description       "RSS 500 NIF Dataset Main Distribution" ;
+        dct:issued            "8-13-2014"^^xsd:date ;
+        dct:language          "English" ;
+        dct:license           <http://purl.oclc.org/NET/rdflicense/cc-by-sa> ;
+        dct:title             "RSS-500 Dataset DataID Description" ;
+        void:exampleResource  <https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl> ;
+        void:subset           <http://aksw.org/dataid.ttl#RSS-500-nif-843746020> , <http://aksw.org/dataid.ttl#RSS-500-nif-2032749035> , <http://aksw.org/dataid.ttl#RSS-500-nif908540674> , <http://aksw.org/dataid.ttl#RSS-500-nif-2066888982> , <http://aksw.org/dataid.ttl#RSS-500-nif-2057268899> ;
+        dcat:distribution     <https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl> ;
+        dcat:landingPage      <http://aksw.org/Projects/N3NERNEDNIF.html> .
+
+<https://raw.github.com/AKSW/n3-collection/master/News-100.ttl>
+        a               dataid:Distribution ;
+        dct:format      "ttl" ;
+        dct:title       "News-100 NIF Distribution" ;
+        dcat:accessURL  "https://raw.github.com/AKSW/n3-collection/master/News-100.ttl" ;
+        dcat:mediaType  "text/plain" .
+
+<http://aksw.org/dataid.ttl#News-100-nif-665002207>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
         void:objectsTarget   <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "292"^^xsd:long .
+        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
+        void:triples         "41"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#RSS-500-nif-196014976>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:triples         "403"^^xsd:long .
+<file:///home/ciro/workspace/dataIDMaven/>
+        a            void:DatasetDescription ;
+        dct:creator  <http://wiki.dbpedia.org/Association> ;
+        dct:title    "DataID of the DBpedia dataset" .
 
-<http://aksw.org/dataid.ttl#RSS-500-nif-318233915>
+<http://aksw.org/dataid.ttl#Reuters-128-nif126814181>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
         void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
+        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
         void:triples         "4"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#Reuters-128-nif1588943152>
+<http://aksw.org/dataid.ttl#News-100-nif1649821326>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
         void:objectsTarget   <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
+        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
         void:triples         "4"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#Reuters-128-nif1938306527>
+<http://aksw.org/dataid.ttl#RSS-500-nif-843746020>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "288"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#Reuters-128-nif-10777619>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "4"^^xsd:long .
+        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
+        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
+        void:triples         "399"^^xsd:long .
 
 <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2>
         a                 dcat:Distribution ;
@@ -120,134 +130,14 @@
         dcat:downloadURL  <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
         dcat:mediaType    "application/x-bzip" .
 
-<http://aksw.org/dataid.ttl#News-100-nif1012866508>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "56"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#Reuters-128-nif355778751>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#RSS-500-nif-1983665645>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:triples         "400"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#Reuters-128-nif164388525>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#Reuters-128-nif-1168532087>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<file:///home/ciro/workspace/dataIDMaven/>
-        a            void:DatasetDescription ;
-        dct:creator  <http://wiki.dbpedia.org/Association> ;
-        dct:title    "DataID of the DBpedia dataset" .
-
-<http://aksw.org/dataid.ttl#News-100-nif-398527814>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#News-100-nif1304571567>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#RSS-500-nif1027821486>
+<http://aksw.org/dataid.ttl#RSS-500-nif-2066888982>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
         void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
         void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#RSS-500-nif740131032>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#RSS-500-nif-131774969>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl>
-        a          void:DatasetDescription ;
-        dct:title  "DataID of Reuters-128-nif datasets" , "DataID of News-100-nif datasets" , "DataID of RSS-500-nif datasets" .
-
-<http://aksw.org/dataid.ttl#News-100-nif>
-        a                     dcat:Dataset , prov:Entity , void:Dataset , dataid:Dataset , rdfs:type , sd:Dataset ;
-        rdfs:label            "News-100 Dataset DataID Description" ;
-        dataid:licenseName    "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" ;
-        dct:description       "Extracting Linked Data following the Semantic Web paradigm from unstructured sources has become a key driver for scientific research as well as new business models. Named Entity Recognition and Disambiguation are two basic steps in this extraction process. One key driver to realize the vision of the Semantic Web and develop highly accurate tools is the availability of data for performance validation. In this article, we present three novel, manually curated and annotated corpora, N3. Furthermore, we based them on a free licence and stored in the NLP Interchange Format for interoperability reasons. See http://aksw.org/Projects/N3NERNEDNIF.html" ;
-        dct:issued            "8-13-2014"^^xsd:date ;
-        dct:language          "English" ;
-        dct:license           <http://purl.oclc.org/NET/rdflicense/cc-by-sa> ;
-        dct:title             "News-100 Dataset DataID Description" ;
-        void:exampleResource  <https://raw.github.com/AKSW/n3-collection/master/News-100.ttl> ;
-        void:subset           <http://aksw.org/dataid.ttl#News-100-nif1368233034> , <http://aksw.org/dataid.ttl#News-100-nif1304571567> , <http://aksw.org/dataid.ttl#News-100-nif-570097777> , <http://aksw.org/dataid.ttl#News-100-nif-349642436> , <http://aksw.org/dataid.ttl#News-100-nif742605392> , <http://aksw.org/dataid.ttl#News-100-nif-1694166361> , <http://aksw.org/dataid.ttl#News-100-nif546587187> , <http://aksw.org/dataid.ttl#News-100-nif1012866508> , <http://aksw.org/dataid.ttl#News-100-nif-216658526> , <http://aksw.org/dataid.ttl#News-100-nif-108869750> , <http://aksw.org/dataid.ttl#News-100-nif-398527814> , <http://aksw.org/dataid.ttl#News-100-nif198975556> ;
-        dcat:distribution     <https://raw.github.com/AKSW/n3-collection/master/News-100.ttl> ;
-        dcat:landingPage      <http://aksw.org/Projects/N3NERNEDNIF.html> .
-
-<http://aksw.org/dataid.ttl#News-100-nif-216658526>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl>
-        a               dataid:Distribution ;
-        dct:format      "ttl" ;
-        dct:title       "RSS-500 NIF Distribution" ;
-        dcat:accessURL  "https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl" ;
-        dcat:mediaType  "text/plain" .
+        void:triples         "399"^^xsd:long .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en>
         a                        prov:Entity , dcat:Dataset , sd:Dataset , void:Dataset ;
@@ -268,70 +158,57 @@
         prov:wasDerivedFrom      <http://dumps.wikimedia.org/enwiki/20130403> ;
         prov:wasGeneratedBy      <http://dbpedia.org/dataid.ttl#Extraction> .
 
-<http://aksw.org/dataid.ttl#Reuters-128-nif1515227503>
+<http://aksw.org/dataid.ttl#Reuters-128-nif-1726316874>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
+        void:objectsTarget   <http://aksw.org/dataid.ttl#RSS-500-nif> ;
         void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
         void:triples         "4"^^xsd:long .
 
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9>
-        a                        prov:Entity , dcat:Dataset , dataid:Dataset , sd:Dataset , void:Dataset ;
-        rdfs:label               "DBpedia" ;
-        dataid:latestVersion     <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
-        dataid:licenseName       "Creative Commons Attribution-ShareAlike 4.0" ;
-        dataid:ontologyLocation  <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
-        dct:description          "DBpedia is a crowd-sourced community effort to extract structured information from Wikipedia and make this information available on the Web. DBpedia allows you to ask sophisticated queries against Wikipedia, and to link the different data sets on the Web to Wikipedia data. We hope that this work will make it easier for the huge amount of information in Wikipedia to be used in some new interesting ways. Furthermore, it might inspire new mechanisms for navigating, linking, and improving the encyclopedia itself." ;
-        dct:language             "en" ;
-        dct:license              <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-        dct:publisher            <http://wiki.dbpedia.org/Association> ;
-        dct:rights               "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
-        dct:title                "DBpedia English" ;
-        void:exampleResource     <http://dbpedia.org/data/Berlin.rdf> ;
-        void:sparqlEndpoint      <http://dbpedia.org/sparql> ;
-        void:subset              <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en> ;
-        dcat:contactPoint        <http://wiki.dbpedia.org/Association> ;
-        dcat:distribution        <http://dbpedia.org/sparql> ;
-        dcat:keyword             "access-www" , "lod" , "crossdomain" , "access-api" , "access-bulk" , "rdf" , "wikipedia" ;
-        dcat:landingPage         <http://dbpedia.org/> ;
-        prov:wasDerivedFrom      <http://dumps.wikimedia.org/enwiki/20130403> ;
-        prov:wasGeneratedBy      <http://dbpedia.org/dataid.ttl#Extraction> .
-
-<http://aksw.org/dataid.ttl#RSS-500-nif>
-        a                     prov:Entity , void:Dataset , sd:Dataset , dcat:Dataset , dataid:Dataset , rdfs:type ;
-        rdfs:label            "RSS-500 Dataset DataID Description" ;
-        dataid:licenseName    "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" ;
-        dct:description       "RSS 500 NIF Dataset Main Distribution" ;
-        dct:issued            "8-13-2014"^^xsd:date ;
-        dct:language          "English" ;
-        dct:license           <http://purl.oclc.org/NET/rdflicense/cc-by-sa> ;
-        dct:title             "RSS-500 Dataset DataID Description" ;
-        void:exampleResource  <https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl> ;
-        void:subset           <http://aksw.org/dataid.ttl#RSS-500-nif-131774969> , <http://aksw.org/dataid.ttl#RSS-500-nif1942478799> , <http://aksw.org/dataid.ttl#RSS-500-nif1218943778> , <http://aksw.org/dataid.ttl#RSS-500-nif740131032> , <http://aksw.org/dataid.ttl#RSS-500-nif-1983665645> , <http://aksw.org/dataid.ttl#RSS-500-nif-196014976> , <http://aksw.org/dataid.ttl#RSS-500-nif1577968350> , <http://aksw.org/dataid.ttl#RSS-500-nif-318233915> , <http://aksw.org/dataid.ttl#RSS-500-nif1027821486> , <http://aksw.org/dataid.ttl#RSS-500-nif1689371944> ;
-        dcat:distribution     <https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl> ;
-        dcat:landingPage      <http://aksw.org/Projects/N3NERNEDNIF.html> .
-
-<http://aksw.org/dataid.ttl#Reuters-128-nif-950041262>
+<http://aksw.org/dataid.ttl#News-100-nif-1892958765>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "292"^^xsd:long .
+        void:objectsTarget   <http://aksw.org/dataid.ttl#RSS-500-nif> ;
+        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
+        void:triples         "4"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#RSS-500-nif1577968350>
+<http://aksw.org/dataid.ttl#News-100-nif>
+        a                     dcat:Dataset , prov:Entity , void:Dataset , dataid:Dataset , rdfs:type , sd:Dataset ;
+        rdfs:label            "News-100 Dataset DataID Description" ;
+        dataid:licenseName    "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" ;
+        dct:description       "Extracting Linked Data following the Semantic Web paradigm from unstructured sources has become a key driver for scientific research as well as new business models. Named Entity Recognition and Disambiguation are two basic steps in this extraction process. One key driver to realize the vision of the Semantic Web and develop highly accurate tools is the availability of data for performance validation. In this article, we present three novel, manually curated and annotated corpora, N3. Furthermore, we based them on a free licence and stored in the NLP Interchange Format for interoperability reasons. See http://aksw.org/Projects/N3NERNEDNIF.html" ;
+        dct:issued            "8-13-2014"^^xsd:date ;
+        dct:language          "English" ;
+        dct:license           <http://purl.oclc.org/NET/rdflicense/cc-by-sa> ;
+        dct:title             "News-100 Dataset DataID Description" ;
+        void:exampleResource  <https://raw.github.com/AKSW/n3-collection/master/News-100.ttl> ;
+        void:subset           <http://aksw.org/dataid.ttl#News-100-nif-665002207> , <http://aksw.org/dataid.ttl#News-100-nif1258171859> , <http://aksw.org/dataid.ttl#News-100-nif1649821326> , <http://aksw.org/dataid.ttl#News-100-nif509875447> , <http://aksw.org/dataid.ttl#News-100-nif-1127007417> , <http://aksw.org/dataid.ttl#News-100-nif-1892958765> ;
+        dcat:distribution     <https://raw.github.com/AKSW/n3-collection/master/News-100.ttl> ;
+        dcat:landingPage      <http://aksw.org/Projects/N3NERNEDNIF.html> .
+
+<http://aksw.org/dataid.ttl#News-100-nif509875447>
+        a                    void:Linkset ;
+        dct:issued           "05-12-1988" ;
+        dct:modified         "05-12-1988" ;
+        void:linkPredicate   ""^^xsd:string ;
+        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
+        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
+        void:triples         "4"^^xsd:long .
+
+<http://aksw.org/dataid.ttl#RSS-500-nif908540674>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
         void:objectsTarget   <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
         void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:triples         "403"^^xsd:long .
+        void:triples         "395"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#Reuters-128-nif846967033>
+<http://aksw.org/dataid.ttl#Reuters-128-nif379771162>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
@@ -340,63 +217,22 @@
         void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
         void:triples         "4"^^xsd:long .
 
-<https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl>
-        a               dataid:Distribution ;
-        dct:format      "ttl" ;
-        dct:title       "Reuters-128 NIF Distribution" ;
-        dcat:accessURL  "https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl" ;
-        dcat:mediaType  "text/plain" .
+<http://aksw.org/dataid.ttl#Reuters-128-nif1408001789>
+        a                    void:Linkset ;
+        dct:issued           "05-12-1988" ;
+        dct:modified         "05-12-1988" ;
+        void:linkPredicate   ""^^xsd:string ;
+        void:objectsTarget   <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
+        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
+        void:triples         "279"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#RSS-500-nif1942478799>
+<http://aksw.org/dataid.ttl#Reuters-128-nif-110885455>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
         void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#News-100-nif546587187>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#RSS-500-nif1218943778>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:triples         "404"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#News-100-nif-1694166361>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<https://raw.github.com/AKSW/n3-collection/master/News-100.ttl>
-        a               dataid:Distribution ;
-        dct:format      "ttl" ;
-        dct:title       "News-100 NIF Distribution" ;
-        dcat:accessURL  "https://raw.github.com/AKSW/n3-collection/master/News-100.ttl" ;
-        dcat:mediaType  "text/plain" .
-
-<http://aksw.org/dataid.ttl#News-100-nif-570097777>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
+        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
         void:triples         "4"^^xsd:long .
 
 <http://aksw.org/dataid.ttl#Reuters-128-nif>
@@ -409,20 +245,20 @@
         dct:license           <http://purl.oclc.org/NET/rdflicense/cc-by-sa> ;
         dct:title             "Reuters-128 Dataset DataID Description" ;
         void:exampleResource  <https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl> ;
-        void:subset           <http://aksw.org/dataid.ttl#Reuters-128-nif-10777619> , <http://aksw.org/dataid.ttl#Reuters-128-nif2140885033> , <http://aksw.org/dataid.ttl#Reuters-128-nif164388525> , <http://aksw.org/dataid.ttl#Reuters-128-nif-1168532087> , <http://aksw.org/dataid.ttl#Reuters-128-nif1588943152> , <http://aksw.org/dataid.ttl#Reuters-128-nif1938306527> , <http://aksw.org/dataid.ttl#Reuters-128-nif846967033> , <http://aksw.org/dataid.ttl#Reuters-128-nif2017030632> , <http://aksw.org/dataid.ttl#Reuters-128-nif-703212090> , <http://aksw.org/dataid.ttl#Reuters-128-nif1515227503> , <http://aksw.org/dataid.ttl#Reuters-128-nif355778751> , <http://aksw.org/dataid.ttl#Reuters-128-nif-950041262> ;
+        void:subset           <http://aksw.org/dataid.ttl#Reuters-128-nif-1726316874> , <http://aksw.org/dataid.ttl#Reuters-128-nif1408001789> , <http://aksw.org/dataid.ttl#Reuters-128-nif379771162> , <http://aksw.org/dataid.ttl#Reuters-128-nif-1113842760> , <http://aksw.org/dataid.ttl#Reuters-128-nif-110885455> , <http://aksw.org/dataid.ttl#Reuters-128-nif126814181> ;
         dcat:distribution     <https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl> ;
         dcat:landingPage      <http://aksw.org/Projects/N3NERNEDNIF.html> .
 
-<http://aksw.org/dataid.ttl#News-100-nif198975556>
+<http://aksw.org/dataid.ttl#RSS-500-nif-2032749035>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "43"^^xsd:long .
+        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
+        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
+        void:triples         "4"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#News-100-nif-349642436>
+<http://aksw.org/dataid.ttl#News-100-nif-1127007417>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
@@ -431,11 +267,22 @@
         void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
         void:triples         "4"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#News-100-nif-108869750>
+<https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl>
+        a               dataid:Distribution ;
+        dct:format      "ttl" ;
+        dct:title       "RSS-500 NIF Distribution" ;
+        dcat:accessURL  "https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl" ;
+        dcat:mediaType  "text/plain" .
+
+<http://aksw.org/dataid.ttl#RSS-500-nif-2057268899>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
+        void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
+        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
         void:triples         "4"^^xsd:long .
+
+<http://aksw.org/dataid.ttl>
+        a          void:DatasetDescription ;
+        dct:title  "DataID of RSS-500-nif datasets" , "DataID of News-100-nif datasets" , "DataID of Reuters-128-nif datasets" .

@@ -20,7 +20,10 @@
           
             
         <a4j:commandButton value="Update DataID Graph!" action="#{dataIDBean.start}" /><br />
-        <a href="http://localhost:8080/graph/dataid_graph.ttl">http://localhost:8080/graph/dataid_graph.ttl</a>
+        <a href="graph/dataid_graph.ttl">DataID Graph File</a>
+        <a href="comparing.xhtml">Comparing times</a>
+        
+        
 		<a4j:push address="sampleAddress"> 
     	<a4j:ajax event="dataavailable" render="outputDate" oncomplete="document.getElementById('divDisplay').scrollTop = document.getElementById('divDisplay').scrollHeight" />
 		</a4j:push> 
