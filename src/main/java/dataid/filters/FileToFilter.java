@@ -16,6 +16,7 @@ public class FileToFilter {
 	// list of linksets
 	List<String> links = new ArrayList<String>();
 	public List<String> linksUniq = new ArrayList<String>();
+	private List<String> objectList = new ArrayList<String>();
 
 	public void loadFileToFilter(GoogleBloomFilter filter, String fileName) {
 
@@ -59,8 +60,10 @@ public class FileToFilter {
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Searching "+path+" on filter.");
 			
 			while ((sCurrentLine = br.readLine()) != null) {
+//				objectList.add(sCurrentLine); 
 				if (filter.compare(sCurrentLine)) { 
 					links.add(sCurrentLine);
+					System.out.println(links.size());
 				}
 			}
 			

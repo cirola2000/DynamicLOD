@@ -134,6 +134,7 @@ public class FSModel {
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"");
 			
 			while (objectIterator.hasNext()){
+				FileToFilter f = new FileToFilter();
 				
 				System.out.println("Distributions found!");
 				Statement stmtObject = objectIterator.next();
@@ -168,7 +169,7 @@ public class FSModel {
 					catch(Exception e){
 						e.printStackTrace();
 					}
-					FileToFilter f = new FileToFilter();
+					
 					System.out.println("Searching file  "+stmtObject.getObject().toString());
 				
 					int numbersOfTriples = f.searchFileOnFilter(g,stmtObject.getObject().toString());

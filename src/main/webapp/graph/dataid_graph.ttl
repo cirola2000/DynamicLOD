@@ -8,93 +8,44 @@
 @prefix void:  <http://rdfs.org/ns/void#> .
 @prefix dataid: <http://dataid.dbpedia.org/ns/core#> .
 
-<https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl>
-        a               dataid:Distribution ;
-        dct:format      "ttl" ;
-        dct:title       "Reuters-128 NIF Distribution" ;
-        dcat:accessURL  "https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl" ;
-        dcat:mediaType  "text/plain" .
-
-<http://aksw.org/dataid.ttl#RSS-500-nif44456364>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#News-100-nif-1695472855>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#Reuters-128-nif-1435206876>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9>
-        a                        prov:Entity , dcat:Dataset , dataid:Dataset , sd:Dataset , void:Dataset ;
-        rdfs:label               "DBpedia" ;
-        dataid:latestVersion     <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
-        dataid:licenseName       "Creative Commons Attribution-ShareAlike 4.0" ;
-        dataid:ontologyLocation  <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
-        dct:description          "DBpedia is a crowd-sourced community effort to extract structured information from Wikipedia and make this information available on the Web. DBpedia allows you to ask sophisticated queries against Wikipedia, and to link the different data sets on the Web to Wikipedia data. We hope that this work will make it easier for the huge amount of information in Wikipedia to be used in some new interesting ways. Furthermore, it might inspire new mechanisms for navigating, linking, and improving the encyclopedia itself." ;
-        dct:language             "en" ;
-        dct:license              <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-        dct:publisher            <http://wiki.dbpedia.org/Association> ;
-        dct:rights               "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
-        dct:title                "DBpedia English" ;
-        void:exampleResource     <http://dbpedia.org/data/Berlin.rdf> ;
-        void:sparqlEndpoint      <http://dbpedia.org/sparql> ;
-        void:subset              <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en> ;
-        dcat:contactPoint        <http://wiki.dbpedia.org/Association> ;
-        dcat:distribution        <http://dbpedia.org/sparql> ;
-        dcat:keyword             "access-www" , "lod" , "crossdomain" , "access-bulk" , "access-api" , "rdf" , "wikipedia" ;
-        dcat:landingPage         <http://dbpedia.org/> ;
-        prov:wasDerivedFrom      <http://dumps.wikimedia.org/enwiki/20130403> ;
-        prov:wasGeneratedBy      <http://dbpedia.org/dataid.ttl#Extraction> .
-
-<http://aksw.org/dataid.ttl#RSS-500-nif683192529>
+<http://aksw.org/dataid.ttl#Reuters-128-nif-1387756264>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
         void:objectsTarget   <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:triples         "390"^^xsd:long .
+        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
+        void:triples         "278"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#RSS-500-nif>
-        a                     prov:Entity , void:Dataset , sd:Dataset , dcat:Dataset , dataid:Dataset , rdfs:type ;
-        rdfs:label            "RSS-500 Dataset DataID Description" ;
+<http://aksw.org/dataid.ttl#Reuters-128-nif>
+        a                     dataid:Dataset , sd:Dataset , rdfs:type , void:Dataset , dcat:Dataset , prov:Entity ;
+        rdfs:label            "Reuters-128 Dataset DataID Description" ;
         dataid:licenseName    "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" ;
-        dct:description       "RSS 500 NIF Dataset Main Distribution" ;
+        dct:description       "Extracting Linked Data following the Semantic Web paradigm from unstructured sources has become a key driver for scientific research as well as new business models. Named Entity Recognition and Disambiguation are two basic steps in this extraction process. One key driver to realize the vision of the Semantic Web and develop highly accurate tools is the availability of data for performance validation. In this article, we present three novel, manually curated and annotated corpora, N3. Furthermore, we based them on a free licence and stored in the NLP Interchange Format for interoperability reasons. See http://aksw.org/Projects/N3NERNEDNIF.html" ;
         dct:issued            "8-13-2014"^^xsd:date ;
         dct:language          "English" ;
         dct:license           <http://purl.oclc.org/NET/rdflicense/cc-by-sa> ;
-        dct:title             "RSS-500 Dataset DataID Description" ;
-        void:exampleResource  <https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl> ;
-        void:subset           <http://aksw.org/dataid.ttl#RSS-500-nif1109830805> , <http://aksw.org/dataid.ttl#RSS-500-nif2007763326> , <http://aksw.org/dataid.ttl#RSS-500-nif-1071637912> , <http://aksw.org/dataid.ttl#RSS-500-nif683192529> , <http://aksw.org/dataid.ttl#RSS-500-nif44456364> ;
-        dcat:distribution     <https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl> ;
+        dct:title             "Reuters-128 Dataset DataID Description" ;
+        void:exampleResource  <https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl> ;
+        void:subset           <http://aksw.org/dataid.ttl#Reuters-128-nif370343289> , <http://aksw.org/dataid.ttl#Reuters-128-nif-1387756264> , <http://aksw.org/dataid.ttl#Reuters-128-nif65030305> ;
+        dcat:distribution     <https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl> ;
         dcat:landingPage      <http://aksw.org/Projects/N3NERNEDNIF.html> .
 
-<https://raw.github.com/AKSW/n3-collection/master/News-100.ttl>
-        a               dataid:Distribution ;
-        dct:format      "ttl" ;
-        dct:title       "News-100 NIF Distribution" ;
-        dcat:accessURL  "https://raw.github.com/AKSW/n3-collection/master/News-100.ttl" ;
-        dcat:mediaType  "text/plain" .
+<http://aksw.org/dataid.ttl#News-100-nif>
+        a                     dcat:Dataset , prov:Entity , void:Dataset , dataid:Dataset , rdfs:type , sd:Dataset ;
+        rdfs:label            "News-100 Dataset DataID Description" ;
+        dataid:licenseName    "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" ;
+        dct:description       "Extracting Linked Data following the Semantic Web paradigm from unstructured sources has become a key driver for scientific research as well as new business models. Named Entity Recognition and Disambiguation are two basic steps in this extraction process. One key driver to realize the vision of the Semantic Web and develop highly accurate tools is the availability of data for performance validation. In this article, we present three novel, manually curated and annotated corpora, N3. Furthermore, we based them on a free licence and stored in the NLP Interchange Format for interoperability reasons. See http://aksw.org/Projects/N3NERNEDNIF.html" ;
+        dct:issued            "8-13-2014"^^xsd:date ;
+        dct:language          "English" ;
+        dct:license           <http://purl.oclc.org/NET/rdflicense/cc-by-sa> ;
+        dct:title             "News-100 Dataset DataID Description" ;
+        void:exampleResource  <https://raw.github.com/AKSW/n3-collection/master/News-100.ttl> ;
+        void:subset           <http://aksw.org/dataid.ttl#News-100-nif-856255395> , <http://aksw.org/dataid.ttl#News-100-nif-209599908> , <http://aksw.org/dataid.ttl#News-100-nif2123402914> ;
+        dcat:distribution     <https://raw.github.com/AKSW/n3-collection/master/News-100.ttl> ;
+        dcat:landingPage      <http://aksw.org/Projects/N3NERNEDNIF.html> .
 
-<http://aksw.org/dataid.ttl#News-100-nif-1277947391>
+<http://aksw.org/dataid.ttl#News-100-nif-209599908>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
@@ -102,42 +53,6 @@
         void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
         void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
         void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#News-100-nif1646799945>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#News-100-nif1484854543>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<file:///home/ciro/workspace/dataIDMaven/>
-        a            void:DatasetDescription ;
-        dct:creator  <http://wiki.dbpedia.org/Association> ;
-        dct:title    "DataID of the DBpedia dataset" .
-
-<http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2>
-        a                 dcat:Distribution ;
-        dct:description   "DBpedia dumpfile: article_categories_en.nt.bz2" ;
-        dct:format        "nt" ;
-        dct:issued        "17-Sep-2013"^^xsd:date ;
-        dct:license       <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-        dct:modified      "09-Aug-2013"^^xsd:date ;
-        dct:title         "article categories en" ;
-        dcat:accessURL    <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
-        dcat:byteSize     "159000000"^^xsd:decimal ;
-        dcat:downloadURL  <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
-        dcat:mediaType    "application/x-bzip" .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en>
         a                        prov:Entity , dcat:Dataset , sd:Dataset , void:Dataset ;
@@ -158,136 +73,83 @@
         prov:wasDerivedFrom      <http://dumps.wikimedia.org/enwiki/20130403> ;
         prov:wasGeneratedBy      <http://dbpedia.org/dataid.ttl#Extraction> .
 
-<http://aksw.org/dataid.ttl#News-100-nif>
-        a                     dcat:Dataset , prov:Entity , void:Dataset , dataid:Dataset , rdfs:type , sd:Dataset ;
-        rdfs:label            "News-100 Dataset DataID Description" ;
-        dataid:licenseName    "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" ;
-        dct:description       "Extracting Linked Data following the Semantic Web paradigm from unstructured sources has become a key driver for scientific research as well as new business models. Named Entity Recognition and Disambiguation are two basic steps in this extraction process. One key driver to realize the vision of the Semantic Web and develop highly accurate tools is the availability of data for performance validation. In this article, we present three novel, manually curated and annotated corpora, N3. Furthermore, we based them on a free licence and stored in the NLP Interchange Format for interoperability reasons. See http://aksw.org/Projects/N3NERNEDNIF.html" ;
-        dct:issued            "8-13-2014"^^xsd:date ;
-        dct:language          "English" ;
-        dct:license           <http://purl.oclc.org/NET/rdflicense/cc-by-sa> ;
-        dct:title             "News-100 Dataset DataID Description" ;
-        void:exampleResource  <https://raw.github.com/AKSW/n3-collection/master/News-100.ttl> ;
-        void:subset           <http://aksw.org/dataid.ttl#News-100-nif-1277947391> , <http://aksw.org/dataid.ttl#News-100-nif-1695472855> , <http://aksw.org/dataid.ttl#News-100-nif1484854543> , <http://aksw.org/dataid.ttl#News-100-nif67670958> , <http://aksw.org/dataid.ttl#News-100-nif1283593857> , <http://aksw.org/dataid.ttl#News-100-nif1646799945> , <http://aksw.org/dataid.ttl#News-100-nif-1132290346> ;
-        dcat:distribution     <https://raw.github.com/AKSW/n3-collection/master/News-100.ttl> ;
-        dcat:landingPage      <http://aksw.org/Projects/N3NERNEDNIF.html> .
+<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9>
+        a                        prov:Entity , dcat:Dataset , dataid:Dataset , sd:Dataset , void:Dataset ;
+        rdfs:label               "DBpedia" ;
+        dataid:latestVersion     <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
+        dataid:licenseName       "Creative Commons Attribution-ShareAlike 4.0" ;
+        dataid:ontologyLocation  <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
+        dct:description          "DBpedia is a crowd-sourced community effort to extract structured information from Wikipedia and make this information available on the Web. DBpedia allows you to ask sophisticated queries against Wikipedia, and to link the different data sets on the Web to Wikipedia data. We hope that this work will make it easier for the huge amount of information in Wikipedia to be used in some new interesting ways. Furthermore, it might inspire new mechanisms for navigating, linking, and improving the encyclopedia itself." ;
+        dct:language             "en" ;
+        dct:license              <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
+        dct:publisher            <http://wiki.dbpedia.org/Association> ;
+        dct:rights               "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
+        dct:title                "DBpedia English" ;
+        void:exampleResource     <http://dbpedia.org/data/Berlin.rdf> ;
+        void:sparqlEndpoint      <http://dbpedia.org/sparql> ;
+        void:subset              <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en> ;
+        dcat:contactPoint        <http://wiki.dbpedia.org/Association> ;
+        dcat:distribution        <http://dbpedia.org/sparql> ;
+        dcat:keyword             "access-www" , "lod" , "crossdomain" , "access-api" , "access-bulk" , "rdf" , "wikipedia" ;
+        dcat:landingPage         <http://dbpedia.org/> ;
+        prov:wasDerivedFrom      <http://dumps.wikimedia.org/enwiki/20130403> ;
+        prov:wasGeneratedBy      <http://dbpedia.org/dataid.ttl#Extraction> .
 
-<http://aksw.org/dataid.ttl#Reuters-128-nif1388406960>
+<http://aksw.org/dataid.ttl#Reuters-128-nif65030305>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
         void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
         void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "4"^^xsd:long .
+        void:triples         "282"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#Reuters-128-nif2131054432>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#News-100-nif1283593857>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "36"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#RSS-500-nif1109830805>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#Reuters-128-nif1271944918>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "278"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#News-100-nif-1132290346>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#News-100-nif67670958>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#Reuters-128-nif>
-        a                     dataid:Dataset , sd:Dataset , rdfs:type , void:Dataset , dcat:Dataset , prov:Entity ;
-        rdfs:label            "Reuters-128 Dataset DataID Description" ;
-        dataid:licenseName    "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" ;
-        dct:description       "Extracting Linked Data following the Semantic Web paradigm from unstructured sources has become a key driver for scientific research as well as new business models. Named Entity Recognition and Disambiguation are two basic steps in this extraction process. One key driver to realize the vision of the Semantic Web and develop highly accurate tools is the availability of data for performance validation. In this article, we present three novel, manually curated and annotated corpora, N3. Furthermore, we based them on a free licence and stored in the NLP Interchange Format for interoperability reasons. See http://aksw.org/Projects/N3NERNEDNIF.html" ;
-        dct:issued            "8-13-2014"^^xsd:date ;
-        dct:language          "English" ;
-        dct:license           <http://purl.oclc.org/NET/rdflicense/cc-by-sa> ;
-        dct:title             "Reuters-128 Dataset DataID Description" ;
-        void:exampleResource  <https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl> ;
-        void:subset           <http://aksw.org/dataid.ttl#Reuters-128-nif-2030888723> , <http://aksw.org/dataid.ttl#Reuters-128-nif1271944918> , <http://aksw.org/dataid.ttl#Reuters-128-nif-1435206876> , <http://aksw.org/dataid.ttl#Reuters-128-nif1388406960> , <http://aksw.org/dataid.ttl#Reuters-128-nif-1364548794> , <http://aksw.org/dataid.ttl#Reuters-128-nif185204810> , <http://aksw.org/dataid.ttl#Reuters-128-nif2131054432> ;
-        dcat:distribution     <https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl> ;
-        dcat:landingPage      <http://aksw.org/Projects/N3NERNEDNIF.html> .
-
-<https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl>
+<https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl>
         a               dataid:Distribution ;
         dct:format      "ttl" ;
-        dct:title       "RSS-500 NIF Distribution" ;
-        dcat:accessURL  "https://raw.github.com/AKSW/n3-collection/master/RSS-500.ttl" ;
+        dct:title       "Reuters-128 NIF Distribution" ;
+        dcat:accessURL  "https://raw.github.com/AKSW/n3-collection/master/Reuters-128.ttl" ;
         dcat:mediaType  "text/plain" .
 
-<http://aksw.org/dataid.ttl#RSS-500-nif2007763326>
+<file:///home/ciro/workspace/dataIDMaven/>
+        a            void:DatasetDescription ;
+        dct:creator  <http://wiki.dbpedia.org/Association> ;
+        dct:title    "DataID of the DBpedia dataset" .
+
+<http://aksw.org/dataid.ttl#News-100-nif-856255395>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
+        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
+        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
         void:triples         "4"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#Reuters-128-nif-1364548794>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "4"^^xsd:long .
+<https://raw.github.com/AKSW/n3-collection/master/News-100.ttl>
+        a               dataid:Distribution ;
+        dct:format      "ttl" ;
+        dct:title       "News-100 NIF Distribution" ;
+        dcat:accessURL  "https://raw.github.com/AKSW/n3-collection/master/News-100.ttl" ;
+        dcat:mediaType  "text/plain" .
+
+<http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2>
+        a                 dcat:Distribution ;
+        dct:description   "DBpedia dumpfile: article_categories_en.nt.bz2" ;
+        dct:format        "nt" ;
+        dct:issued        "17-Sep-2013"^^xsd:date ;
+        dct:license       <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
+        dct:modified      "09-Aug-2013"^^xsd:date ;
+        dct:title         "article categories en" ;
+        dcat:accessURL    <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
+        dcat:byteSize     "159000000"^^xsd:decimal ;
+        dcat:downloadURL  <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
+        dcat:mediaType    "application/x-bzip" .
 
 <http://aksw.org/dataid.ttl>
         a          void:DatasetDescription ;
-        dct:title  "DataID of RSS-500-nif datasets" , "DataID of News-100-nif datasets" , "DataID of Reuters-128-nif datasets" .
+        dct:title  "DataID of News-100-nif datasets" , "DataID of Reuters-128-nif datasets" .
 
-<http://aksw.org/dataid.ttl#RSS-500-nif-1071637912>
-        a                    void:Linkset ;
-        dct:issued           "05-12-1988" ;
-        dct:modified         "05-12-1988" ;
-        void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#RSS-500-nif> ;
-        void:triples         "4"^^xsd:long .
-
-<http://aksw.org/dataid.ttl#Reuters-128-nif185204810>
+<http://aksw.org/dataid.ttl#Reuters-128-nif370343289>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
@@ -296,11 +158,11 @@
         void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
         void:triples         "4"^^xsd:long .
 
-<http://aksw.org/dataid.ttl#Reuters-128-nif-2030888723>
+<http://aksw.org/dataid.ttl#News-100-nif2123402914>
         a                    void:Linkset ;
         dct:issued           "05-12-1988" ;
         dct:modified         "05-12-1988" ;
         void:linkPredicate   ""^^xsd:string ;
-        void:objectsTarget   <http://aksw.org/dataid.ttl#News-100-nif> ;
-        void:subjectsTarget  <http://aksw.org/dataid.ttl#Reuters-128-nif> ;
-        void:triples         "4"^^xsd:long .
+        void:objectsTarget   <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
+        void:subjectsTarget  <http://aksw.org/dataid.ttl#News-100-nif> ;
+        void:triples         "39"^^xsd:long .
