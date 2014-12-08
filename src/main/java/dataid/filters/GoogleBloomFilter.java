@@ -25,7 +25,7 @@ public class GoogleBloomFilter implements DataIDFilterInterface {
 	private Funnel<byte[]> funnel = Funnels
 			.byteArrayFunnel();
 	
-	public String fullFileName;
+	public String fullFilePath;
 
 	public GoogleBloomFilter(int insertions, double fpp) {
 		create(insertions, fpp);
@@ -56,7 +56,7 @@ public class GoogleBloomFilter implements DataIDFilterInterface {
 	public boolean saveFilter(String distributionName) {
 		
 		String path = DataIDGeneralProperties.SUBJECT_FILE_FILTER_PATH+distributionName;
-		fullFileName = path;
+		fullFilePath = path;
 		
 		try {
 			filter.writeTo(new FileOutputStream(new File(path)));

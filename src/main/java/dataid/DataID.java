@@ -21,7 +21,8 @@ import dataid.files.PrepareFiles;
 import dataid.filters.FileToFilter;
 import dataid.filters.GoogleBloomFilter;
 import dataid.jena.DataIDModel;
-import dataid.jena.FSModel;
+import dataid.jena.ProcessEntry;
+import dataid.literal.DynamicLODCloudEntryModel;
 import dataid.literal.SubsetModel;
 import dataid.ontology.Dataset;
 import dataid.ontology.Distribution;
@@ -46,55 +47,67 @@ public class DataID {
 	private void makeLinksets() throws Exception {
 		// if there is at least one distribution make the linksets
 		Iterator<SubsetModel> iterator = distributionsLinks.iterator();
+		
+		// instance of dynamic LOD entry to save relevant data
+		DynamicLODCloudEntryModel entry = new DynamicLODCloudEntryModel();
 
 		if (iterator.hasNext()) {
-			SubsetModel l = iterator.next();
+			SubsetModel subsetModel = iterator.next();
 
 			PrepareFiles p = new PrepareFiles();
 
 			// now we need to download the distribution
-			DownloadAndSave dFile = new DownloadAndSave();
+			DownloadAndSave downloadedFile = new DownloadAndSave();
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
-					"Downloading distribution: " + l.getDistribution()
+					"Downloading distribution: " + subsetModel.getDistribution()
 							+ " url.");
 
-			dFile.downloadFile(l.getDistribution());
+			downloadedFile.downloadFile(subsetModel.getDistribution());
 
 			// check if format is ntriples
-			String ext = FilenameUtils.getExtension(dFile.fileName);
+			String ext = FilenameUtils.getExtension(downloadedFile.fileName);
 			if (!ext.equals("nt")) {
-				dFile.fileName = p.checkFileFormat(dFile.fileName);
+				downloadedFile.fileName = p.checkFileFormat(downloadedFile.fileName);
 
 				// separating subjects and objects
-				p.separateSubjectAndObject(dFile.fileName);
+				p.separateSubjectAndObject(downloadedFile.fileName);
 
-				dFile.objectFilePath = p.objectFile;
+				downloadedFile.objectFilePath = p.objectFile;
 			}
 
 			// make a filter with subjects
 			GoogleBloomFilter filter;
-			if (dFile.subjectLines != 0) {
-				filter = new GoogleBloomFilter((int) dFile.subjectLines, 0.01);
+			if (downloadedFile.subjectLines != 0) {
+				filter = new GoogleBloomFilter((int) downloadedFile.subjectLines, 0.01);
 			} else {
 				filter = new GoogleBloomFilter(
-						(int) dFile.contentLengthAfterDownloaded / 40, 0.01);
+						(int) downloadedFile.contentLengthAfterDownloaded / 40, 0.01);
 			}
 
 			FileToFilter f = new FileToFilter();
 
 			// Loading file to filter
-			f.loadFileToFilter(filter, dFile.fileName);
+			f.loadFileToFilter(filter, downloadedFile.fileName);
 
 			// save filter
-			filter.saveFilter(dFile.fileName);
+			filter.saveFilter(downloadedFile.fileName);
 
-			FSModel fsMoldel = new FSModel();
+			ProcessEntry fsMoldel = new ProcessEntry();
+			
+			
+			entry.setAccessURL(downloadedFile.url.toString());
+			entry.setByteSize(downloadedFile.contentLength);
+			entry.setDataIDFilePath(downloadedFile.dataIDFilePath);
+			entry.setDatasetURI(subsetModel.getDatasetURI());
+			entry.setObjectPath(downloadedFile.objectFilePath);
+			entry.setSubjectFilterPath(filter.fullFilePath);
+			entry.setSubsetURI(subsetModel.getSubsetURI());
 
 			// save file metadata
-			fsMoldel.addDatasetOnFileSystem(dFile.url.toString(),
-					dFile.saveFilePath, dFile.url.toString(),
-					dFile.contentLength, filter.fullFileName,
-					dFile.objectFilePath, l.getSubset(), l.getDatasetURI());
+			fsMoldel.saveNewEntry(downloadedFile.url.toString(),
+					downloadedFile.dataIDFilePath, downloadedFile.url.toString(),
+					downloadedFile.contentLength, filter.fullFilePath,
+					downloadedFile.objectFilePath, subsetModel.getSubsetURI(), subsetModel.getDatasetURI());
 
 			// compare distributions using filters
 			fsMoldel.compareAllDistributions();

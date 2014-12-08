@@ -34,11 +34,11 @@ public class SubsetModel {
 		this.id = id;
 	}
 
-	public String getSubset() {
+	public String getSubsetURI() {
 		return subsetURI;
 	}
 
-	public void setSubset(String subset) {
+	public void setSubsetURI(String subset) {
 		this.subsetURI = subset;
 	}
 

@@ -22,7 +22,7 @@ public class DownloadAndSave {
 	public String fileName = "";
 	public String disposition = null;
 	public String contentType = null;
-	public String saveFilePath = null;
+	public String dataIDFilePath = null;
 
 	public String objectFilePath;
 
@@ -40,7 +40,6 @@ public class DownloadAndSave {
 		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
 		int responseCode = httpConn.getResponseCode();
 
-		String saveDir = DataIDGeneralProperties.BASE_PATH;
 
 		// always check HTTP response code first
 		if (responseCode == HttpURLConnection.HTTP_OK) {
@@ -70,7 +69,7 @@ public class DownloadAndSave {
 
 			// opens input stream from the HTTP connection
 			InputStream inputStream = httpConn.getInputStream();
-			saveFilePath = saveDir + File.separator + fileName;
+			dataIDFilePath = DataIDGeneralProperties.BASE_PATH + fileName;
 
 			String extension = FilenameUtils.getExtension(fileName);
 
@@ -96,7 +95,7 @@ public class DownloadAndSave {
 			else{
 				int bytesRead = -1;
 				FileOutputStream outputStream = new
-						 FileOutputStream(saveFilePath);
+						 FileOutputStream(dataIDFilePath);
 				while (-1 != (bytesRead = inputStream.read(buffer))) {
 					outputStream.write(buffer, 0, bytesRead);
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded+bytesRead;
@@ -159,14 +158,14 @@ public class DownloadAndSave {
 
 			// update file length
 			if (contentLength < 1) {
-				File f = new File(saveFilePath);
+				File f = new File(dataIDFilePath);
 				contentLength = f.length();
 			}
 
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 					"File downloaded: " + fileName);
 
-			return saveFilePath;
+			return dataIDFilePath;
 		} else {
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_WARN,
 					"No file to download. Server replied HTTP code: "
