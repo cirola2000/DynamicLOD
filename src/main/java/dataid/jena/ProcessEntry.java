@@ -16,6 +16,7 @@ import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 import dataid.filters.FileToFilter;
 import dataid.filters.GoogleBloomFilter;
+import dataid.literal.DynamicLODCloudEntryModel;
 import dataid.literal.SubsetModel;
 import dataid.ontology.Dataset;
 import dataid.ontology.DynamicLODCloudEntry;
@@ -26,8 +27,7 @@ public class ProcessEntry {
 //	 jena model to store data on file system
 	private static Model fsModel = ModelFactory.createDefaultModel();		
 
-	public boolean saveNewEntry(String subject, String path, String accessURL,
-			double  contentLenght, String subjectFilterPath, String objectFile, String subsetURI, String datasetURI) {
+	public boolean saveNewEntry(DynamicLODCloudEntryModel entry) {
 
 		try {
 			fsModel = ModelFactory.createDefaultModel();
@@ -39,16 +39,17 @@ public class ProcessEntry {
 				e.printStackTrace();
 			}
 
-			Resource r = fsModel.createResource(subject);
+			Resource r = fsModel.createResource(entry.getAccessURL());
 			
 
-			r.addProperty(DynamicLODCloudEntry.accessURL, accessURL);
-			r.addProperty(DynamicLODCloudEntry.byteSize, String.valueOf(contentLenght));
-			r.addProperty(DynamicLODCloudEntry.dataIDFilePath, path);
-			r.addProperty(DynamicLODCloudEntry.objectPath, objectFile);
-			r.addProperty(DynamicLODCloudEntry.subjectFilterPath, subjectFilterPath);
-			r.addProperty(DynamicLODCloudEntry.subsetURI, subsetURI);
-			r.addProperty(DynamicLODCloudEntry.datasetURI, datasetURI);
+			r.addProperty(DynamicLODCloudEntry.accessURL, entry.getAccessURL());
+			r.addProperty(DynamicLODCloudEntry.byteSize, String.valueOf(entry.getByteSize()));
+			r.addProperty(DynamicLODCloudEntry.dataIDFilePath, entry.getDataIDFilePath());
+			r.addProperty(DynamicLODCloudEntry.objectPath, entry.getObjectPath());
+			r.addProperty(DynamicLODCloudEntry.subjectFilterPath, entry.getSubjectFilterPath());
+			r.addProperty(DynamicLODCloudEntry.subsetURI, entry.getSubsetURI());
+			r.addProperty(DynamicLODCloudEntry.datasetURI, entry.getDatasetURI());
+			r.addProperty(DynamicLODCloudEntry.timeToCreateFilter, String.valueOf(entry.getTimeToCreateFilter()));
 			
 
 			fsModel.write(new FileOutputStream(new File(

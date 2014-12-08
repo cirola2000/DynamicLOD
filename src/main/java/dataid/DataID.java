@@ -31,6 +31,7 @@ import dataid.ontology.vocabulary.NS;
 import dataid.server.DataIDBean;
 import dataid.utils.DownloadAndSave;
 import dataid.utils.FileUtils;
+import dataid.utils.Timer;
 
 public class DataID {
 	// private static final Logger LOGGER =
@@ -84,10 +85,15 @@ public class DataID {
 						(int) downloadedFile.contentLengthAfterDownloaded / 40, 0.01);
 			}
 
+			// load file to filter and take the process time
 			FileToFilter f = new FileToFilter();
 
+			Timer timer = new Timer();
+			timer.startTimer();
+			
 			// Loading file to filter
 			f.loadFileToFilter(filter, downloadedFile.fileName);
+			entry.setTimeToCreateFilter(String.valueOf(timer.stopTimer()));
 
 			// save filter
 			filter.saveFilter(downloadedFile.fileName);
@@ -104,10 +110,7 @@ public class DataID {
 			entry.setSubsetURI(subsetModel.getSubsetURI());
 
 			// save file metadata
-			fsMoldel.saveNewEntry(downloadedFile.url.toString(),
-					downloadedFile.dataIDFilePath, downloadedFile.url.toString(),
-					downloadedFile.contentLength, filter.fullFilePath,
-					downloadedFile.objectFilePath, subsetModel.getSubsetURI(), subsetModel.getDatasetURI());
+			fsMoldel.saveNewEntry(entry);
 
 			// compare distributions using filters
 			fsMoldel.compareAllDistributions();
