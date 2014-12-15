@@ -1,6 +1,7 @@
 package dataid.utils;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import dataid.DataIDGeneralProperties;
 
@@ -31,8 +32,18 @@ public class FileUtils {
 		
 		f = new File(DataIDGeneralProperties.DATAID_PATH);
 		if(!f.exists())
-			f.mkdirs();
+			f.mkdirs();	
+	}
+	
+	// TODO make this method more precise
+	public static boolean acceptedFormats(String fileName){
 		
+		if(fileName.contains(".ttl"))
+			return true;
+		if(fileName.contains(".nt"))		
+		return true;
+		
+		return false;
 	}
 	
 }

@@ -1,8 +1,5 @@
 package dataid.jena;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.net.URL;
 import java.util.List;
 
 import com.hp.hpl.jena.rdf.model.Model;
@@ -20,7 +17,7 @@ import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.SubsetMongoDBObject;
 import dataid.ontology.Dataset;
 import dataid.ontology.Distribution;
-import dataid.ontology.vocabulary.NS;
+import dataid.utils.FileUtils;
 
 public class DataIDModel {
 
@@ -31,7 +28,7 @@ public class DataIDModel {
 	private String datasetURI;
 
 	DatasetMongoDBObject datasetMongoDBObj;
-	
+
 	public List<SubsetModel> parseDistributions(
 			List<SubsetModel> distributionsLinks) {
 		this.distributionsLinks = distributionsLinks;
@@ -44,7 +41,7 @@ public class DataIDModel {
 			Statement dataset = datasets.next();
 			System.out.println("We found a dataset: " + dataset.getSubject());
 			datasetURI = dataset.getSubject().toString();
-			
+
 			// create a mongodb dataset object
 			datasetMongoDBObj = new DatasetMongoDBObject(datasetURI);
 			datasetMongoDBObj.updateObject();
@@ -72,26 +69,32 @@ public class DataIDModel {
 
 					// store accessurl statement
 					Statement accessURL = stmtAccessURL.next();
+					if (FileUtils.acceptedFormats(accessURL.getObject()
+							.toString())) {
 
-					// save distribution with accessURL to list
-					distributionsLinks.add(new SubsetModel(
-							numberOfDistributions,datasetURI, distribution.getSubject()
-									.toString(), accessURL.getObject()
-									.toString()));
-					numberOfDistributions++;
-					someAccessURLFound = true;
-					
-					
-					// create a mongodb dataset object
-					DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(distribution.getObject().toString());
-					distributionMongoDBObj.addDefaultDataset(datasetMongoDBObj.getUri());
-					distributionMongoDBObj.setAccessUrl(accessURL.getObject().toString());
-					distributionMongoDBObj.updateObject();
-					
-					// update dataset on mongodb with distribution
-					datasetMongoDBObj.addDistributionURI(distribution.getObject().toString());
-					datasetMongoDBObj.updateObject();
-					
+						// save distribution with accessURL to list
+						distributionsLinks.add(new SubsetModel(
+								numberOfDistributions, datasetURI, distribution
+										.getSubject().toString(), accessURL
+										.getObject().toString()));
+						numberOfDistributions++;
+						someAccessURLFound = true;
+
+						// create a mongodb distribution object
+						DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
+								distribution.getObject().toString());
+						distributionMongoDBObj
+								.addDefaultDataset(datasetMongoDBObj.getUri());
+						distributionMongoDBObj.setAccessUrl(accessURL
+								.getObject().toString());
+						distributionMongoDBObj.updateObject();
+
+						// update dataset on mongodb with distribution
+						datasetMongoDBObj.addDistributionURI(distribution
+								.getObject().toString());
+						datasetMongoDBObj.updateObject();
+					}
+
 				}
 			}
 
@@ -105,15 +108,15 @@ public class DataIDModel {
 			// case there is a subset, call recursive
 
 			if (stmtSubsets.hasNext()) {
-				
+
 				while (stmtSubsetsTmp.hasNext()) {
-					
-				Statement s = stmtSubsetsTmp.next();
-				// get subset and update mongodb parent dataset				
-				datasetMongoDBObj.addSubsetURI(s.getObject().toString());
-				datasetMongoDBObj.updateObject();
+
+					Statement s = stmtSubsetsTmp.next();
+					// get subset and update mongodb parent dataset
+					datasetMongoDBObj.addSubsetURI(s.getObject().toString());
+					datasetMongoDBObj.updateObject();
 				}
-				
+
 				iterateSubsetsNew(stmtSubsets);
 			}
 
@@ -130,12 +133,13 @@ public class DataIDModel {
 
 			// get subset
 			Statement subset = stmtSubsets.next();
-			
+
 			// create a mongodb subset object
-			SubsetMongoDBObject  subsetMongoDBObj = new SubsetMongoDBObject(subset.getObject().toString());
-			subsetMongoDBObj.addParentDatasetURI(subset.getSubject().toString());
+			SubsetMongoDBObject subsetMongoDBObj = new SubsetMongoDBObject(
+					subset.getObject().toString());
+			subsetMongoDBObj
+					.addParentDatasetURI(subset.getSubject().toString());
 			subsetMongoDBObj.updateObject();
-			
 
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 					"Subset found: " + subset.getObject().toString());
@@ -148,7 +152,7 @@ public class DataIDModel {
 			if (stmtSubsets2.hasNext()) {
 				subsetMongoDBObj.addSubsetURI(subset.getSubject().toString());
 				subsetMongoDBObj.updateObject();
-				
+
 				iterateSubsetsNew(stmtSubsets2);
 			} else {
 
@@ -182,25 +186,33 @@ public class DataIDModel {
 								DataIDGeneralProperties.MESSAGE_LOG,
 								"Distribution found: accessURL: "
 										+ accessURL.getObject().toString());
+						if (FileUtils.acceptedFormats(accessURL.getObject()
+								.toString())) {
 
-						// save distribution with accessURL to list
-						distributionsLinks.add(new SubsetModel(
-								numberOfDistributions,datasetURI, accessURL.getSubject()
-										.toString(), accessURL.getObject()
-										.toString()));
-						numberOfDistributions++;
-						someAccessURLFound = true;
-						
-						// creating mongodb distribution object
-						DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(distribution.getObject().toString());
-						distributionMongoDBObj.addDefaultDataset(subsetMongoDBObj.getUri());
-						distributionMongoDBObj.setAccessUrl(accessURL.getObject().toString());
-						distributionMongoDBObj.updateObject();
-						
-						// update dataset on mongodb with distribution
-						subsetMongoDBObj.addDistributionURI(distribution.getSubject().toString());
-						subsetMongoDBObj.updateObject();
-						
+							// save distribution with accessURL to list
+							distributionsLinks.add(new SubsetModel(
+									numberOfDistributions, datasetURI,
+									accessURL.getSubject().toString(),
+									accessURL.getObject().toString()));
+							numberOfDistributions++;
+							someAccessURLFound = true;
+
+							// creating mongodb distribution object
+							DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
+									distribution.getObject().toString());
+							distributionMongoDBObj
+									.addDefaultDataset(subsetMongoDBObj
+											.getUri());
+							distributionMongoDBObj.setAccessUrl(accessURL
+									.getObject().toString());
+							distributionMongoDBObj.updateObject();
+
+							// update dataset on mongodb with distribution
+							subsetMongoDBObj.addDistributionURI(distribution
+									.getSubject().toString());
+							subsetMongoDBObj.updateObject();
+
+						}
 					}
 				}
 			}
@@ -224,55 +236,6 @@ public class DataIDModel {
 		}
 
 		return name;
-	}
-
-	public static void mergeCurrentDataIDWithDataIDGraph(String URL)
-			throws Exception {
-
-		// merge current dataID with dataid graph
-//		Model m = ModelFactory.createDefaultModel();
-//		try {
-//			m.read(DataIDGeneralProperties.DATAID_GRAPH_MODEL_PATH, "TURTLE");
-//		} catch (Exception e) {
-//			
-//			// case this is the first dataID graph created, set namespaces
-//			m.setNsPrefix("rdfs", NS.RDFS_URI);
-//			m.setNsPrefix("dcat", NS.DCAT_URI);
-//			m.setNsPrefix("void", NS.VOID_URI);
-//			m.setNsPrefix("sd", NS.SD_URI);
-//			m.setNsPrefix("prov", NS.PROV_URI);
-//			m.setNsPrefix("dct", NS.DCT_URI);
-//			m.setNsPrefix("xsd", NS.XSD_URI);
-//			m.setNsPrefix("foaf", NS.FOAF_URI);
-//			m.setNsPrefix("dataid", NS.DATAID_URI);
-//
-//			e.printStackTrace();
-//		}
-//
-//		// create a jena model of the current dataid
-//		Model currentDataID = ModelFactory.createDefaultModel();
-//		currentDataID.read(URL, null, "TTL");
-//		
-//		// check whereas current dataid has not processed
-//		StmtIterator s = currentDataID.listStatements(null, Dataset.dataIDType, Dataset.dataIDDataset);
-//		
-//		if(s.hasNext()){
-//			// get current subject and try to find it in the dataid graph 
-//			StmtIterator t = m.listStatements(s.next().getSubject(), Dataset.dataIDType, Dataset.dataIDDataset);
-//			
-//			if(t.hasNext())
-//				throw new Exception("Current dataid file already had been processed.");
-//			}
-		
-		
-		// merge currente dataid with dataid graph
-//		m.add(currentDataID);
-		
-		// write updated dataid graph
-//		m.write(new FileOutputStream(DataIDGeneralProperties.DATAID_GRAPH_MODEL_PATH), "TURTLE");
-
-//		m.close();
-//		currentDataID.close();
 	}
 
 }

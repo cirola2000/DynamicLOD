@@ -3,7 +3,7 @@ package dataid;
 public class DataIDGeneralProperties {
 
 	// defining what path should be used to store files
-	public static final String BASE_PATH ="/tmp/dataid/";
+	public static final String BASE_PATH ="/home/ciro/dataid/";
 	
 	// defining filter path
 	public static final String FILTER_PATH =BASE_PATH+"filters/";

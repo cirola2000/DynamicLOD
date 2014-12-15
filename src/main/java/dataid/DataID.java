@@ -10,9 +10,9 @@ import dataid.files.PrepareFiles;
 import dataid.filters.FileToFilter;
 import dataid.filters.GoogleBloomFilter;
 import dataid.jena.DataIDModel;
-import dataid.jena.ProcessEntry;
 import dataid.literal.DynamicLODCloudEntryModel;
 import dataid.literal.SubsetModel;
+import dataid.mongodb.actions.ProcessEntry;
 import dataid.server.DataIDBean;
 import dataid.utils.DownloadAndSave; 
 import dataid.utils.FileUtils;
@@ -30,12 +30,10 @@ public class DataID {
 
 	DataIDModel model = new DataIDModel();
 
-	private void makeLinksets() throws Exception {
+	private void load() throws Exception {
 		// if there is at least one distribution make the linksets
 		Iterator<SubsetModel> iterator = distributionsLinks.iterator();
 		
-		// instance of dynamic LOD entry to save relevant data
-		DynamicLODCloudEntryModel entry = new DynamicLODCloudEntryModel();
 
 		while (iterator.hasNext()) {
 			try{
@@ -50,6 +48,10 @@ public class DataID {
 							+ " url.");
 
 			downloadedFile.downloadFile(subsetModel.getDistribution());
+
+			
+			// instance of dynamic LOD entry to save relevant data
+			DynamicLODCloudEntryModel entry = new DynamicLODCloudEntryModel();
 			entry.setNumberOfObjectTriples(String.valueOf(downloadedFile.objectLines));
 
 			// check if format is ntriples
@@ -107,10 +109,10 @@ public class DataID {
 			}
 
 		}
-		ProcessEntry fsMoldel = new ProcessEntry();
-
-		// compare distributions using filters
-		fsMoldel.compareAllDistributions();
+//		ProcessEntry fsMoldel = new ProcessEntry();
+//
+//		// compare distributions using filters
+//		fsMoldel.compareAllDistributions();
 	}
 
 	public DataID(String URL, DataIDBean bean) {
@@ -149,11 +151,8 @@ public class DataID {
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 						numberOfDistributions + " distribution(s) found");
 
-			// merge current dataid with dataID graph
-			DataIDModel.mergeCurrentDataIDWithDataIDGraph(URL);
-
 			// try to create linksets
-			makeLinksets();
+			load();
 
 		} catch (Exception e) {
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
