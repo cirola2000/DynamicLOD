@@ -30,8 +30,8 @@ public class DownloadAndSave {
 
 	public double contentLength;
 	public double contentLengthAfterDownloaded;
-	public int subjectLines=0;
-	public int objectLines=0; 
+	public int subjectLines = 0;
+	public int objectLines = 0;
 
 	Queue<String> b = new ConcurrentLinkedQueue<String>();
 	boolean done = false;
@@ -40,7 +40,6 @@ public class DownloadAndSave {
 		url = new URL(fileURL);
 		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
 		int responseCode = httpConn.getResponseCode();
-
 
 		// always check HTTP response code first
 		if (responseCode == HttpURLConnection.HTTP_OK) {
@@ -91,23 +90,24 @@ public class DownloadAndSave {
 				while (-1 != (n = inputStream.read(buffer))) {
 					String str = new String(buffer, "UTF-8");
 					b.add(str);
-					contentLengthAfterDownloaded = contentLengthAfterDownloaded+n;
+					contentLengthAfterDownloaded = contentLengthAfterDownloaded
+							+ n;
 				}
-			}
-			else if(extension.equals("ttl") || extension.equals("rdf")){
+			} else if (extension.equals("ttl") || extension.equals("rdf")) {
 				int bytesRead = -1;
-				FileOutputStream outputStream = new
-						 FileOutputStream(dataIDFilePath);
+				FileOutputStream outputStream = new FileOutputStream(
+						dataIDFilePath);
 				while (-1 != (bytesRead = inputStream.read(buffer))) {
 					outputStream.write(buffer, 0, bytesRead);
-					contentLengthAfterDownloaded = contentLengthAfterDownloaded+bytesRead;
+					contentLengthAfterDownloaded = contentLengthAfterDownloaded
+							+ bytesRead;
 					for (int i = 0; i < bytesRead; i++) {
-				    	if (buffer[i] == '\n') objectLines++;
-				    }
+						if (buffer[i] == '\n')
+							objectLines++;
+					}
 				}
-			}
-			else
-				throw new Exception("RDF format not supported: "+extension);
+			} else
+				throw new Exception("RDF format not supported: " + extension);
 
 			done = true;
 
@@ -165,11 +165,13 @@ public class DownloadAndSave {
 										subjectLines++;
 									}
 									// TODO Check if object is literal
-									object.write(new String(u2[2] + "\n")
-											.getBytes());
-									objectLines++;
+									if (!u2[2].startsWith("\"")) {
+										object.write(new String(u2[2] + "\n")
+												.getBytes());
+										objectLines++;
 
-									count++;
+										count++;
+									}
 									if (count % 100000 == 0) {
 										System.out.println(count
 												+ " registers written");
