@@ -62,7 +62,6 @@ public class GoogleBloomFilter implements DataIDFilterInterface {
 			filter.writeTo(new FileOutputStream(new File(path)));
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
 		}

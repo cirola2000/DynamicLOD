@@ -98,7 +98,6 @@ public class DistributionMongoDBObject extends DataIDDB {
 				else
 					return false;
 			} catch (DataIDException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return false;
 			}

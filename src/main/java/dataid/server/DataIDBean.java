@@ -83,7 +83,6 @@ public class DataIDBean implements Serializable, Runnable {
 			else
 				updateGraph();
 		} catch (MessageException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
