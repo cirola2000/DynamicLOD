@@ -32,8 +32,9 @@ public class DataIDBean implements Serializable, Runnable {
 
 	private String display = "";
 	
-	// TODO implement a smart way to choose between add dataid or update graph
+	// TODO implement a smarter way to choose between add dataid or update graph
 	String action = "";
+	
 
 	public String getUrl() {
 		return url;
@@ -75,6 +76,9 @@ public class DataIDBean implements Serializable, Runnable {
 	
 
 	public void run() {
+		DataIDGeneralProperties a = new DataIDGeneralProperties();
+		a.loadProperties();
+		System.out.println("lol");
 		try {
 			this.push();
 			

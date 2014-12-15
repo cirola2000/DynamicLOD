@@ -9,6 +9,7 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
+import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
 
 abstract public class DataIDDB {
@@ -65,8 +66,8 @@ abstract public class DataIDDB {
 	public static DB getInstance() {
 		try {
 			if (mongo == null) {
-				mongo = new MongoClient("localhost", 27017);
-				db = mongo.getDB("testdb");
+				mongo = new MongoClient(DataIDGeneralProperties.MONGODB_HOST, DataIDGeneralProperties.MONGODB_PORT);
+				db = mongo.getDB(DataIDGeneralProperties.MONGODB_DB);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
