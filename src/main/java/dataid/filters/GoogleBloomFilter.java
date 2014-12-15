@@ -31,7 +31,7 @@ public class GoogleBloomFilter implements DataIDFilterInterface {
 		create(insertions, fpp);
 	}
 	public GoogleBloomFilter() {
-		create(8999, 0.01);
+		create(98, 0.01);
 	}
 	
 
@@ -72,10 +72,11 @@ public class GoogleBloomFilter implements DataIDFilterInterface {
 	public boolean loadFilter(String path){
 		try {
 			filter = BloomFilter.readFrom(new FileInputStream(new File(path)), funnel);
+			fullFilePath = path;
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
+//			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
 			e.printStackTrace();
 		}
 		return true;

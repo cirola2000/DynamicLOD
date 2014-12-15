@@ -1,21 +1,10 @@
 package dataid;
 
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 
 import org.apache.commons.io.FilenameUtils;
-import org.apache.hadoop.mapred.FileOutputCommitter;
-
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.hp.hpl.jena.rdf.model.ResIterator;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import dataid.files.PrepareFiles;
 import dataid.filters.FileToFilter;
@@ -24,12 +13,8 @@ import dataid.jena.DataIDModel;
 import dataid.jena.ProcessEntry;
 import dataid.literal.DynamicLODCloudEntryModel;
 import dataid.literal.SubsetModel;
-import dataid.ontology.Dataset;
-import dataid.ontology.Distribution;
-import dataid.ontology.Linkset;
-import dataid.ontology.vocabulary.NS;
 import dataid.server.DataIDBean;
-import dataid.utils.DownloadAndSave;
+import dataid.utils.DownloadAndSave; 
 import dataid.utils.FileUtils;
 import dataid.utils.Timer;
 
@@ -52,7 +37,8 @@ public class DataID {
 		// instance of dynamic LOD entry to save relevant data
 		DynamicLODCloudEntryModel entry = new DynamicLODCloudEntryModel();
 
-		if (iterator.hasNext()) {
+		while (iterator.hasNext()) {
+			try{
 			SubsetModel subsetModel = iterator.next();
 
 			PrepareFiles p = new PrepareFiles();
@@ -102,8 +88,6 @@ public class DataID {
 			// save filter
 			filter.saveFilter(downloadedFile.fileName);
 
-			ProcessEntry fsMoldel = new ProcessEntry();
-			
 			
 			entry.setAccessURL(downloadedFile.url.toString());
 			entry.setByteSize(downloadedFile.contentLength);
@@ -112,13 +96,21 @@ public class DataID {
 			entry.setObjectPath(downloadedFile.objectFilePath);
 			entry.setSubjectFilterPath(filter.fullFilePath);
 			entry.setSubsetURI(subsetModel.getSubsetURI());
+ 
+			// save entry in he mongodb
+			ProcessEntry saveEntry = new ProcessEntry();
+			saveEntry.saveNewMongoDBEntry(entry);			
+			
+			}
+			catch(Exception e){
+				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR, e.getMessage());
+			}
 
-			// save file metadata
-			fsMoldel.saveNewEntry(entry);
-
-			// compare distributions using filters
-			fsMoldel.compareAllDistributions();
 		}
+		ProcessEntry fsMoldel = new ProcessEntry();
+
+		// compare distributions using filters
+		fsMoldel.compareAllDistributions();
 	}
 
 	public DataID(String URL, DataIDBean bean) {

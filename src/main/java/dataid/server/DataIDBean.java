@@ -15,6 +15,7 @@ import org.richfaces.application.push.TopicsContext;
 
 import dataid.DataID;
 import dataid.DataIDGeneralProperties;
+import dataid.mongodb.actions.MakeLinksets;
 
 @ViewScoped
 @ManagedBean
@@ -30,6 +31,9 @@ public class DataIDBean implements Serializable, Runnable {
 	private String url = "http://localhost:8080/dataids_example/dataid-news100.ttl";
 
 	private String display = "";
+	
+	// TODO implement a smart way to choose between add dataid or update graph
+	String action = "";
 
 	public String getUrl() {
 		return url;
@@ -48,25 +52,50 @@ public class DataIDBean implements Serializable, Runnable {
 	public void start() {
 		startTime = 0;
 		endTime = 0;
+		
+		action = "runDataid";
 
 		Thread thread = new Thread(this);
 		thread.setDaemon(true);
 		thread.start();
 
 	}
+	public void update() {
+		startTime = 0;
+		endTime = 0;
+		
+		action = "updateGraph";
+
+		Thread thread = new Thread(this);
+		thread.setDaemon(true);
+		thread.start();
+
+	}
+	
+	
 
 	public void run() {
 		try {
 			this.push();
+			
+			if(action=="runDataid")
 			startDataID();
-
+			else
+				updateGraph();
 		} catch (MessageException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
+	
 
+	public void updateGraph() {
+		
+		MakeLinksets m = new MakeLinksets();
+		m.updateLinksets(this);
+	}
+	
 	public void startDataID() {
 
 		dataid = new DataID(this.getUrl(), this);

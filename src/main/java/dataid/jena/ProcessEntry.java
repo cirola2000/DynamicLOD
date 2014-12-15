@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.Random;
 
+import org.junit.Test;
+
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFNode;
@@ -17,7 +19,7 @@ import dataid.DataIDGeneralProperties;
 import dataid.filters.FileToFilter;
 import dataid.filters.GoogleBloomFilter;
 import dataid.literal.DynamicLODCloudEntryModel;
-import dataid.literal.SubsetModel;
+import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.ontology.ComparingTime;
 import dataid.ontology.Dataset;
 import dataid.ontology.DynamicLODCloudEntry;
@@ -28,6 +30,23 @@ public class ProcessEntry {
 
 	// jena model to store data on file system
 	private static Model fsModel = ModelFactory.createDefaultModel();
+	
+	public boolean saveNewMongoDBEntry(DynamicLODCloudEntryModel entry) {
+		
+		DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(entry.getAccessURL());
+		distributionMongoDBObj.setAccessUrl(entry.getAccessURL());
+		distributionMongoDBObj.setByteSize(String.valueOf(entry.getByteSize()));
+		distributionMongoDBObj.setObjectPath(entry.getObjectPath());
+		distributionMongoDBObj.setSubjectFilterPath(entry.getSubjectFilterPath());
+		distributionMongoDBObj.setTopDataset(entry.getDatasetURI());
+		distributionMongoDBObj.setTimeToCreateFilter(entry.getTimeToCreateFilter());
+		distributionMongoDBObj.setNumberOfTriplesLoadedIntoFilter(entry.getNumberOfTriplesLoadedIntoFilter());
+		distributionMongoDBObj.setNumberOfObjectTriples(entry.getNumberOfObjectTriples());
+			
+		distributionMongoDBObj.updateObject();
+		
+		return true;
+	}	
 
 	public boolean saveNewEntry(DynamicLODCloudEntryModel entry) {
 
@@ -120,6 +139,7 @@ public class ProcessEntry {
 
 	}
 
+	@Test
 	public void compareAllDistributions() {
 
 		try {
@@ -138,8 +158,8 @@ public class ProcessEntry {
 			StmtIterator objectIterator = fsModel.listStatements(null,
 					DynamicLODCloudEntry.objectPath, (RDFNode) null);
 
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
-					"");
+//			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
+//					"");
 
 			while (objectIterator.hasNext()) {
 				FileToFilter f = new FileToFilter();
@@ -192,13 +212,13 @@ public class ProcessEntry {
 								filterPath.getSubject().toString(),
 								t.stopTimer());
 
-						DataID.bean.addDisplayMessage(
-								DataIDGeneralProperties.MESSAGE_INFO,
-								"Number of links comparing "
-										+ stmtObject.getSubject().toString()
-										+ " with "
-										+ filterPath.getSubject().toString()
-										+ ": " + numbersOfTriples);
+//						DataID.bean.addDisplayMessage(
+//								DataIDGeneralProperties.MESSAGE_INFO,
+//								"Number of links comparing "
+//										+ stmtObject.getSubject().toString()
+//										+ " with "
+//										+ filterPath.getSubject().toString()
+//										+ ": " + numbersOfTriples);
 
 						// case there are links, update dataID file
 						if (numbersOfTriples > 0) {

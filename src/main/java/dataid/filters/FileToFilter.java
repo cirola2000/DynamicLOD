@@ -53,13 +53,13 @@ public class FileToFilter {
 		BufferedReader br = null;
 		try {
 
+			int ie = 0;
 			String sCurrentLine;
 			
 			br = new BufferedReader(new FileReader(path));
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Searching "+path+" on filter.");
+//			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Searching "+path+" on filter.");
 			
 			while ((sCurrentLine = br.readLine()) != null) {
-//				objectList.add(sCurrentLine); 
 				if (filter.compare(sCurrentLine)) { 
 					links.add(sCurrentLine);
 				}
@@ -77,14 +77,15 @@ public class FileToFilter {
 			
 			
 		} catch (Exception e) {
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
+//			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
 			e.printStackTrace();
 		} finally {
 			try {
 				if (br != null)
 					br.close();
 			} catch (IOException ex) {
-				DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,ex.getMessage());
+//				DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,ex.getMessage());
+				ex.printStackTrace();
 			}
 		}
 

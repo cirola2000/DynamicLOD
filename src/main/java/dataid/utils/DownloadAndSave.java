@@ -30,8 +30,8 @@ public class DownloadAndSave {
 
 	public double contentLength;
 	public double contentLengthAfterDownloaded;
-	public double subjectLines=0;
-	public int objectLines=0;
+	public int subjectLines=0;
+	public int objectLines=0; 
 
 	Queue<String> b = new ConcurrentLinkedQueue<String>();
 	boolean done = false;
@@ -70,7 +70,6 @@ public class DownloadAndSave {
 
 			// opens input stream from the HTTP connection
 			InputStream inputStream = httpConn.getInputStream();
-			dataIDFilePath = DataIDGeneralProperties.BASE_PATH + fileName;
 
 			String extension = FilenameUtils.getExtension(fileName);
 
@@ -80,6 +79,7 @@ public class DownloadAndSave {
 						httpConn.getInputStream(), true);
 				fileName = fileName.replace(".bz2", "");
 			}
+			dataIDFilePath = DataIDGeneralProperties.BASE_PATH + fileName;
 			objectFilePath = DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
 					+ fileName;
 			final byte[] buffer = new byte[32768];
@@ -94,7 +94,7 @@ public class DownloadAndSave {
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded+n;
 				}
 			}
-			else{
+			else if(extension.equals("ttl") || extension.equals("rdf")){
 				int bytesRead = -1;
 				FileOutputStream outputStream = new
 						 FileOutputStream(dataIDFilePath);
@@ -106,6 +106,8 @@ public class DownloadAndSave {
 				    }
 				}
 			}
+			else
+				throw new Exception("RDF format not supported: "+extension);
 
 			done = true;
 

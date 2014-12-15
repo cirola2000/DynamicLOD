@@ -15,13 +15,15 @@
             <h:outputText value="http://localhost:8080/dataids_example/dataid-reuters128.ttl" /> <br />
             <h:outputText value="http://localhost:8080/dataids_example/dataid-rss500.ttl" /> <br />
             <h:outputText value="http://localhost:8080/dataids_example/dataid-dbpedia.ttl" /> <br />
+            <h:outputText value="http://localhost:8080/dataids_example/dbpedia_original.ttl" /> <br />
             
             <h:inputText style="width:560px" id="nameInput" value="#{dataIDBean.url}"></h:inputText>
           
             
-        <a4j:commandButton value="Update DataID Graph!" action="#{dataIDBean.start}" /><br />
+        <a4j:commandButton value="Add DataId file" action="#{dataIDBean.start}" /><br />
         <a href="graph/dataid_graph.ttl">DataID Graph File</a>
         <a href="comparing.xhtml">Comparing times</a>
+       <div style="margin-left: 560px"> <a4j:commandButton value="Update Graph" action="#{dataIDBean.update}" /> </div> <br />
         
         
 		<a4j:push address="sampleAddress"> 

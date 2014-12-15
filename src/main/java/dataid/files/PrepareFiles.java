@@ -28,13 +28,9 @@ public class PrepareFiles {
 //			return FilenameUtils.getBaseName(fileName);
 //		}
 		if(ext.equals("ttl")){
-			
-			
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"File extension is ttl! Converting ttl to nt using rapper");
-	    	RunCommand.run("rapper -i turtle "+DataIDGeneralProperties.BASE_PATH+ fileName+" -o ntriples > "+DataIDGeneralProperties.BASE_PATH+FilenameUtils.getBaseName(fileName)+".nt");
-	    	
-	    	return FilenameUtils.getBaseName(fileName)+".nt";
-			
+	    	RunCommand.run("rapper -g "+DataIDGeneralProperties.BASE_PATH+ fileName+" -o ntriples > "+DataIDGeneralProperties.BASE_PATH+FilenameUtils.getBaseName(fileName)+".nt");	    	
+	    	return FilenameUtils.getBaseName(fileName)+".nt";			
 		}		
 		else if(!ext.equals("nt")){
 			throw new Exception("Distribution: \""+fileName+"\" has an invalid file format "+ext+ ". File type should be \"nt\".");

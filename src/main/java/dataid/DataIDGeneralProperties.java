@@ -22,7 +22,7 @@ public class DataIDGeneralProperties {
 	
 	
 	// defining dataset file suffix
-	public static final String DISTRIBUTION_SUFFIX ="distribution_";
+	public static final String DISTRIBUTION_PREFIX ="distribution_";
 	
 	
 	// defining file names for distributions after separate subject and object
