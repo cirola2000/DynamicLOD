@@ -157,7 +157,9 @@ public class DownloadAndSave {
 							if (!u.startsWith("#")) {
 								try {
 									String u2[] = u.split(" ");
-									String tmp = u2[3];
+									String u3[] = u.split("> <");
+									String tmp = u3[1];
+									tmp = u2[3];
 									if (!tmpLastSubject.equals(u2[0])) {
 										tmpLastSubject = u2[0];
 										subject.write(new String(u2[0] + "\n")
@@ -169,7 +171,6 @@ public class DownloadAndSave {
 										object.write(new String(u2[2] + "\n")
 												.getBytes());
 										objectLines++;
-
 										count++;
 									}
 									if (count % 100000 == 0) {

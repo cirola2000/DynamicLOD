@@ -58,7 +58,7 @@ public class PrepareFiles {
 				+ DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
 				+ fileName);
 		RunCommand.run("cat " + DataIDGeneralProperties.BASE_PATH + fileName
-				+ " |" + " cut -d\" \" -f3 | grep \"<http\" >"
+				+ " |" + " cut -d\" \" -f3 | grep '^<http' >"
 				+ DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
 				+ fileName);
 

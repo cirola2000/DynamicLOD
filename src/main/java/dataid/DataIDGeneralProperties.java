@@ -30,6 +30,17 @@ public class DataIDGeneralProperties {
 			MONGODB_PORT = Integer.valueOf(prop.getProperty("MONGODB_PORT"));
 			MONGODB_DB = prop.getProperty("MONGODB_DB");
 			USE_MULTITHREAD = prop.getProperty("USE_MULTITHREAD");
+			FILTER_PATH = BASE_PATH + "filters/";
+			SUBJECT_PATH = BASE_PATH + "subjects/";
+			OBJECT_PATH = BASE_PATH + "objects/";
+			DATAID_PATH = BASE_PATH + "dataid/";
+			DISTRIBUTION_PREFIX = "distribution_";
+			SUBJECT_FILE_DISTRIBUTION_PATH = SUBJECT_PATH
+					+ "subject_distribution_";
+			OBJECT_FILE_DISTRIBUTION_PATH = OBJECT_PATH
+					+ "object_distribution_";
+			SUBJECT_FILE_FILTER_PATH = FILTER_PATH + "subject_filter_";
+			OBJECT_FILE_FILTER_PATH = FILTER_PATH + "object_filter_";
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -41,31 +52,27 @@ public class DataIDGeneralProperties {
 	public static String BASE_PATH;
 
 	// defining filter path
-	public static final String FILTER_PATH = BASE_PATH + "filters/";
+	public static String FILTER_PATH;
 
 	// defining subject file path
-	public static final String SUBJECT_PATH = BASE_PATH + "subjects/";
+	public static String SUBJECT_PATH;
 
 	// defining object file path
-	public static final String OBJECT_PATH = BASE_PATH + "objects/";
+	public static String OBJECT_PATH;
 
 	// defining dataids file path
-	public static final String DATAID_PATH = BASE_PATH + "dataid/";
+	public static String DATAID_PATH;
 
 	// defining dataset file suffix
-	public static final String DISTRIBUTION_PREFIX = "distribution_";
+	public static String DISTRIBUTION_PREFIX;
 
 	// defining file names for distributions after separate subject and object
-	public static final String SUBJECT_FILE_DISTRIBUTION_PATH = SUBJECT_PATH
-			+ "subject_distribution_";
-	public static final String OBJECT_FILE_DISTRIBUTION_PATH = OBJECT_PATH
-			+ "object_distribution_";
+	public static String SUBJECT_FILE_DISTRIBUTION_PATH;
+	public static String OBJECT_FILE_DISTRIBUTION_PATH;
 
 	// defining file names for filters for subjects and objects
-	public static final String SUBJECT_FILE_FILTER_PATH = FILTER_PATH
-			+ "subject_filter_";
-	public static final String OBJECT_FILE_FILTER_PATH = FILTER_PATH
-			+ "object_filter_";
+	public static String SUBJECT_FILE_FILTER_PATH;
+	public static String OBJECT_FILE_FILTER_PATH;
 
 	// defining server properties
 	public static final String MESSAGE_INFO = "info";

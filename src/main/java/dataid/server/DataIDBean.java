@@ -78,7 +78,6 @@ public class DataIDBean implements Serializable, Runnable {
 	public void run() {
 		DataIDGeneralProperties a = new DataIDGeneralProperties();
 		a.loadProperties();
-		System.out.println("lol");
 		try {
 			this.push();
 			
