@@ -15,11 +15,7 @@ public class DataIDGeneralProperties {
 	public static final String OBJECT_PATH =BASE_PATH+"objects/";
 	
 	// defining dataids file path
-	public static final String DATAID_PATH =BASE_PATH+"dataid/";
-	
-	// defining where to store model that describes distributions files in the file system
-	public static final String MODELS_PATH =BASE_PATH+"models/";
-	
+	public static final String DATAID_PATH =BASE_PATH+"dataid/";	
 	
 	// defining dataset file suffix
 	public static final String DISTRIBUTION_PREFIX ="distribution_";
@@ -32,12 +28,6 @@ public class DataIDGeneralProperties {
 	// defining file names for filters for subjects and objects
 	public static final String SUBJECT_FILE_FILTER_PATH =FILTER_PATH +"subject_filter_";
 	public static final String OBJECT_FILE_FILTER_PATH =FILTER_PATH +"object_filter_";
-	
-	// defining rdf file to store data about saved files
-	public static final String FS_MODEL = MODELS_PATH+"fs_model";
-	
-	// defining dataID graph file
-	public static final String DATAID_GRAPH_MODEL_PATH = "src/main/webapp/graph/dataid_graph.ttl";
 	
 	
 	// defining server properties

@@ -19,7 +19,6 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import dataid.DataIDGeneralProperties;
 import dataid.ontology.ComparingTime;
 import dataid.ontology.Distribution;
-import dataid.ontology.DynamicLODCloudEntry;
 
 @ViewScoped
 @ManagedBean
@@ -34,7 +33,7 @@ public class ComparingBean implements Serializable {
 	public ComparingBean() {
 		
 		Model m = ModelFactory.createDefaultModel();
-		m.read(DataIDGeneralProperties.FS_MODEL,"N-TRIPLES");
+//		m.read(DataIDGeneralProperties.FS_MODEL,"N-TRIPLES");
 		StmtIterator i = m.listStatements(null, ComparingTime.ObjectURI, (RDFNode) null);
 		
 		while (i.hasNext()){
@@ -45,10 +44,10 @@ public class ComparingBean implements Serializable {
 			String filter = r.getProperty(ComparingTime.FilterURI).getObject().toString();
 			String time = r.getProperty(ComparingTime.Time).getObject().toString();
 			
-			String objectTriples = m.getResource(object).getProperty(DynamicLODCloudEntry.numberOfObjectTriples).getObject().toString();
-			String filterTriples = m.getResource(filter).getProperty(DynamicLODCloudEntry.numberOfTriplesLoadedIntoFilter).getObject().toString();
+//			String objectTriples = m.getResource(object).getProperty(DynamicLODCloudEntry.numberOfObjectTriples).getObject().toString();
+//			String filterTriples = m.getResource(filter).getProperty(DynamicLODCloudEntry.numberOfTriplesLoadedIntoFilter).getObject().toString();
 			
-			this.comparing.add(new Comparing(object+" (triples: "+objectTriples+")", filter+" (triples: "+filterTriples+")", time));
+//			this.comparing.add(new Comparing(object+" (triples: "+objectTriples+")", filter+" (triples: "+filterTriples+")", time));
 			
 		}
 		

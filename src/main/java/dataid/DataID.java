@@ -109,10 +109,6 @@ public class DataID {
 			}
 
 		}
-//		ProcessEntry fsMoldel = new ProcessEntry();
-//
-//		// compare distributions using filters
-//		fsMoldel.compareAllDistributions();
 	}
 
 	public DataID(String URL, DataIDBean bean) {

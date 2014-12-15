@@ -18,10 +18,6 @@ public class FileUtils {
 		if(!f.exists())
 			f.mkdirs();
 		
-		f = new File(DataIDGeneralProperties.MODELS_PATH);
-		if(!f.exists())
-			f.mkdirs();
-		
 		f = new File(DataIDGeneralProperties.SUBJECT_PATH);
 		if(!f.exists())
 			f.mkdirs();

@@ -17,7 +17,7 @@ import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 
 public class DownloadAndSave {
-	private static final int BUFFER_SIZE = 4096;
+	private static final int BUFFER_SIZE = 65536;
 
 	public String fileName = "";
 	public String disposition = null;
@@ -82,7 +82,7 @@ public class DownloadAndSave {
 			dataIDFilePath = DataIDGeneralProperties.BASE_PATH + fileName;
 			objectFilePath = DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
 					+ fileName;
-			final byte[] buffer = new byte[32768];
+			final byte[] buffer = new byte[BUFFER_SIZE];
 			int n = 0;
 
 			extension = FilenameUtils.getExtension(fileName);
