@@ -30,6 +30,7 @@ public class PrepareFiles {
 		if(ext.equals("ttl")){
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"File extension is ttl! Converting ttl to nt using rapper");
 	    	RunCommand.run("rapper -g "+DataIDGeneralProperties.BASE_PATH+ fileName+" -o ntriples > "+DataIDGeneralProperties.BASE_PATH+FilenameUtils.getBaseName(fileName)+".nt");	    	
+	    	RunCommand.run("rm "+DataIDGeneralProperties.BASE_PATH+ fileName);	    	
 	    	return FilenameUtils.getBaseName(fileName)+".nt";			
 		}		
 		else if(!ext.equals("nt")){
