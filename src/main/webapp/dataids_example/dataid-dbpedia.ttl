@@ -63,7 +63,6 @@
   dct:modified "09-Aug-2013"^^xsd:date ;
   dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
   dcat:accessURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
-  dcat:accessURLs <http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2> ;
   dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
   dcat:byteSize "159000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;

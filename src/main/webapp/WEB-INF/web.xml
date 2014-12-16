@@ -2,19 +2,20 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
-	<!-- servlet>
-		<servlet-name>Parse</servlet-name>
-		<servlet-class>dataid.server.Servlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Parse</servlet-name>
-		<url-pattern>/parse/*</url-pattern>
-	</servlet-mapping-->
 	<!-- File(s) appended to a request for a URL that is not mapped to a web 
 		component -->
 		
 		
-		<display-name>DataID Interface</display-name>
+		<display-name>DataID Dynamic Cloud</display-name>
+
+	<servlet>
+		<servlet-name>Output</servlet-name>
+		<servlet-class>dataid.server.CreateOutput</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Output</servlet-name>
+		<url-pattern>/output/*</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>

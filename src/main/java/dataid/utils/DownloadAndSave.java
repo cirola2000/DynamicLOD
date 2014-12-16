@@ -158,15 +158,17 @@ public class DownloadAndSave {
 								try {
 									String u2[] = u.split(" ");
 									String u3[] = u.split("> <");
+									
+									// checking here offset
 									String tmp = u3[1];
 									tmp = u2[3];
+									
 									if (!tmpLastSubject.equals(u2[0])) {
 										tmpLastSubject = u2[0];
 										subject.write(new String(u2[0] + "\n")
 												.getBytes());
 										subjectLines++;
 									}
-									// TODO Check if object is literal
 									if (!u2[2].startsWith("\"")) {
 										object.write(new String(u2[2] + "\n")
 												.getBytes());

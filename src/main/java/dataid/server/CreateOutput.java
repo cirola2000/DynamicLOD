@@ -1,6 +1,12 @@
 package dataid.server;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -17,12 +23,13 @@ import dataid.mongodb.objects.LinksetMongoDBObject;
 import dataid.ontology.Dataset;
 import dataid.ontology.vocabulary.NS;
 
-public class CreateOutput {
+public class CreateOutput extends HttpServlet {
 
 	private static Model outModel = ModelFactory.createDefaultModel();
 
-	@Test
-	public void createOutput() {
+	// @Test
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		try {
 
 			outModel.setNsPrefix("rdfs", NS.RDFS_URI);
@@ -46,30 +53,37 @@ public class CreateOutput {
 						ResourceFactory.createResource(NS.VOID_URI + "Dataset"));
 			}
 
-			ArrayList<LinksetMongoDBObject> linksetList = queries.getLinksetsGroupByDatasets();
-//			Iterable<DBObject> linksets = queries.getLinksetsGroupByDatasets(); 
-		
+			ArrayList<LinksetMongoDBObject> linksetList = queries
+					.getLinksetsGroupByDatasets();
+			// Iterable<DBObject> linksets =
+			// queries.getLinksetsGroupByDatasets();
 
-			for (LinksetMongoDBObject linkset : linksetList) {
-				if (!linkset.getObjectsDatasetTarget().equals(
-						linkset.getSubjectsDatasetTarget())) {
-					Resource r = outModel.createResource(linkset.getUri());
-					r.addProperty(
-							Dataset.dataIDType,
-							ResourceFactory.createResource(NS.VOID_URI
-									+ "Linkset"));
-					r.addProperty(ResourceFactory.createProperty(NS.VOID_URI
-							+ "subjectsTarget"), ResourceFactory
-							.createProperty(linkset.getSubjectsDatasetTarget()
-									.toString()));
-					r.addProperty(ResourceFactory.createProperty(NS.VOID_URI
-							+ "objectsTarget"), ResourceFactory
-							.createProperty(linkset.getObjectsDatasetTarget()
-									.toString()));
+			if (linksetList != null)
+				for (LinksetMongoDBObject linkset : linksetList) {
+					if (!linkset.getObjectsDatasetTarget().equals(
+							linkset.getSubjectsDatasetTarget())) {
+						Resource r = outModel.createResource(linkset.getUri());
+						r.addProperty(
+								Dataset.dataIDType,
+								ResourceFactory.createResource(NS.VOID_URI
+										+ "Linkset"));
+						r.addProperty(
+								ResourceFactory.createProperty(NS.VOID_URI
+										+ "subjectsTarget"), ResourceFactory
+										.createProperty(linkset
+												.getSubjectsDatasetTarget()
+												.toString()));
+						r.addProperty(ResourceFactory
+								.createProperty(NS.VOID_URI + "objectsTarget"),
+								ResourceFactory.createProperty(linkset
+										.getObjectsDatasetTarget().toString()));
+					}
 				}
-			}
 
 			outModel.write(System.out, "TURTLE");
+			outModel.write(response.getWriter(), "TURTLE");
+
+			// response.getWriter().println("List of distributions: "+request.getParameter("dataidAddress")+"<br><br>");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

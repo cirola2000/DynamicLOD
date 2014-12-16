@@ -50,7 +50,7 @@ abstract public class DataIDDB {
 
 			this.collectionName = collectionName;
 
-			objectCollection = db.getCollection(collectionName);
+			objectCollection = getInstance().getCollection(collectionName);
 
 			mongoDBObject.put(URI, uri);
 

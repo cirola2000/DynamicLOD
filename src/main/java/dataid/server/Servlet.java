@@ -22,34 +22,10 @@ public class Servlet extends HttpServlet
 {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        response.setContentType("text/html"); 
-        response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println("List of distributions: "+request.getParameter("dataidAddress")+"<br><br>");
+//        response.setContentType("text/html"); 
+//        response.setStatus(HttpServletResponse.SC_OK);
+//        response.getWriter().println("List of distributions: "+request.getParameter("dataidAddress")+"<br><br>");
 
-        
-//        DataID dataid = new DataID(request.getParameter("dataidAddress")); 
-       
-        
-//        try{
-//        String uri = request.getParameter("dataidAddress");
-//		final Model model = ModelFactory.createDefaultModel();
-//		model.read(uri,null,"TTL");
-//		
-//		ResIterator iter = model.listSubjectsWithProperty(Distribution.accessURL);	
-//		
-//		while(iter.hasNext()){
-//			Resource r = iter.nextResource();
-//			response.getWriter().println("<br><a href=\""+r.getURI()+" \">"+r.getURI()+ "</a>");
-//			
-//		}
-//		
-//		RDFDataMgr.write(System.out,model, RDFFormat.TURTLE);
-//        }
-//        catch (Exception e){
-//        	response.getWriter().println("<br>Sorry, we got an exception!<br><br>");
-//        	response.getWriter().println(e.getMessage());
-//        	
-//        }
         
         
     }
