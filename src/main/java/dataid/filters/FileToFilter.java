@@ -1,6 +1,7 @@
 package dataid.filters;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,6 +46,16 @@ public class FileToFilter {
 			} catch (IOException ex) {
 				DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,ex.getMessage());
 			}
+		}
+		
+		try{
+			File f = new File(DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+
+							fileName);
+			f.delete();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
 		}
 
 	}
