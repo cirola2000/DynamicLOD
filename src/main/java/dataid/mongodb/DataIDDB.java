@@ -66,6 +66,8 @@ abstract public class DataIDDB {
 	public static DB getInstance() {
 		try {
 			if (mongo == null) {
+				DataIDGeneralProperties p = new DataIDGeneralProperties();
+				p.loadProperties();
 				mongo = new MongoClient(DataIDGeneralProperties.MONGODB_HOST, DataIDGeneralProperties.MONGODB_PORT);
 				db = mongo.getDB(DataIDGeneralProperties.MONGODB_DB);
 			}

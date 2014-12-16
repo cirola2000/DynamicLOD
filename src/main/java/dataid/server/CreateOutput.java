@@ -47,11 +47,14 @@ public class CreateOutput extends HttpServlet {
 
 			ArrayList<DatasetMongoDBObject> datasetList = queries.getDatasets();
 
-			for (DatasetMongoDBObject dataset : datasetList) {
-				Resource r = outModel.createResource(dataset.getUri());
-				r.addProperty(Dataset.dataIDType,
-						ResourceFactory.createResource(NS.VOID_URI + "Dataset"));
-			}
+			if (datasetList != null)
+				for (DatasetMongoDBObject dataset : datasetList) {
+					Resource r = outModel.createResource(dataset.getUri());
+					r.addProperty(
+							Dataset.dataIDType,
+							ResourceFactory.createResource(NS.VOID_URI
+									+ "Dataset"));
+				}
 
 			ArrayList<LinksetMongoDBObject> linksetList = queries
 					.getLinksetsGroupByDatasets();
@@ -80,10 +83,15 @@ public class CreateOutput extends HttpServlet {
 					}
 				}
 
-			outModel.write(System.out, "TURTLE");
-			outModel.write(response.getWriter(), "TURTLE");
+			if (linksetList.isEmpty() && datasetList.isEmpty())
+				response.getWriter()
+						.println(
+								"There are no DataIDs files inserted! Please insert a DataID file and try again.");
+			else {
 
-			// response.getWriter().println("List of distributions: "+request.getParameter("dataidAddress")+"<br><br>");
+				outModel.write(System.out, "TURTLE");
+				outModel.write(response.getWriter(), "TURTLE");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
