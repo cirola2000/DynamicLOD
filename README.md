@@ -10,7 +10,7 @@ We use MongoDB to save relevant metadata for the creation of linksets. Thus, for
 
 In order to compile and download dependencies you must have Maven3 installed. You can easily install it via apt-get `sudo apt-get install maven`.
 
-After cloning the project from this repository, please access the folder /resources and edit the properties confuration file.
+After cloning the project from this repository, please access the folder /resources and edit the properties configuration file.
 
 ## How to use
 
