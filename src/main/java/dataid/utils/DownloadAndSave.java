@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.io.FilenameUtils;
@@ -32,8 +33,10 @@ public class DownloadAndSave {
 	public double contentLengthAfterDownloaded;
 	public int subjectLines = 0;
 	public int objectLines = 0;
+	
+	public AtomicInteger aint = new AtomicInteger(0);
 
-	Queue<String> b = new ConcurrentLinkedQueue<String>();
+	Queue<String> bufferQueue = new ConcurrentLinkedQueue<String>();
 	boolean done = false;
 
 	public String downloadFile(String fileURL) throws Exception {
@@ -78,6 +81,7 @@ public class DownloadAndSave {
 						httpConn.getInputStream(), true);
 				fileName = fileName.replace(".bz2", "");
 			}
+			
 			dataIDFilePath = DataIDGeneralProperties.BASE_PATH + fileName;
 			objectFilePath = DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
 					+ fileName;
@@ -89,10 +93,13 @@ public class DownloadAndSave {
 				split_and_store.start();
 				while (-1 != (n = inputStream.read(buffer))) {
 					String str = new String(buffer, "UTF-8");
-					b.add(str);
+					bufferQueue.add(str);
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded
 							+ n;
+					aint.incrementAndGet();
+					while(bufferQueue.size()>900);
 				}
+				while(bufferQueue.size()>0);
 			} else if (extension.equals("ttl") || extension.equals("rdf")) {
 				int bytesRead = -1;
 				FileOutputStream outputStream = new FileOutputStream(
@@ -145,9 +152,15 @@ public class DownloadAndSave {
 				String lastLine = null;
 				String tmpLastSubject = "";
 				int count = 0;
-				while (!done || (b.size() > 0)) {
+				String u2[];
+				String u3[];
+				String tmp;
+				String o[];
+				while (!done || (bufferQueue.size() > 0)) {
+					if(bufferQueue.size() > 0)
+					aint.decrementAndGet();
 					try {
-						String o[] = b.remove().split("\n");
+						o = bufferQueue.remove().split("\n");
 						if (lastLine != null) {
 							o[0] = lastLine.concat(o[0]);
 							lastLine = null;
@@ -156,13 +169,13 @@ public class DownloadAndSave {
 						for (String u : o) {
 							if (!u.startsWith("#")) {
 								try {
-									String u2[] = u.split(" ");
-									String u3[] = u.split("> <");
-									
+									u2 = u.split(" ");
+									u3 = u.split("> <");
+
 									// checking here offset
-									String tmp = u3[1];
+									tmp = u3[1];
 									tmp = u2[3];
-									
+
 									if (!tmpLastSubject.equals(u2[0])) {
 										tmpLastSubject = u2[0];
 										subject.write(new String(u2[0] + "\n")
@@ -178,6 +191,7 @@ public class DownloadAndSave {
 									if (count % 100000 == 0) {
 										System.out.println(count
 												+ " registers written");
+										System.out.println("Buffer queue size: "+aint.get());
 									}
 								} catch (ArrayIndexOutOfBoundsException e) {
 									lastLine = u;

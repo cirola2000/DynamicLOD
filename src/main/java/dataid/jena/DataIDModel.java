@@ -6,6 +6,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResIterator;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
@@ -17,6 +18,7 @@ import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.SubsetMongoDBObject;
 import dataid.ontology.Dataset;
 import dataid.ontology.Distribution;
+import dataid.ontology.vocabulary.NS;
 import dataid.utils.FileUtils;
 
 public class DataIDModel {
@@ -35,7 +37,11 @@ public class DataIDModel {
 		// select dataset
 		StmtIterator datasets = inModel.listStatements(null,
 				Dataset.dataIDType, Dataset.dataIDDataset);
+//		StmtIterator datasets = inModel.listStatements(null,
+//				Dataset.dataIDType, ResourceFactory.createResource(NS.DCAT_URI+"Dataset"));
+//		System.out.println(Dataset.dataIDType+" = "+ NS.DCAT_URI+"Dataset");
 
+		System.out.println("oi");
 		while (datasets.hasNext()) {
 
 			Statement dataset = datasets.next();
@@ -62,16 +68,19 @@ public class DataIDModel {
 				StmtIterator stmtAccessURL = inModel.listStatements(
 						distribution.getObject().asResource(),
 						Distribution.accessURL, (RDFNode) null);
+				System.out.println(distribution.getObject().asResource().getProperty(Distribution.accessURL).getObject().toString());
+				System.out.println(distribution.getObject().asResource());
+				System.out.println(Distribution.accessURL);
 
 				// case there is an accessURL property
-				if (stmtAccessURL.hasNext()) {
-					accessURLFound = true;
+				while (stmtAccessURL.hasNext() && !accessURLFound) {
 
 					// store accessurl statement
 					Statement accessURL = stmtAccessURL.next();
 					if (FileUtils.acceptedFormats(accessURL.getObject()
 							.toString())) {
 
+						accessURLFound = true;
 						// save distribution with accessURL to list
 						distributionsLinks.add(new SubsetModel(
 								numberOfDistributions, datasetURI, distribution
