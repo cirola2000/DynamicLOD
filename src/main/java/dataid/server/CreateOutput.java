@@ -24,7 +24,7 @@ public class CreateOutput extends HttpServlet {
 	private static Model outModel = ModelFactory.createDefaultModel();
 
 	// @Test
-	protected void doGet(HttpServletRequest request,
+	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 

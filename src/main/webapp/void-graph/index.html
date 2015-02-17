@@ -1,0 +1,121 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="jqcloud.css" />
+<script src="jquery.min.js"></script>
+
+<script src="n3-browser.min.js"></script>
+<script src="jsonld.js"></script>
+
+<script type="text/javascript" src="jqcloud-1.0.4.js"></script>
+
+<script type="text/javascript" src="site.js"></script>
+
+<style>
+
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.cite {
+font-size:10px;
+position: absolute;
+bottom:0;
+left:0;
+z-index:10000;
+}
+</style>
+</head>
+<body>
+<div class="cite">
+Cite as
+<pre>
+@misc{1408.6691,
+Author = {Luca Matteis},
+Title = { {VoID-graph}: Visualize Linked Datasets on the Web},
+Year = {2014},
+Eprint = {arXiv:1408.6691},
+}
+</pre>
+</div>
+<a href="https://github.com/lmatteis/void-graph"><img style="z-index:2;position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<div class="controls" style="position: absolute; z-index:2; opacity: 0.5;">
+Enter VoID:<br>
+<textarea style="width: 400px; height: 150px;">
+</textarea>
+<br>
+<button class="parse">parse</button>
+<button class="save">save SVG</button>
+</div>
+<div style="position:relative; width:100%; height:100%;" id="cont">
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%">
+<style xmlns="http://www.w3.org/2000/svg" type="text/css" id="style6">
+text {
+
+font-family:Verdana, "Arial", sans-serif;
+font-weight: 100;
+}
+.dataset circle { fill: #fff; stroke: #0000EE; stroke-width: 1; }
+
+.dataset.media circle { fill: #E2EAFF; stroke: #2866C4; }
+.dataset.geographic circle { fill: #FFEFA6; stroke: #996633; }
+.dataset.publications circle { fill: #E4FFC9; stroke: #30C32D; }
+.dataset.usergeneratedcontent circle { fill: #FFE9D8; stroke: #FF5D33; }
+.dataset.government circle { fill: #C5FFE5; stroke: #11C2A2; }
+.dataset.crossdomain circle { fill: #E6F6F4; stroke: #2E4439; }
+.dataset.lifesciences circle { fill: #F4D6E2; stroke: #C31A8A; }
+
+.dataset circle { stroke-width: 2; }
+.dataset.legal circle { fill: #FFF; stroke: #EB0; }
+#.dataset.legal text { fill: #996633; }
+.dataset.business circle { fill: #FFF; stroke: #EB0; }
+#.dataset.business text { fill: #607; }
+.dataset.eu-institution circle { fill: #FFF; stroke: #EB0; }
+#.dataset.eu-institution text { fill: #30C32D; }
+.dataset.thirdparty circle { fill: #FFF; stroke: #28C466; }
+#.dataset.thirdparty text { fill: #050; }
+.dataset.producer circle { fill: #FFF; stroke: #2866C4; }
+#.dataset.producer text { fill: #007; }
+.dataset.non-eu circle { fill: #FFF; stroke: #DDD; }
+.dataset.non-eu text { fill: #333; }
+.shadow.weak { fill-opacity: 0.2; }
+#.links.weak, .weak .arrowhead { stroke-opacity: 0.4; fill-opacity: 0.4; }
+.links.weak, .weak .arrowhead { stroke: #AAA; fill: #AAA; }
+
+.shadow { fill-opacity: 0.6; }
+.links { stroke: #363636; stroke-linecap: square; }
+.width1 { stroke-width: 0.5; }
+.width2 { stroke-width: 2; }
+.width3 { stroke-width: 4; }
+.arrowhead { fill: #363636; }
+
+
+.label, .footer-text, #layer-legend text { font-weight:bold;font-family:sans-serif; text-rendering: geometricPrecision; }
+.label { text-anchor: middle; }
+.footer-text { text-anchor: end; }
+#layer-legend text { text-anchor: end; fill: #363636; }
+  </style>
+      <defs>
+        <filter xmlns="http://www.w3.org/2000/svg" id="dropshadow" height="130%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="3"/> 
+          <feOffset dx="3" dy="3" result="offsetblur"/>
+          <feComponentTransfer>
+            <feFuncA type="linear" slope="0.2"/>
+          </feComponentTransfer>
+          <feMerge> 
+            <feMergeNode/>
+            <feMergeNode in="SourceGraphic"/> 
+          </feMerge>
+        </filter>
+        <marker xmlns="http://www.w3.org/2000/svg" markerUnits="userSpaceOnUse" refX="0" refY="5" markerWidth="10" markerHeight="10" orient="auto" viewBox="0 0 13 10" id="arrowhead-end-width1" style="overflow:visible">
+              <path d="M 0,0 13,5 0,10 z" id="arrowhead-end" style="fill:#363636"/>
+        </marker>
+      </defs>
+
+    </svg>
+</div>
+</body>
+</html>
+
