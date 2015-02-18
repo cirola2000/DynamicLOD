@@ -36,6 +36,8 @@ public class DatasetMongoDBObject extends DataIDDB {
 
 	private String title;
 
+	private String dataIdFileName;
+	
 	private ArrayList<String> subsetsURIs = new ArrayList<String> ();
 
 	private ArrayList<String>  distributionsURIs = new ArrayList<String> ();
@@ -56,7 +58,9 @@ public class DatasetMongoDBObject extends DataIDDB {
 			mongoDBObject.put(DISTRIBUTIONS_URIS, distributionsURIs);
 	
 			mongoDBObject.put(TITLE, title);
-			
+
+			mongoDBObject.put(DATAID_FILENAME, dataIdFileName);
+
 			mongoDBObject.put(LABEL, label);
 			
 			
@@ -85,6 +89,7 @@ public class DatasetMongoDBObject extends DataIDDB {
 
 			label = (String) obj.get(LABEL);
 			title = (String) obj.get(TITLE);
+			dataIdFileName = (String) obj.get(DATAID_FILENAME);
 
 			// loading subsets to object
 			BasicDBList subsetList = (BasicDBList) obj.get(SUBSET_URIS);
@@ -138,6 +143,14 @@ public class DatasetMongoDBObject extends DataIDDB {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getDataIdFileName() {
+		return dataIdFileName;
+	}
+
+	public void setDataIdFileName(String dataIdFileName) {
+		this.dataIdFileName = dataIdFileName;
 	}
 	
 	

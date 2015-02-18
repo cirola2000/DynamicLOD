@@ -1,5 +1,9 @@
 package dataid.jena;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 import com.hp.hpl.jena.rdf.model.Model;
@@ -28,6 +32,7 @@ public class DataIDModel {
 	int numberOfDistributions = 0;
 	public boolean someAccessURLFound = false;
 	private String datasetURI;
+	private String dataIDURL;
 
 	DatasetMongoDBObject datasetMongoDBObj;
 
@@ -49,6 +54,9 @@ public class DataIDModel {
 
 			// create a mongodb dataset object
 			datasetMongoDBObj = new DatasetMongoDBObject(datasetURI);
+			
+			// add dataid path to dataset object
+			datasetMongoDBObj.setDataIdFileName(dataIDURL);
 			
 			// case there is title property
 			if(dataset.getSubject().getProperty(Dataset.title) != null){
@@ -245,7 +253,7 @@ public class DataIDModel {
 	// read dataID file and return the dataset uri
 	public String readModel(String URL) throws Exception {
 		String name = null;
-
+		
 		inModel.read(URL, null, "TTL");
 		ResIterator i = inModel.listResourcesWithProperty(Dataset.dataIDType,
 				Dataset.dataIDDataset);
@@ -255,6 +263,8 @@ public class DataIDModel {
 					"Jena model created. ");
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 					"Looks that this is a valid DataID file! " + name);
+			dataIDURL = FileUtils.stringToHash(URL);
+			inModel.write(new FileOutputStream(new File(DataIDGeneralProperties.DATAID_PATH+dataIDURL)));
 		}
 
 		return name;
