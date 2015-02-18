@@ -49,6 +49,12 @@ public class CreateOutput extends HttpServlet {
 							Dataset.dataIDType,
 							ResourceFactory.createResource(NS.VOID_URI
 									+ "Dataset"));
+					r.addProperty(
+							Dataset.title,
+							dataset.getTitle());
+					r.addProperty(
+							Dataset.label,
+							dataset.getLabel());
 				}
 
 			ArrayList<LinksetMongoDBObject> linksetList = queries
@@ -118,6 +124,12 @@ public class CreateOutput extends HttpServlet {
 							Dataset.dataIDType,
 							ResourceFactory.createResource(NS.VOID_URI
 									+ "Dataset"));
+					r.addProperty(
+							Dataset.title,
+							dataset.getTitle());
+					r.addProperty(
+							Dataset.label,
+							dataset.getLabel());
 				}
 
 			ArrayList<LinksetMongoDBObject> linksetList = queries

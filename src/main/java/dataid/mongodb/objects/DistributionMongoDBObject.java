@@ -31,6 +31,9 @@ public class DistributionMongoDBObject extends DataIDDB {
 	public static final String NUMBER_OF_OBJECTS_TRIPLES = "numberOfObjectTriples";
 
 	public static final String TIME_TO_CREATE_FILTER = "timeToCreateFilter";
+	
+	public static final String TITLE = "title";
+	
 
 	private String accessUrl;
 
@@ -50,6 +53,10 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	private String timeToCreateFilter;
 
+	private String title;
+
+	
+	
 	public DistributionMongoDBObject(String uri) {
 		super(COLLECTION_NAME, uri);
 		loadObject();
@@ -87,6 +94,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 					numberOfTriplesLoadedIntoFilter);
 			mongoDBObject.put(NUMBER_OF_OBJECTS_TRIPLES, numberOfObjectTriples);
 			mongoDBObject.put(TIME_TO_CREATE_FILTER, timeToCreateFilter);
+			mongoDBObject.put(TITLE, title);
 
 			insert();
 
@@ -114,6 +122,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 			topDataset = (String) obj.get(TOP_DATASET);
 			subjectFilterPath = (String) obj.get(SUBJECT_FILTER_PATH);
 			objectPath = (String) obj.get(OBJECT_PATH);
+			title = (String) obj.get(TITLE);
 			numberOfTriplesLoadedIntoFilter = (String) obj
 					.get(NUMBER_OF_TRIPLES_LOADED_INTO_FILTER);
 			numberOfObjectTriples = (String) obj.get(NUMBER_OF_OBJECTS_TRIPLES);
@@ -202,5 +211,15 @@ public class DistributionMongoDBObject extends DataIDDB {
 	public void setDefaultDatasets(ArrayList<String> defaultDatasets) {
 		this.defaultDatasets = defaultDatasets;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	
 
 }

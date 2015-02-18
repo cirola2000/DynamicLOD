@@ -41,7 +41,6 @@ public class DataIDModel {
 //				Dataset.dataIDType, ResourceFactory.createResource(NS.DCAT_URI+"Dataset"));
 //		System.out.println(Dataset.dataIDType+" = "+ NS.DCAT_URI+"Dataset");
 
-		System.out.println("oi");
 		while (datasets.hasNext()) {
 
 			Statement dataset = datasets.next();
@@ -50,6 +49,17 @@ public class DataIDModel {
 
 			// create a mongodb dataset object
 			datasetMongoDBObj = new DatasetMongoDBObject(datasetURI);
+			
+			// case there is title property
+			if(dataset.getSubject().getProperty(Dataset.title) != null){
+				datasetMongoDBObj.setTitle(dataset.getSubject().getProperty(Dataset.title).getObject().toString());
+			}
+			
+			// case there is label property
+			if(dataset.getSubject().getProperty(Dataset.label) != null){
+				datasetMongoDBObj.setLabel(dataset.getSubject().getProperty(Dataset.label).getObject().toString());
+			}
+			
 			datasetMongoDBObj.updateObject();
 
 			// try to find distribution within dataset
@@ -59,18 +69,15 @@ public class DataIDModel {
 
 			// case there's an distribution take the fist that has accessURL
 			boolean accessURLFound = false;
-			while (stmtDistribution.hasNext() && accessURLFound == false) {
+			while (stmtDistribution.hasNext() && accessURLFound == false) { 
 
-				// store distribution
+				// get distribution
 				Statement distribution = stmtDistribution.next();
 
 				// find accessURL property
 				StmtIterator stmtAccessURL = inModel.listStatements(
 						distribution.getObject().asResource(),
 						Distribution.accessURL, (RDFNode) null);
-				System.out.println(distribution.getObject().asResource().getProperty(Distribution.accessURL).getObject().toString());
-				System.out.println(distribution.getObject().asResource());
-				System.out.println(Distribution.accessURL);
 
 				// case there is an accessURL property
 				while (stmtAccessURL.hasNext() && !accessURLFound) {
@@ -96,6 +103,12 @@ public class DataIDModel {
 								.addDefaultDataset(datasetMongoDBObj.getUri());
 						distributionMongoDBObj.setAccessUrl(accessURL
 								.getObject().toString());
+						
+						// case there is title property
+						if(distribution.getSubject().getProperty(Distribution.title) != null){
+							distributionMongoDBObj.setTitle(distribution.getSubject().getProperty(Distribution.title).getObject().toString());
+						}
+						
 						distributionMongoDBObj.updateObject();
 
 						// update dataset on mongodb with distribution

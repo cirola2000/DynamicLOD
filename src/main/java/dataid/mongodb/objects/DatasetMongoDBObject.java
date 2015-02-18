@@ -16,21 +16,25 @@ public class DatasetMongoDBObject extends DataIDDB {
 
 	public static final String LABEL = "label";
 
+	public static final String TITLE = "title";
+
 	public static final String SUBSET_URIS = "subset_uris";
 
 	public static final String DISTRIBUTIONS_URIS = "distributions_uris";
 
 	public static final String DATAID_FILENAME = "dataid_file_name";
 	
-	public static final String OBJECT_FILENAME = "dataid_file_name";
+	public static final String OBJECT_FILENAME = "object_file_name";
 	
-	public static final String SUBJECT_FILTER_FILENAME = "dataid_file_name";
+	public static final String SUBJECT_FILTER_FILENAME = "subject_file_name";
 	
 	
 
 	// class properties
 
 	private String label;
+
+	private String title;
 
 	private ArrayList<String> subsetsURIs = new ArrayList<String> ();
 
@@ -50,6 +54,11 @@ public class DatasetMongoDBObject extends DataIDDB {
 			
 			// updating distributions on mongodb
 			mongoDBObject.put(DISTRIBUTIONS_URIS, distributionsURIs);
+	
+			mongoDBObject.put(TITLE, title);
+			
+			mongoDBObject.put(LABEL, label);
+			
 			
 			insert();
 			return true;
@@ -62,7 +71,6 @@ public class DatasetMongoDBObject extends DataIDDB {
 				else
 					return false;
 			} catch (DataIDException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return false;
 			}
@@ -76,6 +84,7 @@ public class DatasetMongoDBObject extends DataIDDB {
 			// mongoDBObject = (BasicDBObject) obj;
 
 			label = (String) obj.get(LABEL);
+			title = (String) obj.get(TITLE);
 
 			// loading subsets to object
 			BasicDBList subsetList = (BasicDBList) obj.get(SUBSET_URIS);
@@ -122,5 +131,15 @@ public class DatasetMongoDBObject extends DataIDDB {
 	public String getLabel() {
 		return label;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	
 
 }
