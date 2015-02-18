@@ -16,6 +16,7 @@ import org.richfaces.application.push.TopicsContext;
 import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 import dataid.mongodb.actions.MakeLinksets;
+import dataid.mongodb.actions.Queries;
 
 @ViewScoped
 @ManagedBean
@@ -32,6 +33,8 @@ public class DataIDBean implements Serializable, Runnable {
 
 	private String display = "";
 	
+	private String dataIDList = "(empty)";
+	
 	// TODO implement a smarter way to choose between add dataid or update graph
 	String action = "";
 	
@@ -43,11 +46,16 @@ public class DataIDBean implements Serializable, Runnable {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	TopicsContext topicsContext = TopicsContext.lookup();
 
 	public void push() throws MessageException {
-		TopicKey topicKey = new TopicKey("sampleAddress");
-		TopicsContext topicsContext = TopicsContext.lookup();
-		topicsContext.publish(topicKey, "empty message");
+		TopicKey topicKey = new TopicKey("shellMessage");
+		topicsContext.publish(topicKey, "");
+	}
+	
+	public void pushDataIDList() throws MessageException {
+		TopicKey topicKey = new TopicKey("dataIDListMessage");
+		topicsContext.publish(topicKey, "");
 	}
 
 	public void start() {
@@ -59,6 +67,13 @@ public class DataIDBean implements Serializable, Runnable {
 		Thread thread = new Thread(this);
 		thread.setDaemon(true);
 		thread.start();
+		
+		try {
+			pushDataIDList();
+		} catch (MessageException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 	public void update() {
@@ -85,6 +100,11 @@ public class DataIDBean implements Serializable, Runnable {
 			startDataID();
 			else
 				updateGraph();
+			 
+//			this.dataIDList = Queries.getDataIDs();
+			this.pushDataIDList();
+			 
+			 
 		} catch (MessageException e) {
 			e.printStackTrace();
 		}
@@ -102,6 +122,15 @@ public class DataIDBean implements Serializable, Runnable {
 
 		dataid = new DataID(this.getUrl(), this);
 
+	}
+
+	public String getDataIDList() {
+		this.dataIDList = Queries.getDataIDs();
+		return this.dataIDList;
+	}
+
+	public void setDataIDList(String dataIDList) {
+	
 	}
 
 	public String getDisplay() {

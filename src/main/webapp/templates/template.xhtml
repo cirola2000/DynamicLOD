@@ -1,13 +1,233 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j">
+<head>
+<script src="../resources/js/jquery-2.1.0.js"></script>
+<link href="../resources/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<script src="../resources/jquery-ui/jquery-ui.js"></script>
+
+
+<style>
+.desc2 {
+	float: right;
+	margin-right: 2px;
+}
+
+.input {
+	margin-bottom: 5px;
+	width: 98%
+}
+
+.input-modal-md {
+	margin-bottom: 5px;
+	width: 100%
+}
+
+.input-small2 {
+	margin-bottom: 5px;
+	width: 90%
+}
+
+#page-wrapper {
+	position: inherit;
+	margin: 0 0 0 280px;
+	padding: 0 30px;
+	min-height: 1300px;
+	border-left: 1px solid #e7e7e7;
+}
+
+.navbar-fixed-bottom {
+	/*position: inherit !important;*/
+	/*margin: 0 0 0 0px !important;*/
+	padding: 0 0px !important;
+	min-height: 130px !important;
+	border-left: 1px solid #e7e7e7 !important;
+}
+
+.navbar-static-side {
+	z-index: 1;
+	position: absolute;
+	width: 300px;
+	height: 2350px;
+	margin-top: 35px;
+}
+
+.URIerror {
+	color: red;
+}
+
+.popover {
+	max-width: 340px;
+}
+
+.help-button {
+	display: inline-block;
+	height: 22px;
+	width: 22px;
+	line-height: 22px;
+	text-align: center;
+	padding: 0;
+	background-color: #65bcda;
+	color: #FFF;
+	font-size: 12px;
+	font-weight: bold;
+	cursor: default;
+	margin-left: 4px;
+	border-radius: 100%;
+	border-color: #FFF;
+	border: 2px solid #FFF;
+	-webkit-box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.2);
+}
+
+.ui-dialog {
+	z-index: 10800 !important;
+}
+
+.navbar-fixed-top {
+	height: 35px !important;
+	min-height: 10px !important;
+}
+
+.nav.navbar-nav {
+	height: 35px !important;
+	min-height: 10px !important;
+}
+
+.panel-heading {
+	height: 23px;
+}
+
+.panel-title {
+	margin-top: -7px;
+	color: #777 !important;
+	font-size: 13px !important;
+}
+
+ul {
+	margin-left: 3px;
+	padding-left: 0;
+}
+
+ul ul {
+	margin-left: 13px;
+}
+
+li {
+	list-style: none;
+}
+
+.accordion-toggle {
+	color: #777 !important;
+	font-size: 13px !important;
+	margin-top: 12px !important;
+}
+
+.panel .panel-default .ng-isolate-scope {
+	max-height: 200px !important;
+}
+
+#list {
+	max-height: 360px !important;
+	overflow: auto !important;
+}
+
+.navbar-fixed-bottom {
+	width: 300px;
+}
+
+.menu-top {
+	z-index: 999999;
+	height: 20px;
+}
+</style>
+
+</head>
 
 <h:head>
-    <title><ui:insert name="title">Dynamic LOD Cloud based on DataID</ui:insert></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    </h:head>
+	<title><ui:insert name="title">Dynamic-LOD. A cloud based on DataID</ui:insert></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</h:head>
 
-<h:body>
-        <ui:insert name="body">Default content</ui:insert>
-</h:body>
+<div style="margin-top: 50px; margin-left: 15px;">
+	<div class="row">
+		<div class="col-md-5">
+			<div style="max-width: 800px">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title">Cloud Shell</div>
+						<div class="pull-right"></div>
+					</div>
+					<div class="panel-body">
+						<ui:insert name="shell">Default content
+		</ui:insert>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-5">
+			<div style="max-width: 800px">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title">Try to add these samples DataID
+							files</div>
+						<div class="pull-right"></div>
+					</div>
+					<div class="panel-body">
+
+						<span>http://localhost:8080/dataids_example/dataid-news100.ttl</span><br />
+						<span>http://localhost:8080/dataids_example/dataid-reuters128.ttl</span><br />
+						<span>http://localhost:8080/dataids_example/dataid-rss500.ttl</span><br />
+						<span>http://localhost:8080/dataids_example/dataid-dbpedia.ttl</span><br />
+						<span>http://localhost:8080/dataids_example/dbpedia_en_distributions.ttl</span><br />
+
+
+					</div>
+				</div>
+			</div>
+
+			<div style="max-width: 800px">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title">Added DataID files</div>
+						<div class="pull-right"></div>
+					</div>
+					<div class="panel-body">
+					
+					<ui:insert name="dataIDList">Default content
+		</ui:insert>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation"
+	style="margin-bottom: 0">
+	<ul class="nav navbar-nav">
+		<span class="navbar-text" style="margin-top: 5px"> Dynamic-LOD.
+			A cloud based on DataID files </span>
+
+	</ul>
+</nav>
+
+
+
+
+
+
+<script src="../resources/bootstrap/js/bootstrap.min.js"></script>
 </html>

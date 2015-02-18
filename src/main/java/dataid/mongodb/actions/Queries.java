@@ -18,6 +18,29 @@ import dataid.mongodb.objects.DatasetMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
 
 public class Queries {
+	
+	
+	// return all DataIDs file
+	public static String getDataIDs(){
+		String str = "";
+		ArrayList<DatasetMongoDBObject> list = new ArrayList<DatasetMongoDBObject>();
+
+		try {
+			DBCollection collection = DataIDDB.getInstance().getCollection(
+					DatasetMongoDBObject.COLLECTION_NAME);
+			DBCursor instances = collection.find();
+
+			for (DBObject instance : instances) {
+			
+				str = str + instance.get(DataIDDB.URI)
+						.toString() + "<br>";
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return str; 
+	}
 
 	// return all datasets
 	public ArrayList<DatasetMongoDBObject> getDatasets() {
