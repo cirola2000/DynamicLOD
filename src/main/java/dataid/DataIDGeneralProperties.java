@@ -29,6 +29,11 @@ public class DataIDGeneralProperties {
 			MONGODB_HOST = prop.getProperty("MONGODB_HOST");
 			MONGODB_PORT = Integer.valueOf(prop.getProperty("MONGODB_PORT"));
 			MONGODB_DB = prop.getProperty("MONGODB_DB");
+			MONGODB_SECURE_MODE = Boolean.valueOf(prop.getProperty("MONGODB_SECURE_MODE"));
+			MONGODB_USERNAME = prop.getProperty("MONGODB_USERNAME");
+			MONGODB_PASSWORD = prop.getProperty("MONGODB_PASSWORD");
+			
+			
 			USE_MULTITHREAD = prop.getProperty("USE_MULTITHREAD");
 			FILTER_PATH = BASE_PATH + "filters/";
 			SUBJECT_PATH = BASE_PATH + "subjects/";
@@ -84,6 +89,9 @@ public class DataIDGeneralProperties {
 	public static String MONGODB_HOST;
 	public static int MONGODB_PORT;
 	public static String MONGODB_DB;
+	public static Boolean MONGODB_SECURE_MODE;
+	public static String MONGODB_USERNAME;
+	public static String MONGODB_PASSWORD;
 
 	public static String USE_MULTITHREAD;
 

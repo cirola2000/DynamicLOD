@@ -1,5 +1,6 @@
 package dataid.mongodb;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import com.mongodb.BasicDBObject;
@@ -8,6 +9,8 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
 
 import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
@@ -68,7 +71,13 @@ abstract public class DataIDDB {
 			if (mongo == null) {
 				DataIDGeneralProperties p = new DataIDGeneralProperties();
 				p.loadProperties();
+				if(DataIDGeneralProperties.MONGODB_SECURE_MODE){
+					MongoCredential credential = MongoCredential.createMongoCRCredential(DataIDGeneralProperties.MONGODB_USERNAME, DataIDGeneralProperties.MONGODB_DB, DataIDGeneralProperties.MONGODB_PASSWORD.toCharArray());
+					mongo = new MongoClient(new ServerAddress(DataIDGeneralProperties.MONGODB_HOST), Arrays.asList(credential));
+				}
+				else{
 				mongo = new MongoClient(DataIDGeneralProperties.MONGODB_HOST, DataIDGeneralProperties.MONGODB_PORT);
+				}
 				db = mongo.getDB(DataIDGeneralProperties.MONGODB_DB);
 			}
 		} catch (Exception e) {
