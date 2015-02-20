@@ -28,7 +28,7 @@
   dc:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
   dc:rights """Please cite: Michael Röder, Ricardo Usbeck, Sebastian Hellmann, Daniel Gerber und Andreas Both. N3 - A Collection of Datasets for Named Entity Recognition and Disambiguation in the NLP Interchange Format. In The 9th edition of the Language Resources and Evaluation Conference, 26-31 May, Reykjavik, Iceland """ ;
   void:subset <http://gerbil.aksw.org/gerbil/dataId/corpora/N3-RSS-500#links> ;
-  dcat:distribution <https://raw.githubusercontent.com/AKSW/n3-collection/master/RSS-500.ttl> ;
+  dcat:distribution <https://raw.githubusercontent.com/AKSW/n3-collection/master/RSS-500.nt> ;
   dcat:contactPoint [
     a dataid:Agent ;
     rdfs:label "Ricardo Usbeck" ;
@@ -37,11 +37,11 @@
   ] .
 
 
-<https://raw.githubusercontent.com/AKSW/n3-collection/master/RSS-500.ttl>
+<https://raw.githubusercontent.com/AKSW/n3-collection/master/RSS-500.nt>
   a dataid:Distribution ;
   dc:title "Complete corpus" ;
   dc:description "Complete corpus file in turtle format" ;
   dc:issued "02-04-2014"^^xsd:date ;
-  dcat:accessURL "https://raw.githubusercontent.com/AKSW/n3-collection/master/RSS-500.ttl" ;
-  dc:format "text/turtle" ;
+  dcat:accessURL "https://raw.githubusercontent.com/AKSW/n3-collection/master/RSS-500.nt" ;
+  dc:format "text/ntriples+turtle" ;
   void:triples "10038" .

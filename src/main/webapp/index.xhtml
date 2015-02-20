@@ -9,11 +9,20 @@
 	<ui:composition template="/templates/template.xhtml">
 
 		<ui:define name="title">DataID</ui:define>
-
-		<ui:define name="shell">
-			<h:form prependId="false">
-
-				<h:inputText style="width:560px" id="nameInput"
+		
+		
+		
+		
+		
+		<ui:define name="downloadDataID">
+		<h:form prependId="false">
+		
+				<a4j:push address="downloadDataIDMessage">
+					<a4j:ajax event="dataavailable" render="downloadDataID" />
+				</a4j:push>
+				
+				
+					<h:inputText style="width:560px" id="nameInput"
 					value="#{dataIDBean.url}"></h:inputText>
 
 
@@ -25,10 +34,40 @@
 					<a4j:commandButton value="Update Linksets"
 						action="#{dataIDBean.update}" />
 				</div>
-				<br />
+				
+				<a4j:outputPanel id="downloadDataID">
+				Dataset name:
+				<h:outputText value="#{dataIDBean.downloadDatasetURI}"
+							escape="false" />
+				<br />	
+				N. triples loaded:
+				<h:outputText value="#{dataIDBean.downloadNumberOfTriplesLoaded}"
+							escape="false" />
+				<br />			
+				N. total distributions
+				<h:outputText value="#{dataIDBean.downloadNumberTotalOfDistributions}"
+							escape="false" />
+				<br />	
+				N. downloaded distributions
+				<h:outputText value="#{dataIDBean.downloadNumberOfDownloadedDistributions}"
+							escape="false" />
+				<br />					
+				
+				</a4j:outputPanel>
+				</h:form>
+		</ui:define>
+		
+		
+		
+		
+
+		<ui:define name="shell">
+			<h:form prependId="false">
+
+				
 
 
-				<a4j:push address="shellMessage">
+				<a4j:push address="logMessage">
 					<a4j:ajax event="dataavailable" render="outputDate"
 						oncomplete="document.getElementById('divDisplay').scrollTop = document.getElementById('divDisplay').scrollHeight" />
 				</a4j:push>
@@ -56,6 +95,32 @@
 					
 						<h:outputText value="#{dataIDBean.dataIDList}"
 							escape="false" />
+
+				</a4j:outputPanel>
+				</h:form>
+		</ui:define>
+		
+		
+		<ui:define name="stats">
+		<h:form prependId="false">
+		
+				<a4j:push address="statsMessage">
+					<a4j:ajax event="dataavailable" render="outputStats" />
+				</a4j:push>
+				<a4j:outputPanel id="outputStats">
+					
+					Numer of datasets:
+						<h:outputText value="#{dataIDBean.numberOfDatasets}"
+							escape="false" />
+					<br />
+					Numer of subsets:
+						<h:outputText value="#{dataIDBean.numberOfSubsets}"
+							escape="false" />
+					<br />
+					Numer of distributions:
+						<h:outputText value="#{dataIDBean.numberOfDistributions}"
+							escape="false" />
+					<br />					
 
 				</a4j:outputPanel>
 				</h:form>

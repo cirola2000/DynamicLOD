@@ -42,9 +42,6 @@ public class DataIDModel {
 		// select dataset
 		StmtIterator datasets = inModel.listStatements(null,
 				Dataset.dataIDType, Dataset.dataIDDataset);
-//		StmtIterator datasets = inModel.listStatements(null,
-//				Dataset.dataIDType, ResourceFactory.createResource(NS.DCAT_URI+"Dataset"));
-//		System.out.println(Dataset.dataIDType+" = "+ NS.DCAT_URI+"Dataset");
 
 		while (datasets.hasNext()) {
 

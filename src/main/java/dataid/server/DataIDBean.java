@@ -31,9 +31,31 @@ public class DataIDBean implements Serializable, Runnable {
 
 	private String url = "http://localhost:8080/dataids_example/dataid-news100.ttl";
 
+	// log screen
 	private String display = "";
 	
+	// dataid list
 	private String dataIDList = "(empty)";
+	
+	
+	// statistic data
+	private int numberOfDatasets;
+	
+	private int numberOfSubsets;
+	
+	private int numberOfDistributions;
+	
+	
+	// info about download
+	private String downloadDatasetURI; 
+	
+	private int downloadNumberOfTriplesLoaded;
+	
+	private int downloadNumberTotalOfDistributions;
+	
+	private int downloadNumberOfDownloadedDistributions;
+	
+	
 	
 	// TODO implement a smarter way to choose between add dataid or update graph
 	String action = "";
@@ -49,14 +71,23 @@ public class DataIDBean implements Serializable, Runnable {
 	TopicsContext topicsContext = TopicsContext.lookup();
 
 	public void push() throws MessageException {
-		TopicKey topicKey = new TopicKey("shellMessage");
+		TopicKey topicKey = new TopicKey("logMessage");
 		topicsContext.publish(topicKey, "");
 	}
 	
 	public void pushDataIDList() throws MessageException {
 		TopicKey topicKey = new TopicKey("dataIDListMessage");
+		TopicKey topicKey2 = new TopicKey("statsMessage");
+		
+		topicsContext.publish(topicKey, "");
+		topicsContext.publish(topicKey2, "");
+	}
+	
+	public void pushDownloadInfo() throws MessageException {
+		TopicKey topicKey = new TopicKey("downloadDataIDMessage");
 		topicsContext.publish(topicKey, "");
 	}
+	
 
 	public void start() {
 		startTime = 0;
@@ -139,6 +170,72 @@ public class DataIDBean implements Serializable, Runnable {
 
 	public void setDisplay(String display) {
 		this.display = display;
+	}
+		
+
+	// mutator methods for statistical data
+	public int getNumberOfSubsets() {
+		this.numberOfSubsets = Queries.getNumberOfSubsets();
+		return numberOfSubsets;
+	}
+
+	public void setNumberOfSubsets(int numberOfSubsets) {
+		this.numberOfSubsets = numberOfSubsets;
+	}
+
+	public int getNumberOfDatasets() {
+		this.numberOfDatasets = Queries.getNumberOfDatasets();
+		return numberOfDatasets;
+	}
+
+	public void setNumberOfDatasets(int numberOfDatasets) {
+		this.numberOfDatasets = numberOfDatasets;
+	}
+
+	public int getNumberOfDistributions() {
+		this.numberOfDistributions = Queries.getNumberOfDistributions();
+		return numberOfDistributions;
+	}
+
+	public void setNumberOfDistributions(int numberOfDistributions) {
+		this.numberOfDistributions = numberOfDistributions;
+	}
+	
+
+	// mutator methods for download info 
+	public String getDownloadDatasetURI() {
+		return downloadDatasetURI;
+	}
+
+	public void setDownloadDatasetURI(String downloadDatasetURI) {
+		this.downloadDatasetURI = downloadDatasetURI;
+	}
+
+	public int getDownloadNumberOfTriplesLoaded() {
+		return downloadNumberOfTriplesLoaded;
+	}
+
+	public void setDownloadNumberOfTriplesLoaded(
+			int downloadNumberOfTriplesLoaded) {
+		this.downloadNumberOfTriplesLoaded = downloadNumberOfTriplesLoaded;
+	}
+
+	public int getDownloadNumberTotalOfDistributions() {
+		return downloadNumberTotalOfDistributions;
+	}
+
+	public void setDownloadNumberTotalOfDistributions(
+			int downloadNumberTotalOfDistributions) {
+		this.downloadNumberTotalOfDistributions = downloadNumberTotalOfDistributions;
+	}
+
+	public int getDownloadNumberOfDownloadedDistributions() {
+		return downloadNumberOfDownloadedDistributions;
+	}
+
+	public void setDownloadNumberOfDownloadedDistributions(
+			int downloadNumberOfDownloadedDistributions) {
+		this.downloadNumberOfDownloadedDistributions = downloadNumberOfDownloadedDistributions;
 	}
 
 	public void addDisplayMessage(String level, String info) {

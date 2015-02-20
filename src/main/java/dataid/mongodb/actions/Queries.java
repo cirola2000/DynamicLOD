@@ -15,13 +15,53 @@ import com.mongodb.DBObject;
 
 import dataid.mongodb.DataIDDB;
 import dataid.mongodb.objects.DatasetMongoDBObject;
+import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
+import dataid.mongodb.objects.SubsetMongoDBObject;
 
 public class Queries {
+
+	// return number of datasets
+	public static int getNumberOfDatasets() {
+		int numberOfDatasets = 0;
+		try {
+			DBCollection collection = DataIDDB.getInstance().getCollection(
+					DatasetMongoDBObject.COLLECTION_NAME);
+			numberOfDatasets = (int) collection.count();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return numberOfDatasets;
+	}
+
+	// return number of subsets
+	public static int getNumberOfSubsets() {
+		int numberOfSubsets = 0;
+		try {
+			DBCollection collection = DataIDDB.getInstance().getCollection(
+					SubsetMongoDBObject.COLLECTION_NAME);
+			numberOfSubsets = (int) collection.count();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return numberOfSubsets;
+	}
 	
-	
+	// return number of distributions
+	public static int getNumberOfDistributions() {
+		int numberOfDistributions = 0;
+		try {
+			DBCollection collection = DataIDDB.getInstance().getCollection(
+					DistributionMongoDBObject.COLLECTION_NAME);
+			numberOfDistributions = (int) collection.count();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return numberOfDistributions;
+	}
+
 	// return all DataIDs file
-	public static String getDataIDs(){
+	public static String getDataIDs() {
 		String str = "";
 		ArrayList<DatasetMongoDBObject> list = new ArrayList<DatasetMongoDBObject>();
 
@@ -31,15 +71,14 @@ public class Queries {
 			DBCursor instances = collection.find();
 
 			for (DBObject instance : instances) {
-			
-				str = str + instance.get(DataIDDB.URI)
-						.toString() + "<br>";
+
+				str = str + instance.get(DataIDDB.URI).toString() + "<br>";
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return str; 
+		return str;
 	}
 
 	// return all datasets
@@ -83,9 +122,9 @@ public class Queries {
 		return list;
 	}
 
-//	@Test
-//	public void getLinksetsGroupByDatasets() {
-		public ArrayList<LinksetMongoDBObject> getLinksetsGroupByDatasets() {
+	// @Test
+	// public void getLinksetsGroupByDatasets() {
+	public ArrayList<LinksetMongoDBObject> getLinksetsGroupByDatasets() {
 		AggregationOutput output;
 		try {
 
@@ -96,17 +135,17 @@ public class Queries {
 			DBObject groupFields = new BasicDBObject("_id", new BasicDBObject(
 					"objectsDatasetTarget", "$objectsDatasetTarget").append(
 					"subjectsDatasetTarget", "$subjectsDatasetTarget"));
-			groupFields.put("id", new BasicDBObject("$first","$_id"));
-			
+			groupFields.put("id", new BasicDBObject("$first", "$_id"));
+
 			DBObject group = new BasicDBObject("$group", groupFields);
 
 			// run aggregation
 			List<DBObject> pipeline = Arrays.asList(group);
 			output = collection.aggregate(pipeline);
 
-//			 for (DBObject result : output.results()) {
-//			 System.out.println(result);
-//			 }
+			// for (DBObject result : output.results()) {
+			// System.out.println(result);
+			// }
 			ArrayList<LinksetMongoDBObject> linksetList = new ArrayList<LinksetMongoDBObject>();
 
 			for (DBObject result : output.results()) {

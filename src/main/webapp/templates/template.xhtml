@@ -160,6 +160,20 @@ li {
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
+						<div class="panel-title">Add DataID URL</div>
+						<div class="pull-right"></div>
+					</div>
+					<div class="panel-body">
+						<ui:insert name="downloadDataID">Default content
+		</ui:insert>
+					</div>
+				</div>
+			</div>
+		
+			<div style="max-width: 800px">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
 						<div class="panel-title">Cloud logs</div>
 						<div class="pull-right"></div>
 					</div>
@@ -192,7 +206,7 @@ li {
 				</div>
 			</div>
 
-			<div style="max-width: 800px">
+			<div style="max-width: 800px; max-height: 600px">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<div class="panel-title">Added DataID files</div>
@@ -200,8 +214,22 @@ li {
 					</div>
 					<div class="panel-body">
 
-						<ui:insert name="dataIDList">Default content
-		</ui:insert>
+					<ui:insert name="dataIDList">DataID list
+					</ui:insert>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div style="max-width: 800px; max-height: 600px">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title">Statistics</div>
+						<div class="pull-right"></div>
+					</div>
+					<div class="panel-body">
+ 							<ui:insert name="stats">statistics
+					</ui:insert>
 					</div>
 				</div>
 			</div>

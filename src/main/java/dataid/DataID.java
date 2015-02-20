@@ -14,7 +14,7 @@ import dataid.literal.DynamicLODCloudEntryModel;
 import dataid.literal.SubsetModel;
 import dataid.mongodb.actions.ProcessEntry;
 import dataid.server.DataIDBean;
-import dataid.utils.DownloadAndSave; 
+import dataid.utils.DownloadAndSave;
 import dataid.utils.FileUtils;
 import dataid.utils.Timer;
 
@@ -28,84 +28,89 @@ public class DataID {
 	// list of subset and their distributions
 	private List<SubsetModel> distributionsLinks = new ArrayList<SubsetModel>();
 
-	DataIDModel model = new DataIDModel();
+	DataIDModel dataIDModel = new DataIDModel();
 
 	private void load() throws Exception {
-		// if there is at least one distribution make the linksets
+		// if there is at least one distribution, load them
 		Iterator<SubsetModel> iterator = distributionsLinks.iterator();
-		
 
 		while (iterator.hasNext()) {
-			try{
-			SubsetModel subsetModel = iterator.next();
+			try {
+				SubsetModel subsetModel = iterator.next();
 
-			PrepareFiles p = new PrepareFiles();
+				PrepareFiles p = new PrepareFiles();
 
-			// now we need to download the distribution
-			DownloadAndSave downloadedFile = new DownloadAndSave();
-			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
-					"Downloading distribution: " + subsetModel.getDistribution()
-							+ " url.");
+				// now we need to download the distribution
+				DownloadAndSave downloadedFile = new DownloadAndSave();
+				bean.addDisplayMessage(
+						DataIDGeneralProperties.MESSAGE_INFO,
+						"Downloading distribution: "
+								+ subsetModel.getDistribution() + " url.");
 
-			downloadedFile.downloadFile(subsetModel.getDistribution());
+				downloadedFile.downloadFile(subsetModel.getDistribution());
+				
 
-			
-			// instance of dynamic LOD entry to save relevant data
-			DynamicLODCloudEntryModel entry = new DynamicLODCloudEntryModel();
-			entry.setNumberOfObjectTriples(String.valueOf(downloadedFile.objectLines));
+				// instance of dynamic LOD entry to save relevant data
+				DynamicLODCloudEntryModel entry = new DynamicLODCloudEntryModel();
+				entry.setNumberOfObjectTriples(String
+						.valueOf(downloadedFile.objectLines));
 
-			// check if format is ntriples
-			String ext = FilenameUtils.getExtension(downloadedFile.fileName);
-			if (!ext.equals("nt")) {
-				downloadedFile.fileName = p.checkFileFormat(downloadedFile.fileName);
+				// check if format is ntriples
+				String ext = FilenameUtils
+						.getExtension(downloadedFile.fileName);
+				if (!ext.equals("nt")) {
+					downloadedFile.fileName = p
+							.checkFileFormat(downloadedFile.fileName);
 
-				// separating subjects and objects
-				p.separateSubjectAndObject(downloadedFile.fileName);
+					// separating subjects and objects
+					p.separateSubjectAndObject(downloadedFile.fileName);
 
-				downloadedFile.objectFilePath = p.objectFile;
+					downloadedFile.objectFilePath = p.objectFile;
 
-			}
+				}
 
-			// make a filter with subjects
-			GoogleBloomFilter filter;
-			if (downloadedFile.subjectLines != 0) {
-				filter = new GoogleBloomFilter((int) downloadedFile.subjectLines, 0.01);
-			} else {
-				filter = new GoogleBloomFilter(
-						(int) downloadedFile.contentLengthAfterDownloaded / 40, 0.01);
-			}
+				// make a filter with subjects
+				GoogleBloomFilter filter;
+				if (downloadedFile.subjectLines != 0) {
+					filter = new GoogleBloomFilter(
+							(int) downloadedFile.subjectLines, 0.01);
+				} else {
+					filter = new GoogleBloomFilter(
+							(int) downloadedFile.contentLengthAfterDownloaded / 40,
+							0.01);
+				}
 
-			// load file to filter and take the process time
-			FileToFilter f = new FileToFilter();
+				// load file to filter and take the process time
+				FileToFilter f = new FileToFilter();
 
-			Timer timer = new Timer();
-			timer.startTimer();
-			
-			// Loading file to filter
-			f.loadFileToFilter(filter, downloadedFile.fileName);
-			entry.setTimeToCreateFilter(String.valueOf(timer.stopTimer()));
-			
-			entry.setNumberOfTriplesLoadedIntoFilter(String.valueOf(f.subjectsLoadedIntoFilter));
+				Timer timer = new Timer();
+				timer.startTimer();
 
-			// save filter
-			filter.saveFilter(downloadedFile.fileName);
+				// Loading file to filter
+				f.loadFileToFilter(filter, downloadedFile.fileName);
+				entry.setTimeToCreateFilter(String.valueOf(timer.stopTimer()));
 
-			
-			entry.setAccessURL(downloadedFile.url.toString());
-			entry.setByteSize(downloadedFile.contentLength);
-			entry.setDataIDFilePath(downloadedFile.dataIDFilePath);
-			entry.setDatasetURI(subsetModel.getDatasetURI());
-			entry.setObjectPath(downloadedFile.objectFilePath);
-			entry.setSubjectFilterPath(filter.fullFilePath);
-			entry.setSubsetURI(subsetModel.getSubsetURI());
- 
-			// save entry in he mongodb
-			ProcessEntry saveEntry = new ProcessEntry();
-			saveEntry.saveNewMongoDBEntry(entry);			
-			
-			}
-			catch(Exception e){
-				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR, e.getMessage());
+				entry.setNumberOfTriplesLoadedIntoFilter(String
+						.valueOf(f.subjectsLoadedIntoFilter));
+
+				// save filter
+				filter.saveFilter(downloadedFile.fileName);
+
+				entry.setAccessURL(downloadedFile.url.toString());
+				entry.setByteSize(downloadedFile.contentLength);
+				entry.setDataIDFilePath(downloadedFile.dataIDFilePath);
+				entry.setDatasetURI(subsetModel.getDatasetURI());
+				entry.setObjectPath(downloadedFile.objectFilePath);
+				entry.setSubjectFilterPath(filter.fullFilePath);
+				entry.setSubsetURI(subsetModel.getSubsetURI());
+
+				// save entry in he mongodb
+				ProcessEntry saveEntry = new ProcessEntry();
+				saveEntry.saveNewMongoDBEntry(entry);
+
+			} catch (Exception e) {
+				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
+						e.getMessage());
 			}
 
 		}
@@ -123,7 +128,7 @@ public class DataID {
 					"DataID file URL: " + URL + " url.");
 
 			// create jena models
-			name = model.readModel(URL);
+			name = dataIDModel.readModel(URL);
 
 			if (name == null)
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
@@ -137,9 +142,19 @@ public class DataID {
 					"Downloading and parsing distribution.");
 
 			// parse model in order to find distributions
-			int numberOfDistributions = model.parseDistributions(
-					distributionsLinks).size();
-			if (!model.someAccessURLFound)
+			List<SubsetModel> listOfSubsets = dataIDModel
+					.parseDistributions(distributionsLinks);
+			int numberOfDistributions = listOfSubsets.size();
+
+			// update view
+			if (numberOfDistributions > 0) {
+				bean.setDownloadNumberTotalOfDistributions(numberOfDistributions);
+				bean.setDownloadDatasetURI(listOfSubsets.get(0)
+						.getDatasetURI());
+				bean.pushDownloadInfo();
+			}
+
+			if (!dataIDModel.someAccessURLFound)
 				throw new Exception("No dcat:accessURL property found!");
 			else if (numberOfDistributions == 0)
 				throw new Exception("### 0 distribution found! ###");
@@ -147,7 +162,7 @@ public class DataID {
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 						numberOfDistributions + " distribution(s) found");
 
-			// try to create linksets
+			// try to load distributions and make filters
 			load();
 
 		} catch (Exception e) {

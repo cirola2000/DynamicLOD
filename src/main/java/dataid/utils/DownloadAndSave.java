@@ -16,6 +16,7 @@ import org.apache.commons.io.FilenameUtils;
 
 import dataid.DataID;
 import dataid.DataIDGeneralProperties;
+import dataid.server.DataIDBean;
 
 public class DownloadAndSave {
 	private static final int BUFFER_SIZE = 65536;
@@ -192,6 +193,8 @@ public class DownloadAndSave {
 										System.out.println(count
 												+ " registers written");
 										System.out.println("Buffer queue size: "+aint.get());
+										DataID.bean.setDownloadNumberOfTriplesLoaded(count);
+										DataID.bean.pushDownloadInfo();
 									}
 								} catch (ArrayIndexOutOfBoundsException e) {
 									lastLine = u;
@@ -206,6 +209,10 @@ public class DownloadAndSave {
 					}
 
 				}
+				DataID.bean.setDownloadNumberOfTriplesLoaded(count);
+				DataID.bean.setDownloadNumberOfDownloadedDistributions(DataID.bean.getDownloadNumberOfDownloadedDistributions()+1);
+				
+				DataID.bean.pushDownloadInfo();
 				object.close();
 				subject.close();
 			} catch (Exception e) {
