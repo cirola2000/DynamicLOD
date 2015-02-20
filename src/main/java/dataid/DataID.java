@@ -46,7 +46,7 @@ public class DataID {
 						"Downloading distribution: "
 								+ distributionModel.getDistribution() + " url.");
 
-				if(downloadedFile.downloadFile(distributionModel.getDistribution()).equals(""))
+				if(downloadedFile.downloadFile(distributionModel.getDistribution(),bean).equals(""))
 						break;
 				
 				// creating a mongodb distribution object
@@ -84,7 +84,7 @@ public class DataID {
 				timer.startTimer();
 
 				// Loading file to filter
-				f.loadFileToFilter(filter, downloadedFile.fileName);
+				f.loadFileToFilter(filter, downloadedFile.fileName, bean);
 				distributionMongoDBObj.setTimeToCreateFilter(String.valueOf(timer.stopTimer()));
 
 				// save filter

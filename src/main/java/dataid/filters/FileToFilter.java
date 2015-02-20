@@ -11,6 +11,7 @@ import java.util.List;
 import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 import dataid.ontology.Linkset;
+import dataid.server.DataIDBean;
 
 public class FileToFilter {
 
@@ -19,11 +20,11 @@ public class FileToFilter {
 	public List<String> linksUniq = new ArrayList<String>();
 	public int subjectsLoadedIntoFilter = 0;
 
-	public void loadFileToFilter(GoogleBloomFilter filter, String fileName) {
+	public void loadFileToFilter(GoogleBloomFilter filter, String fileName, DataIDBean bean) {
 
 		BufferedReader br = null;
 		
-		DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Loading file to bloom filter: "+ 
+		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Loading file to bloom filter: "+ 
 						DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+fileName);
 		
 		try {
@@ -34,17 +35,17 @@ public class FileToFilter {
 				filter.add(sCurrentLine);
 				subjectsLoadedIntoFilter++;
 			}
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Bloom filter loaded "+subjectsLoadedIntoFilter + " lines.");
+			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Bloom filter loaded "+subjectsLoadedIntoFilter + " lines.");
 			
 		} catch (Exception e) {
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
+			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
 			e.printStackTrace();
 		} finally {
 			try {
 				if (br != null)
 					br.close();
 			} catch (IOException ex) {
-				DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,ex.getMessage());
+				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,ex.getMessage());
 			}
 		}
 		
@@ -63,7 +64,7 @@ public class FileToFilter {
 		}
 		catch(Exception e){
 			e.printStackTrace();
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
+			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
 		}
 
 	}
@@ -76,7 +77,7 @@ public class FileToFilter {
 			String sCurrentLine;
 			
 			br = new BufferedReader(new FileReader(path));
-//			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Searching "+path+" on filter.");
+//			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Searching "+path+" on filter.");
 			
 			while ((sCurrentLine = br.readLine()) != null) {
 				if (filter.compare(sCurrentLine)) { 
@@ -96,14 +97,14 @@ public class FileToFilter {
 			
 			
 		} catch (Exception e) {
-//			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
+//			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
 			e.printStackTrace();
 		} finally {
 			try {
 				if (br != null)
 					br.close();
 			} catch (IOException ex) {
-//				DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,ex.getMessage());
+//				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,ex.getMessage());
 				ex.printStackTrace();
 			}
 		}

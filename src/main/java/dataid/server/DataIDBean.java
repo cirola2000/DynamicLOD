@@ -157,7 +157,7 @@ public class DataIDBean implements Serializable, Runnable {
 
 	public String getDataIDList() {
 		this.dataIDList = Queries.getDataIDs();
-		return this.dataIDList;
+		return dataIDList;
 	}
 
 	public void setDataIDList(String dataIDList) {

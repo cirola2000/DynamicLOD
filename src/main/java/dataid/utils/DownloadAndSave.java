@@ -46,7 +46,7 @@ public class DownloadAndSave {
 	Queue<String> bufferQueue = new ConcurrentLinkedQueue<String>();
 	boolean done = false;
 
-	public String downloadFile(String fileURL) throws Exception {
+	public String downloadFile(String fileURL, DataIDBean bean) throws Exception {
 		url = new URL(fileURL);
 		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
 		int responseCode = httpConn.getResponseCode();
@@ -63,7 +63,7 @@ public class DownloadAndSave {
 			
 			// check if distribution already exists
 			if(! checkWheterDownload(fileURL, String.valueOf(httpContentLength), httpLastModified )){
-				DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
+				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 						"File previously downloaded. No modification found. " + fileURL);
 				return "";
 			}
@@ -109,7 +109,9 @@ public class DownloadAndSave {
 
 			extension = FilenameUtils.getExtension(fileName);
 			if (extension.equals("nt")) {
-				split_and_store.start();
+//				split_and_store.start();
+				Runnable r = new StartThread(bean);
+				new Thread(r).start();
 				while (-1 != (n = inputStream.read(buffer))) {
 					String str = new String(buffer, "UTF-8");
 					bufferQueue.add(str);
@@ -145,18 +147,142 @@ public class DownloadAndSave {
 				httpContentLength = f.length();
 			}
 
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 					"File downloaded: " + fileName);
 
 			return dataIDFilePath;
 		} else {
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_WARN,
+			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_WARN,
 					"No file to download. Server replied HTTP code: "
 							+ responseCode);
 		}
 		httpConn.disconnect();
 		return null;
 	}
+	
+	public class StartThread implements Runnable{
+
+		
+		
+		DataIDBean bean;
+		
+		
+		public StartThread(DataIDBean bean) {
+			this.bean=bean;
+		}
+		
+		
+		public synchronized void run() {
+
+			try {
+				FileOutputStream subject = new FileOutputStream(
+						DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
+								+ fileName);
+				FileOutputStream object = new FileOutputStream(
+						DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
+								+ fileName);
+
+				String lastLine = null;
+				String tmpLastSubject = "";
+				int count = 0;
+				String u2[];
+				String u3[];
+				String tmp;
+				String o[];
+				while (!done || (bufferQueue.size() > 0)) {
+					if (bufferQueue.size() > 0)
+						aint.decrementAndGet();
+					try {
+						o = bufferQueue.remove().split("\n");
+						if (lastLine != null) {
+							o[0] = lastLine.concat(o[0]);
+							lastLine = null;
+						}
+
+						for (String u : o) {
+							if (!u.startsWith("#")) {
+								try {
+									u2 = u.split(" ");
+									u3 = u.split("> <");
+
+									// checking here offset
+									tmp = u3[1];
+									tmp = u2[3];
+
+									if (!tmpLastSubject.equals(u2[0])) {
+										tmpLastSubject = u2[0];
+										subject.write(new String(u2[0] + "\n")
+												.getBytes());
+										subjectLines++;
+									}
+									if (!u2[2].startsWith("\"")) {
+										object.write(new String(u2[2] + "\n")
+												.getBytes());
+										objectLines++;
+										count++;
+									}
+									if (count % 100000 == 0) {
+										System.out.println(count
+												+ " registers written");
+										System.out
+												.println("Buffer queue size: "
+														+ aint.get());
+										bean
+												.setDownloadNumberOfTriplesLoaded(count);
+										bean.pushDownloadInfo();
+									}
+								} catch (ArrayIndexOutOfBoundsException e) {
+									lastLine = u;
+								}
+							}
+						}
+
+					} catch (NoSuchElementException em) {
+						// em.printStackTrace();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+				}
+				bean.setDownloadNumberOfTriplesLoaded(count);
+				bean
+						.setDownloadNumberOfDownloadedDistributions(bean
+								.getDownloadNumberOfDownloadedDistributions() + 1);
+
+				bean.pushDownloadInfo();
+				object.close();
+				subject.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	};
 
 	Thread split_and_store = new Thread() {
 
@@ -259,5 +385,6 @@ public class DownloadAndSave {
 		}
 		return true;
 	}
+	
 
 }
