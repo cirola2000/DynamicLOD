@@ -17,6 +17,7 @@ import org.apache.commons.io.FilenameUtils;
 
 import dataid.DataID;
 import dataid.DataIDGeneralProperties;
+import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
 
 public class DownloadAndSave {
@@ -58,7 +59,14 @@ public class DownloadAndSave {
 			httpContentType = httpConn.getContentType();
 			httpContentLength = httpConn.getContentLength();
 			if (httpConn.getLastModified() > 0)
-				httpLastModified = new Date(httpConn.getLastModified()).toString();
+				httpLastModified = String.valueOf(httpConn.getLastModified());
+			
+			// check if distribution already exists
+			if(! checkWheterDownload(fileURL, String.valueOf(httpContentLength), httpLastModified )){
+				DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
+						"File previously downloaded. No modification found. " + fileURL);
+				return "";
+			}
 
 			if (httpDisposition != null) {
 				// extracts file name from header field
@@ -239,5 +247,17 @@ public class DownloadAndSave {
 		}
 
 	};
+	
+	private boolean checkWheterDownload(String uri, String httpContentLength, String httpLastModified){
+		try{
+		DistributionMongoDBObject distribution = new DistributionMongoDBObject(uri);
+		if (distribution.getHttpByteSize().equals(httpContentLength) && distribution.getHttpLastModified().equals(httpLastModified))
+				return false;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return true;
+	}
 
 }

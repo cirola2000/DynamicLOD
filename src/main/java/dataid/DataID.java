@@ -31,11 +31,11 @@ public class DataID {
 
 	private void load() throws Exception {
 		// if there is at least one distribution, load them
-		Iterator<SubsetModel> iterator = distributionsLinks.iterator();
+		Iterator<SubsetModel> distributions = distributionsLinks.iterator();
 
-		while (iterator.hasNext()) {
+		while (distributions.hasNext()) {
 			try {
-				SubsetModel subsetModel = iterator.next();
+				SubsetModel distributionModel = distributions.next();
 				
 				PrepareFiles p = new PrepareFiles();
 
@@ -44,9 +44,10 @@ public class DataID {
 				bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_INFO,
 						"Downloading distribution: "
-								+ subsetModel.getDistribution() + " url.");
+								+ distributionModel.getDistribution() + " url.");
 
-				downloadedFile.downloadFile(subsetModel.getDistribution());
+				if(downloadedFile.downloadFile(distributionModel.getDistribution()).equals(""))
+						break;
 				
 				// creating a mongodb distribution object
 				DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(downloadedFile.url.toString());
@@ -97,7 +98,7 @@ public class DataID {
 				distributionMongoDBObj.setHttpLastModified(downloadedFile.httpLastModified);
 				distributionMongoDBObj.setObjectPath(downloadedFile.objectFilePath);
 				distributionMongoDBObj.setSubjectFilterPath(filter.fullFilePath);
-				distributionMongoDBObj.setTopDataset(subsetModel.getDatasetURI());
+				distributionMongoDBObj.setTopDataset(distributionModel.getDatasetURI());
 				distributionMongoDBObj.setNumberOfTriplesLoadedIntoFilter(String.valueOf(f.subjectsLoadedIntoFilter));
 				distributionMongoDBObj.setTriples(String.valueOf(bean.getDownloadNumberOfTriplesLoaded()));
 				
