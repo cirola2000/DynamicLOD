@@ -10,9 +10,8 @@ import dataid.files.PrepareFiles;
 import dataid.filters.FileToFilter;
 import dataid.filters.GoogleBloomFilter;
 import dataid.jena.DataIDModel;
-import dataid.literal.DynamicLODCloudEntryModel;
 import dataid.literal.SubsetModel;
-import dataid.mongodb.actions.ProcessEntry;
+import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
 import dataid.utils.DownloadAndSave;
 import dataid.utils.FileUtils;
@@ -37,7 +36,7 @@ public class DataID {
 		while (iterator.hasNext()) {
 			try {
 				SubsetModel subsetModel = iterator.next();
-
+				
 				PrepareFiles p = new PrepareFiles();
 
 				// now we need to download the distribution
@@ -49,13 +48,10 @@ public class DataID {
 
 				downloadedFile.downloadFile(subsetModel.getDistribution());
 				
+				// creating a mongodb distribution object
+				DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(downloadedFile.url.toString());
 
-				// instance of dynamic LOD entry to save relevant data
-				DynamicLODCloudEntryModel entry = new DynamicLODCloudEntryModel();
-				entry.setNumberOfObjectTriples(String
-						.valueOf(downloadedFile.objectLines));
-
-				// check if format is ntriples
+				// check if format is N-triples
 				String ext = FilenameUtils
 						.getExtension(downloadedFile.fileName);
 				if (!ext.equals("nt")) {
@@ -88,25 +84,24 @@ public class DataID {
 
 				// Loading file to filter
 				f.loadFileToFilter(filter, downloadedFile.fileName);
-				entry.setTimeToCreateFilter(String.valueOf(timer.stopTimer()));
-
-				entry.setNumberOfTriplesLoadedIntoFilter(String
-						.valueOf(f.subjectsLoadedIntoFilter));
+				distributionMongoDBObj.setTimeToCreateFilter(String.valueOf(timer.stopTimer()));
 
 				// save filter
 				filter.saveFilter(downloadedFile.fileName);
-
-				entry.setAccessURL(downloadedFile.url.toString());
-				entry.setByteSize(downloadedFile.contentLength);
-				entry.setDataIDFilePath(downloadedFile.dataIDFilePath);
-				entry.setDatasetURI(subsetModel.getDatasetURI());
-				entry.setObjectPath(downloadedFile.objectFilePath);
-				entry.setSubjectFilterPath(filter.fullFilePath);
-				entry.setSubsetURI(subsetModel.getSubsetURI());
-
-				// save entry in he mongodb
-				ProcessEntry saveEntry = new ProcessEntry();
-				saveEntry.saveNewMongoDBEntry(entry);
+				
+				// save distribution in a mongodb object
+				distributionMongoDBObj.setNumberOfObjectTriples(String.valueOf(downloadedFile.objectLines));
+				distributionMongoDBObj.setAccessUrl(downloadedFile.url.toString());
+				distributionMongoDBObj.setHttpByteSize(String.valueOf(downloadedFile.httpContentLength)); 
+				distributionMongoDBObj.setHttpFormat(downloadedFile.httpContentType);
+				distributionMongoDBObj.setHttpLastModified(downloadedFile.httpLastModified);
+				distributionMongoDBObj.setObjectPath(downloadedFile.objectFilePath);
+				distributionMongoDBObj.setSubjectFilterPath(filter.fullFilePath);
+				distributionMongoDBObj.setTopDataset(subsetModel.getDatasetURI());
+				distributionMongoDBObj.setNumberOfTriplesLoadedIntoFilter(String.valueOf(f.subjectsLoadedIntoFilter));
+				distributionMongoDBObj.setTriples(String.valueOf(bean.getDownloadNumberOfTriplesLoaded()));
+				
+				distributionMongoDBObj.updateObject();
 
 			} catch (Exception e) {
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,

@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -22,19 +23,23 @@ public class DownloadAndSave {
 	private static final int BUFFER_SIZE = 65536;
 
 	public String fileName = "";
-	public String disposition = null;
-	public String contentType = null;
-	public String dataIDFilePath = null;
 
+	// HTTP header fields
+	public String httpDisposition = null;
+	public String httpContentType = null;
+	public double httpContentLength;
+	public String httpLastModified = "0";
+
+	// Paths
+	public String dataIDFilePath = null;
 	public String objectFilePath;
 
 	public URL url = null;
 
-	public double contentLength;
 	public double contentLengthAfterDownloaded;
 	public int subjectLines = 0;
 	public int objectLines = 0;
-	
+
 	public AtomicInteger aint = new AtomicInteger(0);
 
 	Queue<String> bufferQueue = new ConcurrentLinkedQueue<String>();
@@ -45,18 +50,22 @@ public class DownloadAndSave {
 		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
 		int responseCode = httpConn.getResponseCode();
 
-		// always check HTTP response code first
+		// check HTTP response code first
 		if (responseCode == HttpURLConnection.HTTP_OK) {
-			disposition = httpConn.getHeaderField("Content-Disposition");
-			contentType = httpConn.getContentType();
-			contentLength = httpConn.getContentLength();
 
-			if (disposition != null) {
+			// get some data from headers
+			httpDisposition = httpConn.getHeaderField("Content-Disposition");
+			httpContentType = httpConn.getContentType();
+			httpContentLength = httpConn.getContentLength();
+			if (httpConn.getLastModified() > 0)
+				httpLastModified = new Date(httpConn.getLastModified()).toString();
+
+			if (httpDisposition != null) {
 				// extracts file name from header field
-				int index = disposition.indexOf("filename=");
+				int index = httpDisposition.indexOf("filename=");
 				if (index > 0) {
-					fileName = disposition.substring(index + 10,
-							disposition.length() - 1);
+					fileName = httpDisposition.substring(index + 10,
+							httpDisposition.length() - 1);
 				}
 			} else {
 				// extracts file name from URL
@@ -65,10 +74,11 @@ public class DownloadAndSave {
 			}
 			DecimalFormat df = new DecimalFormat("#.##");
 
-			System.out.println("Content-Type = " + contentType);
-			System.out.println("Content-Disposition = " + disposition);
+			System.out.println("Content-Type = " + httpContentType);
+			System.out.println("Last-Modified = " + httpLastModified);
+			System.out.println("Content-Disposition = " + httpDisposition);
 			System.out.println("Content-Length = "
-					+ df.format(contentLength / 1024 / 1024) + " MB");
+					+ df.format(httpContentLength / 1024 / 1024) + " MB");
 			System.out.println("fileName = " + fileName);
 
 			// opens input stream from the HTTP connection
@@ -82,7 +92,7 @@ public class DownloadAndSave {
 						httpConn.getInputStream(), true);
 				fileName = fileName.replace(".bz2", "");
 			}
-			
+
 			dataIDFilePath = DataIDGeneralProperties.BASE_PATH + fileName;
 			objectFilePath = DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
 					+ fileName;
@@ -98,9 +108,11 @@ public class DownloadAndSave {
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded
 							+ n;
 					aint.incrementAndGet();
-					while(bufferQueue.size()>900);
+					while (bufferQueue.size() > 900)
+						;
 				}
-				while(bufferQueue.size()>0);
+				while (bufferQueue.size() > 0)
+					;
 			} else if (extension.equals("ttl") || extension.equals("rdf")) {
 				int bytesRead = -1;
 				FileOutputStream outputStream = new FileOutputStream(
@@ -120,9 +132,9 @@ public class DownloadAndSave {
 			done = true;
 
 			// update file length
-			if (contentLength < 1) {
+			if (httpContentLength < 1) {
 				File f = new File(dataIDFilePath);
-				contentLength = f.length();
+				httpContentLength = f.length();
 			}
 
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
@@ -158,8 +170,8 @@ public class DownloadAndSave {
 				String tmp;
 				String o[];
 				while (!done || (bufferQueue.size() > 0)) {
-					if(bufferQueue.size() > 0)
-					aint.decrementAndGet();
+					if (bufferQueue.size() > 0)
+						aint.decrementAndGet();
 					try {
 						o = bufferQueue.remove().split("\n");
 						if (lastLine != null) {
@@ -192,8 +204,11 @@ public class DownloadAndSave {
 									if (count % 100000 == 0) {
 										System.out.println(count
 												+ " registers written");
-										System.out.println("Buffer queue size: "+aint.get());
-										DataID.bean.setDownloadNumberOfTriplesLoaded(count);
+										System.out
+												.println("Buffer queue size: "
+														+ aint.get());
+										DataID.bean
+												.setDownloadNumberOfTriplesLoaded(count);
 										DataID.bean.pushDownloadInfo();
 									}
 								} catch (ArrayIndexOutOfBoundsException e) {
@@ -210,8 +225,10 @@ public class DownloadAndSave {
 
 				}
 				DataID.bean.setDownloadNumberOfTriplesLoaded(count);
-				DataID.bean.setDownloadNumberOfDownloadedDistributions(DataID.bean.getDownloadNumberOfDownloadedDistributions()+1);
-				
+				DataID.bean
+						.setDownloadNumberOfDownloadedDistributions(DataID.bean
+								.getDownloadNumberOfDownloadedDistributions() + 1);
+
 				DataID.bean.pushDownloadInfo();
 				object.close();
 				subject.close();

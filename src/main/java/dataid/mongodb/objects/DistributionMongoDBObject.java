@@ -18,8 +18,6 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	public static final String PARENT_DATASETS = "parentDataset";
 
-	public static final String BYTE_SIZE = "byteSize";
-
 	public static final String TOP_DATASET = "topDataset";
 
 	public static final String SUBJECT_FILTER_PATH = "subjectFilterPath";
@@ -33,13 +31,19 @@ public class DistributionMongoDBObject extends DataIDDB {
 	public static final String TIME_TO_CREATE_FILTER = "timeToCreateFilter";
 	
 	public static final String TITLE = "title";
+
+	public static final String HTTP_BYTE_SIZE = "httpByteSize";
+	
+	public static final String HTTP_FORMAT = "httpFormat";
+
+	public static final String HTTP_LAST_MODIFIED = "httpLastModified";
+
+	public static final String TRIPLES = "triples";	
 	
 
 	private String accessUrl;
 
 	private String parentDataset;
-
-	private String byteSize;
 
 	private String topDataset;
 
@@ -54,6 +58,14 @@ public class DistributionMongoDBObject extends DataIDDB {
 	private String timeToCreateFilter;
 
 	private String title;
+
+	private String httpByteSize;
+
+	private String httpFormat;
+	
+	private String httpLastModified;
+
+	private String triples;
 
 	
 	
@@ -86,7 +98,10 @@ public class DistributionMongoDBObject extends DataIDDB {
 		try {
 			mongoDBObject.put(ACCESS_URL, accessUrl);
 			mongoDBObject.put(PARENT_DATASETS, defaultDatasets);
-			mongoDBObject.put(BYTE_SIZE, byteSize);
+			mongoDBObject.put(HTTP_BYTE_SIZE, httpByteSize);
+			mongoDBObject.put(HTTP_FORMAT, httpFormat);
+			mongoDBObject.put(HTTP_LAST_MODIFIED, httpLastModified);
+			mongoDBObject.put(TRIPLES, triples);
 			mongoDBObject.put(TOP_DATASET, topDataset);
 			mongoDBObject.put(SUBJECT_FILTER_PATH, subjectFilterPath);
 			mongoDBObject.put(OBJECT_PATH, objectPath);
@@ -118,11 +133,14 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 		if (obj != null) {
 			accessUrl = (String) obj.get(ACCESS_URL);
-			byteSize = (String) obj.get(BYTE_SIZE);
+			httpByteSize = (String) obj.get(HTTP_BYTE_SIZE);
 			topDataset = (String) obj.get(TOP_DATASET);
 			subjectFilterPath = (String) obj.get(SUBJECT_FILTER_PATH);
 			objectPath = (String) obj.get(OBJECT_PATH);
 			title = (String) obj.get(TITLE);
+			httpFormat = (String) obj.get(HTTP_FORMAT);
+			httpLastModified= (String) obj.get(HTTP_LAST_MODIFIED);
+			triples = (String) obj.get(TRIPLES);
 			numberOfTriplesLoadedIntoFilter = (String) obj
 					.get(NUMBER_OF_TRIPLES_LOADED_INTO_FILTER);
 			numberOfObjectTriples = (String) obj.get(NUMBER_OF_OBJECTS_TRIPLES);
@@ -155,12 +173,12 @@ public class DistributionMongoDBObject extends DataIDDB {
 		this.parentDataset = parentDataset;
 	}
 
-	public String getByteSize() {
-		return byteSize;
+	public String getHttpByteSize() {
+		return httpByteSize;
 	}
 
-	public void setByteSize(String byteSize) {
-		this.byteSize = byteSize;
+	public void setHttpByteSize(String httpByteSize) {
+		this.httpByteSize = httpByteSize;
 	}
 
 	public String getTopDataset() {
@@ -218,6 +236,30 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getHttpFormat() {
+		return httpFormat;
+	}
+
+	public void setHttpFormat(String httpFormat) {
+		this.httpFormat = httpFormat;
+	}
+
+	public String getHttpLastModified() {
+		return httpLastModified;
+	}
+
+	public void setHttpLastModified(String httpLastModified) {
+		this.httpLastModified = httpLastModified;
+	}
+
+	public String getTriples() {
+		return triples;
+	}
+
+	public void setTriples(String triples) {
+		this.triples = triples;
 	}
 	
 	
