@@ -160,12 +160,10 @@ public class DownloadAndSave {
 		return null;
 	}
 	
-	public class StartThread implements Runnable{
-
-		
-		
-		DataIDBean bean;
-		
+	
+	
+	public class StartThread implements Runnable{		
+		DataIDBean bean;	
 		
 		public StartThread(DataIDBean bean) {
 			this.bean=bean;

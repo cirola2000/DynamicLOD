@@ -30,6 +30,8 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	public static final String TIME_TO_CREATE_FILTER = "timeToCreateFilter";
 	
+	public static final String AUTHORITY = "authority";
+	
 	public static final String TITLE = "title";
 
 	public static final String HTTP_BYTE_SIZE = "httpByteSize";
@@ -67,7 +69,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	private String triples;
 
-	
+	private String authority;
 	
 	public DistributionMongoDBObject(String uri) {
 		super(COLLECTION_NAME, uri);
@@ -110,6 +112,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 			mongoDBObject.put(NUMBER_OF_OBJECTS_TRIPLES, numberOfObjectTriples);
 			mongoDBObject.put(TIME_TO_CREATE_FILTER, timeToCreateFilter);
 			mongoDBObject.put(TITLE, title);
+			mongoDBObject.put(AUTHORITY, authority);
 
 			insert();
 
@@ -144,6 +147,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 			numberOfTriplesLoadedIntoFilter = (String) obj
 					.get(NUMBER_OF_TRIPLES_LOADED_INTO_FILTER);
 			numberOfObjectTriples = (String) obj.get(NUMBER_OF_OBJECTS_TRIPLES);
+			authority= (String) obj.get(AUTHORITY);
 
 			// loading default datasets to object
 			BasicDBList defaultDatasetList = (BasicDBList) obj
@@ -260,6 +264,14 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	public void setTriples(String triples) {
 		this.triples = triples;
+	}
+
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 	
 	

@@ -1,5 +1,9 @@
 package dataid;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -36,7 +40,7 @@ public class DataID {
 		while (distributions.hasNext()) {
 			try {
 				SubsetModel distributionModel = distributions.next();
-				
+
 				PrepareFiles p = new PrepareFiles();
 
 				// now we need to download the distribution
@@ -46,11 +50,13 @@ public class DataID {
 						"Downloading distribution: "
 								+ distributionModel.getDistribution() + " url.");
 
-				if(downloadedFile.downloadFile(distributionModel.getDistribution(),bean).equals(""))
-						break;
-				
+				if (downloadedFile.downloadFile(
+						distributionModel.getDistribution(), bean).equals(""))
+					break;
+
 				// creating a mongodb distribution object
-				DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(downloadedFile.url.toString());
+				DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
+						downloadedFile.url.toString());
 
 				// check if format is N-triples
 				String ext = FilenameUtils
@@ -77,6 +83,10 @@ public class DataID {
 							0.01);
 				}
 
+				// get authority domain
+				String authority = getAuthoroty(DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
+						+ downloadedFile.fileName);
+
 				// load file to filter and take the process time
 				FileToFilter f = new FileToFilter();
 
@@ -85,23 +95,37 @@ public class DataID {
 
 				// Loading file to filter
 				f.loadFileToFilter(filter, downloadedFile.fileName, bean);
-				distributionMongoDBObj.setTimeToCreateFilter(String.valueOf(timer.stopTimer()));
+				distributionMongoDBObj.setTimeToCreateFilter(String
+						.valueOf(timer.stopTimer()));
 
 				// save filter
 				filter.saveFilter(downloadedFile.fileName);
-				
+
+
 				// save distribution in a mongodb object
-				distributionMongoDBObj.setNumberOfObjectTriples(String.valueOf(downloadedFile.objectLines));
-				distributionMongoDBObj.setAccessUrl(downloadedFile.url.toString());
-				distributionMongoDBObj.setHttpByteSize(String.valueOf(downloadedFile.httpContentLength)); 
-				distributionMongoDBObj.setHttpFormat(downloadedFile.httpContentType);
-				distributionMongoDBObj.setHttpLastModified(downloadedFile.httpLastModified);
-				distributionMongoDBObj.setObjectPath(downloadedFile.objectFilePath);
-				distributionMongoDBObj.setSubjectFilterPath(filter.fullFilePath);
-				distributionMongoDBObj.setTopDataset(distributionModel.getDatasetURI());
-				distributionMongoDBObj.setNumberOfTriplesLoadedIntoFilter(String.valueOf(f.subjectsLoadedIntoFilter));
-				distributionMongoDBObj.setTriples(String.valueOf(bean.getDownloadNumberOfTriplesLoaded()));
-				
+				distributionMongoDBObj.setNumberOfObjectTriples(String
+						.valueOf(downloadedFile.objectLines));
+				distributionMongoDBObj.setAccessUrl(downloadedFile.url
+						.toString());
+				distributionMongoDBObj.setHttpByteSize(String
+						.valueOf(downloadedFile.httpContentLength));
+				distributionMongoDBObj
+						.setHttpFormat(downloadedFile.httpContentType);
+				distributionMongoDBObj
+						.setHttpLastModified(downloadedFile.httpLastModified);
+				distributionMongoDBObj
+						.setObjectPath(downloadedFile.objectFilePath);
+				distributionMongoDBObj
+						.setSubjectFilterPath(filter.fullFilePath);
+				distributionMongoDBObj.setTopDataset(distributionModel
+						.getDatasetURI());
+				distributionMongoDBObj
+						.setNumberOfTriplesLoadedIntoFilter(String
+								.valueOf(f.subjectsLoadedIntoFilter));
+				distributionMongoDBObj.setTriples(String.valueOf(bean
+						.getDownloadNumberOfTriplesLoaded()));
+				distributionMongoDBObj.setAuthority(authority);
+
 				distributionMongoDBObj.updateObject();
 
 			} catch (Exception e) {
@@ -145,8 +169,7 @@ public class DataID {
 			// update view
 			if (numberOfDistributions > 0) {
 				bean.setDownloadNumberTotalOfDistributions(numberOfDistributions);
-				bean.setDownloadDatasetURI(listOfSubsets.get(0)
-						.getDatasetURI());
+				bean.setDownloadDatasetURI(listOfSubsets.get(0).getDatasetURI());
 				bean.pushDownloadInfo();
 			}
 
@@ -168,7 +191,24 @@ public class DataID {
 		}
 
 		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "end");
+	}
 
+		private String getAuthoroty(String filePath) {
+		String authority="";
+		FileReader namereader;
+		try {
+			namereader = new FileReader(new File(filePath));
+			BufferedReader in = new BufferedReader(namereader);
+			String tmp = in.readLine();
+			tmp = tmp.substring(1,tmp.length()-1);	
+			URL url = new URL(tmp);
+			authority = url.getProtocol()+"://"+url.getHost();
+			namereader.close();			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return authority;
 	}
 
 }
