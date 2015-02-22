@@ -124,6 +124,10 @@ public class DataID {
 				distributionMongoDBObj.setTriples(String.valueOf(bean
 						.getDownloadNumberOfTriplesLoaded()));
 				distributionMongoDBObj.setAuthority(authority);
+				
+				for (String domain : downloadedFile.authorityDomains) {
+					distributionMongoDBObj.addAuthorityObjects(domain);
+				}
 
 				distributionMongoDBObj.updateObject();
 

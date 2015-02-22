@@ -1,27 +1,31 @@
 package dataid.utils;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DecimalFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.io.FilenameUtils;
 
-import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
 
 public class DownloadAndSave {
-	private static final int BUFFER_SIZE = 65536;
+	private static final int BUFFER_SIZE = 2048;
 
 	public String fileName = "";
 
@@ -41,12 +45,17 @@ public class DownloadAndSave {
 	public int subjectLines = 0;
 	public int objectLines = 0;
 
+	public ArrayList<String> authorityDomains = new ArrayList<String>();
+
 	public AtomicInteger aint = new AtomicInteger(0);
 
 	Queue<String> bufferQueue = new ConcurrentLinkedQueue<String>();
-	boolean done = false;
+	Queue<String> objectQueue = new ConcurrentLinkedQueue<String>();
+	boolean doneReadingFile = false;
+	boolean doneSplittingString = false;
 
-	public String downloadFile(String fileURL, DataIDBean bean) throws Exception {
+	public String downloadFile(String fileURL, DataIDBean bean)
+			throws Exception {
 		url = new URL(fileURL);
 		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
 		int responseCode = httpConn.getResponseCode();
@@ -60,11 +69,13 @@ public class DownloadAndSave {
 			httpContentLength = httpConn.getContentLength();
 			if (httpConn.getLastModified() > 0)
 				httpLastModified = String.valueOf(httpConn.getLastModified());
-			
+
 			// check if distribution already exists
-			if(! checkWheterDownload(fileURL, String.valueOf(httpContentLength), httpLastModified )){
+			if (!checkWheterDownload(fileURL,
+					String.valueOf(httpContentLength), httpLastModified)) {
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
-						"File previously downloaded. No modification found. " + fileURL);
+						"File previously downloaded. No modification found. "
+								+ fileURL);
 				return "";
 			}
 
@@ -109,20 +120,34 @@ public class DownloadAndSave {
 
 			extension = FilenameUtils.getExtension(fileName);
 			if (extension.equals("nt")) {
-//				split_and_store.start();
-				Runnable r = new StartThread(bean);
+				// split_and_store.start();
+				Runnable r = new SplitAndStore(bean);
 				new Thread(r).start();
+
+				 Runnable r2 = new AddAuthorityObject();
+				 new Thread(r2).start();
+
+				String str = "";
 				while (-1 != (n = inputStream.read(buffer))) {
-					String str = new String(buffer, "UTF-8");
+
+					for (int i = 0; i < n; i++) {
+
+						str = str + (char) buffer[i];
+					}
 					bufferQueue.add(str);
+					str = "";
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded
 							+ n;
 					aint.incrementAndGet();
-					while (bufferQueue.size() > 900)
-						;
+
+					// don't allow queue size bigger than 900;
+					while (bufferQueue.size() > 900) {
+					}
+
 				}
 				while (bufferQueue.size() > 0)
 					;
+
 			} else if (extension.equals("ttl") || extension.equals("rdf")) {
 				int bytesRead = -1;
 				FileOutputStream outputStream = new FileOutputStream(
@@ -139,7 +164,7 @@ public class DownloadAndSave {
 			} else
 				throw new Exception("RDF format not supported: " + extension);
 
-			done = true;
+			doneReadingFile = true;
 
 			// update file length
 			if (httpContentLength < 1) {
@@ -159,230 +184,265 @@ public class DownloadAndSave {
 		httpConn.disconnect();
 		return null;
 	}
-	
-	
-	
-	public class StartThread implements Runnable{		
-		DataIDBean bean;	
-		
-		public StartThread(DataIDBean bean) {
-			this.bean=bean;
+
+	// Thread reads string buffer, split objects and subjects, and saves in the
+	// disk
+	public class SplitAndStore implements Runnable {
+		DataIDBean bean;
+
+		public SplitAndStore(DataIDBean bean) {
+			this.bean = bean;
 		}
-		
-		
+
 		public synchronized void run() {
 
 			try {
+
+				// creates subject file in disk
 				FileOutputStream subject = new FileOutputStream(
 						DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
 								+ fileName);
+
+				// creates object file in disk
 				FileOutputStream object = new FileOutputStream(
 						DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
 								+ fileName);
 
-				String lastLine = null;
+				String lastLine = "";
 				String tmpLastSubject = "";
 				int count = 0;
-				String u2[];
-				String u3[];
-				String tmp;
-				String o[];
-				while (!done || (bufferQueue.size() > 0)) {
-					if (bufferQueue.size() > 0)
+				int ciro = 0;
+
+				// starts reading buffer queue
+				while (!doneReadingFile) {
+					while (bufferQueue.size() > 0) {
 						aint.decrementAndGet();
-					try {
-						o = bufferQueue.remove().split("\n");
-						if (lastLine != null) {
-							o[0] = lastLine.concat(o[0]);
-							lastLine = null;
-						}
+						try {
+							String o[];
+							o = bufferQueue.remove().split("\n");
+							if (!lastLine.equals("")) {
+								o[0] = lastLine.concat(o[0]);
 
-						for (String u : o) {
-							if (!u.startsWith("#")) {
-								try {
-									u2 = u.split(" ");
-									u3 = u.split("> <");
+								lastLine = "";
+							}
+							// System.out.println(o[0]);
 
-									// checking here offset
-									tmp = u3[1];
-									tmp = u2[3];
+							for (int q = 0; q < o.length; q++) {
+								String u = o[q];
+								if (!u.startsWith("#")) {
+									try {
 
-									if (!tmpLastSubject.equals(u2[0])) {
-										tmpLastSubject = u2[0];
-										subject.write(new String(u2[0] + "\n")
-												.getBytes());
-										subjectLines++;
-									}
-									if (!u2[2].startsWith("\"")) {
-										object.write(new String(u2[2] + "\n")
-												.getBytes());
-										objectLines++;
+										Pattern pattern = Pattern
+										// .compile("^(<[^>]+>)\\s+(<[^>]+>)\\s(.+[>|\"]).*");
+										// .compile("^(<[^>]+>)\\s+(<[^>]+>)\\s(.+[>|\"].*)\\s\\.");
+												.compile("^(<[^>]+>)\\s+(<[^>]+>)\\s(.*)(\\s\\.)");
+
+										// System.out.println(u);
+										Matcher matcher = pattern.matcher(u);
+										if (!matcher.matches()) {
+											throw new ArrayIndexOutOfBoundsException();
+										}
+
+										// get subject and save to file
+										if (!tmpLastSubject.equals(matcher
+												.group(1))) {
+											tmpLastSubject = matcher.group(1);
+											subject.write(new String(matcher
+													.group(1) + "\n")
+													.getBytes());
+											subjectLines++;
+										}
+
+										// get object (make sure that its a
+										// resource
+										// and not a literal), add to queue and
+										// save
+										// to file
+										if (!matcher.group(3).startsWith("\"")) {
+											object.write(new String(matcher
+													.group(3) + "\n")
+													.getBytes());
+
+											// add object to object queue (the
+											// queue
+											// is read by other thread)
+											objectQueue.add(matcher.group(3));
+											objectLines++;
+										}
 										count++;
+
+										// send message to view
+										if (count % 100000 == 0) {
+											System.out.println(count
+													+ " registers written");
+											System.out
+													.println("Buffer queue size: "
+															+ aint.get());
+											bean.setDownloadNumberOfTriplesLoaded(count);
+											bean.pushDownloadInfo();
+										}
+
+									} catch (ArrayIndexOutOfBoundsException e) {
+										// e.printStackTrace();
+										lastLine = u;
 									}
-									if (count % 100000 == 0) {
-										System.out.println(count
-												+ " registers written");
-										System.out
-												.println("Buffer queue size: "
-														+ aint.get());
-										bean
-												.setDownloadNumberOfTriplesLoaded(count);
-										bean.pushDownloadInfo();
-									}
-								} catch (ArrayIndexOutOfBoundsException e) {
-									lastLine = u;
 								}
 							}
+
+						} catch (NoSuchElementException em) {
+							// em.printStackTrace();
+						} catch (Exception e) {
+							e.printStackTrace();
 						}
 
-					} catch (NoSuchElementException em) {
-						// em.printStackTrace();
-					} catch (Exception e) {
-						e.printStackTrace();
 					}
-
 				}
 				bean.setDownloadNumberOfTriplesLoaded(count);
-				bean
-						.setDownloadNumberOfDownloadedDistributions(bean
-								.getDownloadNumberOfDownloadedDistributions() + 1);
+				bean.setDownloadNumberOfDownloadedDistributions(bean
+						.getDownloadNumberOfDownloadedDistributions() + 1);
 
 				bean.pushDownloadInfo();
 				object.close();
 				subject.close();
+				doneSplittingString = true;
+
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	};
 
-	Thread split_and_store = new Thread() {
+	public class AddAuthorityObject implements Runnable {
 
 		public synchronized void run() {
+			String obj = "";
+			while (!doneSplittingString) {
+				while (objectQueue.size() > 0) {
+					obj = objectQueue.remove();
+					String authority = "";
 
-			try {
-				FileOutputStream subject = new FileOutputStream(
-						DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
-								+ fileName);
-				FileOutputStream object = new FileOutputStream(
-						DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
-								+ fileName);
-
-				String lastLine = null;
-				String tmpLastSubject = "";
-				int count = 0;
-				String u2[];
-				String u3[];
-				String tmp;
-				String o[];
-				while (!done || (bufferQueue.size() > 0)) {
-					if (bufferQueue.size() > 0)
-						aint.decrementAndGet();
+					URL url;
 					try {
-						o = bufferQueue.remove().split("\n");
-						if (lastLine != null) {
-							o[0] = lastLine.concat(o[0]);
-							lastLine = null;
-						}
-
-						for (String u : o) {
-							if (!u.startsWith("#")) {
-								try {
-									u2 = u.split(" ");
-									u3 = u.split("> <");
-
-									// checking here offset
-									tmp = u3[1];
-									tmp = u2[3];
-
-									if (!tmpLastSubject.equals(u2[0])) {
-										tmpLastSubject = u2[0];
-										subject.write(new String(u2[0] + "\n")
-												.getBytes());
-										subjectLines++;
-									}
-									if (!u2[2].startsWith("\"")) {
-										object.write(new String(u2[2] + "\n")
-												.getBytes());
-										objectLines++;
-										count++;
-									}
-									if (count % 100000 == 0) {
-										System.out.println(count
-												+ " registers written");
-										System.out
-												.println("Buffer queue size: "
-														+ aint.get());
-										DataID.bean
-												.setDownloadNumberOfTriplesLoaded(count);
-										DataID.bean.pushDownloadInfo();
-									}
-								} catch (ArrayIndexOutOfBoundsException e) {
-									lastLine = u;
-								}
-							}
-						}
-
-					} catch (NoSuchElementException em) {
-						// em.printStackTrace();
-					} catch (Exception e) {
+						obj = obj.substring(1, obj.length() - 1);
+						url = new URL(obj);
+						authority = url.getProtocol() + "://" + url.getHost();
+					} catch (MalformedURLException e) {
+						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-
+					if (!authority.equals(""))
+						if (!authorityDomains.contains(authority)) {
+							authorityDomains.add(authority);
+						}
 				}
-				DataID.bean.setDownloadNumberOfTriplesLoaded(count);
-				DataID.bean
-						.setDownloadNumberOfDownloadedDistributions(DataID.bean
-								.getDownloadNumberOfDownloadedDistributions() + 1);
-
-				DataID.bean.pushDownloadInfo();
-				object.close();
-				subject.close();
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
 			}
-
 		}
-
 	};
-	
-	private boolean checkWheterDownload(String uri, String httpContentLength, String httpLastModified){
-		try{
-		DistributionMongoDBObject distribution = new DistributionMongoDBObject(uri);
-		if (distribution.getHttpByteSize().equals(httpContentLength) && distribution.getHttpLastModified().equals(httpLastModified))
+
+	// Thread split_and_store = new Thread() {
+	//
+	// public synchronized void run() {
+	//
+	// try {
+	// FileOutputStream subject = new FileOutputStream(
+	// DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
+	// + fileName);
+	// FileOutputStream object = new FileOutputStream(
+	// DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
+	// + fileName);
+	//
+	// String lastLine = null;
+	// String tmpLastSubject = "";
+	// int count = 0;
+	// String u2[];
+	// String u3[];
+	// String tmp;
+	// String o[];
+	// while (!doneReadingFile || (bufferQueue.size() > 0)) {
+	// if (bufferQueue.size() > 0)
+	// aint.decrementAndGet();
+	// try {
+	// o = bufferQueue.remove().split("\n");
+	// if (lastLine != null) {
+	// o[0] = lastLine.concat(o[0]);
+	// lastLine = null;
+	// }
+	//
+	// for (String u : o) {
+	// if (!u.startsWith("#")) {
+	// try {
+	// u2 = u.split(" ");
+	// u3 = u.split("> <");
+	//
+	// // checking here offset
+	// tmp = u3[1];
+	// tmp = u2[3];
+	//
+	// if (!tmpLastSubject.equals(u2[0])) {
+	// tmpLastSubject = u2[0];
+	// subject.write(new String(u2[0] + "\n")
+	// .getBytes());
+	// subjectLines++;
+	// }
+	// if (!u2[2].startsWith("\"")) {
+	// object.write(new String(u2[2] + "\n")
+	// .getBytes());
+	// objectLines++;
+	// count++;
+	// }
+	// if (count % 100000 == 0) {
+	// System.out.println(count
+	// + " registers written");
+	// System.out
+	// .println("Buffer queue size: "
+	// + aint.get());
+	// DataID.bean
+	// .setDownloadNumberOfTriplesLoaded(count);
+	// DataID.bean.pushDownloadInfo();
+	// }
+	// } catch (ArrayIndexOutOfBoundsException e) {
+	// lastLine = u;
+	// }
+	// }
+	// }
+	//
+	// } catch (NoSuchElementException em) {
+	// // em.printStackTrace();
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// }
+	//
+	// }
+	// DataID.bean.setDownloadNumberOfTriplesLoaded(count);
+	// DataID.bean
+	// .setDownloadNumberOfDownloadedDistributions(DataID.bean
+	// .getDownloadNumberOfDownloadedDistributions() + 1);
+	//
+	// DataID.bean.pushDownloadInfo();
+	// object.close();
+	// subject.close();
+	// } catch (Exception e) {
+	// System.out.println(e.getMessage());
+	// }
+	//
+	// }
+	//
+	// };
+
+	private boolean checkWheterDownload(String uri, String httpContentLength,
+			String httpLastModified) {
+		try {
+			DistributionMongoDBObject distribution = new DistributionMongoDBObject(
+					uri);
+			if (distribution.getHttpByteSize().equals(httpContentLength)
+					&& distribution.getHttpLastModified().equals(
+							httpLastModified))
 				return false;
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return true;
 	}
-	
 
 }
