@@ -94,7 +94,7 @@ public class FileToFilter {
 					linksUniq.add(link);
 				}
 			}
-			
+
 			
 		} catch (Exception e) {
 //			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());

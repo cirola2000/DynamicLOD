@@ -39,6 +39,7 @@ public class DataIDGeneralProperties {
 			SUBJECT_PATH = BASE_PATH + "subjects/";
 			OBJECT_PATH = BASE_PATH + "objects/";
 			DATAID_PATH = BASE_PATH + "dataid/";
+			AUTHORITY_FILTER_PATH = BASE_PATH + "authority_filter";
 			DISTRIBUTION_PREFIX = "distribution_";
 			SUBJECT_FILE_DISTRIBUTION_PATH = SUBJECT_PATH
 					+ "subject_distribution_";
@@ -58,7 +59,8 @@ public class DataIDGeneralProperties {
 
 	// defining filter path
 	public static String FILTER_PATH;
-
+	public static String AUTHORITY_FILTER_PATH;
+	
 	// defining subject file path
 	public static String SUBJECT_PATH;
 

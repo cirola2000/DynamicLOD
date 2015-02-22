@@ -22,18 +22,17 @@ public class GoogleBloomFilter implements DataIDFilterInterface {
 
 	public BloomFilter<byte[]> filter = null;
 
-	private Funnel<byte[]> funnel = Funnels
-			.byteArrayFunnel();
-	
+	private Funnel<byte[]> funnel = Funnels.byteArrayFunnel();
+
 	public String fullFilePath;
 
 	public GoogleBloomFilter(int insertions, double fpp) {
 		create(insertions, fpp);
 	}
+
 	public GoogleBloomFilter() {
 		create(98, 0.01);
 	}
-	
 
 	public boolean create(int insertions, double fpp) {
 		// 59222200, 0.01
@@ -50,32 +49,61 @@ public class GoogleBloomFilter implements DataIDFilterInterface {
 	}
 
 	public boolean compare(String s) throws Exception {
-			return filter.mightContain(s.getBytes());
+		return filter.mightContain(s.getBytes());
 	}
 
 	public boolean saveFilter(String distributionName) {
-		
-		String path = DataIDGeneralProperties.SUBJECT_FILE_FILTER_PATH+distributionName;
+
+		String path = DataIDGeneralProperties.SUBJECT_FILE_FILTER_PATH
+				+ distributionName;
 		fullFilePath = path;
-		
+
 		try {
 			filter.writeTo(new FileOutputStream(new File(path)));
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
+//			DataID.bean.addDisplayMessage(
+//					DataIDGeneralProperties.MESSAGE_ERROR, e.getMessage());
 		}
 		return true;
 	}
 
-	public boolean loadFilter(String path){
+	public boolean addAuthorityDomainToFilter(String authorityDomain) {
+
 		try {
-			filter = BloomFilter.readFrom(new FileInputStream(new File(path)), funnel);
+			String path = DataIDGeneralProperties.AUTHORITY_FILTER_PATH;
+
+			// check if filter already exists
+			File f = new File(path);
+			if (f.exists()) {
+				filter = BloomFilter.readFrom(new FileInputStream(new File(path)),
+						funnel);
+				fullFilePath = path;
+			}
+
+			// make a filter with subjects
+			add(authorityDomain);
+
+			filter.writeTo(new FileOutputStream(new File(path)));
+
+			System.out.println("Domain: "+authorityDomain+" added to Authority domain filter.");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	public boolean loadFilter(String path) {
+		try {
+			filter = BloomFilter.readFrom(new FileInputStream(new File(path)),
+					funnel);
 			fullFilePath = path;
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-//			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
+			// DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
 			e.printStackTrace();
 		}
 		return true;

@@ -84,7 +84,7 @@ public class DataID {
 				}
 
 				// get authority domain
-				String authority = getAuthoroty(DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
+				String authority = getAuthorotyDomainFromSubjectFile(DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
 						+ downloadedFile.fileName);
 
 				// load file to filter and take the process time
@@ -100,7 +100,6 @@ public class DataID {
 
 				// save filter
 				filter.saveFilter(downloadedFile.fileName);
-
 
 				// save distribution in a mongodb object
 				distributionMongoDBObj.setNumberOfObjectTriples(String
@@ -127,6 +126,12 @@ public class DataID {
 				distributionMongoDBObj.setAuthority(authority);
 
 				distributionMongoDBObj.updateObject();
+
+				
+				// adding authority domain in the authority bloom filter
+				GoogleBloomFilter authorityFilter = new GoogleBloomFilter(100000, 0.0001);
+				authorityFilter.addAuthorityDomainToFilter(distributionMongoDBObj.getAuthority());
+				
 
 			} catch (Exception e) {
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
@@ -193,22 +198,23 @@ public class DataID {
 		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "end");
 	}
 
-		private String getAuthoroty(String filePath) {
-		String authority="";
+	private String getAuthorotyDomainFromSubjectFile(String filePath) {
+		String authority = "";
 		FileReader namereader;
 		try {
 			namereader = new FileReader(new File(filePath));
 			BufferedReader in = new BufferedReader(namereader);
 			String tmp = in.readLine();
-			tmp = tmp.substring(1,tmp.length()-1);	
+			tmp = tmp.substring(1, tmp.length() - 1);
 			URL url = new URL(tmp);
-			authority = url.getProtocol()+"://"+url.getHost();
-			namereader.close();			
+			authority = url.getProtocol() + "://" + url.getHost();
+			namereader.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return authority;
 	}
+
+
 
 }
