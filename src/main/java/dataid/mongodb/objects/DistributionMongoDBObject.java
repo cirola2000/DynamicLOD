@@ -10,7 +10,6 @@ import dataid.mongodb.DataIDDB;
 
 public class DistributionMongoDBObject extends DataIDDB {
 
-	
 	// Collection name
 	public static final String COLLECTION_NAME = "Distribution";
 
@@ -22,26 +21,31 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	public static final String SUBJECT_FILTER_PATH = "subjectFilterPath";
 
-	public static final String OBJECT_PATH = "objectPath"; 
+	public static final String OBJECT_PATH = "objectPath";
 
 	public static final String NUMBER_OF_TRIPLES_LOADED_INTO_FILTER = "numberOfTriplesLoadedIntoFilter";
 
 	public static final String NUMBER_OF_OBJECTS_TRIPLES = "numberOfObjectTriples";
 
 	public static final String TIME_TO_CREATE_FILTER = "timeToCreateFilter";
-	
+
 	public static final String AUTHORITY = "authority";
-	
+
+	public static final String AUTHORITY_OBJECTS = "authorityObjects";
+
 	public static final String TITLE = "title";
 
 	public static final String HTTP_BYTE_SIZE = "httpByteSize";
-	
+
 	public static final String HTTP_FORMAT = "httpFormat";
 
 	public static final String HTTP_LAST_MODIFIED = "httpLastModified";
 
-	public static final String TRIPLES = "triples";	
-	
+	public static final String TRIPLES = "triples";
+
+	private ArrayList<String> defaultDatasets = new ArrayList<String>();
+
+	private ArrayList<String> authorityObjects = new ArrayList<String>();
 
 	private String accessUrl;
 
@@ -64,13 +68,13 @@ public class DistributionMongoDBObject extends DataIDDB {
 	private String httpByteSize;
 
 	private String httpFormat;
-	
+
 	private String httpLastModified;
 
 	private String triples;
 
 	private String authority;
-	
+
 	public DistributionMongoDBObject(String uri) {
 		super(COLLECTION_NAME, uri);
 		loadObject();
@@ -83,8 +87,6 @@ public class DistributionMongoDBObject extends DataIDDB {
 	public void setTimeToCreateFilter(String timeToCreateFilter) {
 		this.timeToCreateFilter = timeToCreateFilter;
 	}
-
-	private ArrayList<String> defaultDatasets = new ArrayList<String>();
 
 	public String getaccessUrl() {
 		return accessUrl;
@@ -113,6 +115,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 			mongoDBObject.put(TIME_TO_CREATE_FILTER, timeToCreateFilter);
 			mongoDBObject.put(TITLE, title);
 			mongoDBObject.put(AUTHORITY, authority);
+			mongoDBObject.put(AUTHORITY_OBJECTS, authorityObjects);
 
 			insert();
 
@@ -142,12 +145,12 @@ public class DistributionMongoDBObject extends DataIDDB {
 			objectPath = (String) obj.get(OBJECT_PATH);
 			title = (String) obj.get(TITLE);
 			httpFormat = (String) obj.get(HTTP_FORMAT);
-			httpLastModified= (String) obj.get(HTTP_LAST_MODIFIED);
+			httpLastModified = (String) obj.get(HTTP_LAST_MODIFIED);
 			triples = (String) obj.get(TRIPLES);
 			numberOfTriplesLoadedIntoFilter = (String) obj
 					.get(NUMBER_OF_TRIPLES_LOADED_INTO_FILTER);
 			numberOfObjectTriples = (String) obj.get(NUMBER_OF_OBJECTS_TRIPLES);
-			authority= (String) obj.get(AUTHORITY);
+			authority = (String) obj.get(AUTHORITY);
 
 			// loading default datasets to object
 			BasicDBList defaultDatasetList = (BasicDBList) obj
@@ -156,6 +159,15 @@ public class DistributionMongoDBObject extends DataIDDB {
 				for (Object sd : defaultDatasetList) {
 					defaultDatasets.add((String) sd);
 				}
+
+			// loading authorityObjects to object
+			BasicDBList authorityObjectsList = (BasicDBList) obj
+					.get(AUTHORITY_OBJECTS);
+			if (authorityObjectsList != null)
+				for (Object sd : authorityObjectsList) {
+					authorityObjectsList.add((String) sd);
+				}
+
 			return true;
 		}
 		return false;
@@ -273,7 +285,14 @@ public class DistributionMongoDBObject extends DataIDDB {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-	
-	
+
+	public void addAuthorityObjects(String AuthorityObjects) {
+		if (!authorityObjects.contains(AuthorityObjects))
+			this.authorityObjects.add(AuthorityObjects);
+	}
+
+	public ArrayList<String> getAuthorityObjects() {
+		return authorityObjects;
+	}
 
 }
