@@ -130,10 +130,12 @@ public class DownloadAndSave {
 				String str = "";
 				while (-1 != (n = inputStream.read(buffer))) {
 
-					for (int i = 0; i < n; i++) {
-
-						str = str + (char) buffer[i];
-					}
+					str = new String (buffer,0,n);
+					
+//					for (int i = 0; i < n; i++) {
+//
+//						str = str + (char) buffer[i];
+//					}
 					bufferQueue.add(str);
 					str = "";
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded
