@@ -76,11 +76,11 @@ public class DataID {
 				GoogleBloomFilter filter;
 				if (downloadedFile.subjectLines != 0) {
 					filter = new GoogleBloomFilter(
-							(int) downloadedFile.subjectLines, 0.01);
+							(int) downloadedFile.subjectLines, 0.0000000001);
 				} else {
 					filter = new GoogleBloomFilter(
 							(int) downloadedFile.contentLengthAfterDownloaded / 40,
-							0.01);
+							0.0000000001);
 				}
 
 				// get authority domain
@@ -198,7 +198,7 @@ public class DataID {
 					e.getMessage());
 			e.printStackTrace();
 		}
-
+		System.out.println("END");
 		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "end");
 	}
 

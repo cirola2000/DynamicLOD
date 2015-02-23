@@ -22,7 +22,7 @@ public class JobThread implements Runnable {
 				if (dataThread.filter.compare(lines[i])) {
 					// don't save same link multiple times
 //					if (!dataThread.links.contains(lines[i]))
-						dataThread.links++;
+						dataThread.links++;						
 				}
 			}
 

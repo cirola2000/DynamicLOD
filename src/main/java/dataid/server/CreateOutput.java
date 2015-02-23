@@ -21,10 +21,11 @@ import dataid.ontology.vocabulary.NS;
 
 public class CreateOutput extends HttpServlet {
 
-	private static Model outModel = ModelFactory.createDefaultModel();
+	private Model outModel =null;
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		 outModel = ModelFactory.createDefaultModel();
 		try {
 
 			outModel.setNsPrefix("rdfs", NS.RDFS_URI);
@@ -64,6 +65,7 @@ public class CreateOutput extends HttpServlet {
 
 			if (linksetList != null)
 				for (LinksetMongoDBObject linkset : linksetList) {
+					if(linkset.getLinks()>50)
 					if (!linkset.getObjectsDatasetTarget().equals(
 							linkset.getSubjectsDatasetTarget())) {
 						Resource r = outModel.createResource(linkset.getUri());
@@ -73,12 +75,12 @@ public class CreateOutput extends HttpServlet {
 										+ "Linkset"));
 						r.addProperty(
 								ResourceFactory.createProperty(NS.VOID_URI
-										+ "subjectsTarget"), ResourceFactory
+										+ "objectsTarget"), ResourceFactory
 										.createProperty(linkset
 												.getSubjectsDatasetTarget()
 												.toString()));
 						r.addProperty(ResourceFactory
-								.createProperty(NS.VOID_URI + "objectsTarget"),
+								.createProperty(NS.VOID_URI + "subjectsTarget"),
 								ResourceFactory.createProperty(linkset
 										.getObjectsDatasetTarget().toString()));
 					}
@@ -101,6 +103,7 @@ public class CreateOutput extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
+			outModel = ModelFactory.createDefaultModel();
 
 			outModel.setNsPrefix("rdfs", NS.RDFS_URI);
 			outModel.setNsPrefix("dcat", NS.DCAT_URI);
@@ -139,6 +142,7 @@ public class CreateOutput extends HttpServlet {
 
 			if (linksetList != null)
 				for (LinksetMongoDBObject linkset : linksetList) {
+					if(linkset.getLinks()>50)
 					if (!linkset.getObjectsDatasetTarget().equals(
 							linkset.getSubjectsDatasetTarget())) {
 						Resource r = outModel.createResource(linkset.getUri());

@@ -88,10 +88,6 @@ public class DistributionMongoDBObject extends DataIDDB {
 		this.timeToCreateFilter = timeToCreateFilter;
 	}
 
-	public String getaccessUrl() {
-		return accessUrl;
-	}
-
 	public void addDefaultDataset(String defaultDataset) {
 		if (!defaultDatasets.contains(defaultDataset))
 			this.defaultDatasets.add(defaultDataset);
@@ -165,7 +161,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 					.get(AUTHORITY_OBJECTS);
 			if (authorityObjectsList != null)
 				for (Object sd : authorityObjectsList) {
-					authorityObjectsList.add((String) sd);
+					authorityObjects.add((String) sd);
 				}
 
 			return true;

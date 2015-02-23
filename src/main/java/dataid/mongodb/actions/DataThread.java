@@ -1,7 +1,5 @@
 package dataid.mongodb.actions;
 
-import java.util.ArrayList;
-
 import dataid.filters.GoogleBloomFilter;
 
 public class DataThread {

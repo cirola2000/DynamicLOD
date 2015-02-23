@@ -41,7 +41,7 @@ public class DownloadAndSave {
 
 	public URL url = null;
 
-	public double contentLengthAfterDownloaded;
+	public double contentLengthAfterDownloaded = 0;
 	public int subjectLines = 0;
 	public int objectLines = 0;
 
@@ -123,6 +123,9 @@ public class DownloadAndSave {
 				// split_and_store.start();
 				Runnable r = new SplitAndStore(bean);
 				new Thread(r).start();
+				
+//				Runnable r3 = new SplitAndStore(bean);
+//				new Thread(r3).start();
 
 				 Runnable r2 = new AddAuthorityObject();
 				 new Thread(r2).start();
@@ -131,17 +134,11 @@ public class DownloadAndSave {
 				while (-1 != (n = inputStream.read(buffer))) {
 
 					str = new String (buffer,0,n);
-					
-//					for (int i = 0; i < n; i++) {
-//
-//						str = str + (char) buffer[i];
-//					}
 					bufferQueue.add(str);
 					str = "";
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded
 							+ n;
-					aint.incrementAndGet();
-
+					
 					// don't allow queue size bigger than 900;
 					while (bufferQueue.size() > 900) {
 					}
@@ -213,12 +210,11 @@ public class DownloadAndSave {
 				String lastLine = "";
 				String tmpLastSubject = "";
 				int count = 0;
-				int ciro = 0;
 
 				// starts reading buffer queue
 				while (!doneReadingFile) {
 					while (bufferQueue.size() > 0) {
-						aint.decrementAndGet();
+//						aint.decrementAndGet();
 						try {
 							String o[];
 							o = bufferQueue.remove().split("\n");
@@ -279,7 +275,7 @@ public class DownloadAndSave {
 													+ " registers written");
 											System.out
 													.println("Buffer queue size: "
-															+ aint.get());
+															+ bufferQueue.size());
 											bean.setDownloadNumberOfTriplesLoaded(count);
 											bean.pushDownloadInfo();
 										}

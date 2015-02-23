@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Test;
 
 import com.mongodb.AggregationOutput;
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.CommandResult;
 import com.mongodb.DBCollection;
@@ -20,6 +21,30 @@ import dataid.mongodb.objects.LinksetMongoDBObject;
 import dataid.mongodb.objects.SubsetMongoDBObject;
 
 public class Queries {
+	
+	// find distributions by authority
+	public static ArrayList<DistributionMongoDBObject> getDistributionsByAuthority(Object authority){
+		ArrayList<DistributionMongoDBObject> list = new ArrayList<DistributionMongoDBObject>();
+		
+		DBCollection collection = DataIDDB.getInstance().getCollection(
+				DistributionMongoDBObject.COLLECTION_NAME);
+		
+		BasicDBObject query = new BasicDBObject("authority", new BasicDBObject("$in", authority));
+
+		DBCursor cursor = collection.find(query);
+		try {
+		    while (cursor.hasNext()) {
+		    	
+		    	DistributionMongoDBObject obj = new DistributionMongoDBObject(cursor.next().get(DistributionMongoDBObject.ACCESS_URL).toString());
+		    	
+		        list.add(obj);
+		    }
+		} finally {
+		    cursor.close();
+		}
+		return list;
+		
+	}
 
 	// return number of datasets
 	public static int getNumberOfDatasets() {
@@ -63,7 +88,6 @@ public class Queries {
 	// return all DataIDs file
 	public static String getDataIDs() {
 		String str = "";
-		ArrayList<DatasetMongoDBObject> list = new ArrayList<DatasetMongoDBObject>();
 
 		try {
 			DBCollection collection = DataIDDB.getInstance().getCollection(
