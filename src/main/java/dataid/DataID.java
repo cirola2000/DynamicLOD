@@ -76,11 +76,11 @@ public class DataID {
 				GoogleBloomFilter filter;
 				if (downloadedFile.subjectLines != 0) {
 					filter = new GoogleBloomFilter(
-							(int) downloadedFile.subjectLines, 0.0000000001);
+							(int) downloadedFile.subjectLines, 0.00001);
 				} else {
 					filter = new GoogleBloomFilter(
 							(int) downloadedFile.contentLengthAfterDownloaded / 40,
-							0.0000000001);
+							0.00001);
 				}
 
 				// get authority domain
@@ -121,7 +121,7 @@ public class DataID {
 				distributionMongoDBObj
 						.setNumberOfTriplesLoadedIntoFilter(String
 								.valueOf(f.subjectsLoadedIntoFilter));
-				distributionMongoDBObj.setTriples(String.valueOf(bean
+				distributionMongoDBObj.setTriples(Integer.valueOf(bean
 						.getDownloadNumberOfTriplesLoaded()));
 				distributionMongoDBObj.setAuthority(authority);
 				
@@ -172,7 +172,7 @@ public class DataID {
 
 			// parse model in order to find distributions
 			List<SubsetModel> listOfSubsets = dataIDModel
-					.parseDistributions(distributionsLinks);
+					.parseDistributions(distributionsLinks, bean);
 			int numberOfDistributions = listOfSubsets.size();
 
 			// update view

@@ -9,52 +9,54 @@
 	<ui:composition template="/templates/template.xhtml">
 
 		<ui:define name="title">DataID</ui:define>
-		
-		
-		
-		
-		
+
+
+
+
+
 		<ui:define name="downloadDataID">
-		<h:form prependId="false">
-		
+			<h:form prependId="false">
+
 				<a4j:push address="downloadDataIDMessage">
 					<a4j:ajax event="dataavailable" render="downloadDataID" />
 				</a4j:push>
-				
-				
-					<h:inputText style="width:560px" id="nameInput"
+
+
+				<h:inputText style="width:560px" id="nameInput"
 					value="#{dataIDBean.url}"></h:inputText>
 
 
 				<a4j:commandButton value="Add DataId file"
 					action="#{dataIDBean.start}" />
 				<br />
-				
+
 				<div style="margin-left: 560px">
 					<a4j:commandButton value="Update Linksets"
 						action="#{dataIDBean.update}" />
 				</div>
-				
+
 				<a4j:outputPanel id="downloadDataID">
 				Dataset name:
 				<h:outputText value="#{dataIDBean.downloadDatasetURI}"
-							escape="false" />
-				<br />	
+						escape="false" />
+					<br />	
 				N. triples loaded:
 				<h:outputText value="#{dataIDBean.downloadNumberOfTriplesLoaded}"
-							escape="false" />
-				<br />			
+						escape="false" />
+					<br />			
 				N. total distributions
-				<h:outputText value="#{dataIDBean.downloadNumberTotalOfDistributions}"
-							escape="false" />
-				<br />	
+				<h:outputText
+						value="#{dataIDBean.downloadNumberTotalOfDistributions}"
+						escape="false" />
+					<br />	
 				N. downloaded distributions
-				<h:outputText value="#{dataIDBean.downloadNumberOfDownloadedDistributions}"
-							escape="false" />
-				<br />					
-				
+				<h:outputText
+						value="#{dataIDBean.downloadNumberOfDownloadedDistributions}"
+						escape="false" />
+					<br />
+
 				</a4j:outputPanel>
-				</h:form>
+			</h:form>
 		</ui:define>
 
 		<ui:define name="shell">
@@ -77,49 +79,54 @@
 			</h:form>
 
 		</ui:define>
-		
+
 		<ui:define name="dataIDList">
-		<h:form prependId="false">
-		
+			<h:form prependId="false">
+
 				<a4j:push address="dataIDListMessage">
 					<a4j:ajax event="dataavailable" render="outputDataIDList" />
 				</a4j:push>
 				<a4j:outputPanel id="outputDataIDList">
-					
-						<h:outputText value="#{dataIDBean.dataIDList}"
-							escape="false" />
+
+					<h:outputText value="#{dataIDBean.dataIDList}" escape="false" />
 
 				</a4j:outputPanel>
-				</h:form>
+			</h:form>
 		</ui:define>
-		
-		
+
+
 		<ui:define name="stats">
-		<h:form prependId="false">
-		
+			<h:form prependId="false">
+
 				<a4j:push address="statsMessage">
 					<a4j:ajax event="dataavailable" render="outputStats" />
 				</a4j:push>
 				<a4j:outputPanel id="outputStats">
-					
-					Numer of datasets:
-						<h:outputText value="#{dataIDBean.numberOfDatasets}"
-							escape="false" />
-					<br />
-					Numer of subsets:
-						<h:outputText value="#{dataIDBean.numberOfSubsets}"
-							escape="false" />
-					<br />
-					Numer of distributions:
-						<h:outputText value="#{dataIDBean.numberOfDistributions}"
-							escape="false" />
-					<br />					
+					<table>
+						<tr>
+							<td>Numer of datasets: <h:outputText
+									value="#{dataIDBean.numberOfDatasets}" escape="false" />
+							</td>
+							<td>Numer of subsets: <h:outputText
+									value="#{dataIDBean.numberOfSubsets}" escape="false" />
+							</td>
+							<td>Numer of distributions: <h:outputText
+									value="#{dataIDBean.numberOfDistributions}" escape="false" />
+							</td>
 
+						</tr>
+						<tr>
+							<td>Numer of triples: <h:outputText
+									value="#{dataIDBean.numberOfTriples}" escape="false" />
+
+							</td>
+						</tr>
+					</table>
 				</a4j:outputPanel>
-				</h:form>
+			</h:form>
 		</ui:define>
-		
-		
+
+
 
 	</ui:composition>
 

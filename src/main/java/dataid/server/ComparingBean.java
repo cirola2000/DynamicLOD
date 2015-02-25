@@ -26,7 +26,7 @@ public class ComparingBean implements Serializable {
 
 	private static final long serialVersionUID = -6239437588285327644L;
 
-	private String url = "http://localhost:8080/dataids_example/dataid-news100.ttl";
+	private String url = "http://localhost:8080/dataids_example/dataid-kore50.ttl";
 
 	private List<Comparing> comparing = new ArrayList<Comparing>();
 

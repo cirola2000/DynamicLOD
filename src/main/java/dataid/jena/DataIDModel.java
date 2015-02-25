@@ -2,15 +2,12 @@ package dataid.jena;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.List;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResIterator;
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
@@ -22,7 +19,7 @@ import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.SubsetMongoDBObject;
 import dataid.ontology.Dataset;
 import dataid.ontology.Distribution;
-import dataid.ontology.vocabulary.NS;
+import dataid.server.DataIDBean;
 import dataid.utils.FileUtils;
 
 public class DataIDModel {
@@ -33,12 +30,15 @@ public class DataIDModel {
 	public boolean someAccessURLFound = false;
 	private String datasetURI;
 	private String dataIDURL;
+	DataIDBean bean;
 
 	DatasetMongoDBObject datasetMongoDBObj;
 
 	public List<SubsetModel> parseDistributions(
-			List<SubsetModel> distributionsLinks) {
+			List<SubsetModel> distributionsLinks, DataIDBean bean) {
 		this.distributionsLinks = distributionsLinks;
+		this.bean = bean;
+		
 		// select dataset
 		StmtIterator datasets = inModel.listStatements(null,
 				Dataset.dataIDType, Dataset.dataIDDataset);
@@ -65,7 +65,6 @@ public class DataIDModel {
 				datasetMongoDBObj.setLabel(dataset.getSubject().getProperty(Dataset.label).getObject().toString());
 			}
 			
-			datasetMongoDBObj.updateObject();
 
 			// try to find distribution within dataset
 			StmtIterator stmtDistribution = inModel.listStatements(
@@ -83,16 +82,19 @@ public class DataIDModel {
 				StmtIterator stmtAccessURL = inModel.listStatements(
 						distribution.getObject().asResource(),
 						Distribution.accessURL, (RDFNode) null);
+				
+				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+						"Distribution found: " + distribution.getObject().toString());
 
 				// case there is an accessURL property
 				while (stmtAccessURL.hasNext() && !accessURLFound) {
-
 					// store accessurl statement
 					Statement accessURL = stmtAccessURL.next();
 					if (FileUtils.acceptedFormats(accessURL.getObject()
-							.toString())) {
+							.toString(), bean)) {
 
 						accessURLFound = true;
+						
 						// save distribution with accessURL to list
 						distributionsLinks.add(new SubsetModel(
 								numberOfDistributions, datasetURI, distribution
@@ -100,6 +102,10 @@ public class DataIDModel {
 										.getObject().toString()));
 						numberOfDistributions++;
 						someAccessURLFound = true;
+						
+						bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+								"Distribution AccessURL found: " + accessURL
+								.getObject().toString());
 
 						// create a mongodb distribution object
 						DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
@@ -122,6 +128,8 @@ public class DataIDModel {
 						datasetMongoDBObj.updateObject();
 					}
 
+					datasetMongoDBObj.updateObject();
+					
 				}
 			}
 
@@ -168,7 +176,7 @@ public class DataIDModel {
 					.addParentDatasetURI(subset.getSubject().toString());
 			subsetMongoDBObj.updateObject();
 
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 					"Subset found: " + subset.getObject().toString());
 
 			// find subset within subset
@@ -194,7 +202,7 @@ public class DataIDModel {
 					// store distribution
 					Statement distribution = stmtDistribution.next();
 
-					DataID.bean.addDisplayMessage(
+					bean.addDisplayMessage(
 							DataIDGeneralProperties.MESSAGE_LOG,
 							"Distribution found: "
 									+ distribution.getObject().toString());
@@ -214,7 +222,7 @@ public class DataIDModel {
 								"Distribution found: accessURL: "
 										+ accessURL.getObject().toString());
 						if (FileUtils.acceptedFormats(accessURL.getObject()
-								.toString())) {
+								.toString(), bean)) {
 
 							// save distribution with accessURL to list
 							distributionsLinks.add(new SubsetModel(

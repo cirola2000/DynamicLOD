@@ -1,10 +1,8 @@
 package dataid.utils;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,6 +14,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.ZipInputStream;
 
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.io.FilenameUtils;
@@ -105,11 +104,17 @@ public class DownloadAndSave {
 
 			String extension = FilenameUtils.getExtension(fileName);
 
-			// check if file is bz2 type
+			// check whether file is bz2 type
 			if (extension.equals("bz2")) {
 				inputStream = new BZip2CompressorInputStream(
 						httpConn.getInputStream(), true);
 				fileName = fileName.replace(".bz2", "");
+			}
+			// check whether file is zip type
+			if (extension.equals("zip")) {
+				inputStream = new ZipInputStream(
+						httpConn.getInputStream());
+				fileName = fileName.replace("zip", "");
 			}
 
 			dataIDFilePath = DataIDGeneralProperties.BASE_PATH + fileName;
@@ -120,15 +125,11 @@ public class DownloadAndSave {
 
 			extension = FilenameUtils.getExtension(fileName);
 			if (extension.equals("nt")) {
-				// split_and_store.start();
 				Runnable r = new SplitAndStore(bean);
 				new Thread(r).start();
-				
-//				Runnable r3 = new SplitAndStore(bean);
-//				new Thread(r3).start();
 
-				 Runnable r2 = new AddAuthorityObject();
-				 new Thread(r2).start();
+				Runnable r2 = new AddAuthorityObject();
+				new Thread(r2).start();
 
 				String str = "";
 				while (-1 != (n = inputStream.read(buffer))) {
@@ -338,95 +339,6 @@ public class DownloadAndSave {
 		}
 	};
 
-	// Thread split_and_store = new Thread() {
-	//
-	// public synchronized void run() {
-	//
-	// try {
-	// FileOutputStream subject = new FileOutputStream(
-	// DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
-	// + fileName);
-	// FileOutputStream object = new FileOutputStream(
-	// DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
-	// + fileName);
-	//
-	// String lastLine = null;
-	// String tmpLastSubject = "";
-	// int count = 0;
-	// String u2[];
-	// String u3[];
-	// String tmp;
-	// String o[];
-	// while (!doneReadingFile || (bufferQueue.size() > 0)) {
-	// if (bufferQueue.size() > 0)
-	// aint.decrementAndGet();
-	// try {
-	// o = bufferQueue.remove().split("\n");
-	// if (lastLine != null) {
-	// o[0] = lastLine.concat(o[0]);
-	// lastLine = null;
-	// }
-	//
-	// for (String u : o) {
-	// if (!u.startsWith("#")) {
-	// try {
-	// u2 = u.split(" ");
-	// u3 = u.split("> <");
-	//
-	// // checking here offset
-	// tmp = u3[1];
-	// tmp = u2[3];
-	//
-	// if (!tmpLastSubject.equals(u2[0])) {
-	// tmpLastSubject = u2[0];
-	// subject.write(new String(u2[0] + "\n")
-	// .getBytes());
-	// subjectLines++;
-	// }
-	// if (!u2[2].startsWith("\"")) {
-	// object.write(new String(u2[2] + "\n")
-	// .getBytes());
-	// objectLines++;
-	// count++;
-	// }
-	// if (count % 100000 == 0) {
-	// System.out.println(count
-	// + " registers written");
-	// System.out
-	// .println("Buffer queue size: "
-	// + aint.get());
-	// DataID.bean
-	// .setDownloadNumberOfTriplesLoaded(count);
-	// DataID.bean.pushDownloadInfo();
-	// }
-	// } catch (ArrayIndexOutOfBoundsException e) {
-	// lastLine = u;
-	// }
-	// }
-	// }
-	//
-	// } catch (NoSuchElementException em) {
-	// // em.printStackTrace();
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// }
-	//
-	// }
-	// DataID.bean.setDownloadNumberOfTriplesLoaded(count);
-	// DataID.bean
-	// .setDownloadNumberOfDownloadedDistributions(DataID.bean
-	// .getDownloadNumberOfDownloadedDistributions() + 1);
-	//
-	// DataID.bean.pushDownloadInfo();
-	// object.close();
-	// subject.close();
-	// } catch (Exception e) {
-	// System.out.println(e.getMessage());
-	// }
-	//
-	// }
-	//
-	// };
 
 	private boolean checkWheterDownload(String uri, String httpContentLength,
 			String httpLastModified) {

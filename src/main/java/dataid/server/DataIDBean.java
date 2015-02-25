@@ -29,7 +29,7 @@ public class DataIDBean implements Serializable, Runnable {
 	static private double startTime = 0;
 	static private double endTime = 0;
 
-	private String url = "http://localhost:8080/dataids_example/dataid-news100.ttl";
+	private String url = "http://localhost:8080/dataids_example/dataid-kore50.ttl";
 
 	// log screen
 	private String display = "";
@@ -44,6 +44,8 @@ public class DataIDBean implements Serializable, Runnable {
 	private int numberOfSubsets;
 	
 	private int numberOfDistributions;
+	
+	private int numberOfTriples;
 	
 	
 	// info about download
@@ -162,6 +164,16 @@ public class DataIDBean implements Serializable, Runnable {
 
 	public void setDataIDList(String dataIDList) {
 	
+	}
+
+	public int getNumberOfTriples() {
+		this.numberOfTriples = Queries.getNumberOfTriples();
+		
+		return numberOfTriples;
+	}
+
+	public void setNumberOfTriples(int numberOfTriples) {
+		this.numberOfTriples = numberOfTriples;
 	}
 
 	public String getDisplay() {

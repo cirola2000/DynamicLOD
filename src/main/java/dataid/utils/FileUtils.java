@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 import dataid.DataIDGeneralProperties;
+import dataid.server.DataIDBean;
 
 public class FileUtils {
 
@@ -34,13 +35,17 @@ public class FileUtils {
 	}
 	
 	// TODO make this method more precise
-	public static boolean acceptedFormats(String fileName){
+	public static boolean acceptedFormats(String fileName, DataIDBean bean){
 		
 		if(fileName.contains(".ttl"))
 			return true;
 		if(fileName.contains(".nt"))		
 		return true;
 		
+		System.out.println("File format not accepted: "+ fileName);
+		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
+				"File format not accepted: "+ fileName);
+
 		return false;
 	}
 	

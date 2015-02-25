@@ -71,7 +71,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	private String httpLastModified;
 
-	private String triples;
+	private Integer triples;
 
 	private String authority;
 
@@ -142,7 +142,8 @@ public class DistributionMongoDBObject extends DataIDDB {
 			title = (String) obj.get(TITLE);
 			httpFormat = (String) obj.get(HTTP_FORMAT);
 			httpLastModified = (String) obj.get(HTTP_LAST_MODIFIED);
-			triples = (String) obj.get(TRIPLES);
+			if(obj.get(TRIPLES)!=null)
+			triples = Integer.getInteger(obj.get(TRIPLES).toString() ) ;
 			numberOfTriplesLoadedIntoFilter = (String) obj
 					.get(NUMBER_OF_TRIPLES_LOADED_INTO_FILTER);
 			numberOfObjectTriples = (String) obj.get(NUMBER_OF_OBJECTS_TRIPLES);
@@ -266,11 +267,11 @@ public class DistributionMongoDBObject extends DataIDDB {
 		this.httpLastModified = httpLastModified;
 	}
 
-	public String getTriples() {
+	public Integer getTriples() {
 		return triples;
 	}
 
-	public void setTriples(String triples) {
+	public void setTriples(Integer triples) {
 		this.triples = triples;
 	}
 

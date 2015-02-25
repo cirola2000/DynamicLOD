@@ -71,6 +71,38 @@ public class Queries {
 		}
 		return numberOfSubsets;
 	}
+
+	// return number of triples
+	public static int getNumberOfTriples() {
+		int numberOfTriples = 0;
+		try {
+			DBCollection collection = DataIDDB.getInstance().getCollection(
+					DistributionMongoDBObject.COLLECTION_NAME);
+			
+			
+			BasicDBObject groupFields = new BasicDBObject( "_id", null);
+			
+			
+			groupFields.append("sum", new BasicDBObject("$sum","$triples"));
+			
+			
+			DBObject group = new BasicDBObject("$group", groupFields);
+			
+			
+			// run aggregation
+			List<DBObject> pipeline = Arrays.asList(group);
+			AggregationOutput output = collection.aggregate(pipeline);
+
+			for (DBObject result : output.results()) {
+			    numberOfTriples=Integer.valueOf(result.get("sum").toString());
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return numberOfTriples;
+	}
 	
 	// return number of distributions
 	public static int getNumberOfDistributions() {

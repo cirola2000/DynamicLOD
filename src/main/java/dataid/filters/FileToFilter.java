@@ -30,7 +30,7 @@ public class FileToFilter {
 		try {
 			String sCurrentLine;
 			br = new BufferedReader(new FileReader(DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+
-							fileName));
+					fileName));
 			while ((sCurrentLine = br.readLine()) != null) {
 				filter.add(sCurrentLine);
 				subjectsLoadedIntoFilter++;
@@ -50,21 +50,21 @@ public class FileToFilter {
 		}
 		
 		try{
-			File f = new File(DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+
-							fileName);
-			f.delete();
-			
-			System.out.println("deleting "+ DataIDGeneralProperties.BASE_PATH+
-					fileName);
-			f = new File(DataIDGeneralProperties.BASE_PATH+
-					fileName);
-			
-			f.delete();
+//			File f = new File(DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+
+//							fileName);
+//			f.delete();
+//			
+//			System.out.println("deleting "+ DataIDGeneralProperties.BASE_PATH+
+//					fileName);
+//			f = new File(DataIDGeneralProperties.BASE_PATH+
+//					fileName);
+//			
+//			f.delete();
 	
 		}
 		catch(Exception e){
 			e.printStackTrace();
-			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
+//			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
 		}
 
 	}

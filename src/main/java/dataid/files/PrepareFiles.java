@@ -22,11 +22,7 @@ public class PrepareFiles {
 		
 		
 		// case format is turtle convert using rapper
-//		if(ext.equals("bz2")){
-//			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"File extension is bz2! Uncompressing using ");
-//	    	RunCommand.run("bzip2 -d  "+DataIDGeneralProperties.BASE_PATH+ fileName);
-//			return FilenameUtils.getBaseName(fileName);
-//		}
+
 		if(ext.equals("ttl")){
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"File extension is ttl! Converting ttl to nt using rapper");
 	    	RunCommand.run("rapper -g "+DataIDGeneralProperties.BASE_PATH+ fileName+" -o ntriples > "+DataIDGeneralProperties.BASE_PATH+FilenameUtils.getBaseName(fileName)+".nt");	    	
