@@ -14,18 +14,18 @@ public class PrepareFiles {
 	public String objectFile;
 	
 	public int objectTriples;
+	public int totalTriples;
 	
 	
-	public String checkFileFormat(String fileName) throws Exception {
+	public String transformTtlToNTriples(String fileName) throws Exception {
 		
 		String ext = FilenameUtils.getExtension(fileName);	
 		
 		
 		// case format is turtle convert using rapper
-
 		if(ext.equals("ttl")){
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"File extension is ttl! Converting ttl to nt using rapper");
-	    	RunCommand.run("rapper -g "+DataIDGeneralProperties.BASE_PATH+ fileName+" -o ntriples > "+DataIDGeneralProperties.BASE_PATH+FilenameUtils.getBaseName(fileName)+".nt");	    	
+	    	totalTriples = RunCommand.run("rapper -g "+DataIDGeneralProperties.BASE_PATH+ fileName+" -o ntriples > "+DataIDGeneralProperties.BASE_PATH+FilenameUtils.getBaseName(fileName)+".nt");	    	
 	    	RunCommand.run("rm "+DataIDGeneralProperties.BASE_PATH+ fileName);	    	
 	    	return FilenameUtils.getBaseName(fileName)+".nt";			
 		}		
@@ -37,7 +37,7 @@ public class PrepareFiles {
 
 	}
 
-	public void separateSubjectAndObject(String fileName) {
+	public void separateSubjectAndObject(String fileName) throws Exception {
 		
 		// creates 2 files, one with subjects and other with objects
 		DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Creating subject file: "

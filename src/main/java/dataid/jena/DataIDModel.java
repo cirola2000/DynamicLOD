@@ -14,7 +14,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
-import dataid.literal.SubsetModel;
+import dataid.literal.DistributionModel;
 import dataid.mongodb.objects.DatasetMongoDBObject;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.SubsetMongoDBObject;
@@ -26,7 +26,7 @@ import dataid.utils.FileUtils;
 public class DataIDModel {
 
 	private Model inModel = ModelFactory.createDefaultModel();
-	List<SubsetModel> distributionsLinks;
+	List<DistributionModel> distributionsLinks;
 	int numberOfDistributions = 0;
 	public boolean someAccessURLFound = false;
 	private String datasetURI;
@@ -35,8 +35,8 @@ public class DataIDModel {
 
 	DatasetMongoDBObject datasetMongoDBObj;
 
-	public List<SubsetModel> parseDistributions(
-			List<SubsetModel> distributionsLinks, DataIDBean bean) {
+	public List<DistributionModel> parseDistributions(
+			List<DistributionModel> distributionsLinks, DataIDBean bean) {
 		this.distributionsLinks = distributionsLinks;
 		this.bean = bean;
 
@@ -100,10 +100,10 @@ public class DataIDModel {
 							accessURLFound = true;
 
 							// save distribution with accessURL to list
-							distributionsLinks.add(new SubsetModel(
+							distributionsLinks.add(new DistributionModel(
 									numberOfDistributions, datasetURI,
 									distribution.getSubject().toString(),
-									accessURL.getObject().toString()));
+									distribution.getObject().toString()));
 							numberOfDistributions++;
 							someAccessURLFound = true;
 
@@ -241,10 +241,10 @@ public class DataIDModel {
 									.toString())) {
 
 								// save distribution with accessURL to list
-								distributionsLinks.add(new SubsetModel(
+								distributionsLinks.add(new DistributionModel(
 										numberOfDistributions, datasetURI,
 										accessURL.getSubject().toString(),
-										accessURL.getObject().toString()));
+										distribution.getObject().toString()));
 								numberOfDistributions++;
 								someAccessURLFound = true;
 

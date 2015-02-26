@@ -15,7 +15,7 @@ import dataid.files.PrepareFiles;
 import dataid.filters.FileToFilter;
 import dataid.filters.GoogleBloomFilter;
 import dataid.jena.DataIDModel;
-import dataid.literal.SubsetModel;
+import dataid.literal.DistributionModel;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
 import dataid.utils.DownloadAndSave;
@@ -30,17 +30,17 @@ public class DataID {
 	public static DataIDBean bean;
 
 	// list of subset and their distributions
-	private List<SubsetModel> distributionsLinks = new ArrayList<SubsetModel>();
+	private List<DistributionModel> distributionsLinks = new ArrayList<DistributionModel>();
 
 	DataIDModel dataIDModel = new DataIDModel();
 
 	private void load() throws Exception {
 		// if there is at least one distribution, load them
-		Iterator<SubsetModel> distributions = distributionsLinks.iterator();
+		Iterator<DistributionModel> distributions = distributionsLinks.iterator();
 
 		while (distributions.hasNext()) {
 			try {
-				SubsetModel distributionModel = distributions.next();
+				DistributionModel distributionModel = distributions.next();
 
 				PrepareFiles p = new PrepareFiles();
 
@@ -57,19 +57,20 @@ public class DataID {
 
 				// creating a mongodb distribution object
 				DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
-						downloadedFile.url.toString());
+						distributionModel.getDistribution());
 
 				// check if format is N-triples
 				String ext = FilenameUtils
 						.getExtension(downloadedFile.fileName);
 				if (!ext.equals("nt")) {
 					downloadedFile.fileName = p
-							.checkFileFormat(downloadedFile.fileName);
+							.transformTtlToNTriples(downloadedFile.fileName);
 
 					// separating subjects and objects
 					p.separateSubjectAndObject(downloadedFile.fileName);
 
 					downloadedFile.objectFilePath = p.objectFile;
+					downloadedFile.totalTriples = p.totalTriples;
 
 				}
 
@@ -122,8 +123,7 @@ public class DataID {
 				distributionMongoDBObj
 						.setNumberOfTriplesLoadedIntoFilter(String
 								.valueOf(f.subjectsLoadedIntoFilter));
-				distributionMongoDBObj.setTriples(Integer.valueOf(bean
-						.getDownloadNumberOfTriplesLoaded()));
+				distributionMongoDBObj.setTriples(downloadedFile.totalTriples);
 				distributionMongoDBObj.setAuthority(authority);
 				
 				for (String domain : downloadedFile.authorityDomains) {
@@ -176,7 +176,7 @@ public class DataID {
 					"Downloading and parsing distribution.");
 
 			// parse model in order to find distributions
-			List<SubsetModel> listOfSubsets = dataIDModel
+			List<DistributionModel> listOfSubsets = dataIDModel
 					.parseDistributions(distributionsLinks, bean);
 			int numberOfDistributions = listOfSubsets.size();
 

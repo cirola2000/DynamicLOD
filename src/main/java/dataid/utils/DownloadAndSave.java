@@ -14,6 +14,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
@@ -43,6 +44,7 @@ public class DownloadAndSave {
 	public double contentLengthAfterDownloaded = 0;
 	public int subjectLines = 0;
 	public int objectLines = 0;
+	public int totalTriples;
 
 	public ArrayList<String> authorityDomains = new ArrayList<String>();
 
@@ -113,11 +115,11 @@ public class DownloadAndSave {
 			// check whether file is zip type
 			if (extension.equals("zip")) {
 				DownloadUtils d = new DownloadUtils();
-				d.checkZip(httpConn.getInputStream());
-				System.out.println("eha");
-
-				inputStream = new ZipInputStream(httpConn.getInputStream());
-				fileName = fileName.replace("zip", "");
+				d.checkZip(url);
+				ZipInputStream zip = new ZipInputStream(httpConn.getInputStream());
+				ZipEntry entry = zip.getNextEntry();
+				fileName = entry.getName();
+				inputStream = zip;
 			}
 
 			dataIDFilePath = DataIDGeneralProperties.BASE_PATH + fileName;
@@ -128,7 +130,7 @@ public class DownloadAndSave {
 
 			extension = FilenameUtils.getExtension(fileName);
 			if (extension.equals("nt")) {
-				Runnable r = new SplitAndStore(bean);
+				Runnable r = new SplitAndStore(bean, totalTriples);
 				new Thread(r).start();
 
 				Runnable r2 = new AddAuthorityObject();
@@ -142,14 +144,12 @@ public class DownloadAndSave {
 					str = "";
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded
 							+ n;
-
 					// don't allow queue size bigger than 900;
 					while (bufferQueue.size() > 900) {
 					}
 
 				}
-				while (bufferQueue.size() > 0)
-					;
+				while (bufferQueue.size() > 0) {}
 
 			} else if (extension.equals("ttl") || extension.equals("rdf")) {
 				int bytesRead = -1;
@@ -159,11 +159,8 @@ public class DownloadAndSave {
 					outputStream.write(buffer, 0, bytesRead);
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded
 							+ bytesRead;
-					for (int i = 0; i < bytesRead; i++) {
-						if (buffer[i] == '\n')
-							objectLines++;
-					}
 				}
+				outputStream.close();
 			} else
 				throw new Exception("RDF format not supported: " + extension);
 
@@ -192,9 +189,11 @@ public class DownloadAndSave {
 	// disk
 	public class SplitAndStore implements Runnable {
 		DataIDBean bean;
-
-		public SplitAndStore(DataIDBean bean) {
+		int triples;
+		
+		public SplitAndStore(DataIDBean bean, int triples) {
 			this.bean = bean;
+			this.triples = triples;
 		}
 
 		public synchronized void run() {
@@ -300,6 +299,7 @@ public class DownloadAndSave {
 
 					}
 				}
+				triples = count;
 				bean.setDownloadNumberOfTriplesLoaded(count);
 				bean.setDownloadNumberOfDownloadedDistributions(bean
 						.getDownloadNumberOfDownloadedDistributions() + 1);

@@ -6,41 +6,53 @@ import java.util.ArrayList;
 
 import dataid.DataID;
 import dataid.DataIDGeneralProperties;
+import dataid.exceptions.DataIDException;
 
 public class RunCommand {
-	public static void run(String c) {
+	public static int run(String c) throws Exception {
 
-		Process p;
-		try {
-			String[] cmd = { "/bin/sh", "-c", c };
+		String[] cmd = { "/bin/sh", "-c", c };
 
+		DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+				"<b>Running command:</b> <i>" + c + "</i>");
+
+		Runtime rt = Runtime.getRuntime();
+		Process proc = rt.exec(cmd);
+
+		BufferedReader stdInput = new BufferedReader(new InputStreamReader(
+				proc.getInputStream()));
+
+		BufferedReader stdError = new BufferedReader(new InputStreamReader(
+				proc.getErrorStream()));
+
+		// read the output from the command
+		String s = null;
+		while ((s = stdInput.readLine()) != null) {
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-					"<b>Running command:</b> <i>" + c + "</i>");
-			p = Runtime.getRuntime().exec(cmd);
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					p.getInputStream()));
-
-			p.waitFor();
-
-			if (p.exitValue() == 0)
-				DataID.bean.addDisplayMessage(
-						DataIDGeneralProperties.MESSAGE_LOG,
-						"Command successfully ran - Exit value: "
-								+ p.exitValue());
-			else
-				DataID.bean.addDisplayMessage(
-						DataIDGeneralProperties.MESSAGE_ERROR,
-						"Something went wrong! Exit format was: "
-								+ p.exitValue());
-
-			in.close();
-
-			p.destroy();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			DataID.bean.addDisplayMessage(
-					DataIDGeneralProperties.MESSAGE_ERROR, e.getMessage());
+					s);
 		}
+
+		// read any errors from the attempted command
+		while ((s = stdError.readLine()) != null) {
+			DataID.bean.addDisplayMessage(
+					DataIDGeneralProperties.MESSAGE_ERROR, s);
+			if(c.contains("rapper")){
+				if(s.contains("returned")){
+					String a[] =s.split(" "); 
+					return Integer.parseInt(a[3]);
+				}
+			}
+		}
+
+		proc.waitFor();
+		if (proc.exitValue() != 0)
+			throw new DataIDException("Something went wrong. Check LOG file.");
+
+		stdInput.close();
+		stdError.close();
+		proc.destroy();
+		
+		return 0;
 	}
+	
 }
