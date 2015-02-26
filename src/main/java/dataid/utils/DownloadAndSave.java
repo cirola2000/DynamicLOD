@@ -70,7 +70,7 @@ public class DownloadAndSave {
 				httpLastModified = String.valueOf(httpConn.getLastModified());
 
 			// check if distribution already exists
-			if (!checkWheterDownload(fileURL,
+			if (!checkWhetherDownload(fileURL,
 					String.valueOf(httpContentLength), httpLastModified)) {
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 						"File previously downloaded. No modification found. "
@@ -112,8 +112,11 @@ public class DownloadAndSave {
 			}
 			// check whether file is zip type
 			if (extension.equals("zip")) {
-				inputStream = new ZipInputStream(
-						httpConn.getInputStream());
+				DownloadUtils d = new DownloadUtils();
+				d.checkZip(httpConn.getInputStream());
+				System.out.println("eha");
+
+				inputStream = new ZipInputStream(httpConn.getInputStream());
 				fileName = fileName.replace("zip", "");
 			}
 
@@ -134,12 +137,12 @@ public class DownloadAndSave {
 				String str = "";
 				while (-1 != (n = inputStream.read(buffer))) {
 
-					str = new String (buffer,0,n);
+					str = new String(buffer, 0, n);
 					bufferQueue.add(str);
 					str = "";
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded
 							+ n;
-					
+
 					// don't allow queue size bigger than 900;
 					while (bufferQueue.size() > 900) {
 					}
@@ -215,7 +218,7 @@ public class DownloadAndSave {
 				// starts reading buffer queue
 				while (!doneReadingFile) {
 					while (bufferQueue.size() > 0) {
-//						aint.decrementAndGet();
+						// aint.decrementAndGet();
 						try {
 							String o[];
 							o = bufferQueue.remove().split("\n");
@@ -276,7 +279,8 @@ public class DownloadAndSave {
 													+ " registers written");
 											System.out
 													.println("Buffer queue size: "
-															+ bufferQueue.size());
+															+ bufferQueue
+																	.size());
 											bean.setDownloadNumberOfTriplesLoaded(count);
 											bean.pushDownloadInfo();
 										}
@@ -306,7 +310,7 @@ public class DownloadAndSave {
 				doneSplittingString = true;
 
 			} catch (Exception e) {
-				System.out.println(e.getMessage());
+				e.printStackTrace();
 			}
 
 		}
@@ -339,8 +343,7 @@ public class DownloadAndSave {
 		}
 	};
 
-
-	private boolean checkWheterDownload(String uri, String httpContentLength,
+	private boolean checkWhetherDownload(String uri, String httpContentLength,
 			String httpLastModified) {
 		try {
 			DistributionMongoDBObject distribution = new DistributionMongoDBObject(

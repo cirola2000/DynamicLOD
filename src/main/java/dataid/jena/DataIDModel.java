@@ -13,6 +13,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import dataid.DataID;
 import dataid.DataIDGeneralProperties;
+import dataid.exceptions.DataIDException;
 import dataid.literal.SubsetModel;
 import dataid.mongodb.objects.DatasetMongoDBObject;
 import dataid.mongodb.objects.DistributionMongoDBObject;
@@ -38,7 +39,7 @@ public class DataIDModel {
 			List<SubsetModel> distributionsLinks, DataIDBean bean) {
 		this.distributionsLinks = distributionsLinks;
 		this.bean = bean;
-		
+
 		// select dataset
 		StmtIterator datasets = inModel.listStatements(null,
 				Dataset.dataIDType, Dataset.dataIDDataset);
@@ -51,20 +52,21 @@ public class DataIDModel {
 
 			// create a mongodb dataset object
 			datasetMongoDBObj = new DatasetMongoDBObject(datasetURI);
-			
+
 			// add dataid path to dataset object
 			datasetMongoDBObj.setDataIdFileName(dataIDURL);
-			
+
 			// case there is title property
-			if(dataset.getSubject().getProperty(Dataset.title) != null){
-				datasetMongoDBObj.setTitle(dataset.getSubject().getProperty(Dataset.title).getObject().toString());
+			if (dataset.getSubject().getProperty(Dataset.title) != null) {
+				datasetMongoDBObj.setTitle(dataset.getSubject()
+						.getProperty(Dataset.title).getObject().toString());
 			}
-			
+
 			// case there is label property
-			if(dataset.getSubject().getProperty(Dataset.label) != null){
-				datasetMongoDBObj.setLabel(dataset.getSubject().getProperty(Dataset.label).getObject().toString());
+			if (dataset.getSubject().getProperty(Dataset.label) != null) {
+				datasetMongoDBObj.setLabel(dataset.getSubject()
+						.getProperty(Dataset.label).getObject().toString());
 			}
-			
 
 			// try to find distribution within dataset
 			StmtIterator stmtDistribution = inModel.listStatements(
@@ -73,7 +75,7 @@ public class DataIDModel {
 
 			// case there's an distribution take the fist that has accessURL
 			boolean accessURLFound = false;
-			while (stmtDistribution.hasNext() && accessURLFound == false) { 
+			while (stmtDistribution.hasNext() && accessURLFound == false) {
 
 				// get distribution
 				Statement distribution = stmtDistribution.next();
@@ -82,54 +84,68 @@ public class DataIDModel {
 				StmtIterator stmtAccessURL = inModel.listStatements(
 						distribution.getObject().asResource(),
 						Distribution.accessURL, (RDFNode) null);
-				
+
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-						"Distribution found: " + distribution.getObject().toString());
+						"Distribution found: "
+								+ distribution.getObject().toString());
 
 				// case there is an accessURL property
 				while (stmtAccessURL.hasNext() && !accessURLFound) {
 					// store accessurl statement
 					Statement accessURL = stmtAccessURL.next();
-					if (FileUtils.acceptedFormats(accessURL.getObject()
-							.toString(), bean)) {
+					try {
+						if (FileUtils.acceptedFormats(accessURL.getObject()
+								.toString())) {
 
-						accessURLFound = true;
-						
-						// save distribution with accessURL to list
-						distributionsLinks.add(new SubsetModel(
-								numberOfDistributions, datasetURI, distribution
-										.getSubject().toString(), accessURL
-										.getObject().toString()));
-						numberOfDistributions++;
-						someAccessURLFound = true;
-						
-						bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-								"Distribution AccessURL found: " + accessURL
-								.getObject().toString());
+							accessURLFound = true;
 
-						// create a mongodb distribution object
-						DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
-								distribution.getObject().toString());
-						distributionMongoDBObj
-								.addDefaultDataset(datasetMongoDBObj.getUri());
-						distributionMongoDBObj.setAccessUrl(accessURL
-								.getObject().toString());
-						
-						// case there is title property
-						if(distribution.getSubject().getProperty(Distribution.title) != null){
-							distributionMongoDBObj.setTitle(distribution.getSubject().getProperty(Distribution.title).getObject().toString());
+							// save distribution with accessURL to list
+							distributionsLinks.add(new SubsetModel(
+									numberOfDistributions, datasetURI,
+									distribution.getSubject().toString(),
+									accessURL.getObject().toString()));
+							numberOfDistributions++;
+							someAccessURLFound = true;
+
+							bean.addDisplayMessage(
+									DataIDGeneralProperties.MESSAGE_LOG,
+									"Distribution AccessURL found: "
+											+ accessURL.getObject().toString());
+
+							// create a mongodb distribution object
+							DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
+									distribution.getObject().toString());
+							distributionMongoDBObj
+									.addDefaultDataset(datasetMongoDBObj
+											.getUri());
+							distributionMongoDBObj.setAccessUrl(accessURL
+									.getObject().toString());
+
+							// case there is title property
+							if (distribution.getSubject().getProperty(
+									Distribution.title) != null) {
+								distributionMongoDBObj.setTitle(distribution
+										.getSubject()
+										.getProperty(Distribution.title)
+										.getObject().toString());
+							}
+
+							distributionMongoDBObj.updateObject();
+
+							// update dataset on mongodb with distribution
+							datasetMongoDBObj.addDistributionURI(distribution
+									.getObject().toString());
+							datasetMongoDBObj.updateObject();
 						}
-						
-						distributionMongoDBObj.updateObject();
-
-						// update dataset on mongodb with distribution
-						datasetMongoDBObj.addDistributionURI(distribution
-								.getObject().toString());
-						datasetMongoDBObj.updateObject();
+					} catch (DataIDException ex) {
+						bean.addDisplayMessage(
+								DataIDGeneralProperties.MESSAGE_ERROR,
+								ex.getMessage());
+						ex.printStackTrace();
 					}
 
 					datasetMongoDBObj.updateObject();
-					
+
 				}
 			}
 
@@ -202,8 +218,7 @@ public class DataIDModel {
 					// store distribution
 					Statement distribution = stmtDistribution.next();
 
-					bean.addDisplayMessage(
-							DataIDGeneralProperties.MESSAGE_LOG,
+					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 							"Distribution found: "
 									+ distribution.getObject().toString());
 
@@ -221,32 +236,40 @@ public class DataIDModel {
 								DataIDGeneralProperties.MESSAGE_LOG,
 								"Distribution found: accessURL: "
 										+ accessURL.getObject().toString());
-						if (FileUtils.acceptedFormats(accessURL.getObject()
-								.toString(), bean)) {
+						try {
+							if (FileUtils.acceptedFormats(accessURL.getObject()
+									.toString())) {
 
-							// save distribution with accessURL to list
-							distributionsLinks.add(new SubsetModel(
-									numberOfDistributions, datasetURI,
-									accessURL.getSubject().toString(),
-									accessURL.getObject().toString()));
-							numberOfDistributions++;
-							someAccessURLFound = true;
+								// save distribution with accessURL to list
+								distributionsLinks.add(new SubsetModel(
+										numberOfDistributions, datasetURI,
+										accessURL.getSubject().toString(),
+										accessURL.getObject().toString()));
+								numberOfDistributions++;
+								someAccessURLFound = true;
 
-							// creating mongodb distribution object
-							DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
-									distribution.getObject().toString());
-							distributionMongoDBObj
-									.addDefaultDataset(subsetMongoDBObj
-											.getUri());
-							distributionMongoDBObj.setAccessUrl(accessURL
-									.getObject().toString());
-							distributionMongoDBObj.updateObject();
+								// creating mongodb distribution object
+								DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
+										distribution.getObject().toString());
+								distributionMongoDBObj
+										.addDefaultDataset(subsetMongoDBObj
+												.getUri());
+								distributionMongoDBObj.setAccessUrl(accessURL
+										.getObject().toString());
+								distributionMongoDBObj.updateObject();
 
-							// update dataset on mongodb with distribution
-							subsetMongoDBObj.addDistributionURI(distribution
-									.getSubject().toString());
-							subsetMongoDBObj.updateObject();
+								// update dataset on mongodb with distribution
+								subsetMongoDBObj
+										.addDistributionURI(distribution
+												.getSubject().toString());
+								subsetMongoDBObj.updateObject();
 
+							}
+						} catch (DataIDException ex) {
+							bean.addDisplayMessage(
+									DataIDGeneralProperties.MESSAGE_ERROR,
+									ex.getMessage());
+							ex.printStackTrace();
 						}
 					}
 				}
@@ -258,7 +281,7 @@ public class DataIDModel {
 	// read dataID file and return the dataset uri
 	public String readModel(String URL) throws Exception {
 		String name = null;
-		
+
 		inModel.read(URL, null, "TTL");
 		ResIterator i = inModel.listResourcesWithProperty(Dataset.dataIDType,
 				Dataset.dataIDDataset);
@@ -269,7 +292,8 @@ public class DataIDModel {
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 					"Looks that this is a valid DataID file! " + name);
 			dataIDURL = FileUtils.stringToHash(URL);
-			inModel.write(new FileOutputStream(new File(DataIDGeneralProperties.DATAID_PATH+dataIDURL)));
+			inModel.write(new FileOutputStream(new File(
+					DataIDGeneralProperties.DATAID_PATH + dataIDURL)));
 		}
 
 		return name;

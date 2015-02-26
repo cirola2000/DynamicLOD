@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.apache.commons.io.FilenameUtils;
 
+import dataid.exceptions.DataIDException;
 import dataid.files.PrepareFiles;
 import dataid.filters.FileToFilter;
 import dataid.filters.GoogleBloomFilter;
@@ -137,9 +138,10 @@ public class DataID {
 				authorityFilter.addAuthorityDomainToFilter(distributionMongoDBObj.getAuthority());
 				
 
-			} catch (Exception e) {
+			} catch (DataIDException e) {
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
 						e.getMessage());
+				e.printStackTrace();
 			}
 
 		}
@@ -156,6 +158,9 @@ public class DataID {
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 					"DataID file URL: " + URL + " url.");
 
+			// check if file extension 
+			FileUtils.acceptedFormats(URL.toString());
+			
 			// create jena models
 			name = dataIDModel.readModel(URL);
 
