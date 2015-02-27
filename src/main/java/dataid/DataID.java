@@ -68,7 +68,7 @@ public class DataID {
 
 					// separating subjects and objects
 					p.separateSubjectAndObject(downloadedFile.fileName);
-
+					downloadedFile.authorityDomains = p.domains;
 					downloadedFile.objectFilePath = p.objectFile;
 					downloadedFile.totalTriples = p.totalTriples;
 					bean.setNumberOfTriples(downloadedFile.totalTriples);
