@@ -71,6 +71,7 @@ public class DataID {
 
 					downloadedFile.objectFilePath = p.objectFile;
 					downloadedFile.totalTriples = p.totalTriples;
+					bean.setNumberOfTriples(downloadedFile.totalTriples);
 
 				}
 

@@ -20,6 +20,8 @@ import java.util.zip.ZipInputStream;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.io.FilenameUtils;
 
+import com.hp.hpl.jena.graph.Triple;
+
 import dataid.DataIDGeneralProperties;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
@@ -130,11 +132,12 @@ public class DownloadAndSave {
 
 			extension = FilenameUtils.getExtension(fileName);
 			if (extension.equals("nt")) {
-				Runnable r = new SplitAndStore(bean, totalTriples);
+				SplitAndStore r = new SplitAndStore(bean);
 				new Thread(r).start();
 
-				Runnable r2 = new AddAuthorityObject();
+				AddAuthorityObject r2 = new AddAuthorityObject();
 				new Thread(r2).start();
+				
 
 				String str = "";
 				while (-1 != (n = inputStream.read(buffer))) {
@@ -189,11 +192,9 @@ public class DownloadAndSave {
 	// disk
 	public class SplitAndStore implements Runnable {
 		DataIDBean bean;
-		int triples;
 		
-		public SplitAndStore(DataIDBean bean, int triples) {
+		public SplitAndStore(DataIDBean bean) {
 			this.bean = bean;
-			this.triples = triples;
 		}
 
 		public synchronized void run() {
@@ -212,8 +213,7 @@ public class DownloadAndSave {
 
 				String lastLine = "";
 				String tmpLastSubject = "";
-				int count = 0;
-
+				
 				// starts reading buffer queue
 				while (!doneReadingFile) {
 					while (bufferQueue.size() > 0) {
@@ -270,17 +270,17 @@ public class DownloadAndSave {
 											objectQueue.add(matcher.group(3));
 											objectLines++;
 										}
-										count++;
+										totalTriples++;
 
 										// send message to view
-										if (count % 100000 == 0) {
-											System.out.println(count
+										if (totalTriples % 100000 == 0) {
+											System.out.println(totalTriples
 													+ " registers written");
 											System.out
 													.println("Buffer queue size: "
 															+ bufferQueue
 																	.size());
-											bean.setDownloadNumberOfTriplesLoaded(count);
+											bean.setDownloadNumberOfTriplesLoaded(totalTriples);
 											bean.pushDownloadInfo();
 										}
 
@@ -299,8 +299,7 @@ public class DownloadAndSave {
 
 					}
 				}
-				triples = count;
-				bean.setDownloadNumberOfTriplesLoaded(count);
+				bean.setDownloadNumberOfTriplesLoaded(totalTriples);
 				bean.setDownloadNumberOfDownloadedDistributions(bean
 						.getDownloadNumberOfDownloadedDistributions() + 1);
 
@@ -308,6 +307,7 @@ public class DownloadAndSave {
 				object.close();
 				subject.close();
 				doneSplittingString = true;
+				
 
 			} catch (Exception e) {
 				e.printStackTrace();
