@@ -14,7 +14,7 @@ public class RunCommand {
 	
 	public ArrayList<String> runAwk(String c) throws Exception{
 		
-		ArrayList<String> domains = new ArrayList<String>();
+		ArrayList<String> results = new ArrayList<String>();
 		String[] cmd = { "/bin/sh", "-c", c };
 
 		DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
@@ -32,8 +32,8 @@ public class RunCommand {
 		// read the output from the command
 		String s = null;
 		while ((s = stdInput.readLine()) != null) {
-			domains.add(s.substring(1,s.length()));
-			System.out.println("Object domain found: "+s.substring(1,s.length()));
+			results.add(s);
+			System.out.println("Awk output: "+s);
 		}
 
 		// read any errors from the attempted command
@@ -51,7 +51,7 @@ public class RunCommand {
 		stdError.close();
 		proc.destroy();
 		
-		return domains;
+		return results;
 	}
 	
 	public static int run(String c) throws Exception {

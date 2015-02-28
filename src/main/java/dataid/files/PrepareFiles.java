@@ -27,8 +27,8 @@ public class PrepareFiles {
 		// case format is turtle convert using rapper
 		if(ext.equals("ttl")){
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"File extension is ttl! Converting ttl to nt using rapper");
-	    	totalTriples = RunCommand.run("rapper -g "+DataIDGeneralProperties.BASE_PATH+ fileName+" -o ntriples > "+DataIDGeneralProperties.BASE_PATH+FilenameUtils.getBaseName(fileName)+".nt");	    	
-	    	RunCommand.run("rm "+DataIDGeneralProperties.BASE_PATH+ fileName);	    	
+	    	totalTriples = RunCommand.run("rapper -i ntriples "+DataIDGeneralProperties.BASE_PATH+ fileName+" -o ntriples > "+DataIDGeneralProperties.BASE_PATH+FilenameUtils.getBaseName(fileName)+".nt");	    	
+//	    	RunCommand.run("rm "+DataIDGeneralProperties.BASE_PATH+ fileName);	    	
 	    	return FilenameUtils.getBaseName(fileName)+".nt";			
 		}		
 		else if(!ext.equals("nt")){
@@ -56,16 +56,20 @@ public class PrepareFiles {
 				+ fileName);
 		
 		RunCommand r = new RunCommand();
-		
+		ArrayList<String> results = new ArrayList<String>();
 		
 //		domains = r.runAwk("awk '{subjects=$1; objects=$3; if(lastlineSubjects!=subjects){ print subjects>\""+ DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
 //				+ fileName +"\"; lastlineSubjects=subjects} if(objects~/^</){print objects>\""+DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
 //				+ fileName+"\"}}' "+DataIDGeneralProperties.BASE_PATH + fileName + " | awk -F/ '{print $1\"//\"$3\"/\"$4\"/\"}' | awk '!x[$0]++'");
 		
-		domains = r.runAwk("awk '{subjects=$1; objects=$3; if(lastlineSubjects!=subjects){ print subjects>\""+DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
-				+ fileName+"\"; lastlineSubjects=subjects} if(objects~/^</){print objects>\""+DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH+ fileName+"\"; print objects}}' "+DataIDGeneralProperties.BASE_PATH + fileName+" | awk -F/ '{print $1\"//\"$3\"/\"$4\"/\"}' | awk '!x[$0]++'");
+		results = r.runAwk("awk 'BEGIN{objcount=0;} {subjects=$1; objects=$3; if(lastlineSubjects!=subjects){ print subjects>\""+DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
+				+ fileName+"\"; lastlineSubjects=subjects} if(objects~/^</){print objects>\""+DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH+ fileName+"\"; print objects; objcount++}} END{print objcount}' "+DataIDGeneralProperties.BASE_PATH + fileName+" | awk -F/ '{print $1\"//\"$3\"/\"$4\"/\"}' | awk '!x[$0]++'");
 		
-		 
+		objectTriples = Integer.parseInt(results.get(results.size()-1).replace("/", "").toString());
+		results.remove(results.size()-1);
+		for (String string : results) {
+			domains.add(string.substring(1,string.length()));
+		}
 		
 		
 		

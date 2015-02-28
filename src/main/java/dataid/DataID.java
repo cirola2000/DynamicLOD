@@ -71,6 +71,7 @@ public class DataID {
 					downloadedFile.authorityDomains = p.domains;
 					downloadedFile.objectFilePath = p.objectFile;
 					downloadedFile.totalTriples = p.totalTriples;
+					downloadedFile.objectLines = p.objectTriples;
 					bean.setNumberOfTriples(downloadedFile.totalTriples);
 
 				}
