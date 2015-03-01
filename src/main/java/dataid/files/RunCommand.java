@@ -12,13 +12,13 @@ import dataid.exceptions.DataIDException;
 
 public class RunCommand {
 	
-	public ArrayList<String> runAwk(String c) throws Exception{
+	public ArrayList<String> runRapper(String c) throws Exception{
 		
 		ArrayList<String> results = new ArrayList<String>();
 		String[] cmd = { "/bin/sh", "-c", c };
 
 		DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-				"<b>Running awk command:</b> <i>" + c + "</i>");
+				"<b>Running rapper command:</b> <i>" + c + "</i>");
 
 		Runtime rt = Runtime.getRuntime();
 		Process proc = rt.exec(cmd);
@@ -40,7 +40,13 @@ public class RunCommand {
 		while ((s = stdError.readLine()) != null) {
 			DataID.bean.addDisplayMessage(
 					DataIDGeneralProperties.MESSAGE_ERROR, s);
-			System.out.println(s);
+			if(c.contains("rapper")){
+				if(s.contains("returned")){
+					String a[] =s.split(" "); 
+					results.add("[totalTriples] "+Integer.parseInt(a[3]));
+				}
+			}
+			System.out.println("Rapper output: "+s);
 		}
 
 		proc.waitFor();
@@ -54,49 +60,49 @@ public class RunCommand {
 		return results;
 	}
 	
-	public static int run(String c) throws Exception {
-
-		String[] cmd = { "/bin/sh", "-c", c };
-
-		DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-				"<b>Running command:</b> <i>" + c + "</i>");
-
-		Runtime rt = Runtime.getRuntime();
-		Process proc = rt.exec(cmd);
-
-		BufferedReader stdInput = new BufferedReader(new InputStreamReader(
-				proc.getInputStream()));
-
-		BufferedReader stdError = new BufferedReader(new InputStreamReader(
-				proc.getErrorStream()));
-
-		// read the output from the command
-		String s = null;
-		while ((s = stdInput.readLine()) != null) {
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-					s);
-		}
-
-		// read any errors from the attempted command
-		while ((s = stdError.readLine()) != null) {
-			DataID.bean.addDisplayMessage(
-					DataIDGeneralProperties.MESSAGE_ERROR, s);
-			if(c.contains("rapper")){
-				if(s.contains("returned")){
-					String a[] =s.split(" "); 
-					return Integer.parseInt(a[3]);
-				}
-			}
-		}
-
-		proc.waitFor();
-		if (proc.exitValue() != 0)
-			throw new DataIDException("Something went wrong. Check LOG file.");
-
-		stdInput.close();
-		stdError.close();
-		proc.destroy();
-		
-		return 0;
-	}
+//	public static int run(String c) throws Exception {
+//
+//		String[] cmd = { "/bin/sh", "-c", c };
+//
+//		DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+//				"<b>Running command:</b> <i>" + c + "</i>");
+//
+//		Runtime rt = Runtime.getRuntime();
+//		Process proc = rt.exec(cmd);
+//
+//		BufferedReader stdInput = new BufferedReader(new InputStreamReader(
+//				proc.getInputStream()));
+//
+//		BufferedReader stdError = new BufferedReader(new InputStreamReader(
+//				proc.getErrorStream()));
+//
+//		// read the output from the command
+//		String s = null;
+//		while ((s = stdInput.readLine()) != null) {
+//			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+//					s);
+//		}
+//
+//		// read any errors from the attempted command
+//		while ((s = stdError.readLine()) != null) {
+//			DataID.bean.addDisplayMessage(
+//					DataIDGeneralProperties.MESSAGE_ERROR, s);
+//			if(c.contains("rapper")){
+//				if(s.contains("returned")){
+//					String a[] =s.split(" "); 
+//					return Integer.parseInt(a[3]);
+//				}
+//			}
+//		}
+//
+//		proc.waitFor();
+//		if (proc.exitValue() != 0)
+//			throw new DataIDException("Something went wrong. Check LOG file.");
+//
+//		stdInput.close();
+//		stdError.close();
+//		proc.destroy();
+//		
+//		return 0;
+//	}
 }

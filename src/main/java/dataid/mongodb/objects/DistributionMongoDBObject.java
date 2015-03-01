@@ -42,6 +42,9 @@ public class DistributionMongoDBObject extends DataIDDB {
 	public static final String HTTP_LAST_MODIFIED = "httpLastModified";
 
 	public static final String TRIPLES = "triples";
+	
+	public static final String FORMAT = "format";
+	
 
 	private ArrayList<String> defaultDatasets = new ArrayList<String>();
 
@@ -73,6 +76,8 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	private Integer triples;
 
+	private String format;
+	
 	private String authority;
 
 	public DistributionMongoDBObject(String uri) {
@@ -110,6 +115,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 			mongoDBObject.put(NUMBER_OF_OBJECTS_TRIPLES, numberOfObjectTriples);
 			mongoDBObject.put(TIME_TO_CREATE_FILTER, timeToCreateFilter);
 			mongoDBObject.put(TITLE, title);
+			mongoDBObject.put(FORMAT, format);	
 			mongoDBObject.put(AUTHORITY, authority);
 			mongoDBObject.put(AUTHORITY_OBJECTS, authorityObjects);
 
@@ -142,6 +148,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 			title = (String) obj.get(TITLE);
 			httpFormat = (String) obj.get(HTTP_FORMAT);
 			httpLastModified = (String) obj.get(HTTP_LAST_MODIFIED);
+			format = (String) obj.get(FORMAT);
 			if(obj.get(TRIPLES)!=null)
 			triples = Integer.getInteger(obj.get(TRIPLES).toString() ) ;
 			numberOfTriplesLoadedIntoFilter = (String) obj
@@ -291,5 +298,15 @@ public class DistributionMongoDBObject extends DataIDDB {
 	public ArrayList<String> getAuthorityObjects() {
 		return authorityObjects;
 	}
+
+	public String getFormat() {
+		return format;
+	}
+
+	public void setFormat(String format) {
+		this.format = format;
+	}
+	
+	
 
 }

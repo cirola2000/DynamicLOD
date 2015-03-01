@@ -14,7 +14,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
-import dataid.literal.DistributionModel;
+import dataid.models.DistributionModel;
 import dataid.mongodb.objects.DatasetMongoDBObject;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.SubsetMongoDBObject;
@@ -103,7 +103,8 @@ public class DataIDModel {
 							distributionsLinks.add(new DistributionModel(
 									numberOfDistributions, datasetURI,
 									distribution.getSubject().toString(),
-									distribution.getObject().toString()));
+									distribution.getObject().toString(), accessURL
+									.getObject().toString()));
 							numberOfDistributions++;
 							someAccessURLFound = true;
 
@@ -127,6 +128,15 @@ public class DataIDModel {
 								distributionMongoDBObj.setTitle(distribution
 										.getSubject()
 										.getProperty(Distribution.title)
+										.getObject().toString());
+							}
+							
+							// case there is format property
+							if (distribution.getSubject().getProperty(
+									Distribution.format) != null) {
+								distributionMongoDBObj.setFormat(distribution
+										.getSubject()
+										.getProperty(Distribution.format)
 										.getObject().toString());
 							}
 
@@ -244,7 +254,8 @@ public class DataIDModel {
 								distributionsLinks.add(new DistributionModel(
 										numberOfDistributions, datasetURI,
 										accessURL.getSubject().toString(),
-										distribution.getObject().toString()));
+										distribution.getObject().toString(),accessURL
+										.getObject().toString()));
 								numberOfDistributions++;
 								someAccessURLFound = true;
 
@@ -256,6 +267,26 @@ public class DataIDModel {
 												.getUri());
 								distributionMongoDBObj.setAccessUrl(accessURL
 										.getObject().toString());
+								
+								
+								// case there is title property
+								if (distribution.getSubject().getProperty(
+										Distribution.title) != null) {
+									distributionMongoDBObj.setTitle(distribution
+											.getSubject()
+											.getProperty(Distribution.title)
+											.getObject().toString());
+								}
+								
+								// case there is format property
+								if (distribution.getSubject().getProperty(
+										Distribution.format) != null) {
+									distributionMongoDBObj.setFormat(distribution
+											.getSubject()
+											.getProperty(Distribution.format)
+											.getObject().toString());
+								}
+								
 								distributionMongoDBObj.updateObject();
 
 								// update dataset on mongodb with distribution

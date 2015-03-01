@@ -1,6 +1,5 @@
-package dataid.ontology.vocabulary;
+package dataid.ontology;
 
-import com.hp.hpl.jena.vocabulary.RDF;
 
 public class NS {
 

@@ -4,12 +4,11 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 
-import dataid.ontology.vocabulary.NS;
-
 public class Distribution {
 
 	public static final Property title = property(NS.DCT_URI, "title");
 	public static final Property accessURL = property(NS.DCAT_URI, "accessURL");
+	public static final Property format = property(NS.DCT_URI, "format");
 	
 	public static final Property dataIDDistribution = property(NS.DATAID_URI, "Distribution");
 	public static final Property dcatDistribution = property(NS.DCAT_URI, "distribution");

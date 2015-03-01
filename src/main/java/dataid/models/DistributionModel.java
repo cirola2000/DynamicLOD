@@ -1,4 +1,4 @@
-package dataid.literal;
+package dataid.models;
 
 public class DistributionModel {
 
@@ -13,12 +13,12 @@ public class DistributionModel {
 	String distriutionAccessURL;
 	
 
-	public DistributionModel(int id, String dataset, String subset, String distribution) {
+	public DistributionModel(int id, String dataset, String subset, String distribution, String distriutionAccessURL) {
 		this.id = id;
 		this.subsetURI = subset;
 		this.distributionURI = distribution;
 		this.datasetURI = dataset;
-
+		this.distriutionAccessURL = distriutionAccessURL;
 	}
 	
 	public String getDatasetURI() {

@@ -17,7 +17,7 @@ import dataid.mongodb.actions.Queries;
 import dataid.mongodb.objects.DatasetMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
 import dataid.ontology.Dataset;
-import dataid.ontology.vocabulary.NS;
+import dataid.ontology.NS;
 
 public class CreateOutput extends HttpServlet {
 

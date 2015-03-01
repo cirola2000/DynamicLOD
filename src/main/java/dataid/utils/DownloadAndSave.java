@@ -23,6 +23,7 @@ import org.apache.commons.io.FilenameUtils;
 import com.hp.hpl.jena.graph.Triple;
 
 import dataid.DataIDGeneralProperties;
+import dataid.exceptions.DataIDException;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
 
@@ -47,6 +48,7 @@ public class DownloadAndSave {
 	public int subjectLines = 0;
 	public int objectLines = 0;
 	public int totalTriples;
+	public String extension;
 
 	public ArrayList<String> authorityDomains = new ArrayList<String>();
 
@@ -57,9 +59,10 @@ public class DownloadAndSave {
 	boolean doneReadingFile = false;
 	boolean doneSplittingString = false;
 
-	public String downloadFile(String fileURL, DataIDBean bean)
+	public void downloadDistribution(String distributionURI, String accessURL, String format, DataIDBean bean)
 			throws Exception {
-		url = new URL(fileURL);
+		
+		url = new URL(accessURL);
 		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
 		int responseCode = httpConn.getResponseCode();
 
@@ -67,46 +70,24 @@ public class DownloadAndSave {
 		if (responseCode == HttpURLConnection.HTTP_OK) {
 
 			// get some data from headers
-			httpDisposition = httpConn.getHeaderField("Content-Disposition");
-			httpContentType = httpConn.getContentType();
-			httpContentLength = httpConn.getContentLength();
-			if (httpConn.getLastModified() > 0)
-				httpLastModified = String.valueOf(httpConn.getLastModified());
+			getMetadataFromHTTPHeaders(httpConn);
 
 			// check if distribution already exists
-			if (!checkWhetherDownload(fileURL,
+			if (!checkWhetherDownload(accessURL,
 					String.valueOf(httpContentLength), httpLastModified)) {
-				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
-						"File previously downloaded. No modification found. "
-								+ fileURL);
-				return "";
+				throw new DataIDException("File previously downloaded: "+ accessURL+" No modification found. ");
 			}
 
-			if (httpDisposition != null) {
-				// extracts file name from header field
-				int index = httpDisposition.indexOf("filename=");
-				if (index > 0) {
-					fileName = httpDisposition.substring(index + 10,
-							httpDisposition.length() - 1);
-				}
-			} else {
-				// extracts file name from URL
-				fileName = fileURL.substring(fileURL.lastIndexOf("/") + 1,
-						fileURL.length());
-			}
-			DecimalFormat df = new DecimalFormat("#.##");
-
-			System.out.println("Content-Type = " + httpContentType);
-			System.out.println("Last-Modified = " + httpLastModified);
-			System.out.println("Content-Disposition = " + httpDisposition);
-			System.out.println("Content-Length = "
-					+ df.format(httpContentLength / 1024 / 1024) + " MB");
-			System.out.println("fileName = " + fileName);
+			// extracts file name from header field
+			createFileName(accessURL);
+			
+			// print header at stdout
+			printHeaders();
 
 			// opens input stream from the HTTP connection
 			InputStream inputStream = httpConn.getInputStream();
 
-			String extension = FilenameUtils.getExtension(fileName);
+			extension = FilenameUtils.getExtension(fileName);
 
 			// check whether file is bz2 type
 			if (extension.equals("bz2")) {
@@ -114,6 +95,7 @@ public class DownloadAndSave {
 						httpConn.getInputStream(), true);
 				fileName = fileName.replace(".bz2", "");
 			}
+			
 			// check whether file is zip type
 			if (extension.equals("zip")) {
 				DownloadUtils d = new DownloadUtils();
@@ -130,15 +112,15 @@ public class DownloadAndSave {
 			final byte[] buffer = new byte[BUFFER_SIZE];
 			int n = 0;
 
-			extension = FilenameUtils.getExtension(fileName);
-			if (extension.equals("nt")) {
+			checkExtensionFormat(format);
+			
+			if (extension.equals(Formats.DEFAULT_NTRIPLES)) {
 				SplitAndStore r = new SplitAndStore(bean);
 				new Thread(r).start();
 
 				AddAuthorityObject r2 = new AddAuthorityObject();
 				new Thread(r2).start();
 				
-
 				String str = "";
 				while (-1 != (n = inputStream.read(buffer))) {
 
@@ -154,7 +136,7 @@ public class DownloadAndSave {
 				}
 				while (bufferQueue.size() > 0) {}
 
-			} else if (extension.equals("ttl") || extension.equals("rdf")) {
+			} else if (extension.equals(Formats.DEFAULT_TURTLE) || extension.equals(Formats.DEFAULT_RDFXML)) {
 				int bytesRead = -1;
 				FileOutputStream outputStream = new FileOutputStream(
 						dataIDFilePath);
@@ -164,8 +146,10 @@ public class DownloadAndSave {
 							+ bytesRead;
 				}
 				outputStream.close();
-			} else
-				throw new Exception("RDF format not supported: " + extension);
+			} else{
+				httpConn.disconnect();
+				throw new DataIDException("RDF format not supported: " + extension);
+			}
 
 			doneReadingFile = true;
 
@@ -177,15 +161,12 @@ public class DownloadAndSave {
 
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 					"File downloaded: " + fileName);
-
-			return dataIDFilePath;
+			httpConn.disconnect();
 		} else {
-			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_WARN,
-					"No file to download. Server replied HTTP code: "
+			httpConn.disconnect();
+			throw new DataIDException("No file to download. Server replied HTTP code: "
 							+ responseCode);
 		}
-		httpConn.disconnect();
-		return null;
 	}
 
 	// Thread reads string buffer, split objects and subjects, and saves in the
@@ -356,6 +337,57 @@ public class DownloadAndSave {
 			e.printStackTrace();
 		}
 		return true;
+	}
+	
+	private void getMetadataFromHTTPHeaders(HttpURLConnection httpConn){
+		
+		httpDisposition = httpConn.getHeaderField("Content-Disposition");
+		httpContentType = httpConn.getContentType();
+		httpContentLength = httpConn.getContentLength();
+		if (httpConn.getLastModified() > 0)
+			httpLastModified = String.valueOf(httpConn.getLastModified());
+		
+	}
+	
+	private void createFileName(String accessURL){
+		if (httpDisposition != null) {
+			int index = httpDisposition.indexOf("filename=");
+			if (index > 0) {
+				fileName = httpDisposition.substring(index + 10,
+						httpDisposition.length() - 1);
+			}
+		} else {
+			// extracts file name from URL
+			fileName = accessURL.substring(accessURL.lastIndexOf("/") + 1,
+					accessURL.length());
+		}
+	}
+	
+	private void printHeaders(){
+		DecimalFormat df = new DecimalFormat("#.##");
+
+		System.out.println("Content-Type = " + httpContentType);
+		System.out.println("Last-Modified = " + httpLastModified);
+		System.out.println("Content-Disposition = " + httpDisposition);
+		System.out.println("Content-Length = "
+				+ df.format(httpContentLength / 1024 / 1024) + " MB");
+		System.out.println("fileName = " + fileName);
+	}
+	
+	private void checkExtensionFormat(String format){
+		extension = FilenameUtils.getExtension(fileName);
+		if(extension.equals("")){
+			if(format.equals(Formats.DEFAULT_NTRIPLES)){
+				extension=Formats.DEFAULT_NTRIPLES;
+			}
+			if(format.equals(Formats.DEFAULT_RDFXML)){
+				extension=Formats.DEFAULT_RDFXML;
+			}
+			if(format.equals(Formats.DEFAULT_NTRIPLES)){
+				extension=Formats.DEFAULT_NTRIPLES;
+			}
+			
+		}
 	}
 
 }

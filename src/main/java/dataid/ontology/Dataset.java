@@ -5,8 +5,6 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.vocabulary.RDF;
 
-import dataid.ontology.vocabulary.NS;
-
 public class Dataset {
 
 	public static final Resource dataIDDataset = resource(NS.DATAID_URI, "Dataset");

@@ -15,10 +15,11 @@ import dataid.files.PrepareFiles;
 import dataid.filters.FileToFilter;
 import dataid.filters.GoogleBloomFilter;
 import dataid.jena.DataIDModel;
-import dataid.literal.DistributionModel;
+import dataid.models.DistributionModel;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
 import dataid.utils.DownloadAndSave;
+import dataid.utils.Formats;
 import dataid.utils.FileUtils;
 import dataid.utils.Timer;
 
@@ -46,33 +47,30 @@ public class DataID {
 
 				// now we need to download the distribution
 				DownloadAndSave downloadedFile = new DownloadAndSave();
+				
+				// loading mongodb distribution object
+				DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
+						distributionModel.getDistribution());
+
 				bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_INFO,
 						"Downloading distribution: "
 								+ distributionModel.getDistribution() + " url.");
 
-				if (downloadedFile.downloadFile(
-						distributionModel.getDistribution(), bean).equals(""))
-					break;
+				downloadedFile.downloadDistribution(
+						distributionModel.getDistribution(), distributionModel.getDistriutionAccessURL(),Formats.getEquivalentFormat(distributionMongoDBObj.getFormat()), bean);
+					
 
-				// creating a mongodb distribution object
-				DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
-						distributionModel.getDistribution());
-
-				// check if format is N-triples
-				String ext = FilenameUtils
-						.getExtension(downloadedFile.fileName);
-				if (!ext.equals("nt")) {
-					downloadedFile.fileName = p
-							.transformTtlToNTriples(downloadedFile.fileName);
-
-					// separating subjects and objects
-					p.separateSubjectAndObject(downloadedFile.fileName);
+				// check if format is not ntriples
+				if (!downloadedFile.extension.equals(Formats.DEFAULT_NTRIPLES)) {
+					// separating subjects and objects using rapper and awk
+					p.separateSubjectAndObject(downloadedFile.fileName,downloadedFile.extension);
 					downloadedFile.authorityDomains = p.domains;
 					downloadedFile.objectFilePath = p.objectFile;
 					downloadedFile.totalTriples = p.totalTriples;
 					downloadedFile.objectLines = p.objectTriples;
 					bean.setNumberOfTriples(downloadedFile.totalTriples);
+					bean.setDownloadNumberOfTriplesLoaded(downloadedFile.totalTriples);
 
 				}
 
@@ -109,6 +107,8 @@ public class DataID {
 				distributionMongoDBObj.setNumberOfObjectTriples(String
 						.valueOf(downloadedFile.objectLines));
 				distributionMongoDBObj.setAccessUrl(downloadedFile.url
+						.toString());
+				distributionMongoDBObj.setFormat(downloadedFile.extension
 						.toString());
 				distributionMongoDBObj.setHttpByteSize(String
 						.valueOf(downloadedFile.httpContentLength));
@@ -160,7 +160,7 @@ public class DataID {
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 					"DataID file URL: " + URL + " url.");
 
-			// check if file extension 
+			// check file extension 
 			FileUtils.acceptedFormats(URL.toString());
 			
 			// create jena models

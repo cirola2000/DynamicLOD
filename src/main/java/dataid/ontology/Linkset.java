@@ -5,8 +5,6 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.vocabulary.RDF;
 
-import dataid.ontology.vocabulary.NS;
-
 public class Linkset {
 
 	public static final Property issued = property(NS.DCT_URI, "issued");
