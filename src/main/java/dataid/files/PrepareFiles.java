@@ -19,12 +19,14 @@ public class PrepareFiles {
 	
 	public ArrayList<String> domains = new ArrayList<String>();
 
-	public void separateSubjectAndObject(String fileName, String extension) throws Exception {
+	public void separateSubjectAndObject(String fileName, String extension, boolean isDbpedia) throws Exception {
 		
 		String rapperFormat = null;
 		
 		if (extension.equals(Formats.DEFAULT_TURTLE)) rapperFormat = "turtle";
 		else if (extension.equals(Formats.DEFAULT_RDFXML)) rapperFormat = "rdfxml";
+		
+		if(extension.equals(Formats.DEFAULT_TURTLE) && isDbpedia) rapperFormat = "ntriples";
 		
 		
 		// creates 2 files, one with subjects and other with objects

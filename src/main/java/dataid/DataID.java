@@ -64,7 +64,10 @@ public class DataID {
 				// check if format is not ntriples
 				if (!downloadedFile.extension.equals(Formats.DEFAULT_NTRIPLES)) {
 					// separating subjects and objects using rapper and awk
-					p.separateSubjectAndObject(downloadedFile.fileName,downloadedFile.extension);
+					// error to convert dbpedia files from turtle using rapper
+					boolean isDbpedia=false;
+					if(distributionMongoDBObj.getAccessUrl().contains("dbpedia")) isDbpedia=true;
+					p.separateSubjectAndObject(downloadedFile.fileName,downloadedFile.extension,true);
 					downloadedFile.authorityDomains = p.domains;
 					downloadedFile.objectFilePath = p.objectFile;
 					downloadedFile.totalTriples = p.totalTriples;
