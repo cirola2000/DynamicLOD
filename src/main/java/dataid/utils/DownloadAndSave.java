@@ -49,6 +49,9 @@ public class DownloadAndSave {
 	public int objectLines = 0;
 	public int totalTriples;
 	public String extension;
+	
+	// control bytes to show percentage
+	public int countBytesReaded = 0;
 
 	public ArrayList<String> authorityDomains = new ArrayList<String>();
 
@@ -111,6 +114,7 @@ public class DownloadAndSave {
 					+ fileName;
 			final byte[] buffer = new byte[BUFFER_SIZE];
 			int n = 0;
+			int aux = 0;
 
 			checkExtensionFormat(format);
 			
@@ -144,7 +148,17 @@ public class DownloadAndSave {
 					outputStream.write(buffer, 0, bytesRead);
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded
 							+ bytesRead;
+					countBytesReaded = countBytesReaded + bytesRead;
+					
+					if(aux%8000 == 0){
+						bean.setDownloadedMB(countBytesReaded/1024/1024);
+						bean.pushDownloadInfo();
+					}
+					aux++;
+					
 				}
+				bean.setDownloadedMB(countBytesReaded/1024/1024);
+				bean.pushDownloadInfo();
 				outputStream.close();
 			} else{
 				httpConn.disconnect();

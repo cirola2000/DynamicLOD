@@ -57,6 +57,8 @@ public class DataIDBean implements Serializable, Runnable {
 	
 	private int downloadNumberOfDownloadedDistributions;
 	
+	private double downloadedMB;
+	
 	
 	
 	// TODO implement a smarter way to choose between add dataid or update graph
@@ -248,6 +250,14 @@ public class DataIDBean implements Serializable, Runnable {
 	public void setDownloadNumberOfDownloadedDistributions(
 			int downloadNumberOfDownloadedDistributions) {
 		this.downloadNumberOfDownloadedDistributions = downloadNumberOfDownloadedDistributions;
+	}
+
+	public double getDownloadedMB() {
+		return downloadedMB;
+	}
+
+	public void setDownloadedMB(double downloadPercentage) {
+		this.downloadedMB = downloadPercentage;
 	}
 
 	public void addDisplayMessage(String level, String info) {
