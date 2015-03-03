@@ -54,15 +54,14 @@ public class MakeLinksets {
 								.get(DistributionMongoDBObject.AUTHORITY_OBJECTS));
 
 				// make some validations
-				if (distribution.get(DistributionMongoDBObject.OBJECT_PATH) == null
-						|| distribution
+				if(distribution
+						.get(DistributionMongoDBObject.OBJECT_PATH)
+						 == null || distribution
 								.get(DistributionMongoDBObject.OBJECT_PATH)
-								.toString().equals("")) {
-					throw new DataIDException(
-							"distributionObjectPath is empty or null for "
-									+ distribution
-											.get(DistributionMongoDBObject.ACCESS_URL)
-											.toString() + " distribution;");
+								.toString().equals("")){
+					throw new DataIDException("distributionObjectPath is empty or null for "+distribution
+							.get(DistributionMongoDBObject.ACCESS_URL)
+							.toString()+" distribution;");
 				}
 
 				int i = 0;
@@ -108,13 +107,6 @@ public class MakeLinksets {
 								"Error while loading bloom filter: "
 										+ e.getMessage());
 					}
-				}
-				}
-					catch (Exception e) {
-						throw new DataIDException(
-										e.getMessage());
-					}
-				
 				}
 
 				System.out.println();
@@ -188,6 +180,11 @@ public class MakeLinksets {
 				// save linksets into mongodb
 				saveLinksets(listOfDataThreads);
 
+				}
+				catch(Exception e){
+					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
+							e.getMessage());
+				}
 			}
 
 		} catch (Exception e) {
