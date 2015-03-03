@@ -52,7 +52,17 @@ public class MakeLinksets {
 						.getDistributionsByAuthority(distribution
 								.get(DistributionMongoDBObject.AUTHORITY_OBJECTS));
 
-				System.out.println(q.size());
+				// make some validations
+				if (distribution.get(DistributionMongoDBObject.OBJECT_PATH) == null
+						|| distribution
+								.get(DistributionMongoDBObject.OBJECT_PATH)
+								.toString().equals("")) {
+					throw new DataIDException(
+							"distributionObjectPath is empty or null for "
+									+ distribution
+											.get(DistributionMongoDBObject.ACCESS_URL)
+											.toString() + " distribution;");
+				}
 
 				int i = 0;
 				for (DistributionMongoDBObject a : q) {
@@ -89,11 +99,6 @@ public class MakeLinksets {
 							dataThread.distributionObjectPath = distribution
 									.get(DistributionMongoDBObject.OBJECT_PATH)
 									.toString();
-							
-							// make some validations
-							if(dataThread.distributionObjectPath == null || dataThread.distributionObjectPath.equals("")){
-								throw new DataIDException("distributionObjectPath is empty or null for "+dataThread.objectDistributionURI+" distribution;");
-							}
 
 							listOfDataThreads.add(dataThread);
 						}
