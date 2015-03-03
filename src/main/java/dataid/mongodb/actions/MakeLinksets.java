@@ -42,6 +42,7 @@ public class MakeLinksets {
 
 			// load distributions
 			while (distributions.hasNext()) {
+				try{
 				// creating a list of threads to process filters
 				List<DataThread> listOfDataThreads = new ArrayList<DataThread>();
 
@@ -107,6 +108,13 @@ public class MakeLinksets {
 								"Error while loading bloom filter: "
 										+ e.getMessage());
 					}
+				}
+				}
+					catch (Exception e) {
+						throw new DataIDException(
+										e.getMessage());
+					}
+				
 				}
 
 				System.out.println();

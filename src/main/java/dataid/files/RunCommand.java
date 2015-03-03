@@ -42,6 +42,7 @@ public class RunCommand {
 		while ((s = stdError.readLine()) != null) {
 			if (errorCount < 100) {
 				errorCount++;
+				System.out.println(s);
 				DataID.bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_ERROR, s);
 				if (c.contains("rapper")) {
