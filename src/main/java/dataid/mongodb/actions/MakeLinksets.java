@@ -89,6 +89,11 @@ public class MakeLinksets {
 							dataThread.distributionObjectPath = distribution
 									.get(DistributionMongoDBObject.OBJECT_PATH)
 									.toString();
+							
+							// make some validations
+							if(dataThread.distributionObjectPath == null || dataThread.distributionObjectPath.equals("")){
+								throw new DataIDException("distributionObjectPath is empty or null for "+dataThread.objectDistributionURI+" distribution;");
+							}
 
 							listOfDataThreads.add(dataThread);
 						}
