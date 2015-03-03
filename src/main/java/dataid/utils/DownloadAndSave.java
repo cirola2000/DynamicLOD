@@ -51,7 +51,7 @@ public class DownloadAndSave {
 	public String extension;
 	
 	// control bytes to show percentage
-	public int countBytesReaded = 0;
+	public double countBytesReaded = 0;
 
 	public ArrayList<String> authorityDomains = new ArrayList<String>();
 

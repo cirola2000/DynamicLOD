@@ -12,6 +12,7 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
 import dataid.DataIDGeneralProperties;
+import dataid.exceptions.DataIDException;
 import dataid.filters.GoogleBloomFilter;
 import dataid.mongodb.DataIDDB;
 import dataid.mongodb.objects.DistributionMongoDBObject;
@@ -55,39 +56,46 @@ public class MakeLinksets {
 
 				int i = 0;
 				for (DistributionMongoDBObject a : q) {
-					if (!a.getSubjectFilterPath().equals(
-							distribution.get(
-									DistributionMongoDBObject.SUBJECT_FILTER_PATH)
-									.toString())) {
+					try {
+						if (!a.getSubjectFilterPath()
+								.equals(distribution
+										.get(DistributionMongoDBObject.SUBJECT_FILTER_PATH)
+										.toString())) {
 
-						DataThread dataThread = new DataThread();
-						// save dataThread object
-						GoogleBloomFilter filter = new GoogleBloomFilter();
+							DataThread dataThread = new DataThread();
+							// save dataThread object
+							GoogleBloomFilter filter = new GoogleBloomFilter();
 
-						try {
-							filter.loadFilter(a.getSubjectFilterPath());
-						} catch (Exception e) {
-							e.printStackTrace();
+							try {
+								filter.loadFilter(a.getSubjectFilterPath());
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+
+							dataThread.filter = filter;
+
+							dataThread.subjectFilterPath = a
+									.getSubjectFilterPath();
+							dataThread.subjectDistributionURI = a
+									.getAccessUrl();
+							dataThread.subjectDatasetURI = a.getTopDataset();
+
+							dataThread.objectDatasetURI = distribution.get(
+									DistributionMongoDBObject.TOP_DATASET)
+									.toString();
+							dataThread.objectDistributionURI = distribution
+									.get(DistributionMongoDBObject.ACCESS_URL)
+									.toString();
+							dataThread.distributionObjectPath = distribution
+									.get(DistributionMongoDBObject.OBJECT_PATH)
+									.toString();
+
+							listOfDataThreads.add(dataThread);
 						}
-
-						dataThread.filter = filter;
-
-						dataThread.subjectFilterPath = a.getSubjectFilterPath();
-						dataThread.subjectDistributionURI = a.getAccessUrl();
-						dataThread.subjectDatasetURI = a.getTopDataset();
-
-						dataThread.objectDatasetURI = distribution.get(
-								DistributionMongoDBObject.TOP_DATASET)
-								.toString();
-						dataThread.objectDistributionURI = distribution.get(
-								DistributionMongoDBObject.ACCESS_URL)
-								.toString();
-						dataThread.distributionObjectPath = distribution.get(
-								DistributionMongoDBObject.OBJECT_PATH)
-								.toString();
-
-
-						listOfDataThreads.add(dataThread);
+					} catch (Exception e) {
+						throw new DataIDException(
+								"Error while loading bloom filter: "
+										+ e.getMessage());
 					}
 				}
 
@@ -163,7 +171,6 @@ public class MakeLinksets {
 				saveLinksets(listOfDataThreads);
 
 			}
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
