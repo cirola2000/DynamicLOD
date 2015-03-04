@@ -66,7 +66,7 @@ public class DataID {
 					// error to convert dbpedia files from turtle using rapper
 					boolean isDbpedia=false;
 					if(distributionMongoDBObj.getAccessUrl().contains("dbpedia")) isDbpedia=true;
-					p.separateSubjectAndObject(downloadedFile.fileName,downloadedFile.extension,true);
+						p.separateSubjectAndObject(downloadedFile.fileName,downloadedFile.extension,bean,isDbpedia);
 					downloadedFile.authorityDomains = p.domains;
 					downloadedFile.objectFilePath = p.objectFile;
 					downloadedFile.totalTriples = p.totalTriples;

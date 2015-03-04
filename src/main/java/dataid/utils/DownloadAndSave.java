@@ -56,7 +56,7 @@ public class DownloadAndSave {
 	// control bytes to show percentage
 	public double countBytesReaded = 0;
 
-	public List<String> authorityDomains = new ArrayList<String>();
+	public Queue<String> authorityDomains = new ConcurrentLinkedQueue<String>();
 
 	public AtomicInteger aint = new AtomicInteger(0);
 
@@ -125,19 +125,26 @@ public class DownloadAndSave {
 			checkExtensionFormat(format);
 
 			if (extension.equals(Formats.DEFAULT_NTRIPLES)) {
-//				SplitAndStore r = new SplitAndStore(bean);
-//				new Thread(r).start();
-				
-				SplitAndStoreThread r = new SplitAndStoreThread(bufferQueue, objectQueue, fileName,bean); 
+				// SplitAndStore r = new SplitAndStore(bean);
+				// new Thread(r).start();
+
+				SplitAndStoreThread r = new SplitAndStoreThread(bufferQueue,
+						objectQueue, fileName, bean);
 				r.start();
 
-//				AddAuthorityObject r2 = new AddAuthorityObject();
-//				new Thread(r2).start();
+				// AddAuthorityObject r2 = new AddAuthorityObject();
+				// new Thread(r2).start();
 
-				AddAuthorityObjectThread r2 = new AddAuthorityObjectThread(objectQueue, authorityDomains);
+				AddAuthorityObjectThread r2 = new AddAuthorityObjectThread(
+						objectQueue, authorityDomains);
 				r2.start();
-				
-				
+				AddAuthorityObjectThread r3 = new AddAuthorityObjectThread(
+						objectQueue, authorityDomains);
+				r3.start();
+				AddAuthorityObjectThread r4 = new AddAuthorityObjectThread(
+						objectQueue, authorityDomains);
+				r4.start();
+
 				String str = "";
 				while (-1 != (n = inputStream.read(buffer))) {
 
@@ -152,7 +159,7 @@ public class DownloadAndSave {
 					if (aux % 8000 == 0) {
 						bean.setDownloadedMB(countBytesReaded / 1024 / 1024);
 						bean.pushDownloadInfo();
-						aux=0;
+						aux = 0;
 					}
 					aux++;
 
@@ -163,9 +170,9 @@ public class DownloadAndSave {
 				}
 				while (bufferQueue.size() > 0) {
 				}
-				
+
 				doneReadingFile = true;
-				
+
 				// telling thread that we are done streaming
 				r.setDoneReadingFile(true);
 				r.join();
@@ -174,13 +181,19 @@ public class DownloadAndSave {
 				objectLines = r.getObjectLines();
 				subjectLines = r.getSubjectLines();
 				totalTriples = r.getTotalTriples();
-				
+
 				r2.setDoneSplittingString(true);
-				
+
 				r2.join();
+				r3.setDoneSplittingString(true);
+
+				r3.join();
+				r4.setDoneSplittingString(true);
+
+				r4.join();
 				System.out.println("ACABO 2");
-				
-//				while (doneAuthorityObject==false) {};
+
+				// while (doneAuthorityObject==false) {};
 
 			} else if (extension.equals(Formats.DEFAULT_TURTLE)
 					|| extension.equals(Formats.DEFAULT_RDFXML)) {
@@ -208,9 +221,9 @@ public class DownloadAndSave {
 				throw new DataIDException("RDF format not supported: "
 						+ extension);
 			}
-			
+
 			doneReadingFile = true;
-			
+
 			// update file length
 			if (httpContentLength < 1) {
 				File f = new File(dataIDFilePath);
@@ -227,8 +240,6 @@ public class DownloadAndSave {
 							+ responseCode);
 		}
 	}
-
-	
 
 	private boolean checkWhetherDownload(String uri, String httpContentLength,
 			String httpLastModified) {

@@ -125,6 +125,7 @@ public class SplitAndStoreThread extends Thread {
 										// add object to object queue (the
 										// queue
 										// is read by other thread)
+										while (objectQueue.size()>1000) {}
 										objectQueue.add(matcher.group(3));
 										objectLines++;
 									}

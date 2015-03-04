@@ -3,22 +3,26 @@ package dataid.files;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.junit.Test;
 
 import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
+import dataid.server.DataIDBean;
 
 public class RunCommand {
 
-	public ArrayList<String> runRapper(String c) throws Exception {
+	public Queue<String> runRapper(String c, DataIDBean bean) throws Exception {
 
-		ArrayList<String> results = new ArrayList<String>();
+		Queue<String> results = new ConcurrentLinkedQueue<String>();
 		String[] cmd = { "/bin/sh", "-c", c };
 
-		DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 				"<b>Running rapper command:</b> <i>" + c + "</i>");
+		System.out.println("Running rapper command: " + c);
 
 		Runtime rt = Runtime.getRuntime();
 		Process proc = rt.exec(cmd);
@@ -33,7 +37,7 @@ public class RunCommand {
 		String s = null;
 		while ((s = stdInput.readLine()) != null) {
 			results.add(s);
-			System.out.println("Awk output: " + s);
+//			System.out.println("Awk output: " + s);
 		}
 
 		// read any errors from the attempted command
@@ -67,6 +71,8 @@ public class RunCommand {
 		stdInput.close();
 		stdError.close();
 		proc.destroy();
+		System.out.println("Process closed");
+		
 
 		return results;
 	}
