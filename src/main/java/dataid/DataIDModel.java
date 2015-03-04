@@ -1,4 +1,4 @@
-package dataid.jena;
+package dataid;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -11,8 +11,6 @@ import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
-import dataid.DataID;
-import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
 import dataid.models.DistributionModel;
 import dataid.mongodb.objects.DatasetMongoDBObject;

@@ -29,7 +29,7 @@ public class DataIDBean implements Serializable, Runnable {
 	static private double startTime = 0;
 	static private double endTime = 0;
 
-	private String url = "http://localhost:8080/dataids_example/dataid-dbpediattl.ttl";
+	private String url = "http://localhost:8080/dataids_example/dataidDbpediaEnglish.ttl";
 
 	// log screen
 	private String display = "";

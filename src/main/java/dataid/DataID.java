@@ -14,7 +14,6 @@ import dataid.exceptions.DataIDException;
 import dataid.files.PrepareFiles;
 import dataid.filters.FileToFilter;
 import dataid.filters.GoogleBloomFilter;
-import dataid.jena.DataIDModel;
 import dataid.models.DistributionModel;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
@@ -131,8 +130,8 @@ public class DataID {
 				distributionMongoDBObj.setTriples(downloadedFile.totalTriples);
 				distributionMongoDBObj.setAuthority(authority);
 				
-				for (String domain : downloadedFile.authorityDomains) {
-					distributionMongoDBObj.addAuthorityObjects(domain);
+				for (String d : downloadedFile.authorityDomains) {
+					distributionMongoDBObj.addAuthorityObjects(d);
 				}
 
 				distributionMongoDBObj.updateObject();

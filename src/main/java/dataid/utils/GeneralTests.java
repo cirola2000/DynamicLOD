@@ -22,10 +22,10 @@ import com.mongodb.DBObject;
 import dataid.filters.FileToFilter;
 import dataid.filters.GoogleBloomFilter;
 import dataid.mongodb.DataIDDB;
-import dataid.mongodb.actions.DataThread;
 import dataid.mongodb.actions.JobThread;
 import dataid.mongodb.actions.Queries;
 import dataid.mongodb.objects.DistributionMongoDBObject;
+import dataid.threads.DataModelThread;
 
 public class GeneralTests {
 
@@ -76,7 +76,7 @@ public class GeneralTests {
 			// load distributions
 			if (distributions.hasNext()) {
 				// creating a list of threads to process filters
-				List<DataThread> listOfDataThreads = new ArrayList<DataThread>();
+				List<DataModelThread> listOfDataThreads = new ArrayList<DataModelThread>();
 
 				DBObject distribution = distributions.next();
 
@@ -108,7 +108,7 @@ public class GeneralTests {
 								+ a.getSubjectFilterPath());
 						System.out.println("Filter Path: "+a.getSubjectFilterPath());
 
-						DataThread dataThread = new DataThread();
+						DataModelThread dataThread = new DataModelThread();
 						// save dataThread object
 						GoogleBloomFilter filter = new GoogleBloomFilter();
 
@@ -171,7 +171,7 @@ public class GeneralTests {
 						if (bufferIndex % bufferSize == 0) {
 							Thread[] threads = new Thread[listOfDataThreads
 									.size()];
-							for (DataThread dataThread2 : listOfDataThreads) {
+							for (DataModelThread dataThread2 : listOfDataThreads) {
 								threads[threadIndex] = new Thread(
 										new JobThread(dataThread2,
 												buffer.clone(), bufferSize));
@@ -197,7 +197,7 @@ public class GeneralTests {
 								.toString());
 
 				// save linksets into mongodb
-				for (DataThread t0 : listOfDataThreads) {
+				for (DataModelThread t0 : listOfDataThreads) {
 					System.out.println();
 					System.out.println("Distribution Object Path: "+t0.distributionObjectPath);
 					System.out.println("Object distribution URI: "+t0.objectDistributionURI);

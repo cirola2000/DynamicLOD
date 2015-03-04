@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -26,6 +27,8 @@ import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
+import dataid.threads.AddAuthorityObjectThread;
+import dataid.threads.SplitAndStoreThread;
 
 public class DownloadAndSave {
 	private static final int BUFFER_SIZE = 2048;
@@ -45,15 +48,15 @@ public class DownloadAndSave {
 	public URL url = null;
 
 	public double contentLengthAfterDownloaded = 0;
-	public int subjectLines = 0;
-	public int objectLines = 0;
-	public int totalTriples;
+	public Integer subjectLines = 0;
+	public Integer objectLines = 0;
+	public Integer totalTriples;
 	public String extension;
-	
+
 	// control bytes to show percentage
 	public double countBytesReaded = 0;
 
-	public ArrayList<String> authorityDomains = new ArrayList<String>();
+	public List<String> authorityDomains = new ArrayList<String>();
 
 	public AtomicInteger aint = new AtomicInteger(0);
 
@@ -61,10 +64,11 @@ public class DownloadAndSave {
 	Queue<String> objectQueue = new ConcurrentLinkedQueue<String>();
 	boolean doneReadingFile = false;
 	boolean doneSplittingString = false;
+	boolean doneAuthorityObject = false;
 
-	public void downloadDistribution(String distributionURI, String accessURL, String format, DataIDBean bean)
-			throws Exception {
-		
+	public void downloadDistribution(String distributionURI, String accessURL,
+			String format, DataIDBean bean) throws Exception {
+
 		url = new URL(accessURL);
 		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
 		int responseCode = httpConn.getResponseCode();
@@ -78,12 +82,13 @@ public class DownloadAndSave {
 			// check if distribution already exists
 			if (!checkWhetherDownload(accessURL,
 					String.valueOf(httpContentLength), httpLastModified)) {
-				throw new DataIDException("File previously downloaded: "+ accessURL+" No modification found. ");
+				throw new DataIDException("File previously downloaded: "
+						+ accessURL + " No modification found. ");
 			}
 
 			// extracts file name from header field
 			createFileName(accessURL);
-			
+
 			// print header at stdout
 			printHeaders();
 
@@ -98,12 +103,13 @@ public class DownloadAndSave {
 						httpConn.getInputStream(), true);
 				fileName = fileName.replace(".bz2", "");
 			}
-			
+
 			// check whether file is zip type
 			if (extension.equals("zip")) {
 				DownloadUtils d = new DownloadUtils();
 				d.checkZip(url);
-				ZipInputStream zip = new ZipInputStream(httpConn.getInputStream());
+				ZipInputStream zip = new ZipInputStream(
+						httpConn.getInputStream());
 				ZipEntry entry = zip.getNextEntry();
 				fileName = entry.getName();
 				inputStream = zip;
@@ -117,13 +123,20 @@ public class DownloadAndSave {
 			int aux = 0;
 
 			checkExtensionFormat(format);
-			
-			if (extension.equals(Formats.DEFAULT_NTRIPLES)) {
-				SplitAndStore r = new SplitAndStore(bean);
-				new Thread(r).start();
 
-				AddAuthorityObject r2 = new AddAuthorityObject();
-				new Thread(r2).start();
+			if (extension.equals(Formats.DEFAULT_NTRIPLES)) {
+//				SplitAndStore r = new SplitAndStore(bean);
+//				new Thread(r).start();
+				
+				SplitAndStoreThread r = new SplitAndStoreThread(bufferQueue, objectQueue, fileName,bean); 
+				r.start();
+
+//				AddAuthorityObject r2 = new AddAuthorityObject();
+//				new Thread(r2).start();
+
+				AddAuthorityObjectThread r2 = new AddAuthorityObjectThread(objectQueue, authorityDomains);
+				r2.start();
+				
 				
 				String str = "";
 				while (-1 != (n = inputStream.read(buffer))) {
@@ -133,14 +146,44 @@ public class DownloadAndSave {
 					str = "";
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded
 							+ n;
+
+					countBytesReaded = countBytesReaded + n;
+
+					if (aux % 8000 == 0) {
+						bean.setDownloadedMB(countBytesReaded / 1024 / 1024);
+						bean.pushDownloadInfo();
+						aux=0;
+					}
+					aux++;
+
 					// don't allow queue size bigger than 900;
 					while (bufferQueue.size() > 900) {
 					}
 
 				}
-				while (bufferQueue.size() > 0) {}
+				while (bufferQueue.size() > 0) {
+				}
+				
+				doneReadingFile = true;
+				
+				// telling thread that we are done streaming
+				r.setDoneReadingFile(true);
+				r.join();
+				System.out.println("ACABO 1");
+				fileName = r.getFileName();
+				objectLines = r.getObjectLines();
+				subjectLines = r.getSubjectLines();
+				totalTriples = r.getTotalTriples();
+				
+				r2.setDoneSplittingString(true);
+				
+				r2.join();
+				System.out.println("ACABO 2");
+				
+//				while (doneAuthorityObject==false) {};
 
-			} else if (extension.equals(Formats.DEFAULT_TURTLE) || extension.equals(Formats.DEFAULT_RDFXML)) {
+			} else if (extension.equals(Formats.DEFAULT_TURTLE)
+					|| extension.equals(Formats.DEFAULT_RDFXML)) {
 				int bytesRead = -1;
 				FileOutputStream outputStream = new FileOutputStream(
 						dataIDFilePath);
@@ -149,24 +192,25 @@ public class DownloadAndSave {
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded
 							+ bytesRead;
 					countBytesReaded = countBytesReaded + bytesRead;
-					
-					if(aux%8000 == 0){
-						bean.setDownloadedMB(countBytesReaded/1024/1024);
+
+					if (aux % 8000 == 0) {
+						bean.setDownloadedMB(countBytesReaded / 1024 / 1024);
 						bean.pushDownloadInfo();
 					}
 					aux++;
-					
+
 				}
-				bean.setDownloadedMB(countBytesReaded/1024/1024);
+				bean.setDownloadedMB(countBytesReaded / 1024 / 1024);
 				bean.pushDownloadInfo();
 				outputStream.close();
-			} else{
+			} else {
 				httpConn.disconnect();
-				throw new DataIDException("RDF format not supported: " + extension);
+				throw new DataIDException("RDF format not supported: "
+						+ extension);
 			}
-
+			
 			doneReadingFile = true;
-
+			
 			// update file length
 			if (httpContentLength < 1) {
 				File f = new File(dataIDFilePath);
@@ -178,165 +222,13 @@ public class DownloadAndSave {
 			httpConn.disconnect();
 		} else {
 			httpConn.disconnect();
-			throw new DataIDException("No file to download. Server replied HTTP code: "
+			throw new DataIDException(
+					"No file to download. Server replied HTTP code: "
 							+ responseCode);
 		}
 	}
 
-	// Thread reads string buffer, split objects and subjects, and saves in the
-	// disk
-	public class SplitAndStore implements Runnable {
-		DataIDBean bean;
-		
-		public SplitAndStore(DataIDBean bean) {
-			this.bean = bean;
-		}
-
-		public synchronized void run() {
-
-			try {
-
-				// creates subject file in disk
-				FileOutputStream subject = new FileOutputStream(
-						DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
-								+ fileName);
-
-				// creates object file in disk
-				FileOutputStream object = new FileOutputStream(
-						DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
-								+ fileName);
-
-				String lastLine = "";
-				String tmpLastSubject = "";
-				
-				// starts reading buffer queue
-				while (!doneReadingFile) {
-					while (bufferQueue.size() > 0) {
-						// aint.decrementAndGet();
-						try {
-							String o[];
-							o = bufferQueue.remove().split("\n");
-							if (!lastLine.equals("")) {
-								o[0] = lastLine.concat(o[0]);
-
-								lastLine = "";
-							}
-							// System.out.println(o[0]);
-
-							for (int q = 0; q < o.length; q++) {
-								String u = o[q];
-								if (!u.startsWith("#")) {
-									try {
-
-										Pattern pattern = Pattern
-										// .compile("^(<[^>]+>)\\s+(<[^>]+>)\\s(.+[>|\"]).*");
-										// .compile("^(<[^>]+>)\\s+(<[^>]+>)\\s(.+[>|\"].*)\\s\\.");
-												.compile("^(<[^>]+>)\\s+(<[^>]+>)\\s(.*)(\\s\\.)");
-
-										// System.out.println(u);
-										Matcher matcher = pattern.matcher(u);
-										if (!matcher.matches()) {
-											throw new ArrayIndexOutOfBoundsException();
-										}
-
-										// get subject and save to file
-										if (!tmpLastSubject.equals(matcher
-												.group(1))) {
-											tmpLastSubject = matcher.group(1);
-											subject.write(new String(matcher
-													.group(1) + "\n")
-													.getBytes());
-											subjectLines++;
-										}
-
-										// get object (make sure that its a
-										// resource
-										// and not a literal), add to queue and
-										// save
-										// to file
-										if (!matcher.group(3).startsWith("\"")) {
-											object.write(new String(matcher
-													.group(3) + "\n")
-													.getBytes());
-
-											// add object to object queue (the
-											// queue
-											// is read by other thread)
-											objectQueue.add(matcher.group(3));
-											objectLines++;
-										}
-										totalTriples++;
-
-										// send message to view
-										if (totalTriples % 100000 == 0) {
-											System.out.println(totalTriples
-													+ " registers written");
-											System.out
-													.println("Buffer queue size: "
-															+ bufferQueue
-																	.size());
-											bean.setDownloadNumberOfTriplesLoaded(totalTriples);
-											bean.pushDownloadInfo();
-										}
-
-									} catch (ArrayIndexOutOfBoundsException e) {
-										// e.printStackTrace();
-										lastLine = u;
-									}
-								}
-							}
-
-						} catch (NoSuchElementException em) {
-							// em.printStackTrace();
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-
-					}
-				}
-				bean.setDownloadNumberOfTriplesLoaded(totalTriples);
-				bean.setDownloadNumberOfDownloadedDistributions(bean
-						.getDownloadNumberOfDownloadedDistributions() + 1);
-
-				bean.pushDownloadInfo();
-				object.close();
-				subject.close();
-				doneSplittingString = true;
-				
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
-	};
-
-	public class AddAuthorityObject implements Runnable {
-
-		public synchronized void run() {
-			String obj = "";
-			while (!doneSplittingString) {
-				while (objectQueue.size() > 0) {
-					obj = objectQueue.remove();
-					String authority = "";
-
-					URL url;
-					try {
-						obj = obj.substring(1, obj.length() - 1);
-						url = new URL(obj);
-						authority = url.getProtocol() + "://" + url.getHost();
-					} catch (MalformedURLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					if (!authority.equals(""))
-						if (!authorityDomains.contains(authority)) {
-							authorityDomains.add(authority);
-						}
-				}
-			}
-		}
-	};
+	
 
 	private boolean checkWhetherDownload(String uri, String httpContentLength,
 			String httpLastModified) {
@@ -352,18 +244,18 @@ public class DownloadAndSave {
 		}
 		return true;
 	}
-	
-	private void getMetadataFromHTTPHeaders(HttpURLConnection httpConn){
-		
+
+	private void getMetadataFromHTTPHeaders(HttpURLConnection httpConn) {
+
 		httpDisposition = httpConn.getHeaderField("Content-Disposition");
 		httpContentType = httpConn.getContentType();
 		httpContentLength = httpConn.getContentLength();
 		if (httpConn.getLastModified() > 0)
 			httpLastModified = String.valueOf(httpConn.getLastModified());
-		
+
 	}
-	
-	private void createFileName(String accessURL){
+
+	private void createFileName(String accessURL) {
 		if (httpDisposition != null) {
 			int index = httpDisposition.indexOf("filename=");
 			if (index > 0) {
@@ -376,8 +268,8 @@ public class DownloadAndSave {
 					accessURL.length());
 		}
 	}
-	
-	private void printHeaders(){
+
+	private void printHeaders() {
 		DecimalFormat df = new DecimalFormat("#.##");
 
 		System.out.println("Content-Type = " + httpContentType);
@@ -387,20 +279,20 @@ public class DownloadAndSave {
 				+ df.format(httpContentLength / 1024 / 1024) + " MB");
 		System.out.println("fileName = " + fileName);
 	}
-	
-	private void checkExtensionFormat(String format){
+
+	private void checkExtensionFormat(String format) {
 		extension = FilenameUtils.getExtension(fileName);
-		if(extension.equals("")){
-			if(format.equals(Formats.DEFAULT_NTRIPLES)){
-				extension=Formats.DEFAULT_NTRIPLES;
+		if (extension.equals("")) {
+			if (format.equals(Formats.DEFAULT_NTRIPLES)) {
+				extension = Formats.DEFAULT_NTRIPLES;
 			}
-			if(format.equals(Formats.DEFAULT_RDFXML)){
-				extension=Formats.DEFAULT_RDFXML;
+			if (format.equals(Formats.DEFAULT_RDFXML)) {
+				extension = Formats.DEFAULT_RDFXML;
 			}
-			if(format.equals(Formats.DEFAULT_NTRIPLES)){
-				extension=Formats.DEFAULT_NTRIPLES;
+			if (format.equals(Formats.DEFAULT_NTRIPLES)) {
+				extension = Formats.DEFAULT_NTRIPLES;
 			}
-			
+
 		}
 	}
 

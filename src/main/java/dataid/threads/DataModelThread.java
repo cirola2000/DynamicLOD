@@ -1,8 +1,8 @@
-package dataid.mongodb.actions;
+package dataid.threads;
 
 import dataid.filters.GoogleBloomFilter;
 
-public class DataThread {
+public class DataModelThread {
 
 	public String distributionObjectPath;
 	public String subjectFilterPath;

@@ -1,12 +1,14 @@
 package dataid.mongodb.actions;
 
+import dataid.threads.DataModelThread;
+
 
 public class JobThread implements Runnable {
 	int size;
 	String[] lines;
-	DataThread dataThread = null;
+	DataModelThread dataThread = null;
 
-	public JobThread(DataThread dataThread, String[] lines, int size) {
+	public JobThread(DataModelThread dataThread, String[] lines, int size) {
 
 		this.size = size;
 		this.lines = lines;

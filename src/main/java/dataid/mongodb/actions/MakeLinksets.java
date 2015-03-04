@@ -18,6 +18,7 @@ import dataid.mongodb.DataIDDB;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
 import dataid.server.DataIDBean;
+import dataid.threads.DataModelThread;
 import dataid.utils.Timer;
 
 public class MakeLinksets {
@@ -44,7 +45,7 @@ public class MakeLinksets {
 			while (distributions.hasNext()) {
 				try{
 				// creating a list of threads to process filters
-				List<DataThread> listOfDataThreads = new ArrayList<DataThread>();
+				List<DataModelThread> listOfDataThreads = new ArrayList<DataModelThread>();
 
 				DBObject distribution = distributions.next();
 
@@ -72,7 +73,7 @@ public class MakeLinksets {
 										.get(DistributionMongoDBObject.SUBJECT_FILTER_PATH)
 										.toString())) {
 
-							DataThread dataThread = new DataThread();
+							DataModelThread dataThread = new DataModelThread();
 							// save dataThread object
 							GoogleBloomFilter filter = new GoogleBloomFilter();
 
@@ -148,7 +149,7 @@ public class MakeLinksets {
 						if (bufferIndex % bufferSize == 0) {
 							Thread[] threads = new Thread[listOfDataThreads
 									.size()];
-							for (DataThread dataThread2 : listOfDataThreads) {
+							for (DataModelThread dataThread2 : listOfDataThreads) {
 								threads[threadIndex] = new Thread(
 										new JobThread(dataThread2,
 												buffer.clone(), bufferSize));
@@ -194,9 +195,9 @@ public class MakeLinksets {
 				"Time to update linksets: " + t.stopTimer() + "s");
 	}
 
-	public void saveLinksets(List<DataThread> dataThreads) {
+	public void saveLinksets(List<DataModelThread> dataThreads) {
 
-		for (DataThread dataThread : dataThreads) {
+		for (DataModelThread dataThread : dataThreads) {
 			LinksetMongoDBObject l = new LinksetMongoDBObject(
 					dataThread.objectDistributionURI + "-2-"
 							+ dataThread.subjectDistributionURI);
