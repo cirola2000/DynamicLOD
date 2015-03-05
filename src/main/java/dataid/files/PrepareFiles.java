@@ -51,7 +51,7 @@ public class PrepareFiles {
 		objectFile = DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH+ fileName;
 		
 		// getting objects domain
-		System.out.println("Saving objects domain");
+		System.out.println("Loading objects domain");
 		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Saving objects domain");
 		
 		for (String string : results) {
@@ -63,49 +63,10 @@ public class PrepareFiles {
 				objectTriples = Integer.parseInt(a[1].replace("/", ""));
 			}
 			else{
-//				domains.add(string.substring(1,string.length()));
+				domains.add(string.substring(1,string.length()));
 			}
 		}		
-		System.out.println("Creating threads");
-		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Creating threads");
-		
-		AddAuthorityObjectThread r2 = new AddAuthorityObjectThread(
-				results, domains);
-		r2.start();
-		AddAuthorityObjectThread r3 = new AddAuthorityObjectThread(
-				results, domains);
-		r3.start();
-		AddAuthorityObjectThread r4 = new AddAuthorityObjectThread(
-				results, domains);
-		r4.start();
-
-		AddAuthorityObjectThread r5 = new AddAuthorityObjectThread(
-				results, domains);
-		r5.start();
-
-		AddAuthorityObjectThread r6 = new AddAuthorityObjectThread(
-				results, domains);
-		r6.start();
-
-		AddAuthorityObjectThread r7 = new AddAuthorityObjectThread(
-				results, domains);
-		r7.start();
-		
-		Thread.sleep(190);
-		r2.setDoneSplittingString(true);
-		r3.setDoneSplittingString(true);
-		r4.setDoneSplittingString(true);
-		r5.setDoneSplittingString(true);
-		r6.setDoneSplittingString(true);
-		r7.setDoneSplittingString(true);
-		
-		r2.join();
-		r3.join();
-		r4.join();
-		r5.join();
-		r6.join();
-		r7.join();
-		
+		System.out.println("Objects domain loaded.");		
 		System.out.println();
 		
 	}

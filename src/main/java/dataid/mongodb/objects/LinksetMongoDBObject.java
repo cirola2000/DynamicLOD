@@ -38,7 +38,7 @@ public class LinksetMongoDBObject extends DataIDDB {
 		loadObject();
 	}
 
-	public boolean updateObject() {
+	public boolean updateObject(boolean checkBeforeInsert) {
 
 		// save object case it doens't exists
 		try {
@@ -57,7 +57,7 @@ public class LinksetMongoDBObject extends DataIDDB {
 			// updating objectsTarget on mongodb
 			mongoDBObject.put(LINKS, links);
 
-			insert();
+			insert(checkBeforeInsert);
 		} catch (Exception e2) {
 			// e2.printStackTrace();
 

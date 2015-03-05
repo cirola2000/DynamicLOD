@@ -138,12 +138,12 @@ public class DataIDModel {
 										.getObject().toString());
 							}
 
-							distributionMongoDBObj.updateObject();
+							distributionMongoDBObj.updateObject(true);
 
 							// update dataset on mongodb with distribution
 							datasetMongoDBObj.addDistributionURI(distribution
 									.getObject().toString());
-							datasetMongoDBObj.updateObject();
+							datasetMongoDBObj.updateObject(true);
 						}
 					} catch (DataIDException ex) {
 						bean.addDisplayMessage(
@@ -152,7 +152,7 @@ public class DataIDModel {
 						ex.printStackTrace();
 					}
 
-					datasetMongoDBObj.updateObject();
+					datasetMongoDBObj.updateObject(true);
 
 				}
 			}
@@ -173,7 +173,7 @@ public class DataIDModel {
 					Statement s = stmtSubsetsTmp.next();
 					// get subset and update mongodb parent dataset
 					datasetMongoDBObj.addSubsetURI(s.getObject().toString());
-					datasetMongoDBObj.updateObject();
+					datasetMongoDBObj.updateObject(true);
 				}
 
 				iterateSubsetsNew(stmtSubsets);
@@ -198,7 +198,7 @@ public class DataIDModel {
 					subset.getObject().toString());
 			subsetMongoDBObj
 					.addParentDatasetURI(subset.getSubject().toString());
-			subsetMongoDBObj.updateObject();
+			subsetMongoDBObj.updateObject(true);
 
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 					"Subset found: " + subset.getObject().toString());
@@ -210,7 +210,7 @@ public class DataIDModel {
 			// case there is a subset, call method recursively
 			if (stmtSubsets2.hasNext()) {
 				subsetMongoDBObj.addSubsetURI(subset.getSubject().toString());
-				subsetMongoDBObj.updateObject();
+				subsetMongoDBObj.updateObject(true);
 
 				iterateSubsetsNew(stmtSubsets2);
 			} else {
@@ -285,13 +285,13 @@ public class DataIDModel {
 											.getObject().toString());
 								}
 								
-								distributionMongoDBObj.updateObject();
+								distributionMongoDBObj.updateObject(true);
 
 								// update dataset on mongodb with distribution
 								subsetMongoDBObj
 										.addDistributionURI(distribution
 												.getSubject().toString());
-								subsetMongoDBObj.updateObject();
+								subsetMongoDBObj.updateObject(true);
 
 							}
 						} catch (DataIDException ex) {

@@ -206,7 +206,7 @@ public class MakeLinksets {
 			l.setSubjectsDistributionTarget(dataThread.subjectDistributionURI);
 			l.setObjectsDatasetTarget(dataThread.objectDatasetURI);
 			l.setSubjectsDatasetTarget(dataThread.subjectDatasetURI);
-			l.updateObject();
+			l.updateObject(true);
 		}
 
 	}

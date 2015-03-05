@@ -47,7 +47,7 @@ public class DatasetMongoDBObject extends DataIDDB {
 		loadObject();
 	}
 
-	public boolean updateObject() {
+	public boolean updateObject(boolean checkBeforeInsert) {
 
 		// save object case it doens't exists
 		try {
@@ -64,7 +64,7 @@ public class DatasetMongoDBObject extends DataIDDB {
 			mongoDBObject.put(LABEL, label);
 			
 			
-			insert();
+			insert(checkBeforeInsert);
 			return true;
 		} catch (Exception e2) {
 //			e2.printStackTrace();

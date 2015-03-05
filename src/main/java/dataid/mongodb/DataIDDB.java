@@ -3,6 +3,8 @@ package dataid.mongodb;
 import java.util.Arrays;
 import java.util.Date;
 
+import org.bson.types.ObjectId;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -40,7 +42,8 @@ abstract public class DataIDDB {
 	protected String uri = null;
 
 	// abstract methods
-	abstract public boolean updateObject() throws DataIDException;
+	abstract public boolean updateObject(boolean checkBeforeInsert)
+			throws DataIDException;
 
 	abstract protected boolean loadObject();
 
@@ -60,7 +63,6 @@ abstract public class DataIDDB {
 			this.uri = uri;
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -71,12 +73,20 @@ abstract public class DataIDDB {
 			if (mongo == null) {
 				DataIDGeneralProperties p = new DataIDGeneralProperties();
 				p.loadProperties();
-				if(DataIDGeneralProperties.MONGODB_SECURE_MODE){
-					MongoCredential credential = MongoCredential.createMongoCRCredential(DataIDGeneralProperties.MONGODB_USERNAME, DataIDGeneralProperties.MONGODB_DB, DataIDGeneralProperties.MONGODB_PASSWORD.toCharArray());
-					mongo = new MongoClient(new ServerAddress(DataIDGeneralProperties.MONGODB_HOST), Arrays.asList(credential));
-				}
-				else{
-				mongo = new MongoClient(DataIDGeneralProperties.MONGODB_HOST, DataIDGeneralProperties.MONGODB_PORT);
+				if (DataIDGeneralProperties.MONGODB_SECURE_MODE) {
+					MongoCredential credential = MongoCredential
+							.createMongoCRCredential(
+									DataIDGeneralProperties.MONGODB_USERNAME,
+									DataIDGeneralProperties.MONGODB_DB,
+									DataIDGeneralProperties.MONGODB_PASSWORD
+											.toCharArray());
+					mongo = new MongoClient(new ServerAddress(
+							DataIDGeneralProperties.MONGODB_HOST),
+							Arrays.asList(credential));
+				} else {
+					mongo = new MongoClient(
+							DataIDGeneralProperties.MONGODB_HOST,
+							DataIDGeneralProperties.MONGODB_PORT);
 				}
 				db = mongo.getDB(DataIDGeneralProperties.MONGODB_DB);
 			}
@@ -86,20 +96,22 @@ abstract public class DataIDDB {
 		return db;
 	}
 
-	protected void insert() throws DataIDException {
+	protected void insert(boolean checkBeforeInsert) throws DataIDException {
 
 		// adding object URI
-		if (uri == null)
+		if (uri == null){
 			throw new DataIDException(
 					"Error while saving. Object URI can't be null.");
-
+		}
 		// check if URI already exists
-		BasicDBObject tmp = new BasicDBObject();
-		tmp.put(URI, uri);
-		DBCursor d = objectCollection.find(tmp);
-		if (d.hasNext())
-			throw new DataIDException("Can't save object with URI: " + uri
-					+ ". Object already exists.");
+		if (checkBeforeInsert) {
+			BasicDBObject tmp = new BasicDBObject();
+			tmp.put(URI, uri);
+			DBCursor d = objectCollection.find(tmp);
+			if (d.hasNext())
+				throw new DataIDException("Can't save object with URI: " + uri
+						+ ". Object already exists.");
+		}
 
 		// adding timestamp value
 		mongoDBObject.put(CREATED_TIMESTAMP, new Date());
@@ -112,7 +124,7 @@ abstract public class DataIDDB {
 
 		if (uri == null)
 			return false;
-		
+
 		// adding timestamp value
 		mongoDBObject.put(MODIFIED_TIMESTAMP, new Date());
 

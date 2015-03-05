@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.io.FilenameUtils;
+import org.bson.types.ObjectId;
 
 import dataid.exceptions.DataIDException;
 import dataid.files.PrepareFiles;
@@ -16,10 +16,11 @@ import dataid.filters.FileToFilter;
 import dataid.filters.GoogleBloomFilter;
 import dataid.models.DistributionModel;
 import dataid.mongodb.objects.DistributionMongoDBObject;
+import dataid.mongodb.objects.DistributionObjectsDomainsMongoDBObject;
 import dataid.server.DataIDBean;
 import dataid.utils.DownloadAndSave;
-import dataid.utils.Formats;
 import dataid.utils.FileUtils;
+import dataid.utils.Formats;
 import dataid.utils.Timer;
 
 public class DataID {
@@ -36,37 +37,40 @@ public class DataID {
 
 	private void load() throws Exception {
 		// if there is at least one distribution, load them
-		Iterator<DistributionModel> distributions = distributionsLinks.iterator();
+		Iterator<DistributionModel> distributions = distributionsLinks
+				.iterator();
 
 		while (distributions.hasNext()) {
+			DistributionModel distributionModel = distributions.next();
+			// loading mongodb distribution object
+			DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
+					distributionModel.getDistribution());
 			try {
-				DistributionModel distributionModel = distributions.next();
-
-				PrepareFiles p = new PrepareFiles();
-
 				// now we need to download the distribution
 				DownloadAndSave downloadedFile = new DownloadAndSave();
-				
-				// loading mongodb distribution object
-				DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
-						distributionModel.getDistribution());
 
 				bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_INFO,
 						"Downloading distribution: "
-								+ distributionModel.getDistribution() + " url.");
+								+ distributionModel.getDistriutionAccessURL() + " (AccessURL property).");
 
-				downloadedFile.downloadDistribution(
-						distributionModel.getDistribution(), distributionModel.getDistriutionAccessURL(),Formats.getEquivalentFormat(distributionMongoDBObj.getFormat()), bean);
-					
+				downloadedFile.downloadDistribution(distributionModel
+						.getDistribution(), distributionModel
+						.getDistriutionAccessURL(),
+						Formats.getEquivalentFormat(distributionMongoDBObj
+								.getFormat()), bean);
 
 				// check if format is not ntriples
 				if (!downloadedFile.extension.equals(Formats.DEFAULT_NTRIPLES)) {
+					PrepareFiles p = new PrepareFiles();
 					// separating subjects and objects using rapper and awk
 					// error to convert dbpedia files from turtle using rapper
-					boolean isDbpedia=false;
-					if(distributionMongoDBObj.getAccessUrl().contains("dbpedia")) isDbpedia=true;
-						p.separateSubjectAndObject(downloadedFile.fileName,downloadedFile.extension,bean,isDbpedia);
+					boolean isDbpedia = false;
+					if (distributionMongoDBObj.getAccessUrl().contains(
+							"dbpedia"))
+						isDbpedia = true;
+					p.separateSubjectAndObject(downloadedFile.fileName,
+							downloadedFile.extension, bean, isDbpedia);
 					downloadedFile.authorityDomains = p.domains;
 					downloadedFile.objectFilePath = p.objectFile;
 					downloadedFile.totalTriples = p.totalTriples;
@@ -106,6 +110,10 @@ public class DataID {
 				filter.saveFilter(downloadedFile.fileName);
 
 				// save distribution in a mongodb object
+				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+						"Saving mongodb \"Distribution\" document.");
+				System.out.println("Saving mongodb \"Distribution\" document.");
+
 				distributionMongoDBObj.setNumberOfObjectTriples(String
 						.valueOf(downloadedFile.objectLines));
 				distributionMongoDBObj.setAccessUrl(downloadedFile.url
@@ -128,24 +136,75 @@ public class DataID {
 						.setNumberOfTriplesLoadedIntoFilter(String
 								.valueOf(f.subjectsLoadedIntoFilter));
 				distributionMongoDBObj.setTriples(downloadedFile.totalTriples);
-				distributionMongoDBObj.setAuthority(authority);
+				distributionMongoDBObj.setDomain(authority);
 				
+				// remove old domains object
+				ObjectId id = new ObjectId();
+				DistributionObjectsDomainsMongoDBObject d2 = new DistributionObjectsDomainsMongoDBObject(id.get().toString());
+				d2.setDistributionURI(distributionMongoDBObj.getUri());
+				d2.remove();
+				
+				int count = 0;
 				for (String d : downloadedFile.authorityDomains) {
-					distributionMongoDBObj.addAuthorityObjects(d);
+					// distributionMongoDBObj.addAuthorityObjects(d);
+					 count++;
+					 if(count%100000 == 0){
+						 System.out.println(count +
+								 " different objects domain saved ("+(downloadedFile.authorityDomains.size() - count )+" remaining).");
+						 bean.addDisplayMessage(
+								 DataIDGeneralProperties.MESSAGE_INFO,count
+								 +" different objects domain saved ("+(downloadedFile.authorityDomains.size() - count )+" remaining).");
+					 }
+
+					id = new ObjectId();
+					d2 = new DistributionObjectsDomainsMongoDBObject(id.get().toString());
+					d2.setObjectDomain(d);
+					d.replace(">/", "");
+					d2.setDistributionURI(distributionMongoDBObj.getUri());
+					
+					d2.updateObject(false);
 				}
-
-				distributionMongoDBObj.updateObject();
-
 				
+				 System.out.println(downloadedFile.authorityDomains.size() +
+						 " different objects domain saved.");
+				 bean.addDisplayMessage(
+						 DataIDGeneralProperties.MESSAGE_INFO,downloadedFile.authorityDomains.size() +
+						 " different objects domain saved.");
+
+				distributionMongoDBObj.setSuccessfullyDownloaded(true);
+				distributionMongoDBObj.updateObject(true);
+
+				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
+						"Done saving mongodb distribution object.");
+				System.out.println("Done saving mongodb distribution object.");
+
 				// adding authority domain in the authority bloom filter
-				GoogleBloomFilter authorityFilter = new GoogleBloomFilter(100000, 0.0001);
-				authorityFilter.addAuthorityDomainToFilter(distributionMongoDBObj.getAuthority());
+				GoogleBloomFilter authorityFilter = new GoogleBloomFilter(
+						100000, 0.0001);
+				authorityFilter
+						.addAuthorityDomainToFilter(distributionMongoDBObj
+								.getDomain());
 				
+				bean.addDisplayMessage(
+						DataIDGeneralProperties.MESSAGE_INFO,
+						"Distribution saved! "
+								+ distributionModel.getDistriutionAccessURL());
+				System.out.println("Distribution saved! ");
+				bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
+				bean.pushDownloadInfo();
 
 			} catch (DataIDException e) {
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
 						e.getMessage());
 				e.printStackTrace();
+			}
+			catch (Exception e) {
+				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
+						e.getMessage());
+				e.printStackTrace();
+				distributionMongoDBObj.setLastErrorMsg(e.getMessage());
+				distributionMongoDBObj.setSuccessfullyDownloaded(false);
+				distributionMongoDBObj.updateObject(true);
 			}
 
 		}
@@ -162,9 +221,9 @@ public class DataID {
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 					"DataID file URL: " + URL + " url.");
 
-			// check file extension 
+			// check file extension
 			FileUtils.acceptedFormats(URL.toString());
-			
+
 			// create jena models
 			name = dataIDModel.readModel(URL);
 
@@ -227,7 +286,5 @@ public class DataID {
 		}
 		return authority;
 	}
-
-
 
 }

@@ -40,7 +40,7 @@ public class SubsetMongoDBObject extends DataIDDB {
 		loadObject();
 	}
 
-	public boolean updateObject() {
+	public boolean updateObject(boolean checkBeforeInsert) {
 
 		// save object case it doens't exists
 		try {
@@ -52,7 +52,7 @@ public class SubsetMongoDBObject extends DataIDDB {
 			
 			mongoDBObject.put(PARENT_DATASETS, parentDatasetsURI);
 
-			insert();
+			insert(checkBeforeInsert);
 		} catch (Exception e2) {
 //			e2.printStackTrace();
 

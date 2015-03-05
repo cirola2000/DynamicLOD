@@ -23,6 +23,7 @@ import org.apache.commons.io.FilenameUtils;
 
 import com.hp.hpl.jena.graph.Triple;
 
+import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
 import dataid.mongodb.objects.DistributionMongoDBObject;
@@ -65,10 +66,14 @@ public class DownloadAndSave {
 	boolean doneReadingFile = false;
 	boolean doneSplittingString = false;
 	boolean doneAuthorityObject = false;
+	
+	DataIDBean bean;
 
 	public void downloadDistribution(String distributionURI, String accessURL,
 			String format, DataIDBean bean) throws Exception {
 
+		this.bean = bean;
+		
 		url = new URL(accessURL);
 		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
 		int responseCode = httpConn.getResponseCode();
@@ -246,10 +251,19 @@ public class DownloadAndSave {
 		try {
 			DistributionMongoDBObject distribution = new DistributionMongoDBObject(
 					uri);
+			// case failed in the last attempt
+			if(!distribution.isSuccessfullyDownloaded()){
+				return true;
+			}
+			
 			if (distribution.getHttpByteSize().equals(httpContentLength)
-					&& distribution.getHttpLastModified().equals(
-							httpLastModified))
-				return false;
+					|| distribution.getHttpLastModified().equals(
+							httpLastModified)){
+			bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
+			bean.pushDownloadInfo();
+			return false;
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

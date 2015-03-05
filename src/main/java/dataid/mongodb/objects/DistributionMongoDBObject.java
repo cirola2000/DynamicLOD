@@ -28,10 +28,12 @@ public class DistributionMongoDBObject extends DataIDDB {
 	public static final String NUMBER_OF_OBJECTS_TRIPLES = "numberOfObjectTriples";
 
 	public static final String TIME_TO_CREATE_FILTER = "timeToCreateFilter";
+	
+	public static final String SUCCESSFULLY_DOWNLOADED = "successfully_downloaded";
+	
+	public static final String LAST_ERROR_MSG = "lastErrorMsg";
 
-	public static final String AUTHORITY = "authority";
-
-	public static final String AUTHORITY_OBJECTS = "authorityObjects";
+	public static final String DOMAIN = "domain";
 
 	public static final String TITLE = "title";
 
@@ -47,8 +49,6 @@ public class DistributionMongoDBObject extends DataIDDB {
 	
 
 	private ArrayList<String> defaultDatasets = new ArrayList<String>();
-
-	private ArrayList<String> authorityObjects = new ArrayList<String>();
 
 	private String accessUrl;
 
@@ -74,11 +74,15 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	private String httpLastModified;
 
-	private Integer triples;
+	private Integer triples = 0;
 
 	private String format;
 	
-	private String authority;
+	private String domain;
+	
+	private boolean successfullyDownloaded;
+	
+	private String lastErrorMsg;
 
 	public DistributionMongoDBObject(String uri) {
 		super(COLLECTION_NAME, uri);
@@ -98,7 +102,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 			this.defaultDatasets.add(defaultDataset);
 	}
 
-	public boolean updateObject() {
+	public boolean updateObject(boolean checkBeforeInsert) {
 		// save object case it doens't exists
 		try {
 			mongoDBObject.put(ACCESS_URL, accessUrl);
@@ -116,10 +120,11 @@ public class DistributionMongoDBObject extends DataIDDB {
 			mongoDBObject.put(TIME_TO_CREATE_FILTER, timeToCreateFilter);
 			mongoDBObject.put(TITLE, title);
 			mongoDBObject.put(FORMAT, format);	
-			mongoDBObject.put(AUTHORITY, authority);
-			mongoDBObject.put(AUTHORITY_OBJECTS, authorityObjects);
+			mongoDBObject.put(DOMAIN, domain);
+			mongoDBObject.put(SUCCESSFULLY_DOWNLOADED, successfullyDownloaded);
+			mongoDBObject.put(LAST_ERROR_MSG, lastErrorMsg);
 
-			insert();
+			insert(checkBeforeInsert);
 
 		} catch (Exception e2) {
 			// e2.printStackTrace();
@@ -149,12 +154,15 @@ public class DistributionMongoDBObject extends DataIDDB {
 			httpFormat = (String) obj.get(HTTP_FORMAT);
 			httpLastModified = (String) obj.get(HTTP_LAST_MODIFIED);
 			format = (String) obj.get(FORMAT);
-			if(obj.get(TRIPLES)!=null)
-			triples = Integer.getInteger(obj.get(TRIPLES).toString() ) ;
+			timeToCreateFilter = (String) obj.get(TIME_TO_CREATE_FILTER);
+//			((Number) mapObj.get("autostart")).intValue();
+			triples = ((Number) obj.get(TRIPLES)).intValue() ;
 			numberOfTriplesLoadedIntoFilter = (String) obj
 					.get(NUMBER_OF_TRIPLES_LOADED_INTO_FILTER);
 			numberOfObjectTriples = (String) obj.get(NUMBER_OF_OBJECTS_TRIPLES);
-			authority = (String) obj.get(AUTHORITY);
+			domain = (String) obj.get(DOMAIN);
+			successfullyDownloaded = (Boolean) obj.get(SUCCESSFULLY_DOWNLOADED);
+			lastErrorMsg = (String) obj.get(LAST_ERROR_MSG);
 
 			// loading default datasets to object
 			BasicDBList defaultDatasetList = (BasicDBList) obj
@@ -162,14 +170,6 @@ public class DistributionMongoDBObject extends DataIDDB {
 			if (defaultDatasetList != null)
 				for (Object sd : defaultDatasetList) {
 					defaultDatasets.add((String) sd);
-				}
-
-			// loading authorityObjects to object
-			BasicDBList authorityObjectsList = (BasicDBList) obj
-					.get(AUTHORITY_OBJECTS);
-			if (authorityObjectsList != null)
-				for (Object sd : authorityObjectsList) {
-					authorityObjects.add((String) sd);
 				}
 
 			return true;
@@ -282,21 +282,12 @@ public class DistributionMongoDBObject extends DataIDDB {
 		this.triples = triples;
 	}
 
-	public String getAuthority() {
-		return authority;
+	public String getDomain() {
+		return domain;
 	}
 
-	public void setAuthority(String authority) {
-		this.authority = authority;
-	}
-
-	public void addAuthorityObjects(String AuthorityObjects) {
-		if (!authorityObjects.contains(AuthorityObjects))
-			this.authorityObjects.add(AuthorityObjects);
-	}
-
-	public ArrayList<String> getAuthorityObjects() {
-		return authorityObjects;
+	public void setDomain(String domain) {
+		this.domain = domain;
 	}
 
 	public String getFormat() {
@@ -305,6 +296,22 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	public void setFormat(String format) {
 		this.format = format;
+	}
+
+	public boolean isSuccessfullyDownloaded() {
+		return successfullyDownloaded;
+	}
+
+	public void setSuccessfullyDownloaded(boolean successfullyDownloaded) {
+		this.successfullyDownloaded = successfullyDownloaded;
+	}
+
+	public String getLastErrorMsg() {
+		return lastErrorMsg;
+	}
+
+	public void setLastErrorMsg(String lastErrorMsg) {
+		this.lastErrorMsg = lastErrorMsg;
 	}
 	
 	

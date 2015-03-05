@@ -1,14 +1,12 @@
 package dataid.server;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import org.apache.tools.ant.taskdefs.Sleep;
 import org.richfaces.application.push.MessageException;
 import org.richfaces.application.push.TopicKey;
 import org.richfaces.application.push.TopicsContext;
@@ -252,8 +250,9 @@ public class DataIDBean implements Serializable, Runnable {
 		this.downloadNumberOfDownloadedDistributions = downloadNumberOfDownloadedDistributions;
 	}
 
-	public double getDownloadedMB() {
-		return downloadedMB;
+	public String getDownloadedMB() {
+		NumberFormat df = new DecimalFormat("#,###.##");
+		return df.format(downloadedMB);
 	}
 
 	public void setDownloadedMB(double downloadPercentage) {

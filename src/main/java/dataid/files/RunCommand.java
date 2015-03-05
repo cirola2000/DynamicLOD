@@ -44,6 +44,10 @@ public class RunCommand {
 		// dont show more than 100 errors.
 		int errorCount = 0;
 		while ((s = stdError.readLine()) != null) {
+			if(s.contains("syntax error ")){
+				proc.destroy();
+				throw new DataIDException(s);
+			}
 			if (errorCount < 100) {
 				errorCount++;
 				System.out.println(s);
@@ -59,13 +63,13 @@ public class RunCommand {
 			}
 			else{
 				proc.destroy();
-				throw new DataIDException("Too many errors while parsing.");
+				throw new Exception("Too many errors while parsing.");
 			}
 		}
 
 		proc.waitFor();
 		if (proc.exitValue() != 0)
-			throw new DataIDException(
+			throw new Exception(
 					"Something went wrong while running AWK. Check LOG file.");
 
 		stdInput.close();
