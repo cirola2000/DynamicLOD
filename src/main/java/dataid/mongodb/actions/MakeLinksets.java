@@ -52,7 +52,7 @@ public class MakeLinksets {
 				// find which filters should be opened for this distribution
 				ArrayList<DistributionMongoDBObject> q = Queries
 						.getDistributionsByAuthority(distribution
-								.get(DistributionMongoDBObject.AUTHORITY_OBJECTS));
+								.get(DistributionMongoDBObject.ACCESS_URL));
 
 				// make some validations
 				if(distribution

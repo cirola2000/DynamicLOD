@@ -166,10 +166,10 @@ public class DataIDBean implements Serializable, Runnable {
 	
 	}
 
-	public int getNumberOfTriples() {
+	public String getNumberOfTriples() {
 		this.numberOfTriples = Queries.getNumberOfTriples();
-		
-		return numberOfTriples;
+		NumberFormat df = new DecimalFormat("#,###.##");
+		return df.format(numberOfTriples);
 	}
 
 	public void setNumberOfTriples(int numberOfTriples) {
@@ -223,8 +223,9 @@ public class DataIDBean implements Serializable, Runnable {
 		this.downloadDatasetURI = downloadDatasetURI;
 	}
 
-	public int getDownloadNumberOfTriplesLoaded() {
-		return downloadNumberOfTriplesLoaded;
+	public String getDownloadNumberOfTriplesLoaded() {
+		NumberFormat df = new DecimalFormat("#,###");
+		return df.format(downloadNumberOfTriplesLoaded);
 	}
 
 	public void setDownloadNumberOfTriplesLoaded(

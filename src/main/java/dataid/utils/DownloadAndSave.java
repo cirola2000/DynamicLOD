@@ -1,5 +1,6 @@
 package dataid.utils;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -8,9 +9,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
@@ -32,7 +35,7 @@ import dataid.threads.AddAuthorityObjectThread;
 import dataid.threads.SplitAndStoreThread;
 
 public class DownloadAndSave {
-	private static final int BUFFER_SIZE = 2048;
+	private static final int BUFFER_SIZE = 16384;
 
 	public String fileName = "";
 
@@ -58,6 +61,7 @@ public class DownloadAndSave {
 	public double countBytesReaded = 0;
 
 	public Queue<String> authorityDomains = new ConcurrentLinkedQueue<String>();
+	public ConcurrentHashMap<String,Integer> sharedHashMap = new ConcurrentHashMap<String,Integer>();
 
 	public AtomicInteger aint = new AtomicInteger(0);
 
@@ -141,17 +145,22 @@ public class DownloadAndSave {
 				// new Thread(r2).start();
 
 				AddAuthorityObjectThread r2 = new AddAuthorityObjectThread(
-						objectQueue, authorityDomains);
+						objectQueue, authorityDomains, sharedHashMap);
 				r2.start();
 				AddAuthorityObjectThread r3 = new AddAuthorityObjectThread(
-						objectQueue, authorityDomains);
+						objectQueue, authorityDomains, sharedHashMap);
 				r3.start();
 				AddAuthorityObjectThread r4 = new AddAuthorityObjectThread(
-						objectQueue, authorityDomains);
+						objectQueue, authorityDomains, sharedHashMap);
 				r4.start();
+				
+				AddAuthorityObjectThread r5 = new AddAuthorityObjectThread(
+						objectQueue, authorityDomains, sharedHashMap);
+				r5.start();
 
 				String str = "";
-				while (-1 != (n = inputStream.read(buffer))) {
+				BufferedInputStream b = new BufferedInputStream(inputStream);
+				while (-1 != (n = b.read(buffer))) {
 
 					str = new String(buffer, 0, n);
 					bufferQueue.add(str);
@@ -161,7 +170,7 @@ public class DownloadAndSave {
 
 					countBytesReaded = countBytesReaded + n;
 
-					if (aux % 8000 == 0) {
+					if (aux % 1000 == 0) {
 						bean.setDownloadedMB(countBytesReaded / 1024 / 1024);
 						bean.pushDownloadInfo();
 						aux = 0;
@@ -170,11 +179,13 @@ public class DownloadAndSave {
 
 					// don't allow queue size bigger than 900;
 					while (bufferQueue.size() > 900) {
+						Thread.sleep(1);
 					}
 
 				}
-				while (bufferQueue.size() > 0) {
-				}
+//				while (bufferQueue.size() > 0) {
+//					Thread.sleep(1);
+//				}
 
 				doneReadingFile = true;
 
@@ -188,14 +199,13 @@ public class DownloadAndSave {
 				totalTriples = r.getTotalTriples();
 
 				r2.setDoneSplittingString(true);
-
 				r2.join();
 				r3.setDoneSplittingString(true);
-
 				r3.join();
 				r4.setDoneSplittingString(true);
-
 				r4.join();
+				r5.setDoneSplittingString(true);
+				r5.join();
 				System.out.println("ACABO 2");
 
 				// while (doneAuthorityObject==false) {};
@@ -211,7 +221,7 @@ public class DownloadAndSave {
 							+ bytesRead;
 					countBytesReaded = countBytesReaded + bytesRead;
 
-					if (aux % 8000 == 0) {
+					if (aux % 1000 == 0) {
 						bean.setDownloadedMB(countBytesReaded / 1024 / 1024);
 						bean.pushDownloadInfo();
 					}

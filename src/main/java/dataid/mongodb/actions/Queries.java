@@ -17,32 +17,49 @@ import com.mongodb.DBObject;
 import dataid.mongodb.DataIDDB;
 import dataid.mongodb.objects.DatasetMongoDBObject;
 import dataid.mongodb.objects.DistributionMongoDBObject;
+import dataid.mongodb.objects.DistributionObjectsDomainsMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
 import dataid.mongodb.objects.SubsetMongoDBObject;
 
 public class Queries {
 	
 	// find distributions by authority
-	public static ArrayList<DistributionMongoDBObject> getDistributionsByAuthority(Object authority){
+//	public static ArrayList<DistributionMongoDBObject> getDistributionsByAuthority(String accessURI){
+	@Test
+		public void getDistributionsByAuthority(){
 		ArrayList<DistributionMongoDBObject> list = new ArrayList<DistributionMongoDBObject>();
 		
-		DBCollection collection = DataIDDB.getInstance().getCollection(
-				DistributionMongoDBObject.COLLECTION_NAME);
+		DBCollection collection1 = DataIDDB.getInstance().getCollection(
+				DistributionObjectsDomainsMongoDBObject.COLLECTION_NAME);
 		
-		BasicDBObject query = new BasicDBObject("authority", new BasicDBObject("$in", authority));
-
-		DBCursor cursor = collection.find(query);
+		// get all subject domain from distribution got as parameter
+		BasicDBObject query = new BasicDBObject(DistributionObjectsDomainsMongoDBObject.DISTRIBUTION_URI, "http://downloads.dbpedia.org/3.9/en/images_en.ttl.bz2");
+//		query.append("distributionURI");
+		BasicDBObject fields = new BasicDBObject("objectDomain",1);
+		fields.append("_id", 0);
+		DBCursor cursor = collection1.find(query,fields);
+		
+		BasicDBObject query2 = new BasicDBObject( cursor.);
+		
+		
+//		DBCollection collection = DataIDDB.getInstance().getCollection(
+//				DistributionObjectsDomainsMongoDBObject.COLLECTION_NAME);
+		
+//		BasicDBObject query = new BasicDBObject("authority", new BasicDBObject("$in", authority));
+//		BasicDBObject query = new BasicDBObject(DistributionObjectsDomainsMongoDBObject.DISTRIBUTION_URI, authority);
+//oij
+//		DBCursor cursor = collection.find(query);
 		try {
 		    while (cursor.hasNext()) {
 		    	
-		    	DistributionMongoDBObject obj = new DistributionMongoDBObject(cursor.next().get(DistributionMongoDBObject.ACCESS_URL).toString());
-		    	
-		        list.add(obj);
+//		    	DistributionMongoDBObject obj = new DistributionMongoDBObject(cursor.next().get(DistributionMongoDBObject.ACCESS_URL).toString());
+		    	System.out.println(cursor.next());
+//		        list.add(obj);
 		    }
 		} finally {
 		    cursor.close();
 		}
-		return list;
+//		return list;
 		
 	}
 
@@ -79,6 +96,7 @@ public class Queries {
 			DBCollection collection = DataIDDB.getInstance().getCollection(
 					DistributionMongoDBObject.COLLECTION_NAME);
 			
+			BasicDBObject select = new BasicDBObject("$match", new BasicDBObject(DistributionMongoDBObject.SUCCESSFULLY_DOWNLOADED,true));
 			
 			BasicDBObject groupFields = new BasicDBObject( "_id", null);
 			
@@ -90,7 +108,7 @@ public class Queries {
 			
 			
 			// run aggregation
-			List<DBObject> pipeline = Arrays.asList(group);
+			List<DBObject> pipeline = Arrays.asList(select,group);
 			AggregationOutput output = collection.aggregate(pipeline);
 
 			for (DBObject result : output.results()) {

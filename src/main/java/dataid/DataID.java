@@ -146,24 +146,24 @@ public class DataID {
 				
 				int count = 0;
 				for (String d : downloadedFile.authorityDomains) {
-					// distributionMongoDBObj.addAuthorityObjects(d);
-					 count++;
-					 if(count%100000 == 0){
-						 System.out.println(count +
-								 " different objects domain saved ("+(downloadedFile.authorityDomains.size() - count )+" remaining).");
-						 bean.addDisplayMessage(
-								 DataIDGeneralProperties.MESSAGE_INFO,count
-								 +" different objects domain saved ("+(downloadedFile.authorityDomains.size() - count )+" remaining).");
-					 }
-
-					id = new ObjectId();
-					d2 = new DistributionObjectsDomainsMongoDBObject(id.get().toString());
-					d2.setObjectDomain(d);
-					d.replace(">/", "");
-					d2.setDistributionURI(distributionMongoDBObj.getUri());
+						// distributionMongoDBObj.addAuthorityObjects(d);
+						count++;
+					 	if(count%100000 == 0){
+						 	System.out.println(count +
+								 	" different objects domain saved ("+(downloadedFile.authorityDomains.size() - count )+" remaining).");
+						 	bean.addDisplayMessage(
+								 	DataIDGeneralProperties.MESSAGE_INFO,count
+								 	+" different objects domain saved ("+(downloadedFile.authorityDomains.size() - count )+" remaining).");
+					 	}
+					 
+					 id = new ObjectId();
+						d2 = new DistributionObjectsDomainsMongoDBObject(id.get().toString());
+						d2.setObjectDomain(d);
+						d2.setDistributionURI(distributionMongoDBObj.getUri());
 					
 					d2.updateObject(false);
 				}
+					
 				
 				 System.out.println(downloadedFile.authorityDomains.size() +
 						 " different objects domain saved.");

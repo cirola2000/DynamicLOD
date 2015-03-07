@@ -1,6 +1,8 @@
 package dataid.files;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Queue;
@@ -15,9 +17,12 @@ import dataid.server.DataIDBean;
 
 public class RunCommand {
 
-	public Queue<String> runRapper(String c, DataIDBean bean) throws Exception {
+	int objectTriples = 0;
+	int totalTriples = 0;
 
-		Queue<String> results = new ConcurrentLinkedQueue<String>();
+	public void runRapper(String c, DataIDBean bean, Queue<String> domains)
+			throws Exception {
+
 		String[] cmd = { "/bin/sh", "-c", c };
 
 		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
@@ -34,34 +39,61 @@ public class RunCommand {
 				proc.getErrorStream()));
 
 		// read the output from the command
-		String s = null;
-		while ((s = stdInput.readLine()) != null) {
-			results.add(s);
-//			System.out.println("Awk output: " + s);
+		String string = null;
+		File f = new File("/tmp/1");
+		FileOutputStream fo = new FileOutputStream(f);
+		while ((string = stdInput.readLine()) != null) {
+
+			if (string.contains("[totalTriples]")) {
+				String a[] = string.split(" ");
+				totalTriples = Integer.parseInt(a[1]);
+			} else if (string.contains("objectTriples")) {
+				String a[] = string.split(" ");
+				objectTriples = Integer.parseInt(a[1].replace("/", ""));
+			} else {
+				string = string.substring(1, string.length());
+				string = string.replace("> ", "");
+				String[] ar = string.split("/");
+				if (ar.length > 3)
+					string = ar[0] + "//" + ar[2] + "/" + ar[3] + "/";
+				else if (ar.length > 2)
+					string = ar[0] + "//" + ar[2] + "/";
+				else {
+					System.out.println(string);
+					string = "";
+				}
+				if (string.length() < 100) {
+					if (!string.equals("")) {
+						domains.add(string.substring(1, string.length()));
+//						System.out.println(string);
+						string = string+"\n";
+						fo.write(string.getBytes());
+					}
+				}
+			}
 		}
 
 		// read any errors from the attempted command
 		// dont show more than 100 errors.
 		int errorCount = 0;
-		while ((s = stdError.readLine()) != null) {
-			if(s.contains("syntax error ")){
+		while ((string = stdError.readLine()) != null) {
+			if (string.contains("Error")) {
 				proc.destroy();
-				throw new DataIDException(s);
+				throw new Exception(string);
 			}
 			if (errorCount < 100) {
 				errorCount++;
-				System.out.println(s);
+				System.out.println(string);
 				DataID.bean.addDisplayMessage(
-						DataIDGeneralProperties.MESSAGE_ERROR, s);
+						DataIDGeneralProperties.MESSAGE_ERROR, string);
 				if (c.contains("rapper")) {
-					if (s.contains("returned")) {
-						String a[] = s.split(" ");
-						results.add("[totalTriples] " + Integer.parseInt(a[3]));
+					if (string.contains("returned")) {
+						String a[] = string.split(" ");
+						totalTriples = Integer.parseInt(a[3]);
 					}
 				}
-				System.out.println("Rapper output: " + s);
-			}
-			else{
+				System.out.println("Rapper output: " + string);
+			} else {
 				proc.destroy();
 				throw new Exception("Too many errors while parsing.");
 			}
@@ -76,9 +108,7 @@ public class RunCommand {
 		stdError.close();
 		proc.destroy();
 		System.out.println("Process closed");
-		
 
-		return results;
 	}
 
 }
