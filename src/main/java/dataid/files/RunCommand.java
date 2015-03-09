@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.junit.Test;
@@ -20,7 +21,7 @@ public class RunCommand {
 	int objectTriples = 0;
 	int totalTriples = 0;
 
-	public void runRapper(String c, DataIDBean bean, Queue<String> domains)
+	public void runRapper(String c, DataIDBean bean, ConcurrentHashMap<String,Integer> domains)
 			throws Exception {
 
 		String[] cmd = { "/bin/sh", "-c", c };
@@ -40,8 +41,6 @@ public class RunCommand {
 
 		// read the output from the command
 		String string = null;
-		File f = new File("/tmp/1");
-		FileOutputStream fo = new FileOutputStream(f);
 		while ((string = stdInput.readLine()) != null) {
 
 			if (string.contains("[totalTriples]")) {
@@ -51,8 +50,8 @@ public class RunCommand {
 				String a[] = string.split(" ");
 				objectTriples = Integer.parseInt(a[1].replace("/", ""));
 			} else {
-				string = string.substring(1, string.length());
-				string = string.replace("> ", "");
+				string = string.substring(1, string.length()-1);
+				string = string.replace(">", "");
 				String[] ar = string.split("/");
 				if (ar.length > 3)
 					string = ar[0] + "//" + ar[2] + "/" + ar[3] + "/";
@@ -64,10 +63,7 @@ public class RunCommand {
 				}
 				if (string.length() < 100) {
 					if (!string.equals("")) {
-						domains.add(string.substring(1, string.length()));
-//						System.out.println(string);
-						string = string+"\n";
-						fo.write(string.getBytes());
+						domains.putIfAbsent(string,1);
 					}
 				}
 			}

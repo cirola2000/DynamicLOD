@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.bson.types.ObjectId;
 
@@ -145,7 +146,11 @@ public class DataID {
 				d2.remove();
 				
 				int count = 0;
-				for (String d : downloadedFile.authorityDomains) {
+				Iterator it = downloadedFile.authorityDomains.entrySet().iterator();
+				
+				while (it.hasNext()) {
+					Map.Entry pair = (Map.Entry)it.next();
+					String d = (String) pair.getKey();
 						// distributionMongoDBObj.addAuthorityObjects(d);
 						count++;
 					 	if(count%100000 == 0){

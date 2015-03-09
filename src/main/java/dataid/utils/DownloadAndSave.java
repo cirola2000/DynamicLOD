@@ -5,28 +5,19 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Queue;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.io.FilenameUtils;
 
-import com.hp.hpl.jena.graph.Triple;
-
-import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
 import dataid.mongodb.objects.DistributionMongoDBObject;
@@ -60,24 +51,24 @@ public class DownloadAndSave {
 	// control bytes to show percentage
 	public double countBytesReaded = 0;
 
-	public Queue<String> authorityDomains = new ConcurrentLinkedQueue<String>();
-	public ConcurrentHashMap<String,Integer> sharedHashMap = new ConcurrentHashMap<String,Integer>();
+	public ConcurrentHashMap<String, Integer> authorityDomains = new ConcurrentHashMap<String, Integer>();
+	public ConcurrentHashMap<String, Integer> sharedHashMap = new ConcurrentHashMap<String, Integer>();
 
 	public AtomicInteger aint = new AtomicInteger(0);
 
-	Queue<String> bufferQueue = new ConcurrentLinkedQueue<String>();
-	Queue<String> objectQueue = new ConcurrentLinkedQueue<String>();
+	ConcurrentLinkedQueue<String> bufferQueue = new ConcurrentLinkedQueue<String>();
+	ConcurrentLinkedQueue<String> objectQueue = new ConcurrentLinkedQueue<String>();
 	boolean doneReadingFile = false;
 	boolean doneSplittingString = false;
 	boolean doneAuthorityObject = false;
-	
+
 	DataIDBean bean;
 
 	public void downloadDistribution(String distributionURI, String accessURL,
 			String format, DataIDBean bean) throws Exception {
 
 		this.bean = bean;
-		
+
 		url = new URL(accessURL);
 		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
 		int responseCode = httpConn.getResponseCode();
@@ -134,29 +125,14 @@ public class DownloadAndSave {
 			checkExtensionFormat(format);
 
 			if (extension.equals(Formats.DEFAULT_NTRIPLES)) {
-				// SplitAndStore r = new SplitAndStore(bean);
-				// new Thread(r).start();
 
 				SplitAndStoreThread r = new SplitAndStoreThread(bufferQueue,
 						objectQueue, fileName, bean);
 				r.start();
 
-				// AddAuthorityObject r2 = new AddAuthorityObject();
-				// new Thread(r2).start();
-
 				AddAuthorityObjectThread r2 = new AddAuthorityObjectThread(
-						objectQueue, authorityDomains, sharedHashMap);
+						objectQueue, sharedHashMap);
 				r2.start();
-				AddAuthorityObjectThread r3 = new AddAuthorityObjectThread(
-						objectQueue, authorityDomains, sharedHashMap);
-				r3.start();
-				AddAuthorityObjectThread r4 = new AddAuthorityObjectThread(
-						objectQueue, authorityDomains, sharedHashMap);
-				r4.start();
-				
-				AddAuthorityObjectThread r5 = new AddAuthorityObjectThread(
-						objectQueue, authorityDomains, sharedHashMap);
-				r5.start();
 
 				String str = "";
 				BufferedInputStream b = new BufferedInputStream(inputStream);
@@ -183,16 +159,16 @@ public class DownloadAndSave {
 					}
 
 				}
-//				while (bufferQueue.size() > 0) {
-//					Thread.sleep(1);
-//				}
+				// while (bufferQueue.size() > 0) {
+				// Thread.sleep(1);
+				// }
 
 				doneReadingFile = true;
 
 				// telling thread that we are done streaming
 				r.setDoneReadingFile(true);
 				r.join();
-				System.out.println("ACABO 1");
+				
 				fileName = r.getFileName();
 				objectLines = r.getObjectLines();
 				subjectLines = r.getSubjectLines();
@@ -200,13 +176,19 @@ public class DownloadAndSave {
 
 				r2.setDoneSplittingString(true);
 				r2.join();
-				r3.setDoneSplittingString(true);
-				r3.join();
-				r4.setDoneSplittingString(true);
-				r4.join();
-				r5.setDoneSplittingString(true);
-				r5.join();
-				System.out.println("ACABO 2");
+
+
+				Iterator it = sharedHashMap.entrySet().iterator();
+				while (it.hasNext()) {
+					Map.Entry pair = (Map.Entry) it.next();
+					if ((Integer) pair.getValue() > 50) {
+						if (((String) pair.getKey()).length() < 100) {
+							authorityDomains.put((String) pair.getKey(),
+									(Integer) pair.getValue());
+						}
+					}
+					it.remove(); // avoids a ConcurrentModificationException
+				}
 
 				// while (doneAuthorityObject==false) {};
 
@@ -262,16 +244,17 @@ public class DownloadAndSave {
 			DistributionMongoDBObject distribution = new DistributionMongoDBObject(
 					uri);
 			// case failed in the last attempt
-			if(!distribution.isSuccessfullyDownloaded()){
+			if (!distribution.isSuccessfullyDownloaded()) {
 				return true;
 			}
-			
+
 			if (distribution.getHttpByteSize().equals(httpContentLength)
 					|| distribution.getHttpLastModified().equals(
-							httpLastModified)){
-			bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
-			bean.pushDownloadInfo();
-			return false;
+							httpLastModified)) {
+				bean.setDownloadNumberOfDownloadedDistributions(bean
+						.getDownloadNumberOfDownloadedDistributions() + 1);
+				bean.pushDownloadInfo();
+				return false;
 			}
 
 		} catch (Exception e) {
