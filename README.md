@@ -16,7 +16,7 @@ Important!!! After cloning the project from this repository, please access the f
 
 #### Instalation process
 
-After cloning the project, open the project root folder and type: `mvn clear install`. Maven will then download all dependencies and compile the project.
+After cloning the project, open the project root folder and type: `mvn clean install`. Maven will then download all dependencies and compile the project.
 
 
 #### Starting Jetty server
