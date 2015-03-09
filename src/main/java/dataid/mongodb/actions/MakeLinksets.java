@@ -50,8 +50,8 @@ public class MakeLinksets {
 				DBObject distribution = distributions.next();
 
 				// find which filters should be opened for this distribution
-				ArrayList<DistributionMongoDBObject> q = Queries
-						.getDistributionsByAuthority(distribution
+				ArrayList<DistributionMongoDBObject> disributionsToCompare = Queries
+						.getDistributionsByAuthority((String) distribution
 								.get(DistributionMongoDBObject.ACCESS_URL));
 
 				// make some validations
@@ -65,10 +65,9 @@ public class MakeLinksets {
 							.toString()+" distribution;");
 				}
 
-				int i = 0;
-				for (DistributionMongoDBObject a : q) {
+				for (DistributionMongoDBObject distributionToCompare : disributionsToCompare) {
 					try {
-						if (!a.getSubjectFilterPath()
+						if (!distributionToCompare.getSubjectFilterPath()
 								.equals(distribution
 										.get(DistributionMongoDBObject.SUBJECT_FILTER_PATH)
 										.toString())) {
@@ -78,18 +77,18 @@ public class MakeLinksets {
 							GoogleBloomFilter filter = new GoogleBloomFilter();
 
 							try {
-								filter.loadFilter(a.getSubjectFilterPath());
+								filter.loadFilter(distributionToCompare.getSubjectFilterPath());
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
 
 							dataThread.filter = filter;
 
-							dataThread.subjectFilterPath = a
+							dataThread.subjectFilterPath = distributionToCompare
 									.getSubjectFilterPath();
-							dataThread.subjectDistributionURI = a
+							dataThread.subjectDistributionURI = distributionToCompare
 									.getAccessUrl();
-							dataThread.subjectDatasetURI = a.getTopDataset();
+							dataThread.subjectDatasetURI = distributionToCompare.getTopDataset();
 
 							dataThread.objectDatasetURI = distribution.get(
 									DistributionMongoDBObject.TOP_DATASET)
