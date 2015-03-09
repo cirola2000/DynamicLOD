@@ -17,7 +17,8 @@ import dataid.filters.FileToFilter;
 import dataid.filters.GoogleBloomFilter;
 import dataid.models.DistributionModel;
 import dataid.mongodb.objects.DistributionMongoDBObject;
-import dataid.mongodb.objects.DistributionObjectsDomainsMongoDBObject;
+import dataid.mongodb.objects.DistributionObjectDomainsMongoDBObject;
+import dataid.mongodb.objects.DistributionSubjectDomainsMongoDBObject;
 import dataid.server.DataIDBean;
 import dataid.utils.DownloadAndSave;
 import dataid.utils.FileUtils;
@@ -72,7 +73,8 @@ public class DataID {
 						isDbpedia = true;
 					p.separateSubjectAndObject(downloadedFile.fileName,
 							downloadedFile.extension, bean, isDbpedia);
-					downloadedFile.authorityDomains = p.domains;
+					downloadedFile.objectDomains = p.objectDomains;
+					downloadedFile.subjectDomains = p.subjectDomains;
 					downloadedFile.objectFilePath = p.objectFile;
 					downloadedFile.totalTriples = p.totalTriples;
 					downloadedFile.objectLines = p.objectTriples;
@@ -141,13 +143,14 @@ public class DataID {
 				
 				// remove old domains object
 				ObjectId id = new ObjectId();
-				DistributionObjectsDomainsMongoDBObject d2 = new DistributionObjectsDomainsMongoDBObject(id.get().toString());
+				DistributionObjectDomainsMongoDBObject d2 = new DistributionObjectDomainsMongoDBObject(id.get().toString());
 				d2.setDistributionURI(distributionMongoDBObj.getUri());
 				d2.remove();
 				
-				int count = 0;
-				Iterator it = downloadedFile.authorityDomains.entrySet().iterator();
 				
+				// save object domains
+				int count = 0;
+				Iterator it = downloadedFile.objectDomains.entrySet().iterator();
 				while (it.hasNext()) {
 					Map.Entry pair = (Map.Entry)it.next();
 					String d = (String) pair.getKey();
@@ -155,26 +158,67 @@ public class DataID {
 						count++;
 					 	if(count%100000 == 0){
 						 	System.out.println(count +
-								 	" different objects domain saved ("+(downloadedFile.authorityDomains.size() - count )+" remaining).");
+								 	" different objects domain saved ("+(downloadedFile.objectDomains.size() - count )+" remaining).");
 						 	bean.addDisplayMessage(
 								 	DataIDGeneralProperties.MESSAGE_INFO,count
-								 	+" different objects domain saved ("+(downloadedFile.authorityDomains.size() - count )+" remaining).");
+								 	+" different objects domain saved ("+(downloadedFile.objectDomains.size() - count )+" remaining).");
 					 	}
 					 
 					 id = new ObjectId();
-						d2 = new DistributionObjectsDomainsMongoDBObject(id.get().toString());
+						d2 = new DistributionObjectDomainsMongoDBObject(id.get().toString());
 						d2.setObjectDomain(d);
 						d2.setDistributionURI(distributionMongoDBObj.getUri());
 					
 					d2.updateObject(false);
 				}
+				
+				
+				
+				
+				// remove old subjects domains
+				id = new ObjectId();
+				DistributionSubjectDomainsMongoDBObject d3 = new DistributionSubjectDomainsMongoDBObject(id.get().toString());
+				d3.setDistributionURI(distributionMongoDBObj.getUri());
+				d3.remove();
+				
+				
+				// save subject domains
+				count = 0;
+				 it = downloadedFile.subjectDomains.entrySet().iterator();
+				while (it.hasNext()) {
+					Map.Entry pair = (Map.Entry)it.next();
+					String d = (String) pair.getKey();
+						// distributionMongoDBObj.addAuthorityObjects(d);
+						count++;
+					 	if(count%100000 == 0){
+						 	System.out.println(count +
+								 	" different subjects domain saved ("+(downloadedFile.subjectDomains.size() - count )+" remaining).");
+						 	bean.addDisplayMessage(
+								 	DataIDGeneralProperties.MESSAGE_INFO,count
+								 	+" different subjects domain saved ("+(downloadedFile.subjectDomains.size() - count )+" remaining).");
+					 	}
+					 
+					 id = new ObjectId();
+						d3 = new DistributionSubjectDomainsMongoDBObject(id.get().toString());
+						d3.setSubjectDomain(d);
+						d3.setDistributionURI(distributionMongoDBObj.getUri());
+					
+					d3.updateObject(false);
+				}
+				
 					
 				
-				 System.out.println(downloadedFile.authorityDomains.size() +
+				 System.out.println(downloadedFile.objectDomains.size() +
 						 " different objects domain saved.");
 				 bean.addDisplayMessage(
-						 DataIDGeneralProperties.MESSAGE_INFO,downloadedFile.authorityDomains.size() +
+						 DataIDGeneralProperties.MESSAGE_INFO,downloadedFile.objectDomains.size() +
 						 " different objects domain saved.");
+				 
+				 System.out.println(downloadedFile.subjectDomains.size() +
+						 " different subjects domain saved.");
+				 bean.addDisplayMessage(
+						 DataIDGeneralProperties.MESSAGE_INFO,downloadedFile.subjectDomains.size() +
+						 " different subjects domain saved.");
 
 				distributionMongoDBObj.setSuccessfullyDownloaded(true);
 				distributionMongoDBObj.updateObject(true);

@@ -21,6 +21,8 @@ public class SplitAndStoreThread extends Thread {
 
 	Queue<String> objectQueue = null;
 
+	Queue<String> subjectQueue = null;
+
 	public Integer subjectLines = 0;
 
 	public Integer objectLines = 0;
@@ -28,9 +30,10 @@ public class SplitAndStoreThread extends Thread {
 	public Integer totalTriples = 0;
 
 	public SplitAndStoreThread(Queue<String> bufferQueue,
-			Queue<String> objectQueue, String fileName, DataIDBean bean) {
+			 Queue<String> subjectQueue, Queue<String> objectQueue, String fileName, DataIDBean bean) {
 		this.bufferQueue = bufferQueue;
 		this.objectQueue = objectQueue;
+		this.subjectQueue = subjectQueue;
 		this.fileName = fileName;
 		this.bean = bean;
 	}
@@ -110,7 +113,10 @@ public class SplitAndStoreThread extends Thread {
 										tmpLastSubject = matcher.group(1);
 										subject.write(new String(matcher
 												.group(1) + "\n").getBytes());
+										while (subjectQueue.size()>1000) {}
+										subjectQueue.add(matcher.group(1));
 										subjectLines++;
+										
 									}
 
 									// get object (make sure that its a

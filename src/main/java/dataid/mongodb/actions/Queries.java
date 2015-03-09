@@ -7,7 +7,6 @@ import java.util.List;
 import org.junit.Test;
 
 import com.mongodb.AggregationOutput;
-import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.CommandResult;
 import com.mongodb.DBCollection;
@@ -17,7 +16,7 @@ import com.mongodb.DBObject;
 import dataid.mongodb.DataIDDB;
 import dataid.mongodb.objects.DatasetMongoDBObject;
 import dataid.mongodb.objects.DistributionMongoDBObject;
-import dataid.mongodb.objects.DistributionObjectsDomainsMongoDBObject;
+import dataid.mongodb.objects.DistributionObjectDomainsMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
 import dataid.mongodb.objects.SubsetMongoDBObject;
 
@@ -30,16 +29,16 @@ public class Queries {
 		ArrayList<DistributionMongoDBObject> list = new ArrayList<DistributionMongoDBObject>();
 		
 		DBCollection collection1 = DataIDDB.getInstance().getCollection(
-				DistributionObjectsDomainsMongoDBObject.COLLECTION_NAME);
+				DistributionObjectDomainsMongoDBObject.COLLECTION_NAME);
 		
 		// get all subject domain from distribution got as parameter
-		BasicDBObject query = new BasicDBObject(DistributionObjectsDomainsMongoDBObject.DISTRIBUTION_URI, "http://downloads.dbpedia.org/3.9/en/images_en.ttl.bz2");
+		BasicDBObject query = new BasicDBObject(DistributionObjectDomainsMongoDBObject.DISTRIBUTION_URI, "http://downloads.dbpedia.org/3.9/en/images_en.ttl.bz2");
 //		query.append("distributionURI");
 		BasicDBObject fields = new BasicDBObject("objectDomain",1);
 		fields.append("_id", 0);
 		DBCursor cursor = collection1.find(query,fields);
 		
-		BasicDBObject query2 = new BasicDBObject( cursor.);
+//		BasicDBObject query2 = new BasicDBObject( cursor.);
 		
 		
 //		DBCollection collection = DataIDDB.getInstance().getCollection(

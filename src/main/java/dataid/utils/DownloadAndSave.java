@@ -22,7 +22,7 @@ import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
-import dataid.threads.AddAuthorityObjectThread;
+import dataid.threads.GetDomainsFromTriplesThread;
 import dataid.threads.SplitAndStoreThread;
 
 public class DownloadAndSave {
@@ -51,13 +51,17 @@ public class DownloadAndSave {
 	// control bytes to show percentage
 	public double countBytesReaded = 0;
 
-	public ConcurrentHashMap<String, Integer> authorityDomains = new ConcurrentHashMap<String, Integer>();
-	public ConcurrentHashMap<String, Integer> sharedHashMap = new ConcurrentHashMap<String, Integer>();
+	public ConcurrentHashMap<String, Integer> objectDomains = new ConcurrentHashMap<String, Integer>();
+	public ConcurrentHashMap<String, Integer> subjectDomains = new ConcurrentHashMap<String, Integer>();
+	public ConcurrentHashMap<String, Integer> countObjectDomainsHashMap = new ConcurrentHashMap<String, Integer>();
+	public ConcurrentHashMap<String, Integer> countSubjectDomainsHashMap = new ConcurrentHashMap<String, Integer>();
 
 	public AtomicInteger aint = new AtomicInteger(0);
 
 	ConcurrentLinkedQueue<String> bufferQueue = new ConcurrentLinkedQueue<String>();
 	ConcurrentLinkedQueue<String> objectQueue = new ConcurrentLinkedQueue<String>();
+	ConcurrentLinkedQueue<String> subjectQueue = new ConcurrentLinkedQueue<String>();
+	
 	boolean doneReadingFile = false;
 	boolean doneSplittingString = false;
 	boolean doneAuthorityObject = false;
@@ -126,13 +130,19 @@ public class DownloadAndSave {
 
 			if (extension.equals(Formats.DEFAULT_NTRIPLES)) {
 
-				SplitAndStoreThread r = new SplitAndStoreThread(bufferQueue,
-						objectQueue, fileName, bean);
-				r.start();
+				SplitAndStoreThread splitThread = new SplitAndStoreThread(bufferQueue,
+						subjectQueue, objectQueue, fileName, bean);
+				splitThread.start();
 
-				AddAuthorityObjectThread r2 = new AddAuthorityObjectThread(
-						objectQueue, sharedHashMap);
-				r2.start();
+				GetDomainsFromTriplesThread getDomainFromObjectsThread = new GetDomainsFromTriplesThread(
+						objectQueue, countObjectDomainsHashMap);
+				getDomainFromObjectsThread.start();
+				
+				GetDomainsFromTriplesThread getDomainFromSubjectsThread = new GetDomainsFromTriplesThread(
+						subjectQueue, countSubjectDomainsHashMap);
+				getDomainFromSubjectsThread.start();
+				
+				
 
 				String str = "";
 				BufferedInputStream b = new BufferedInputStream(inputStream);
@@ -159,38 +169,49 @@ public class DownloadAndSave {
 					}
 
 				}
-				// while (bufferQueue.size() > 0) {
-				// Thread.sleep(1);
-				// }
 
 				doneReadingFile = true;
 
 				// telling thread that we are done streaming
-				r.setDoneReadingFile(true);
-				r.join();
+				splitThread.setDoneReadingFile(true);
+				splitThread.join();				
 				
-				fileName = r.getFileName();
-				objectLines = r.getObjectLines();
-				subjectLines = r.getSubjectLines();
-				totalTriples = r.getTotalTriples();
+				fileName = splitThread.getFileName();
+				objectLines = splitThread.getObjectLines();
+				subjectLines = splitThread.getSubjectLines();
+				totalTriples = splitThread.getTotalTriples();
 
-				r2.setDoneSplittingString(true);
-				r2.join();
+				getDomainFromObjectsThread.setDoneSplittingString(true);
+				getDomainFromObjectsThread.join();
+				
+				getDomainFromSubjectsThread.setDoneSplittingString(true);
+				getDomainFromSubjectsThread.join();
 
 
-				Iterator it = sharedHashMap.entrySet().iterator();
+				Iterator it = countObjectDomainsHashMap.entrySet().iterator();
 				while (it.hasNext()) {
 					Map.Entry pair = (Map.Entry) it.next();
 					if ((Integer) pair.getValue() > 50) {
 						if (((String) pair.getKey()).length() < 100) {
-							authorityDomains.put((String) pair.getKey(),
+							objectDomains.put((String) pair.getKey(),
+									(Integer) pair.getValue());
+						}
+					}
+					it.remove(); // avoids a ConcurrentModificationException
+				}
+				
+				it = countSubjectDomainsHashMap.entrySet().iterator();
+				while (it.hasNext()) {
+					Map.Entry pair = (Map.Entry) it.next();
+					if ((Integer) pair.getValue() > 50) {
+						if (((String) pair.getKey()).length() < 100) {
+							subjectDomains.put((String) pair.getKey(),
 									(Integer) pair.getValue());
 						}
 					}
 					it.remove(); // avoids a ConcurrentModificationException
 				}
 
-				// while (doneAuthorityObject==false) {};
 
 			} else if (extension.equals(Formats.DEFAULT_TURTLE)
 					|| extension.equals(Formats.DEFAULT_RDFXML)) {

@@ -9,7 +9,7 @@ import com.mongodb.DBObject;
 import dataid.exceptions.DataIDException;
 import dataid.mongodb.DataIDDB;
 
-public class DistributionObjectsDomainsMongoDBObject extends DataIDDB {
+public class DistributionObjectDomainsMongoDBObject extends DataIDDB {
 
 	// Collection name
 	public static final String COLLECTION_NAME = "DistributionObjectDomains";
@@ -26,7 +26,7 @@ public class DistributionObjectsDomainsMongoDBObject extends DataIDDB {
 	private String objectDomain;
 	
 	
-	public DistributionObjectsDomainsMongoDBObject(String uri) {
+	public DistributionObjectDomainsMongoDBObject(String uri) {
 		
 		super(COLLECTION_NAME, uri);
 		loadObject();

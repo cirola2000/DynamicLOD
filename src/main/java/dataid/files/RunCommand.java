@@ -21,7 +21,7 @@ public class RunCommand {
 	int objectTriples = 0;
 	int totalTriples = 0;
 
-	public void runRapper(String c, DataIDBean bean, ConcurrentHashMap<String,Integer> domains)
+	public void runRapper(String c, DataIDBean bean, ConcurrentHashMap<String,Integer> subjectDomains,ConcurrentHashMap<String,Integer> objectDomains)
 			throws Exception {
 
 		String[] cmd = { "/bin/sh", "-c", c };
@@ -49,7 +49,8 @@ public class RunCommand {
 			} else if (string.contains("objectTriples")) {
 				String a[] = string.split(" ");
 				objectTriples = Integer.parseInt(a[1].replace("/", ""));
-			} else {
+			} else if (string.contains("[objectDomain]")) {
+				string = string.replace("[objectDomain]", "");
 				string = string.substring(1, string.length()-1);
 				string = string.replace(">", "");
 				String[] ar = string.split("/");
@@ -63,7 +64,25 @@ public class RunCommand {
 				}
 				if (string.length() < 100) {
 					if (!string.equals("")) {
-						domains.putIfAbsent(string,1);
+						objectDomains.putIfAbsent(string,1);
+					}
+				}
+			}   else if (string.contains("[subjectDomain]")) {
+				string = string.replace("[subjectDomain]", "");
+				string = string.substring(1, string.length()-1);
+				string = string.replace(">", "");
+				String[] ar = string.split("/");
+				if (ar.length > 3)
+					string = ar[0] + "//" + ar[2] + "/" + ar[3] + "/";
+				else if (ar.length > 2)
+					string = ar[0] + "//" + ar[2] + "/";
+				else {
+					System.out.println(string);
+					string = "";
+				}
+				if (string.length() < 100) {
+					if (!string.equals("")) {
+						subjectDomains.putIfAbsent(string,1);
 					}
 				}
 			}

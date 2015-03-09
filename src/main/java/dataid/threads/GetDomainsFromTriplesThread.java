@@ -4,18 +4,18 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class AddAuthorityObjectThread extends Thread {
+public class GetDomainsFromTriplesThread extends Thread {
 
 	private boolean doneSplittingString;
 
-	private ConcurrentLinkedQueue<String> objectQueue = null;
+	private ConcurrentLinkedQueue<String> resourceQueue = null;
 
-	private ConcurrentHashMap<String, Integer> sharedHashMap = null;
+	private ConcurrentHashMap<String, Integer> countHashMap = null;
 
-	public AddAuthorityObjectThread(ConcurrentLinkedQueue<String> objectQueue,
-			ConcurrentHashMap<String, Integer> sharedHashMap) {
-		this.objectQueue = objectQueue;
-		this.sharedHashMap = sharedHashMap;
+	public GetDomainsFromTriplesThread(ConcurrentLinkedQueue<String> resourceQueue,
+			ConcurrentHashMap<String, Integer> countHashMap) {
+		this.resourceQueue = resourceQueue;
+		this.countHashMap = countHashMap;
 
 	}
 
@@ -36,9 +36,9 @@ public class AddAuthorityObjectThread extends Thread {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			while (objectQueue.size() > 0) {
+			while (resourceQueue.size() > 0) {
 				try {
-					obj = objectQueue.remove();
+					obj = resourceQueue.remove();
 					
 
 					obj = obj.substring(1, obj.length() - 1);
@@ -48,15 +48,14 @@ public class AddAuthorityObjectThread extends Thread {
 					else if (ar.length > 2)
 						obj = ar[0] + "//" + ar[2] + "/";
 					else {
-						System.out.println(obj);
+//						System.out.println(obj);
 						obj = "";
 					}
 					
-					
 					if (!obj.equals("")) {
-						sharedHashMap.putIfAbsent(obj, 1);
-						sharedHashMap.replace(obj,
-								sharedHashMap.get(obj) + 1);
+						countHashMap.putIfAbsent(obj, 1);
+						countHashMap.replace(obj,
+								countHashMap.get(obj) + 1);
 
 					}
 
@@ -67,7 +66,7 @@ public class AddAuthorityObjectThread extends Thread {
 				}
 			}
 		}
-		System.out.println("Ending AddAuthorityObjectThread.");
+		System.out.println("Ending GetDomainsFromTriplesThread.");
 	}
 
 }
