@@ -49,13 +49,12 @@ public class MakeLinksets {
 
 				DBObject distribution = distributions.next();
 
-				System.out.println("1");
 				
 				// find which filters should be opened for this distribution
 				ArrayList<DistributionMongoDBObject> disributionsToCompare = Queries
 						.getDistributionsByAuthority((String) distribution
 								.get(DistributionMongoDBObject.DOWNLOAD_URL));
-System.out.println("2");
+
 				// make some validations
 				if(distribution
 						.get(DistributionMongoDBObject.OBJECT_PATH)
@@ -66,14 +65,13 @@ System.out.println("2");
 							.get(DistributionMongoDBObject.DOWNLOAD_URL)
 							.toString()+" distribution;");
 				}
-				System.out.println("3");
+				
 				for (DistributionMongoDBObject distributionToCompare : disributionsToCompare) {
 					try {
 						if (!distributionToCompare.getSubjectFilterPath()
 								.equals(distribution
 										.get(DistributionMongoDBObject.SUBJECT_FILTER_PATH)
 										.toString())) {
-							System.out.println("4");
 							DataModelThread dataThread = new DataModelThread();
 							// save dataThread object
 							GoogleBloomFilter filter = new GoogleBloomFilter();
@@ -83,7 +81,6 @@ System.out.println("2");
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
-							System.out.println("5");
 							dataThread.filter = filter;
 
 							dataThread.subjectFilterPath = distributionToCompare
@@ -102,7 +99,6 @@ System.out.println("2");
 									.get(DistributionMongoDBObject.OBJECT_PATH)
 									.toString();
 
-							System.out.println("6");
 							listOfDataThreads.add(dataThread);
 						}
 					} catch (Exception e) {
@@ -141,7 +137,6 @@ System.out.println("2");
 
 				int bufferIndex = 0;
 
-				System.out.println("7");
 				if (listOfDataThreads.size() > 0)
 					while ((sCurrentLine = br.readLine()) != null) {
 						buffer[bufferIndex] = (sCurrentLine);
@@ -169,7 +164,6 @@ System.out.println("2");
 
 						}
 					}
-				System.out.println("8");
 
 				bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_LOG,
@@ -183,8 +177,6 @@ System.out.println("2");
 								DistributionMongoDBObject.OBJECT_PATH)
 								.toString());
 
-
-System.out.println("aaaaai");
 				
 				// save linksets into mongodb
 				saveLinksets(listOfDataThreads);

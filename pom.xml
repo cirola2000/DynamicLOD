@@ -48,11 +48,10 @@
 		</dependency>
 
 
-
 		<dependency>
 			<groupId>org.atmosphere</groupId>
 			<artifactId>atmosphere-runtime</artifactId>
-			<version>2.3.0-RC4</version>
+			
 		</dependency>
 		<dependency>
 			<groupId>org.richfaces</groupId>
