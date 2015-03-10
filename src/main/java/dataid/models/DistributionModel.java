@@ -10,15 +10,15 @@ public class DistributionModel {
 
 	String distributionURI;
 	
-	String distriutionAccessURL;
+	String distriutionDownloadURL;
 	
 
-	public DistributionModel(int id, String dataset, String subset, String distribution, String distriutionAccessURL) {
+	public DistributionModel(int id, String dataset, String subset, String distribution, String distriutionDownloadURL) {
 		this.id = id;
 		this.subsetURI = subset;
 		this.distributionURI = distribution;
 		this.datasetURI = dataset;
-		this.distriutionAccessURL = distriutionAccessURL;
+		this.distriutionDownloadURL = distriutionDownloadURL;
 	}
 	
 	public String getDatasetURI() {
@@ -61,12 +61,12 @@ public class DistributionModel {
 		this.distributionURI = distributionURI;
 	}
 
-	public String getDistriutionAccessURL() {
-		return distriutionAccessURL;
+	public String getDistriutionDownloadURL() {
+		return distriutionDownloadURL;
 	}
 
-	public void setDistriutionAccessURL(String distriutionAccessURL) {
-		this.distriutionAccessURL = distriutionAccessURL;
+	public void setDistriutionDownloadURL(String distriutionDownloadURL) {
+		this.distriutionDownloadURL = distriutionDownloadURL;
 	}
 	
 	

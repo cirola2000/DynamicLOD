@@ -60,6 +60,7 @@ public class Queries {
 		while (cursor.hasNext()) {
 			DistributionMongoDBObject obj = new DistributionMongoDBObject(cursor.next().get(DistributionSubjectDomainsMongoDBObject.DISTRIBUTION_URI).toString());
 		    list.add(obj);
+		    System.out.println("Returned: " +obj.getDownloadUrl());
 		}		
 		
 		}catch (Exception e){

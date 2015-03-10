@@ -49,11 +49,13 @@ public class MakeLinksets {
 
 				DBObject distribution = distributions.next();
 
+				System.out.println("1");
+				
 				// find which filters should be opened for this distribution
 				ArrayList<DistributionMongoDBObject> disributionsToCompare = Queries
 						.getDistributionsByAuthority((String) distribution
-								.get(DistributionMongoDBObject.ACCESS_URL));
-
+								.get(DistributionMongoDBObject.DOWNLOAD_URL));
+System.out.println("2");
 				// make some validations
 				if(distribution
 						.get(DistributionMongoDBObject.OBJECT_PATH)
@@ -61,17 +63,17 @@ public class MakeLinksets {
 								.get(DistributionMongoDBObject.OBJECT_PATH)
 								.toString().equals("")){
 					throw new DataIDException("distributionObjectPath is empty or null for "+distribution
-							.get(DistributionMongoDBObject.ACCESS_URL)
+							.get(DistributionMongoDBObject.DOWNLOAD_URL)
 							.toString()+" distribution;");
 				}
-
+				System.out.println("3");
 				for (DistributionMongoDBObject distributionToCompare : disributionsToCompare) {
 					try {
 						if (!distributionToCompare.getSubjectFilterPath()
 								.equals(distribution
 										.get(DistributionMongoDBObject.SUBJECT_FILTER_PATH)
 										.toString())) {
-
+							System.out.println("4");
 							DataModelThread dataThread = new DataModelThread();
 							// save dataThread object
 							GoogleBloomFilter filter = new GoogleBloomFilter();
@@ -81,25 +83,26 @@ public class MakeLinksets {
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
-
+							System.out.println("5");
 							dataThread.filter = filter;
 
 							dataThread.subjectFilterPath = distributionToCompare
 									.getSubjectFilterPath();
 							dataThread.subjectDistributionURI = distributionToCompare
-									.getAccessUrl();
+									.getDownloadUrl();
 							dataThread.subjectDatasetURI = distributionToCompare.getTopDataset();
 
 							dataThread.objectDatasetURI = distribution.get(
 									DistributionMongoDBObject.TOP_DATASET)
 									.toString();
 							dataThread.objectDistributionURI = distribution
-									.get(DistributionMongoDBObject.ACCESS_URL)
+									.get(DistributionMongoDBObject.DOWNLOAD_URL)
 									.toString();
 							dataThread.distributionObjectPath = distribution
 									.get(DistributionMongoDBObject.OBJECT_PATH)
 									.toString();
 
+							System.out.println("6");
 							listOfDataThreads.add(dataThread);
 						}
 					} catch (Exception e) {
@@ -138,6 +141,7 @@ public class MakeLinksets {
 
 				int bufferIndex = 0;
 
+				System.out.println("7");
 				if (listOfDataThreads.size() > 0)
 					while ((sCurrentLine = br.readLine()) != null) {
 						buffer[bufferIndex] = (sCurrentLine);
@@ -165,6 +169,7 @@ public class MakeLinksets {
 
 						}
 					}
+				System.out.println("8");
 
 				bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_LOG,
@@ -177,8 +182,13 @@ public class MakeLinksets {
 						+ distribution.get(
 								DistributionMongoDBObject.OBJECT_PATH)
 								.toString());
+
+
+System.out.println("aaaaai");
+				
 				// save linksets into mongodb
 				saveLinksets(listOfDataThreads);
+				System.out.println("ssssssssssaaa");
 
 				}
 				catch(Exception e){

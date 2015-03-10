@@ -13,7 +13,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 	// Collection name
 	public static final String COLLECTION_NAME = "Distribution";
 
-	public static final String ACCESS_URL = "accessUrl";
+	public static final String DOWNLOAD_URL = "DownloadUrl";
 
 	public static final String PARENT_DATASETS = "parentDataset";
 
@@ -50,7 +50,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	private ArrayList<String> defaultDatasets = new ArrayList<String>();
 
-	private String accessUrl;
+	private String downloadUrl;
 
 	private String parentDataset;
 
@@ -105,7 +105,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 	public boolean updateObject(boolean checkBeforeInsert) {
 		// save object case it doens't exists
 		try {
-			mongoDBObject.put(ACCESS_URL, accessUrl);
+			mongoDBObject.put(DOWNLOAD_URL, downloadUrl);
 			mongoDBObject.put(PARENT_DATASETS, defaultDatasets);
 			mongoDBObject.put(HTTP_BYTE_SIZE, httpByteSize);
 			mongoDBObject.put(HTTP_FORMAT, httpFormat);
@@ -145,7 +145,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 		DBObject obj = search();
 
 		if (obj != null) {
-			accessUrl = (String) obj.get(ACCESS_URL);
+			downloadUrl = (String) obj.get(DOWNLOAD_URL);
 			httpByteSize = (String) obj.get(HTTP_BYTE_SIZE);
 			topDataset = (String) obj.get(TOP_DATASET);
 			subjectFilterPath = (String) obj.get(SUBJECT_FILTER_PATH);
@@ -177,12 +177,12 @@ public class DistributionMongoDBObject extends DataIDDB {
 		return false;
 	}
 
-	public String getAccessUrl() {
-		return accessUrl;
+	public String getDownloadUrl() {
+		return downloadUrl;
 	}
 
-	public void setAccessUrl(String accessUrl) {
-		this.accessUrl = accessUrl;
+	public void setDownloadUrl(String downloadUrl) {
+		this.downloadUrl = downloadUrl;
 	}
 
 	public String getParentDataset() {

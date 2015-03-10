@@ -4,9 +4,9 @@
 	version="2.5">
 	<!-- File(s) appended to a request for a URL that is not mapped to a web 
 		component -->
-		
-		
-		<display-name>DataID Dynamic Cloud</display-name>
+
+
+	<display-name>DataID Dynamic Cloud</display-name>
 
 	<servlet>
 		<servlet-name>Output</servlet-name>
@@ -58,6 +58,5 @@
 	<listener>
 		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
 	</listener>
-		
 
 </web-app>

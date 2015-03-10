@@ -126,11 +126,13 @@ public class DataIDBean implements Serializable, Runnable {
 	public void run() {
 		DataIDGeneralProperties a = new DataIDGeneralProperties();
 		a.loadProperties();
+		this.setDownloadNumberOfDownloadedDistributions(0);
+		this.setDownloadDatasetURI("");
 		try {
 			this.push();
 			
 			if(action=="runDataid")
-			startDataID();
+				startDataID();
 			else
 				updateGraph();
 			 

@@ -81,7 +81,7 @@ public class DataIDModel {
 				// find accessURL property
 				StmtIterator stmtAccessURL = inModel.listStatements(
 						distribution.getObject().asResource(),
-						Distribution.accessURL, (RDFNode) null);
+						Distribution.downloadURL, (RDFNode) null);
 
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 						"Distribution found: "
@@ -117,7 +117,7 @@ public class DataIDModel {
 							distributionMongoDBObj
 									.addDefaultDataset(datasetMongoDBObj
 											.getUri());
-							distributionMongoDBObj.setAccessUrl(accessURL
+							distributionMongoDBObj.setDownloadUrl(accessURL
 									.getObject().toString());
 
 							// case there is title property
@@ -233,7 +233,7 @@ public class DataIDModel {
 					// find accessURL property
 					StmtIterator stmtAccessURL = inModel.listStatements(
 							distribution.getObject().asResource(),
-							Distribution.accessURL, (RDFNode) null);
+							Distribution.downloadURL, (RDFNode) null);
 
 					// case there is an accessURL property
 					if (stmtAccessURL.hasNext()) {
@@ -263,7 +263,7 @@ public class DataIDModel {
 								distributionMongoDBObj
 										.addDefaultDataset(subsetMongoDBObj
 												.getUri());
-								distributionMongoDBObj.setAccessUrl(accessURL
+								distributionMongoDBObj.setDownloadUrl(accessURL
 										.getObject().toString());
 								
 								

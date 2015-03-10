@@ -54,11 +54,11 @@ public class DataID {
 				bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_INFO,
 						"Downloading distribution: "
-								+ distributionModel.getDistriutionAccessURL() + " (AccessURL property).");
+								+ distributionModel.getDistriutionDownloadURL() + " (DownloadURL property).");
 
 				downloadedFile.downloadDistribution(distributionModel
 						.getDistribution(), distributionModel
-						.getDistriutionAccessURL(),
+						.getDistriutionDownloadURL(),
 						Formats.getEquivalentFormat(distributionMongoDBObj
 								.getFormat()), bean);
 
@@ -68,7 +68,7 @@ public class DataID {
 					// separating subjects and objects using rapper and awk
 					// error to convert dbpedia files from turtle using rapper
 					boolean isDbpedia = false;
-					if (distributionMongoDBObj.getAccessUrl().contains(
+					if (distributionMongoDBObj.getDownloadUrl().contains(
 							"dbpedia"))
 						isDbpedia = true;
 					p.separateSubjectAndObject(downloadedFile.fileName,
@@ -119,7 +119,7 @@ public class DataID {
 
 				distributionMongoDBObj.setNumberOfObjectTriples(String
 						.valueOf(downloadedFile.objectLines));
-				distributionMongoDBObj.setAccessUrl(downloadedFile.url
+				distributionMongoDBObj.setDownloadUrl(downloadedFile.url
 						.toString());
 				distributionMongoDBObj.setFormat(downloadedFile.extension
 						.toString());
@@ -237,7 +237,7 @@ public class DataID {
 				bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_INFO,
 						"Distribution saved! "
-								+ distributionModel.getDistriutionAccessURL());
+								+ distributionModel.getDistriutionDownloadURL());
 				System.out.println("Distribution saved! ");
 				bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
 				bean.pushDownloadInfo();

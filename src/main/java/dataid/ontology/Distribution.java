@@ -7,7 +7,7 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 public class Distribution {
 
 	public static final Property title = property(NS.DCT_URI, "title");
-	public static final Property accessURL = property(NS.DCAT_URI, "accessURL");
+	public static final Property downloadURL = property(NS.DCAT_URI, "downloadURL");
 	public static final Property format = property(NS.DCT_URI, "format");
 	
 	public static final Property dataIDDistribution = property(NS.DATAID_URI, "Distribution");
