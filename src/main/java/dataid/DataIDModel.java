@@ -26,7 +26,7 @@ public class DataIDModel {
 	private Model inModel = ModelFactory.createDefaultModel();
 	List<DistributionModel> distributionsLinks;
 	int numberOfDistributions = 0;
-	public boolean someAccessURLFound = false;
+	public boolean someDownloadURLFound = false;
 	private String datasetURI;
 	private String dataIDURL;
 	DataIDBean bean;
@@ -104,7 +104,7 @@ public class DataIDModel {
 									distribution.getObject().toString(), accessURL
 									.getObject().toString()));
 							numberOfDistributions++;
-							someAccessURLFound = true;
+							someDownloadURLFound = true;
 
 							bean.addDisplayMessage(
 									DataIDGeneralProperties.MESSAGE_LOG,
@@ -255,7 +255,7 @@ public class DataIDModel {
 										distribution.getObject().toString(),accessURL
 										.getObject().toString()));
 								numberOfDistributions++;
-								someAccessURLFound = true;
+								someDownloadURLFound = true;
 
 								// creating mongodb distribution object
 								DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(

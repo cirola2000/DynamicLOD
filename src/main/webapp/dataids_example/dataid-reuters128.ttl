@@ -44,6 +44,6 @@ To create the annotation of NEs with URIs, we implemented a supporting judgement
   dc:title "Complete corpus" ;
   dc:description "Complete corpus file in turtle format" ;
   dc:issued "02-04-2014"^^xsd:date ;
-  dcat:accessURL "https://raw.githubusercontent.com/AKSW/n3-collection/master/Reuters-128.nt" ;
+  dcat:downloadURL "https://raw.githubusercontent.com/AKSW/n3-collection/master/Reuters-128.nt" ;
   dc:format "text/ntriples+turtle" ;
   void:triples "6967" .

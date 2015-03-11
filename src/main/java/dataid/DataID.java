@@ -299,8 +299,8 @@ public class DataID {
 				bean.pushDownloadInfo();
 			}
 
-			if (!dataIDModel.someAccessURLFound)
-				throw new Exception("No dcat:accessURL property found!");
+			if (!dataIDModel.someDownloadURLFound)
+				throw new Exception("No dcat:downloadURL property found!");
 			else if (numberOfDistributions == 0)
 				throw new Exception("### 0 distribution found! ###");
 			else

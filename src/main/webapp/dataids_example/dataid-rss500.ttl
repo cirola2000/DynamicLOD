@@ -42,6 +42,6 @@
   dc:title "Complete corpus" ;
   dc:description "Complete corpus file in turtle format" ;
   dc:issued "02-04-2014"^^xsd:date ;
-  dcat:accessURL "https://raw.githubusercontent.com/AKSW/n3-collection/master/RSS-500.nt" ;
+  dcat:downloadURL "https://raw.githubusercontent.com/AKSW/n3-collection/master/RSS-500.nt" ;
   dc:format "text/ntriples+turtle" ;
   void:triples "10038" .
