@@ -71,7 +71,7 @@ public class DataID {
 					if (distributionMongoDBObj.getDownloadUrl().contains(
 							"dbpedia"))
 						isDbpedia = true;
-					if(!isDbpedia) throw new DataIDException("DBpedia ttl format");
+					if(isDbpedia) throw new DataIDException("DBpedia ttl format");
 					p.separateSubjectAndObject(downloadedFile.fileName,
 							downloadedFile.extension, bean, isDbpedia);
 					downloadedFile.objectDomains = p.objectDomains;
