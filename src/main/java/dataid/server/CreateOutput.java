@@ -75,7 +75,7 @@ public class CreateOutput extends HttpServlet {
 
 			if (linksetList != null)
 				for (LinksetMongoDBObject linkset : linksetList) {
-					if(linkset.getLinks()>30)
+//					if(linkset.getLinks()>30)
 					if (!linkset.getObjectsDatasetTarget().equals(
 							linkset.getSubjectsDatasetTarget())) {
 						Resource r = outModel.createResource(linkset.getUri());
