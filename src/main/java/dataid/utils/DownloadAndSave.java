@@ -253,7 +253,7 @@ public class DownloadAndSave {
 			httpConn.disconnect();
 		} else {
 			httpConn.disconnect();
-			throw new DataIDException(
+			throw new Exception(
 					"No file to download. Server replied HTTP code: "
 							+ responseCode);
 		}
