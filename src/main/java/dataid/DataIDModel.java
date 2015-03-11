@@ -18,6 +18,7 @@ import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.SubsetMongoDBObject;
 import dataid.ontology.Dataset;
 import dataid.ontology.Distribution;
+import dataid.ontology.NS;
 import dataid.server.DataIDBean;
 import dataid.utils.FileUtils;
 
@@ -323,6 +324,9 @@ public class DataIDModel {
 			dataIDURL = FileUtils.stringToHash(URL);
 			inModel.write(new FileOutputStream(new File(
 					DataIDGeneralProperties.DATAID_PATH + dataIDURL)));
+		}
+		else{
+			throw new DataIDException("It's not possible to find a dataid:Dataset. Check your dataid namespace "+NS.DATAID_URI);
 		}
 
 		return name;
