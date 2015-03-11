@@ -87,11 +87,11 @@ public class DataID {
 				GoogleBloomFilter filter;
 				if (downloadedFile.subjectLines != 0) {
 					filter = new GoogleBloomFilter(
-							(int) downloadedFile.subjectLines, 0.00001);
+							(int) downloadedFile.subjectLines, 0.000001);
 				} else {
 					filter = new GoogleBloomFilter(
 							(int) downloadedFile.contentLengthAfterDownloaded / 40,
-							0.00001);
+							0.000001);
 				}
 
 				// get authority domain

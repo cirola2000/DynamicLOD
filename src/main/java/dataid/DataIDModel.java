@@ -74,7 +74,8 @@ public class DataIDModel {
 
 			// case there's an distribution take the fist that has downloadURL
 			boolean downloadURLFound = false;
-			while (stmtDistribution.hasNext() && downloadURLFound == false) {
+			while (stmtDistribution.hasNext()) {
+//				while (stmtDistribution.hasNext() && downloadURLFound == false) {
 
 				// get distribution
 				Statement distribution = stmtDistribution.next();
@@ -89,7 +90,8 @@ public class DataIDModel {
 								+ distribution.getObject().toString());
 
 				// case there is an downloadURL property
-				while (stmtDownloadURL.hasNext() && !downloadURLFound) {
+				while (stmtDownloadURL.hasNext()) {
+//					while (stmtDownloadURL.hasNext() && !downloadURLFound) {
 					// store downloadURL statement
 					Statement downloadURL = stmtDownloadURL.next();
 					try {
