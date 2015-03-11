@@ -60,12 +60,14 @@ public class DataIDModel {
 				datasetMongoDBObj.setTitle(dataset.getSubject()
 						.getProperty(Dataset.title).getObject().toString());
 			}
+			else datasetMongoDBObj.setTitle(datasetURI);
 
 			// case there is label property
 			if (dataset.getSubject().getProperty(Dataset.label) != null) {
 				datasetMongoDBObj.setLabel(dataset.getSubject()
 						.getProperty(Dataset.label).getObject().toString());
 			}
+			else datasetMongoDBObj.setLabel(datasetURI);
 
 			// try to find distribution within dataset
 			StmtIterator stmtDistribution = inModel.listStatements(
