@@ -246,11 +246,15 @@ public class DataID {
 			} catch (DataIDException e) {
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
 						e.getMessage());
+				bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
+				bean.pushDownloadInfo();
 				e.printStackTrace();
 			}
 			catch (Exception e) {
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
 						e.getMessage());
+				bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
+				bean.pushDownloadInfo();
 				e.printStackTrace();
 				distributionMongoDBObj.setLastErrorMsg(e.getMessage());
 				distributionMongoDBObj.setSuccessfullyDownloaded(false);

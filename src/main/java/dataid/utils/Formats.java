@@ -21,6 +21,7 @@ public class Formats {
 	}};
 	private static final ArrayList<String> RDFXML_FORMATS = new ArrayList<String>(){{
 	    add("application/rdf+xml");
+	    add("rdf");
 	}};
 	
 	public static String getEquivalentFormat(String str){

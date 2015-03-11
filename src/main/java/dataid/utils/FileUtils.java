@@ -45,6 +45,8 @@ public class FileUtils {
 			return true;
 		else if (fileName.contains(".zip"))
 			return true;
+		else if (fileName.contains(".rdf"))
+			return true;
 		else if (fileName.contains(".bzip"))
 			return true;
 		else {
