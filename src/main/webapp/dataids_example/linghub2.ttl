@@ -1,0 +1,1235 @@
+@prefix metashare: <http://purl.org/ms-lod/MetaShare.ttl#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix void:  <http://rdfs.org/ns/void#> .
+@prefix ontology: <http://linghub.lider-project.eu/ontology#> .
+@prefix lremap: <http://www.resourcebook.eu/lremap/owl/lremap_resource.owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix iso639: <http://www.lexvo.org/id/iso639-3/> .
+@prefix ex9:   <http://www.example.com#> .
+@prefix cmd:   <http://www.clarin.eu/cmd/> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix bio:   <http://purl.org/ms-lod/BioServices.ttl> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dataid: <http://dataid.dbpedia.org/ns/core#> .
+@prefix odrl:  <http://www.w3.org/ns/odrl/2/> .
+
+
+<http://linghub.lider-project.eu/datahub/dbpedia>        a                  dataid:Dataset ;
+dcat:distribution <http://www.resourcebook.eu/shareyourlr/data/LREC_251_res_1.gz> ,<http://lexinfo.net/corpora/alpino/alpino-rdf.zip> ,<http://lexinfo.net/corpora/alpino/cdb/123.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:06:49.774Z/apertium-ca-it-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:07:45.667Z/apertium-ca-it-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:11:00.893Z/apertium-en-ca-pol-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:12:37.992Z/apertium-en-ca-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:15:09.883Z/apertium-en-es-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-12-04T17:14:56.002Z/apertium-en-es-pol-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T14:51:34.729Z/apertium-en-gl-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T15:04:23.585Z/apertium-en-gl-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-27T14:31:27.350Z/apertium-es-ast-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-27T14:33:45.966Z/apertium-es-ast-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-08T09:20:21.141Z/apertium-es-ca-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-12-04T17:21:10.994Z/apertium-es-ca-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-05T15:12:07.895Z/apertium-es-gl-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T15:11:48.579Z/apertium-es-gl-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T16:39:50.152Z/apertium-es-pt-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-12T14:47:11.977Z/apertium-es-pt-pol-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-13T17:32:02.826Z/apertium-es-ro-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-13T17:35:13.643Z/apertium-es-ro-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-27T13:51:07.416Z/apertium-eu-es-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-27T13:53:20.254Z/apertium-eu-es-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-06T17:03:49.398Z/apertium-fr-ca-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T15:13:23.941Z/apertium-fr-ca-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-05T10:37:56.032Z/apertium-fr-es-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-12T14:01:15.900Z/apertium-fr-es-pol-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:52:37.943Z/apertium-all-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-24T10:12:45.640Z/apertium-oc-ca-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-24T10:15:06.279Z/apertium-oc-ca-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-20T16:18:55.203Z/apertium-oc-es-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-20T16:29:59.056Z/apertium-oc-es-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T13:35:52.363Z/apertium-pt-ca-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T13:39:36.420Z/apertium-pt-ca-dataset-metadata.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-24T10:59:53.745Z/apertium-pt-gl-rdf.zip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-24T11:02:32.449Z/apertium-pt-gl-dataset-metadata.rdf> ,<http://ims.dei.unipd.it/websites/ASIt/RDF/asit-data.rdf> ,<http://www.purl.org/ASIt/RDF/asit-schema.rdf> ,<http://cldbstest.eva.mpg.de/asjp/downloads/families.rdf.zip> ,<http://cldbstest.eva.mpg.de/asjp/downloads/languoids.rdf.zip> ,<http://cldbstest.eva.mpg.de/asjp/downloads/renderings.ttl.zip> ,<http://cldbstest.eva.mpg.de/asjp/downloads/senses.rdf.zip> ,<http://cldbstest.eva.mpg.de/asjp/resource/distance/id/d13-468.rdf> ,<http://cldbstest.eva.mpg.de/asjp/resource/family/id/fROMANCE.rdf> ,<http://cldbstest.eva.mpg.de/asjp/resource/language/id/l99.rdf> ,<http://cldbstest.eva.mpg.de/asjp/resource/rendering/id/r1234.rdf> ,<http://cldbstest.eva.mpg.de/asjp/resource/sense/id/s40.rdf> ,<http://home.bibleontology.com/download/bibleontology_11_6-23.zip> ,<http://brown.nlp2rdf.org/dataid.ttl> ,<http://brown.nlp2rdf.org/lod/a01.ttl> ,<http://data.sfb673.org/corpora/chat_game_corpus.ttl> ,<http://reegle.info/glossary/39.rdf> ,<http://reegle.info/projectoutputs/28.rdf> ,<http://www.reegle.info/actors/2354.rdf> ,<http://www.reegle.info/downloads/latest_reegle_dump.nt> ,<http://www.reegle.info/profiles/40.rdf> ,<http://www.reegle.info/schema.rdf> ,<http://afbo.info/static/download/afbo-dataset.n3.gz> ,<http://afbo.info/void.ttl> ,<http://apics-online.info/static/download/apics-dataset.n3.gz> ,<http://apics-online.info/void.ttl> ,<http://ewave-atlas.org/static/download/ewave-dataset.n3.gz> ,<http://ewave-atlas.org/void.ttl> ,<http://glottolog.org/static/download/glottolog-dataset.n3.gz> ,<http://glottolog.org/void.ttl> ,<http://phoible.org/static/download/phoible-dataset.n3.gz> ,<http://phoible.org/void.ttl> ,<http://sails.clld.org/static/download/SAILS-dataset.n3.gz> ,<http://sails.clld.org/void.ttl> ,<http://wals.info/static/download/wals-dataset.n3.gz> ,<http://wals.info/void.ttl> ,<http://wold.clld.org/static/download/wold-dataset.n3.gz> ,<http://wold.clld.org/void.ttl> ,<http://conceptnet.media.mit.edu/dist/ConceptNet-sqlite.tar.gz> ,<http://core-project.kmi.open.ac.uk/files/download_20120123.rdf> ,<http://core-project.kmi.open.ac.uk/files/example-link.rdf> ,<http://core-project.kmi.open.ac.uk/files/test.rdf> ,<http://purl.org/vocabularies/cornetto/synset-iets-2-noun.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2013-01-16T130120/dictionnaire.ttl> ,<http://es.dbpedia.org/data/Madrid.ntriples> ,<http://downloads.dbpedia.org/3.6/dbpedia_3.6.owl.bz2> ,<http://fr.dbpedia.org/data/Paris.nt> ,<http://fr.dbpedia.org/data/Paris.rdf> ,<http://dbpedia.org/data/Berlin.rdf> ,<http://downloads.dbpedia.org/3.5.1/all_languages.tar> ,<http://downloads.dbpedia.org/3.5.1/dbpedia_3.5.1.owl.bz2> ,<http://downloads.dbpedia.org/3.6/dbpedia_3.6.owl.bz2> ,<http://ja.dbpedia.org/data/%5Cu6771%5Cu4EAC%5Cu90FD.rdf> ,<http://ja.dbpedia.org/void.ttl> ,<http://nl.dbpedia.org/data/Amsterdam.nt> ,<http://nl.dbpedia.org/data/Amsterdam.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:26:34.291Z/dataid.ttl> ,<http://www.yovisto.com/labs/ner-benchmarks/data/dbpedia-spotlight-nif.ttl> ,<https://ckannet-storage.commondatastorage.googleapis.com/2012-10-18T110739/model.lemon.rdf.zip> ,<http://www.resourcebook.eu/shareyourlr/data/LREC_337_res_1.gz> ,<http://data.sfb673.org/fiesta/fiesta-1.0.ttl> ,<http://data.beeldengeluid.nl/gtaa/173390.rdf> ,<http://semanticweb.cs.vu.nl/lod/beeldengeluid/GTAA-25aug2010.ttl.gz> ,<https://commondatastorage.googleapis.com/ckannet-storage/2012-09-02T184411/gemet-annotated.rdf> ,<http://www.eionet.europa.eu/gemet/gemet-backbone.rdf> ,<http://www.eionet.europa.eu/gemet/void.rdf> ,<http://resource.geolba.ac.at/GeologicTimeScale/35.rdf> ,<http://resource.geolba.ac.at/GeologicTimeScale.rdf> ,<http://resource.geolba.ac.at/GeologicUnit/291.rdf> ,<http://resource.geolba.ac.at/GeologicUnit.rdf> ,<http://resource.geolba.ac.at/lithology/48.rdf> ,<http://resource.geolba.ac.at/lithology.rdf> ,<http://resource.geolba.ac.at/PoolParty/OpenConfigPathResourceProvider/backuproot?fileName=d13bb3e7-df48-4cba-bd0c-e63c8943d9e0/pp_project_lithotektonische_einheiten.rdf&contentType=application/rdf%2Bxml> ,<http://resource.geolba.ac.at/PoolParty/OpenConfigPathResourceProvider/backuproot?fileName=d7b07bce-7ce4-4bcb-85ae-e0f774e6fb8d/pp_project_geologische_einheiten.rdf&contentType=application/rdf%2Bxml> ,<http://resource.geolba.ac.at/PoolParty/OpenConfigPathResourceProvider/backuproot?fileName=urn:uuid:1D763DCD-0E5C-0001-FBB1-1D401A50B620/pp_project_geologische_zeitskala.rdf&contentType=application/rdf%2Bxml> ,<http://resource.geolba.ac.at/PoolParty/OpenConfigPathResourceProvider/backuproot?fileName=urn:uuid:1D87806F-E88C-0001-AFCC-DC87F6001C3A/pp_project_lithologische_einheiten.rdf&contentType=application/rdf%2Bxml> ,<http://resource.geolba.ac.at/tectonicunit/115.rdf> ,<http://resource.geolba.ac.at/tectonicunit.rdf> ,<http://geowordnet.semanticmatching.org/synset-dependent_political_entity-noun-1.rdf> ,<http://geowordnet.semanticmatching.org/void.rdf> ,<http://sourceforge.net/projects/s-match/files/datasets/geowordnet-dict-full-20110330.zip/download> ,<http://sourceforge.net/projects/s-match/files/datasets/geowordnet-public-20101123.zip/download> ,<http://sourceforge.net/projects/s-match/files/datasets/geowordnet-rdf-20110330.zip/download> ,<http://www.acoli.informatik.uni-frankfurt.de/resources/germlex/all-2014-04-01.zip> ,<http://lod.gesis.org/thesoz/ext/thesoz_ext.rdf> ,<http://lod.gesis.org/thesoz/vocabulary-mappings.ttl> ,<http://lod.gesis.org/thesoz/void.ttl> ,<http://www.etracker.de/lnkcnt.php?et=qPKGYV&url=http://www.gesis.org/fileadmin/upload/dienstleistung/tools_standards/thesoz_skos_turtle.zip&lnkname=fileadmin/upload/dienstleistung/tools_standards/thesoz_skos_turtle.zip> ,<http://vocab.getty.edu/dataset/aat/explicit.zip> ,<http://vocab.getty.edu/dataset/tgn/full.zip> ,<http://glottolog.org/resource/languoid/id/kiny1244.rdf> ,<http://glottolog.org/static/download/glottolog-language.csv.zip> ,<http://glottolog.org/static/download/glottolog-language.n3.gz> ,<http://glottolog.org/static/download/glottolog-source.bib.zip> ,<http://glottolog.org/static/download/glottolog-source.n3.gz> ,<http://glottolog.org/void.rdf> ,<http://www.glottolog.org/resource/reference/id/39524.rdf> ,<http://www.gutenberg.org/ebooks/12345.rdf> ,<http://www.gutenberg.org/feeds/catalog.rdf.bz2> ,<http://meriterm.org/heartfailure/heartfailure.rdf> ,<ftp://ftp.mokk.bme.hu/Language/Hungarian/Freq/Web2.2/web2.2-alfa-sorted.txt.gz> ,<http://www.ltg.ed.ac.uk/ibl/ibl-wav.tar.gz> ,<http://mlode.nlp2rdf.org/datasets/ids.nt.gz> ,<http://www.isocat.org/rest/dc/1333.rdf> ,<http://ftp://ftp.monash.edu.au/pub/nihongo/JMdict.gz> ,<http://mlode.nlp2rdf.org/datasets/jrcNamesInterlink.ttl.gz> ,<http://mlode.nlp2rdf.org/datasets/jrcNames.ttl.gz> ,<http://optima.jrc.it/data/entities.gzip> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-27T12:51:16.896Z/kore50.ttl> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:25:57.019Z/dataid.ttl> ,<http://www.yovisto.com/labs/ner-benchmarks/data/kore50-nif.ttl> ,<http://lemon-model.net/lexica/uby/wn/WN_LexicalEntry_0.rdf> ,<http://monnetproject.deri.ie/lemonsource/Special:Dump/wiktionary.tar.bz2> ,<http://monnetproject.deri.ie/lemonsource/Special:Dump/wordnet.zip> ,<http://monnetproject.deri.ie/lemonsource/wordnet/cat-noun.rdf> ,<http://monnetproject.deri.ie/lemonsource/wordnet/cat-noun.ttl> ,<http://www.lexinfo.net/ontology/2.0/lexinfo.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-14T10:43:25.510Z/lexin-nt.gz> ,<http://spraakbanken.gu.se/rdf/lexin.rdf> ,<http://www.lexvo.org/linkeddata/void.rdf> ,<http://www.lexvo.org/resources/lexvo_latest.rdf.gz> ,<http://www.lingvoj.org/lingvoj.rdf> ,<http://www.lingvoj.org/lingvoj-to-lexvo.rdf> ,<http://www.lingvoj.org/ontology.rdf> ,<http://ner.vse.cz/datasets/linkedhypernyms/de.instances.all.nt.gz> ,<http://ner.vse.cz/datasets/linkedhypernyms/en.instances.all.nt.gz> ,<http://ner.vse.cz/datasets/linkedhypernyms/nl.instances.all.nt.gz> ,<http://lod.ac/bdls/species/Pygoscelis_adeliae.rdf> ,<http://lod.ac/bdls/species/Pygoscelis_adeliae.ttl> ,<http://lod.ac/bdls/term/ET.rdf> ,<http://lod.ac/bdls/term/ET.ttl> ,<http://lod.ac/bdls/void.ttl> ,<http://purl.org/NET/marccodes/gacs/a-bx.rdf> ,<http://www.anc.org/MASC/download/MASC-1.0.3.zip> ,<http://gilmere.upf.edu/corpus_data/rdf/IULA-UPF-MetashareRecordsOntology.ttl> ,<http://data.sfb673.org/mexico/mexico-1.0.ttl> ,<http://data.sfb673.org/mexico/mexico-example.ttl> ,<http://mlode.nlp2rdf.org/downloads/mlsa.nt.gz> ,<http://rdf.muninn-project.org/Downloads/muninn-ontologies-latest.tar.bz2> ,<http://rdf.muninn-project.org/Muninn.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:27:30.087Z/dataid.ttl> ,<https://raw.githubusercontent.com/AKSW/n3-collection/master/News-100.ttl> ,<http://www.americannationalcorpus.org/OANC/OANC-1.0.1-UTF8.zip> ,<http://www.ontosearch.com/dumps/dump.ttl.zip> ,<http://sw.opencyc.org/downloads/opencyc_owl_downloads/opencyc-latest.owl.gz> ,<http://openlibrary.org/books/OL6807502M.rdf> ,<http://openlibrary.org/data/ol_dump_latest.txt.gz> ,<http://data.kasabi.com/dataset/pali-english-lexicon/pts-dictionary/e0.rdf> ,<http://ld.panlex.org/downloads/releases/2013-02-14/2013-02-14-panlex-dump.nt> ,<http://ld.panlex.org/downloads/releases/2013-02-14/2013-02-14-panlex-ontology.ttl> ,<http://gilmere.upf.edu/corpus_data/ParoleSimpleOntology/ParoleEntriesCat.ttl> ,<http://gilmere.upf.edu/corpus_data/ParoleSimpleOntology/ParoleEntries.ttl> ,<http://pdev.org.uk/pdevlemonfiles/pdevlemon.nt.tar.gz> ,<http://atlantides.org/downloads/pleiades/rdf/pleiades-latest.tar.gz> ,<http://atlantides.org/downloads/pleiades/rdf/void.ttl> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:24:39.177Z/dataid.ttl> ,<https://raw.githubusercontent.com/AKSW/n3-collection/master/Reuters-128.ttl> ,<http://wordnet.rkbexplorer.com/models/void.ttl> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:27:07.064Z/dataid.ttl> ,<https://raw.githubusercontent.com/AKSW/n3-collection/master/RSS-500.ttl> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-14T10:32:42.453Z/saldom-nt.gz> ,<http://spraakbanken.gu.se/rdf/saldom.rdf> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-17T09:29:36.634Z/saldo-nt.gz> ,<http://spraakbanken.gu.se/rdf/saldo.rdf> ,<http://data.kasabi.com/dataset/sanskrit-english-lexicon/monier-williams/e0.rdf> ,<http://mlode.nlp2rdf.org/datasets/qvoc.owl.ttl.gz> ,<http://mlode.nlp2rdf.org/datasets/semanticquran.nt.gz> ,<http://mlode.nlp2rdf.org/downloads/sentiws.ttl.gz> ,<http://wortschatz.informatik.uni-leipzig.de/download/SentiWS_v1.8c.zip> ,<http://www.languagelibrary.eu/owl/simple/inds/SimpleEntries.ttl> ,<http://www.languagelibrary.eu/owl/simple/psc/pscLemon.ttl> ,<http://vocabulary.semantic-web.at/semweb.rdf> ,<http://srcmf.org/public/alexis-rdf.zip> ,<http://srcmf.org/public/aucassin-rdf.zip> ,<http://srcmf.org/public/beroul-rdf.zip> ,<http://srcmf.org/public/clari-rdf.zip> ,<http://srcmf.org/public/qgraal-rdf.zip> ,<http://srcmf.org/public/roland-rdf.zip> ,<http://srcmf.org/public/yvainku-rdf.zip> ,<http://steak.kisti.re.kr/steak2skos/STEAK2SKOS_dump.rdf> ,<http://zbw.eu/stw/versions/latest/download/stw.rdf.zip> ,<http://zbw.eu/stw/void.ttl> ,<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-14T10:47:50.165Z/swefn-nt.gz> ,<http://spraakbanken.gu.se/rdf/swefn.rdf> ,<http://data.uba.de/umt/_00100204.ttl> ,<http://skos.um.es/unescothes/unescothes.rdf> ,<http://skos.um.es/unescothes/unescothes.ttl> ,<http://skos.um.es/unescothes/void.ttl> ,<http://purl.org/vocabularies/princeton/wn30/synset-chair-noun-1.rdf> ,<http://semanticweb.cs.vu.nl/lod/wn30/rdf/void.ttl> ,<http://wiki-link.nlp2rdf.org/dataid.ttl> ,<http://wiki-link.nlp2rdf.org/wikilink_ne.csv.tar.gz> ,<http://wiktionary.dbpedia.org/data/dog.ntriples> ,<http://wiktionary.dbpedia.org/data/dog.rdf> ,<http://mlode.nlp2rdf.org/datasets/wold.nt.gz> ,<http://wold.livingsources.org/language/19.rdf> ,<http://wold.livingsources.org/meaning/1.58.rdf> ,<http://wold.livingsources.org/vocabulary/19.rdf> ,<http://wold.livingsources.org/word/71312352339070606.rdf> ,<http://wordnet-rdf.princeton.edu/wn31.nt.gz> ,<http://km.aifb.kit.edu/resources/xLiD-lexica.nt> ,<http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoSchema.ttl.7z> ,<http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoTaxonomy.ttl.7z> ,<http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoTypes.ttl.7z> ,<http://onki.fi/en/browser/downloadfile/ysa?o=http:%2F%2Fwww.yso.fi%2Fonto%2Fysa&f=ysa%2Flib.helsinki-ysa.rdf> ,<http://onki.fi/en/browser/downloadfile/ysa?o=http:%2F%2Fwww.yso.fi%2Fonto%2Fysa&f=ysa%2Flib.helsinki-ysa-skos.rdf> ,<http://bcmi.sjtu.edu.cn/~yangshaohua/data.zip> ,<http://www.gabormelli.com/Projects/SCMILO/v1.0/kdd09cma1.zip> ,<http://wyner.info/research/L3S/Files/SPLeT2010CBR.tar.gz> ,<ftp://ftp.ncbi.nlm.nih.gov/pub/tanabe/GENETAG.tar.gz> ,<http://snowball.tartarus.org/download.php> ,<http://lit.csci.unt.edu/~rada/downloads/AffectiveText.Semeval.2007.tar.gz> ,<http> ,<http://www.hf.ntnu.no/hf/prosjekter/spraktek_english/prosjekter/nkl> ,<http://www.csie.ntu.edu.tw/~cjlin/liblinear/> ,<http://www.cs.toronto.edu/~jbrooke/Formality_Word_Lists.zip> ,<http://www.site.uottawa.ca/~szpak/pub/Emotion-Data.zip> ,<http://www.jaist.ac.jp/~h-yamada/software/ptbconv-3.0.tar.gz> ,<http://kheafield.com/code/scoring.tar.gz> ,<http://www.cs.tau.ac.il/~jonatha6/homepage_files/resources/ACL2011Resource.zip> ,<http://www.csie.ntu.edu.tw/~cjlin/libsvm> ,<http://www.cel.iitkgp.ernet.in/~tirthankar/AuthorGenderDataSet.tar.gz> ,<http://www.ukp.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/data/TWSI/TWSI2_complete.zip> ,<http://www.h-its.org/downloads/nlp/cSR.tar> ,<http://www.stanford.edu/~jurafsky/swb1_dialogact_annot.tar.gz> ,<http://verbs.colorado.edu/verb-index/propbank-1.7.tar.gz> ,<http://www.cfilt.iitb.ac.in/download/corpus/parallel/agriculture_domain_parallel_corpus.zip> ,<http://www.statmt.org/wmt09/training-monolingual.tar> ,<http> ,<http://www.cs.nyu.edu/~asun/data/TDT5_BrownWC.tar.gz> ,<http://www.prajol.net.np/ijcnlp-2011/LINA-PAL-1.0.tar.gz> ,<http://staffwww.dcs.shef.ac.uk/people/Z.> ,<http://lingcog.iit.edu/arc/appraisal_lexicon_2007b.tar.gz> ,<http://www.linguateca.pt/HAREM/PacoteRecursosSegundoHAREM.zip> ,<http://lingcog.iit.edu/arc/appraisal_lexicon_2007b.tar.gz> ,<2010_JRC_1590-Quotes-annotated-for-sentiment.zip> ,<http://www.cel.iitkgp.ernet.in/~tirthankar/IITKGP-emotion-data.tar.gz> ,<http://personalpages.manchester.ac.uk/staff/xinglong.wang/files/species_corpus.tar.gz> ,<http://www.csie.ntu.edu.tw/~cjlin/libsvm/> ,<http://www.hf.ntnu.no/hf/prosjekter/spraktek_english/prosjekter/nkl> ,<http://childes.psy.cmu.edu/data/Romance/Portuguese/Florianopolis.zip> ,<http://www.coli.uni-saarland.de/~rwang/resources/LREC2012Data.zip> ,<http://nlp.uned.es/semantics/qwordnet.tar.gz> ,<http://www.csie.ntu.edu.tw/~cjlin/libsvm/> ,<http://ontologies.smile.deri.ie/smail.rdf> ,<http://www.csie.ntu.edu.tw/~cjlin/liblinear/> ,<http://www.clips.ua.ac.be/BiographTA/corpora-files/ConanDoyle-neg-v1.zip> ,<http://www.iit.demokritos.gr/~vrentoumi/corpus.zip> ,<http://greedy.cs.uiuc.edu/software/illinoisSRL-3.0.1.tar.gz> ,<http://www.clsp.jhu.edu/~sbergsma/coordNP.ACL11.zip> ,<http://nlg18.csie.ntu.edu.tw:8080/opinion/pub1.html> ,<http://www.csie.ntu.edu.tw/~cjlin/libsvm/> ,<ftp://ftp.cis.upenn.edu/pub/adwait/jmx/jmx.tar.gz> ,<http://www.cnts.ua.ac.be/conll2000/chunking/train.txt.gz> ,<http://www.informatics.sussex.ac.uk/users/tz21/dataZH.tar.gz> ,<http://www.iet.ntnu.no/projects/fonema/index_eng.php> ,<ftp://ftp.informatics.susx.ac.uk/pub/users/johnca/morph.tar.gz> ,<http://people.dsv.su.se/~eli-carl/paper_lrec/lexicons_EC.zip> ,<ftp://jaguar.ncsl.nist.gov/mt/resources/mteval-v13a-20091001.tar.gz> ,<http://www.isi.edu/~chiang/software/hybrid.tar.gz> ,<ftp.ldc.upenn.edu/pub/ldc/public_data/swb1_dialogact_annot.tar.gz> ,<http://nlg18.csie.ntu.edu.tw:8080/opinion/> ,<http://www.cs.pitt.edu/mpqa/lexiconrelease/hltemnlp05clues.tar> ,<http://nlg18.csie.ntu.edu.tw:8080/opinion/> ,<http://nlp.stanford.edu/pubs/crosswikis-data.tar.bz2> ,<www.hpi.uni-potsdam.de/fileadmin/hpi/> ,<http://snowball.tartarus.org/> ,<http://clip.ipipan.waw.pl/LRT?action=AttachFile&do=view&target=gramatyka_Spejd_NKJP_1.0.zip> .
+<http://www.resourcebook.eu/shareyourlr/data/LREC_251_res_1.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/acadonto> ;
+ dcat:downloadURL <http://www.resourcebook.eu/shareyourlr/data/LREC_251_res_1.gz> .
+
+<http://lexinfo.net/corpora/alpino/alpino-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/alpino-rdf> ;
+ dcat:downloadURL <http://lexinfo.net/corpora/alpino/alpino-rdf.zip> .
+
+<http://lexinfo.net/corpora/alpino/cdb/123.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/alpino-rdf> ;
+ dcat:downloadURL <http://lexinfo.net/corpora/alpino/cdb/123.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:06:49.774Z/apertium-ca-it-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-ca-it> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:06:49.774Z/apertium-ca-it-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:07:45.667Z/apertium-ca-it-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-ca-it> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:07:45.667Z/apertium-ca-it-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:11:00.893Z/apertium-en-ca-pol-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-en-ca> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:11:00.893Z/apertium-en-ca-pol-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:12:37.992Z/apertium-en-ca-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-en-ca> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:12:37.992Z/apertium-en-ca-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:15:09.883Z/apertium-en-es-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-en-es> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:15:09.883Z/apertium-en-es-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-12-04T17:14:56.002Z/apertium-en-es-pol-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-en-es> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-12-04T17:14:56.002Z/apertium-en-es-pol-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T14:51:34.729Z/apertium-en-gl-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-en-gl> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T14:51:34.729Z/apertium-en-gl-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T15:04:23.585Z/apertium-en-gl-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-en-gl> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T15:04:23.585Z/apertium-en-gl-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-27T14:31:27.350Z/apertium-es-ast-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-es-ast> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-27T14:31:27.350Z/apertium-es-ast-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-27T14:33:45.966Z/apertium-es-ast-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-es-ast> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-27T14:33:45.966Z/apertium-es-ast-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-08T09:20:21.141Z/apertium-es-ca-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-es-ca> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-10-08T09:20:21.141Z/apertium-es-ca-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-12-04T17:21:10.994Z/apertium-es-ca-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-es-ca> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-12-04T17:21:10.994Z/apertium-es-ca-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-05T15:12:07.895Z/apertium-es-gl-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-es-gl> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-05T15:12:07.895Z/apertium-es-gl-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T15:11:48.579Z/apertium-es-gl-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-es-gl> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T15:11:48.579Z/apertium-es-gl-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T16:39:50.152Z/apertium-es-pt-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-es-pt> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T16:39:50.152Z/apertium-es-pt-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-12T14:47:11.977Z/apertium-es-pt-pol-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-es-pt> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-12T14:47:11.977Z/apertium-es-pt-pol-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-13T17:32:02.826Z/apertium-es-ro-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-es-ro> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-13T17:32:02.826Z/apertium-es-ro-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-13T17:35:13.643Z/apertium-es-ro-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-es-ro> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-13T17:35:13.643Z/apertium-es-ro-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-27T13:51:07.416Z/apertium-eu-es-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-eu-es> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-27T13:51:07.416Z/apertium-eu-es-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-27T13:53:20.254Z/apertium-eu-es-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-eu-es> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-27T13:53:20.254Z/apertium-eu-es-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-06T17:03:49.398Z/apertium-fr-ca-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-fr-ca> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-06T17:03:49.398Z/apertium-fr-ca-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T15:13:23.941Z/apertium-fr-ca-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-fr-ca> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-07T15:13:23.941Z/apertium-fr-ca-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-05T10:37:56.032Z/apertium-fr-es-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-fr-es> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-05T10:37:56.032Z/apertium-fr-es-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-12T14:01:15.900Z/apertium-fr-es-pol-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-fr-es> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-12T14:01:15.900Z/apertium-fr-es-pol-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:52:37.943Z/apertium-all-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T21:52:37.943Z/apertium-all-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-24T10:12:45.640Z/apertium-oc-ca-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-oc-ca> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-24T10:12:45.640Z/apertium-oc-ca-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-24T10:15:06.279Z/apertium-oc-ca-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-oc-ca> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-24T10:15:06.279Z/apertium-oc-ca-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-20T16:18:55.203Z/apertium-oc-es-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-oc-es> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-20T16:18:55.203Z/apertium-oc-es-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-20T16:29:59.056Z/apertium-oc-es-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-oc-es> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-20T16:29:59.056Z/apertium-oc-es-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T13:35:52.363Z/apertium-pt-ca-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-pt-ca> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T13:35:52.363Z/apertium-pt-ca-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T13:39:36.420Z/apertium-pt-ca-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-pt-ca> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-14T13:39:36.420Z/apertium-pt-ca-dataset-metadata.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-24T10:59:53.745Z/apertium-pt-gl-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-pt-gl> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-24T10:59:53.745Z/apertium-pt-gl-rdf.zip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-11-24T11:02:32.449Z/apertium-pt-gl-dataset-metadata.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/apertium-rdf-pt-gl> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-11-24T11:02:32.449Z/apertium-pt-gl-dataset-metadata.rdf> .
+
+<http://ims.dei.unipd.it/websites/ASIt/RDF/asit-data.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/asit> ;
+ dcat:downloadURL <http://ims.dei.unipd.it/websites/ASIt/RDF/asit-data.rdf> .
+
+<http://www.purl.org/ASIt/RDF/asit-schema.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/asit> ;
+ dcat:downloadURL <http://www.purl.org/ASIt/RDF/asit-schema.rdf> .
+
+<http://cldbstest.eva.mpg.de/asjp/downloads/families.rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/asjp> ;
+ dcat:downloadURL <http://cldbstest.eva.mpg.de/asjp/downloads/families.rdf.zip> .
+
+<http://cldbstest.eva.mpg.de/asjp/downloads/languoids.rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/asjp> ;
+ dcat:downloadURL <http://cldbstest.eva.mpg.de/asjp/downloads/languoids.rdf.zip> .
+
+<http://cldbstest.eva.mpg.de/asjp/downloads/renderings.ttl.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/asjp> ;
+ dcat:downloadURL <http://cldbstest.eva.mpg.de/asjp/downloads/renderings.ttl.zip> .
+
+<http://cldbstest.eva.mpg.de/asjp/downloads/senses.rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/asjp> ;
+ dcat:downloadURL <http://cldbstest.eva.mpg.de/asjp/downloads/senses.rdf.zip> .
+
+<http://cldbstest.eva.mpg.de/asjp/resource/distance/id/d13-468.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/asjp> ;
+ dcat:downloadURL <http://cldbstest.eva.mpg.de/asjp/resource/distance/id/d13-468.rdf> .
+
+<http://cldbstest.eva.mpg.de/asjp/resource/family/id/fROMANCE.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/asjp> ;
+ dcat:downloadURL <http://cldbstest.eva.mpg.de/asjp/resource/family/id/fROMANCE.rdf> .
+
+<http://cldbstest.eva.mpg.de/asjp/resource/language/id/l99.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/asjp> ;
+ dcat:downloadURL <http://cldbstest.eva.mpg.de/asjp/resource/language/id/l99.rdf> .
+
+<http://cldbstest.eva.mpg.de/asjp/resource/rendering/id/r1234.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/asjp> ;
+ dcat:downloadURL <http://cldbstest.eva.mpg.de/asjp/resource/rendering/id/r1234.rdf> .
+
+<http://cldbstest.eva.mpg.de/asjp/resource/sense/id/s40.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/asjp> ;
+ dcat:downloadURL <http://cldbstest.eva.mpg.de/asjp/resource/sense/id/s40.rdf> .
+
+<http://home.bibleontology.com/download/bibleontology_11_6-23.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/bible-ontology> ;
+ dcat:downloadURL <http://home.bibleontology.com/download/bibleontology_11_6-23.zip> .
+
+<http://brown.nlp2rdf.org/dataid.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/brown-corpus-in-rdf-nif> ;
+ dcat:downloadURL <http://brown.nlp2rdf.org/dataid.ttl> .
+
+<http://brown.nlp2rdf.org/lod/a01.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/brown-corpus-in-rdf-nif> ;
+ dcat:downloadURL <http://brown.nlp2rdf.org/lod/a01.ttl> .
+
+<http://data.sfb673.org/corpora/chat_game_corpus.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/chat-game-corpus> ;
+ dcat:downloadURL <http://data.sfb673.org/corpora/chat_game_corpus.ttl> .
+
+<http://reegle.info/glossary/39.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clean-energy-data-reegle> ;
+ dcat:downloadURL <http://reegle.info/glossary/39.rdf> .
+
+<http://reegle.info/projectoutputs/28.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clean-energy-data-reegle> ;
+ dcat:downloadURL <http://reegle.info/projectoutputs/28.rdf> .
+
+<http://www.reegle.info/actors/2354.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clean-energy-data-reegle> ;
+ dcat:downloadURL <http://www.reegle.info/actors/2354.rdf> .
+
+<http://www.reegle.info/downloads/latest_reegle_dump.nt> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clean-energy-data-reegle> ;
+ dcat:downloadURL <http://www.reegle.info/downloads/latest_reegle_dump.nt> .
+
+<http://www.reegle.info/profiles/40.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clean-energy-data-reegle> ;
+ dcat:downloadURL <http://www.reegle.info/profiles/40.rdf> .
+
+<http://www.reegle.info/schema.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clean-energy-data-reegle> ;
+ dcat:downloadURL <http://www.reegle.info/schema.rdf> .
+
+<http://afbo.info/static/download/afbo-dataset.n3.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-afbo> ;
+ dcat:downloadURL <http://afbo.info/static/download/afbo-dataset.n3.gz> .
+
+<http://afbo.info/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-afbo> ;
+ dcat:downloadURL <http://afbo.info/void.ttl> .
+
+<http://apics-online.info/static/download/apics-dataset.n3.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-apics> ;
+ dcat:downloadURL <http://apics-online.info/static/download/apics-dataset.n3.gz> .
+
+<http://apics-online.info/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-apics> ;
+ dcat:downloadURL <http://apics-online.info/void.ttl> .
+
+<http://ewave-atlas.org/static/download/ewave-dataset.n3.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-ewave> ;
+ dcat:downloadURL <http://ewave-atlas.org/static/download/ewave-dataset.n3.gz> .
+
+<http://ewave-atlas.org/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-ewave> ;
+ dcat:downloadURL <http://ewave-atlas.org/void.ttl> .
+
+<http://glottolog.org/static/download/glottolog-dataset.n3.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-glottolog> ;
+ dcat:downloadURL <http://glottolog.org/static/download/glottolog-dataset.n3.gz> .
+
+<http://glottolog.org/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-glottolog> ;
+ dcat:downloadURL <http://glottolog.org/void.ttl> .
+
+<http://phoible.org/static/download/phoible-dataset.n3.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-phoible> ;
+ dcat:downloadURL <http://phoible.org/static/download/phoible-dataset.n3.gz> .
+
+<http://phoible.org/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-phoible> ;
+ dcat:downloadURL <http://phoible.org/void.ttl> .
+
+<http://sails.clld.org/static/download/SAILS-dataset.n3.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-sails> ;
+ dcat:downloadURL <http://sails.clld.org/static/download/SAILS-dataset.n3.gz> .
+
+<http://sails.clld.org/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-sails> ;
+ dcat:downloadURL <http://sails.clld.org/void.ttl> .
+
+<http://wals.info/static/download/wals-dataset.n3.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-wals> ;
+ dcat:downloadURL <http://wals.info/static/download/wals-dataset.n3.gz> .
+
+<http://wals.info/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-wals> ;
+ dcat:downloadURL <http://wals.info/void.ttl> .
+
+<http://wold.clld.org/static/download/wold-dataset.n3.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-wold> ;
+ dcat:downloadURL <http://wold.clld.org/static/download/wold-dataset.n3.gz> .
+
+<http://wold.clld.org/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/clld-wold> ;
+ dcat:downloadURL <http://wold.clld.org/void.ttl> .
+
+<http://conceptnet.media.mit.edu/dist/ConceptNet-sqlite.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/conceptnet> ;
+ dcat:downloadURL <http://conceptnet.media.mit.edu/dist/ConceptNet-sqlite.tar.gz> .
+
+<http://core-project.kmi.open.ac.uk/files/download_20120123.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/core> ;
+ dcat:downloadURL <http://core-project.kmi.open.ac.uk/files/download_20120123.rdf> .
+
+<http://core-project.kmi.open.ac.uk/files/example-link.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/core> ;
+ dcat:downloadURL <http://core-project.kmi.open.ac.uk/files/example-link.rdf> .
+
+<http://core-project.kmi.open.ac.uk/files/test.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/core> ;
+ dcat:downloadURL <http://core-project.kmi.open.ac.uk/files/test.rdf> .
+
+<http://purl.org/vocabularies/cornetto/synset-iets-2-noun.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/cornetto> ;
+ dcat:downloadURL <http://purl.org/vocabularies/cornetto/synset-iets-2-noun.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2013-01-16T130120/dictionnaire.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbnary> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2013-01-16T130120/dictionnaire.ttl> .
+
+<http://es.dbpedia.org/data/Madrid.ntriples> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia-es> ;
+ dcat:downloadURL <http://es.dbpedia.org/data/Madrid.ntriples> .
+
+<http://downloads.dbpedia.org/3.6/dbpedia_3.6.owl.bz2> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia-fr> ;
+ dcat:downloadURL <http://downloads.dbpedia.org/3.6/dbpedia_3.6.owl.bz2> .
+
+<http://fr.dbpedia.org/data/Paris.nt> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia-fr> ;
+ dcat:downloadURL <http://fr.dbpedia.org/data/Paris.nt> .
+
+<http://fr.dbpedia.org/data/Paris.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia-fr> ;
+ dcat:downloadURL <http://fr.dbpedia.org/data/Paris.rdf> .
+
+<http://dbpedia.org/data/Berlin.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia> ;
+ dcat:downloadURL <http://dbpedia.org/data/Berlin.rdf> .
+
+<http://downloads.dbpedia.org/3.5.1/all_languages.tar> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia> ;
+ dcat:downloadURL <http://downloads.dbpedia.org/3.5.1/all_languages.tar> .
+
+<http://downloads.dbpedia.org/3.5.1/dbpedia_3.5.1.owl.bz2> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia> ;
+ dcat:downloadURL <http://downloads.dbpedia.org/3.5.1/dbpedia_3.5.1.owl.bz2> .
+
+<http://downloads.dbpedia.org/3.6/dbpedia_3.6.owl.bz2> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia-it> ;
+ dcat:downloadURL <http://downloads.dbpedia.org/3.6/dbpedia_3.6.owl.bz2> .
+
+<http://ja.dbpedia.org/data/%5Cu6771%5Cu4EAC%5Cu90FD.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia-ja> ;
+ dcat:downloadURL <http://ja.dbpedia.org/data/%5Cu6771%5Cu4EAC%5Cu90FD.rdf> .
+
+<http://ja.dbpedia.org/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia-ja> ;
+ dcat:downloadURL <http://ja.dbpedia.org/void.ttl> .
+
+<http://nl.dbpedia.org/data/Amsterdam.nt> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia-nl> ;
+ dcat:downloadURL <http://nl.dbpedia.org/data/Amsterdam.nt> .
+
+<http://nl.dbpedia.org/data/Amsterdam.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia-nl> ;
+ dcat:downloadURL <http://nl.dbpedia.org/data/Amsterdam.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:26:34.291Z/dataid.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia-spotlight-nif-ner-corpus> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:26:34.291Z/dataid.ttl> .
+
+<http://www.yovisto.com/labs/ner-benchmarks/data/dbpedia-spotlight-nif.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/dbpedia-spotlight-nif-ner-corpus> ;
+ dcat:downloadURL <http://www.yovisto.com/labs/ner-benchmarks/data/dbpedia-spotlight-nif.ttl> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2012-10-18T110739/model.lemon.rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/de-gaap-ontology-lexicon> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2012-10-18T110739/model.lemon.rdf.zip> .
+
+<http://www.resourcebook.eu/shareyourlr/data/LREC_337_res_1.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/diachronic-ontologies-peoples-daily> ;
+ dcat:downloadURL <http://www.resourcebook.eu/shareyourlr/data/LREC_337_res_1.gz> .
+
+<http://data.sfb673.org/fiesta/fiesta-1.0.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/fiesta> ;
+ dcat:downloadURL <http://data.sfb673.org/fiesta/fiesta-1.0.ttl> .
+
+<http://data.beeldengeluid.nl/gtaa/173390.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/gemeenschappelijke-thesaurus-audiovisuele-archieven> ;
+ dcat:downloadURL <http://data.beeldengeluid.nl/gtaa/173390.rdf> .
+
+<http://semanticweb.cs.vu.nl/lod/beeldengeluid/GTAA-25aug2010.ttl.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/gemeenschappelijke-thesaurus-audiovisuele-archieven> ;
+ dcat:downloadURL <http://semanticweb.cs.vu.nl/lod/beeldengeluid/GTAA-25aug2010.ttl.gz> .
+
+<https://commondatastorage.googleapis.com/ckannet-storage/2012-09-02T184411/gemet-annotated.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/gemet-annotated> ;
+ dcat:downloadURL <https://commondatastorage.googleapis.com/ckannet-storage/2012-09-02T184411/gemet-annotated.rdf> .
+
+<http://www.eionet.europa.eu/gemet/gemet-backbone.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/gemet> ;
+ dcat:downloadURL <http://www.eionet.europa.eu/gemet/gemet-backbone.rdf> .
+
+<http://www.eionet.europa.eu/gemet/void.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/gemet> ;
+ dcat:downloadURL <http://www.eionet.europa.eu/gemet/void.rdf> .
+
+<http://resource.geolba.ac.at/GeologicTimeScale/35.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geological-survey-of-austria-thesaurus> ;
+ dcat:downloadURL <http://resource.geolba.ac.at/GeologicTimeScale/35.rdf> .
+
+<http://resource.geolba.ac.at/GeologicTimeScale.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geological-survey-of-austria-thesaurus> ;
+ dcat:downloadURL <http://resource.geolba.ac.at/GeologicTimeScale.rdf> .
+
+<http://resource.geolba.ac.at/GeologicUnit/291.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geological-survey-of-austria-thesaurus> ;
+ dcat:downloadURL <http://resource.geolba.ac.at/GeologicUnit/291.rdf> .
+
+<http://resource.geolba.ac.at/GeologicUnit.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geological-survey-of-austria-thesaurus> ;
+ dcat:downloadURL <http://resource.geolba.ac.at/GeologicUnit.rdf> .
+
+<http://resource.geolba.ac.at/lithology/48.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geological-survey-of-austria-thesaurus> ;
+ dcat:downloadURL <http://resource.geolba.ac.at/lithology/48.rdf> .
+
+<http://resource.geolba.ac.at/lithology.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geological-survey-of-austria-thesaurus> ;
+ dcat:downloadURL <http://resource.geolba.ac.at/lithology.rdf> .
+
+<http://resource.geolba.ac.at/PoolParty/OpenConfigPathResourceProvider/backuproot?fileName=d13bb3e7-df48-4cba-bd0c-e63c8943d9e0/pp_project_lithotektonische_einheiten.rdf&contentType=application/rdf%2Bxml> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geological-survey-of-austria-thesaurus> ;
+ dcat:downloadURL <http://resource.geolba.ac.at/PoolParty/OpenConfigPathResourceProvider/backuproot?fileName=d13bb3e7-df48-4cba-bd0c-e63c8943d9e0/pp_project_lithotektonische_einheiten.rdf&contentType=application/rdf%2Bxml> .
+
+<http://resource.geolba.ac.at/PoolParty/OpenConfigPathResourceProvider/backuproot?fileName=d7b07bce-7ce4-4bcb-85ae-e0f774e6fb8d/pp_project_geologische_einheiten.rdf&contentType=application/rdf%2Bxml> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geological-survey-of-austria-thesaurus> ;
+ dcat:downloadURL <http://resource.geolba.ac.at/PoolParty/OpenConfigPathResourceProvider/backuproot?fileName=d7b07bce-7ce4-4bcb-85ae-e0f774e6fb8d/pp_project_geologische_einheiten.rdf&contentType=application/rdf%2Bxml> .
+
+<http://resource.geolba.ac.at/PoolParty/OpenConfigPathResourceProvider/backuproot?fileName=urn:uuid:1D763DCD-0E5C-0001-FBB1-1D401A50B620/pp_project_geologische_zeitskala.rdf&contentType=application/rdf%2Bxml> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geological-survey-of-austria-thesaurus> ;
+ dcat:downloadURL <http://resource.geolba.ac.at/PoolParty/OpenConfigPathResourceProvider/backuproot?fileName=urn:uuid:1D763DCD-0E5C-0001-FBB1-1D401A50B620/pp_project_geologische_zeitskala.rdf&contentType=application/rdf%2Bxml> .
+
+<http://resource.geolba.ac.at/PoolParty/OpenConfigPathResourceProvider/backuproot?fileName=urn:uuid:1D87806F-E88C-0001-AFCC-DC87F6001C3A/pp_project_lithologische_einheiten.rdf&contentType=application/rdf%2Bxml> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geological-survey-of-austria-thesaurus> ;
+ dcat:downloadURL <http://resource.geolba.ac.at/PoolParty/OpenConfigPathResourceProvider/backuproot?fileName=urn:uuid:1D87806F-E88C-0001-AFCC-DC87F6001C3A/pp_project_lithologische_einheiten.rdf&contentType=application/rdf%2Bxml> .
+
+<http://resource.geolba.ac.at/tectonicunit/115.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geological-survey-of-austria-thesaurus> ;
+ dcat:downloadURL <http://resource.geolba.ac.at/tectonicunit/115.rdf> .
+
+<http://resource.geolba.ac.at/tectonicunit.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geological-survey-of-austria-thesaurus> ;
+ dcat:downloadURL <http://resource.geolba.ac.at/tectonicunit.rdf> .
+
+<http://geowordnet.semanticmatching.org/synset-dependent_political_entity-noun-1.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geowordnet> ;
+ dcat:downloadURL <http://geowordnet.semanticmatching.org/synset-dependent_political_entity-noun-1.rdf> .
+
+<http://geowordnet.semanticmatching.org/void.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geowordnet> ;
+ dcat:downloadURL <http://geowordnet.semanticmatching.org/void.rdf> .
+
+<http://sourceforge.net/projects/s-match/files/datasets/geowordnet-dict-full-20110330.zip/download> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geowordnet> ;
+ dcat:downloadURL <http://sourceforge.net/projects/s-match/files/datasets/geowordnet-dict-full-20110330.zip/download> .
+
+<http://sourceforge.net/projects/s-match/files/datasets/geowordnet-public-20101123.zip/download> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geowordnet> ;
+ dcat:downloadURL <http://sourceforge.net/projects/s-match/files/datasets/geowordnet-public-20101123.zip/download> .
+
+<http://sourceforge.net/projects/s-match/files/datasets/geowordnet-rdf-20110330.zip/download> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/geowordnet> ;
+ dcat:downloadURL <http://sourceforge.net/projects/s-match/files/datasets/geowordnet-rdf-20110330.zip/download> .
+
+<http://www.acoli.informatik.uni-frankfurt.de/resources/germlex/all-2014-04-01.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/germlex> ;
+ dcat:downloadURL <http://www.acoli.informatik.uni-frankfurt.de/resources/germlex/all-2014-04-01.zip> .
+
+<http://lod.gesis.org/thesoz/ext/thesoz_ext.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/gesis-thesoz> ;
+ dcat:downloadURL <http://lod.gesis.org/thesoz/ext/thesoz_ext.rdf> .
+
+<http://lod.gesis.org/thesoz/vocabulary-mappings.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/gesis-thesoz> ;
+ dcat:downloadURL <http://lod.gesis.org/thesoz/vocabulary-mappings.ttl> .
+
+<http://lod.gesis.org/thesoz/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/gesis-thesoz> ;
+ dcat:downloadURL <http://lod.gesis.org/thesoz/void.ttl> .
+
+<http://www.etracker.de/lnkcnt.php?et=qPKGYV&url=http://www.gesis.org/fileadmin/upload/dienstleistung/tools_standards/thesoz_skos_turtle.zip&lnkname=fileadmin/upload/dienstleistung/tools_standards/thesoz_skos_turtle.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/gesis-thesoz> ;
+ dcat:downloadURL <http://www.etracker.de/lnkcnt.php?et=qPKGYV&url=http://www.gesis.org/fileadmin/upload/dienstleistung/tools_standards/thesoz_skos_turtle.zip&lnkname=fileadmin/upload/dienstleistung/tools_standards/thesoz_skos_turtle.zip> .
+
+<http://vocab.getty.edu/dataset/aat/explicit.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/getty-tgn> ;
+ dcat:downloadURL <http://vocab.getty.edu/dataset/aat/explicit.zip> .
+
+<http://vocab.getty.edu/dataset/tgn/full.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/getty-tgn> ;
+ dcat:downloadURL <http://vocab.getty.edu/dataset/tgn/full.zip> .
+
+<http://glottolog.org/resource/languoid/id/kiny1244.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/glottolog> ;
+ dcat:downloadURL <http://glottolog.org/resource/languoid/id/kiny1244.rdf> .
+
+<http://glottolog.org/static/download/glottolog-language.csv.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/glottolog> ;
+ dcat:downloadURL <http://glottolog.org/static/download/glottolog-language.csv.zip> .
+
+<http://glottolog.org/static/download/glottolog-language.n3.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/glottolog> ;
+ dcat:downloadURL <http://glottolog.org/static/download/glottolog-language.n3.gz> .
+
+<http://glottolog.org/static/download/glottolog-source.bib.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/glottolog> ;
+ dcat:downloadURL <http://glottolog.org/static/download/glottolog-source.bib.zip> .
+
+<http://glottolog.org/static/download/glottolog-source.n3.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/glottolog> ;
+ dcat:downloadURL <http://glottolog.org/static/download/glottolog-source.n3.gz> .
+
+<http://glottolog.org/void.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/glottolog> ;
+ dcat:downloadURL <http://glottolog.org/void.rdf> .
+
+<http://www.glottolog.org/resource/reference/id/39524.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/glottolog> ;
+ dcat:downloadURL <http://www.glottolog.org/resource/reference/id/39524.rdf> .
+
+<http://www.gutenberg.org/ebooks/12345.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/gutenberg> ;
+ dcat:downloadURL <http://www.gutenberg.org/ebooks/12345.rdf> .
+
+<http://www.gutenberg.org/feeds/catalog.rdf.bz2> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/gutenberg> ;
+ dcat:downloadURL <http://www.gutenberg.org/feeds/catalog.rdf.bz2> .
+
+<http://meriterm.org/heartfailure/heartfailure.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/heartfailure> ;
+ dcat:downloadURL <http://meriterm.org/heartfailure/heartfailure.rdf> .
+
+<ftp://ftp.mokk.bme.hu/Language/Hungarian/Freq/Web2.2/web2.2-alfa-sorted.txt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/hungarian-language-corpora-and-analyzers> ;
+ dcat:downloadURL <ftp://ftp.mokk.bme.hu/Language/Hungarian/Freq/Web2.2/web2.2-alfa-sorted.txt.gz> .
+
+<http://www.ltg.ed.ac.uk/ibl/ibl-wav.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/ibl-corpus> ;
+ dcat:downloadURL <http://www.ltg.ed.ac.uk/ibl/ibl-wav.tar.gz> .
+
+<http://mlode.nlp2rdf.org/datasets/ids.nt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/ids> ;
+ dcat:downloadURL <http://mlode.nlp2rdf.org/datasets/ids.nt.gz> .
+
+<http://www.isocat.org/rest/dc/1333.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/isocat> ;
+ dcat:downloadURL <http://www.isocat.org/rest/dc/1333.rdf> .
+
+<http://ftp://ftp.monash.edu.au/pub/nihongo/JMdict.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/jmdict> ;
+ dcat:downloadURL <http://ftp://ftp.monash.edu.au/pub/nihongo/JMdict.gz> .
+
+<http://mlode.nlp2rdf.org/datasets/jrcNamesInterlink.ttl.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/jrc-names> ;
+ dcat:downloadURL <http://mlode.nlp2rdf.org/datasets/jrcNamesInterlink.ttl.gz> .
+
+<http://mlode.nlp2rdf.org/datasets/jrcNames.ttl.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/jrc-names> ;
+ dcat:downloadURL <http://mlode.nlp2rdf.org/datasets/jrcNames.ttl.gz> .
+
+<http://optima.jrc.it/data/entities.gzip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/jrc-names> ;
+ dcat:downloadURL <http://optima.jrc.it/data/entities.gzip> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-27T12:51:16.896Z/kore50.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/kore-50-nif-ner-corpus> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-10-27T12:51:16.896Z/kore50.ttl> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:25:57.019Z/dataid.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/kore-50-nif-ner-corpus> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:25:57.019Z/dataid.ttl> .
+
+<http://www.yovisto.com/labs/ner-benchmarks/data/kore50-nif.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/kore-50-nif-ner-corpus> ;
+ dcat:downloadURL <http://www.yovisto.com/labs/ner-benchmarks/data/kore50-nif.ttl> .
+
+<http://lemon-model.net/lexica/uby/wn/WN_LexicalEntry_0.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lemonuby> ;
+ dcat:downloadURL <http://lemon-model.net/lexica/uby/wn/WN_LexicalEntry_0.rdf> .
+
+<http://monnetproject.deri.ie/lemonsource/Special:Dump/wiktionary.tar.bz2> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lemonwiktionary> ;
+ dcat:downloadURL <http://monnetproject.deri.ie/lemonsource/Special:Dump/wiktionary.tar.bz2> .
+
+<http://monnetproject.deri.ie/lemonsource/Special:Dump/wordnet.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lemonwordnet> ;
+ dcat:downloadURL <http://monnetproject.deri.ie/lemonsource/Special:Dump/wordnet.zip> .
+
+<http://monnetproject.deri.ie/lemonsource/wordnet/cat-noun.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lemonwordnet> ;
+ dcat:downloadURL <http://monnetproject.deri.ie/lemonsource/wordnet/cat-noun.rdf> .
+
+<http://monnetproject.deri.ie/lemonsource/wordnet/cat-noun.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lemonwordnet> ;
+ dcat:downloadURL <http://monnetproject.deri.ie/lemonsource/wordnet/cat-noun.ttl> .
+
+<http://www.lexinfo.net/ontology/2.0/lexinfo.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lexinfo> ;
+ dcat:downloadURL <http://www.lexinfo.net/ontology/2.0/lexinfo.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-14T10:43:25.510Z/lexin-nt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lexin-rdf> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-10-14T10:43:25.510Z/lexin-nt.gz> .
+
+<http://spraakbanken.gu.se/rdf/lexin.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lexin-rdf> ;
+ dcat:downloadURL <http://spraakbanken.gu.se/rdf/lexin.rdf> .
+
+<http://www.lexvo.org/linkeddata/void.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lexvo> ;
+ dcat:downloadURL <http://www.lexvo.org/linkeddata/void.rdf> .
+
+<http://www.lexvo.org/resources/lexvo_latest.rdf.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lexvo> ;
+ dcat:downloadURL <http://www.lexvo.org/resources/lexvo_latest.rdf.gz> .
+
+<http://www.lingvoj.org/lingvoj.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lingvoj> ;
+ dcat:downloadURL <http://www.lingvoj.org/lingvoj.rdf> .
+
+<http://www.lingvoj.org/lingvoj-to-lexvo.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lingvoj> ;
+ dcat:downloadURL <http://www.lingvoj.org/lingvoj-to-lexvo.rdf> .
+
+<http://www.lingvoj.org/ontology.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lingvoj> ;
+ dcat:downloadURL <http://www.lingvoj.org/ontology.rdf> .
+
+<http://ner.vse.cz/datasets/linkedhypernyms/de.instances.all.nt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/linked-hypernyms> ;
+ dcat:downloadURL <http://ner.vse.cz/datasets/linkedhypernyms/de.instances.all.nt.gz> .
+
+<http://ner.vse.cz/datasets/linkedhypernyms/en.instances.all.nt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/linked-hypernyms> ;
+ dcat:downloadURL <http://ner.vse.cz/datasets/linkedhypernyms/en.instances.all.nt.gz> .
+
+<http://ner.vse.cz/datasets/linkedhypernyms/nl.instances.all.nt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/linked-hypernyms> ;
+ dcat:downloadURL <http://ner.vse.cz/datasets/linkedhypernyms/nl.instances.all.nt.gz> .
+
+<http://lod.ac/bdls/species/Pygoscelis_adeliae.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lodac-bdls> ;
+ dcat:downloadURL <http://lod.ac/bdls/species/Pygoscelis_adeliae.rdf> .
+
+<http://lod.ac/bdls/species/Pygoscelis_adeliae.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lodac-bdls> ;
+ dcat:downloadURL <http://lod.ac/bdls/species/Pygoscelis_adeliae.ttl> .
+
+<http://lod.ac/bdls/term/ET.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lodac-bdls> ;
+ dcat:downloadURL <http://lod.ac/bdls/term/ET.rdf> .
+
+<http://lod.ac/bdls/term/ET.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lodac-bdls> ;
+ dcat:downloadURL <http://lod.ac/bdls/term/ET.ttl> .
+
+<http://lod.ac/bdls/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/lodac-bdls> ;
+ dcat:downloadURL <http://lod.ac/bdls/void.ttl> .
+
+<http://purl.org/NET/marccodes/gacs/a-bx.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/marc-codes> ;
+ dcat:downloadURL <http://purl.org/NET/marccodes/gacs/a-bx.rdf> .
+
+<http://www.anc.org/MASC/download/MASC-1.0.3.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/masc> ;
+ dcat:downloadURL <http://www.anc.org/MASC/download/MASC-1.0.3.zip> .
+
+<http://gilmere.upf.edu/corpus_data/rdf/IULA-UPF-MetashareRecordsOntology.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/metashare> ;
+ dcat:downloadURL <http://gilmere.upf.edu/corpus_data/rdf/IULA-UPF-MetashareRecordsOntology.ttl> .
+
+<http://data.sfb673.org/mexico/mexico-1.0.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/mexico> ;
+ dcat:downloadURL <http://data.sfb673.org/mexico/mexico-1.0.ttl> .
+
+<http://data.sfb673.org/mexico/mexico-example.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/mexico> ;
+ dcat:downloadURL <http://data.sfb673.org/mexico/mexico-example.ttl> .
+
+<http://mlode.nlp2rdf.org/downloads/mlsa.nt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/mlsa> ;
+ dcat:downloadURL <http://mlode.nlp2rdf.org/downloads/mlsa.nt.gz> .
+
+<http://rdf.muninn-project.org/Downloads/muninn-ontologies-latest.tar.bz2> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/muninn-world-war-i> ;
+ dcat:downloadURL <http://rdf.muninn-project.org/Downloads/muninn-ontologies-latest.tar.bz2> .
+
+<http://rdf.muninn-project.org/Muninn.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/muninn-world-war-i> ;
+ dcat:downloadURL <http://rdf.muninn-project.org/Muninn.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:27:30.087Z/dataid.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/news-100-nif-ner-corpus> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:27:30.087Z/dataid.ttl> .
+
+<https://raw.githubusercontent.com/AKSW/n3-collection/master/News-100.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/news-100-nif-ner-corpus> ;
+ dcat:downloadURL <https://raw.githubusercontent.com/AKSW/n3-collection/master/News-100.ttl> .
+
+<http://www.americannationalcorpus.org/OANC/OANC-1.0.1-UTF8.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/o-anc> ;
+ dcat:downloadURL <http://www.americannationalcorpus.org/OANC/OANC-1.0.1-UTF8.zip> .
+
+<http://www.ontosearch.com/dumps/dump.ttl.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/ontos-news-portal> ;
+ dcat:downloadURL <http://www.ontosearch.com/dumps/dump.ttl.zip> .
+
+<http://sw.opencyc.org/downloads/opencyc_owl_downloads/opencyc-latest.owl.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/opencyc> ;
+ dcat:downloadURL <http://sw.opencyc.org/downloads/opencyc_owl_downloads/opencyc-latest.owl.gz> .
+
+<http://openlibrary.org/books/OL6807502M.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/open-library> ;
+ dcat:downloadURL <http://openlibrary.org/books/OL6807502M.rdf> .
+
+<http://openlibrary.org/data/ol_dump_latest.txt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/open-library> ;
+ dcat:downloadURL <http://openlibrary.org/data/ol_dump_latest.txt.gz> .
+
+<http://data.kasabi.com/dataset/pali-english-lexicon/pts-dictionary/e0.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/pali-english-lexicon> ;
+ dcat:downloadURL <http://data.kasabi.com/dataset/pali-english-lexicon/pts-dictionary/e0.rdf> .
+
+<http://ld.panlex.org/downloads/releases/2013-02-14/2013-02-14-panlex-dump.nt> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/panlex> ;
+ dcat:downloadURL <http://ld.panlex.org/downloads/releases/2013-02-14/2013-02-14-panlex-dump.nt> .
+
+<http://ld.panlex.org/downloads/releases/2013-02-14/2013-02-14-panlex-ontology.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/panlex> ;
+ dcat:downloadURL <http://ld.panlex.org/downloads/releases/2013-02-14/2013-02-14-panlex-ontology.ttl> .
+
+<http://gilmere.upf.edu/corpus_data/ParoleSimpleOntology/ParoleEntriesCat.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/parole-simple-ont> ;
+ dcat:downloadURL <http://gilmere.upf.edu/corpus_data/ParoleSimpleOntology/ParoleEntriesCat.ttl> .
+
+<http://gilmere.upf.edu/corpus_data/ParoleSimpleOntology/ParoleEntries.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/parole-simple-ont> ;
+ dcat:downloadURL <http://gilmere.upf.edu/corpus_data/ParoleSimpleOntology/ParoleEntries.ttl> .
+
+<http://pdev.org.uk/pdevlemonfiles/pdevlemon.nt.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/pdev-lemon> ;
+ dcat:downloadURL <http://pdev.org.uk/pdevlemonfiles/pdevlemon.nt.tar.gz> .
+
+<http://atlantides.org/downloads/pleiades/rdf/pleiades-latest.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/pleiades> ;
+ dcat:downloadURL <http://atlantides.org/downloads/pleiades/rdf/pleiades-latest.tar.gz> .
+
+<http://atlantides.org/downloads/pleiades/rdf/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/pleiades> ;
+ dcat:downloadURL <http://atlantides.org/downloads/pleiades/rdf/void.ttl> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:24:39.177Z/dataid.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/reuters-128-nif-ner-corpus> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:24:39.177Z/dataid.ttl> .
+
+<https://raw.githubusercontent.com/AKSW/n3-collection/master/Reuters-128.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/reuters-128-nif-ner-corpus> ;
+ dcat:downloadURL <https://raw.githubusercontent.com/AKSW/n3-collection/master/Reuters-128.ttl> .
+
+<http://wordnet.rkbexplorer.com/models/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/rkb-explorer-wordnet> ;
+ dcat:downloadURL <http://wordnet.rkbexplorer.com/models/void.ttl> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:27:07.064Z/dataid.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/rss-500-nif-ner-corpus> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-10-29T16:27:07.064Z/dataid.ttl> .
+
+<https://raw.githubusercontent.com/AKSW/n3-collection/master/RSS-500.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/rss-500-nif-ner-corpus> ;
+ dcat:downloadURL <https://raw.githubusercontent.com/AKSW/n3-collection/master/RSS-500.ttl> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-14T10:32:42.453Z/saldom-nt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/saldom-rdf> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-10-14T10:32:42.453Z/saldom-nt.gz> .
+
+<http://spraakbanken.gu.se/rdf/saldom.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/saldom-rdf> ;
+ dcat:downloadURL <http://spraakbanken.gu.se/rdf/saldom.rdf> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-17T09:29:36.634Z/saldo-nt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/saldo-rdf> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-10-17T09:29:36.634Z/saldo-nt.gz> .
+
+<http://spraakbanken.gu.se/rdf/saldo.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/saldo-rdf> ;
+ dcat:downloadURL <http://spraakbanken.gu.se/rdf/saldo.rdf> .
+
+<http://data.kasabi.com/dataset/sanskrit-english-lexicon/monier-williams/e0.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/sanskrit-english-lexicon> ;
+ dcat:downloadURL <http://data.kasabi.com/dataset/sanskrit-english-lexicon/monier-williams/e0.rdf> .
+
+<http://mlode.nlp2rdf.org/datasets/qvoc.owl.ttl.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/semanticquran> ;
+ dcat:downloadURL <http://mlode.nlp2rdf.org/datasets/qvoc.owl.ttl.gz> .
+
+<http://mlode.nlp2rdf.org/datasets/semanticquran.nt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/semanticquran> ;
+ dcat:downloadURL <http://mlode.nlp2rdf.org/datasets/semanticquran.nt.gz> .
+
+<http://mlode.nlp2rdf.org/downloads/sentiws.ttl.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/sentiws> ;
+ dcat:downloadURL <http://mlode.nlp2rdf.org/downloads/sentiws.ttl.gz> .
+
+<http://wortschatz.informatik.uni-leipzig.de/download/SentiWS_v1.8c.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/sentiws> ;
+ dcat:downloadURL <http://wortschatz.informatik.uni-leipzig.de/download/SentiWS_v1.8c.zip> .
+
+<http://www.languagelibrary.eu/owl/simple/inds/SimpleEntries.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/simple> ;
+ dcat:downloadURL <http://www.languagelibrary.eu/owl/simple/inds/SimpleEntries.ttl> .
+
+<http://www.languagelibrary.eu/owl/simple/psc/pscLemon.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/simple> ;
+ dcat:downloadURL <http://www.languagelibrary.eu/owl/simple/psc/pscLemon.ttl> .
+
+<http://vocabulary.semantic-web.at/semweb.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/socialsemweb-thesaurus> ;
+ dcat:downloadURL <http://vocabulary.semantic-web.at/semweb.rdf> .
+
+<http://srcmf.org/public/alexis-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/srcmf> ;
+ dcat:downloadURL <http://srcmf.org/public/alexis-rdf.zip> .
+
+<http://srcmf.org/public/aucassin-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/srcmf> ;
+ dcat:downloadURL <http://srcmf.org/public/aucassin-rdf.zip> .
+
+<http://srcmf.org/public/beroul-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/srcmf> ;
+ dcat:downloadURL <http://srcmf.org/public/beroul-rdf.zip> .
+
+<http://srcmf.org/public/clari-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/srcmf> ;
+ dcat:downloadURL <http://srcmf.org/public/clari-rdf.zip> .
+
+<http://srcmf.org/public/qgraal-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/srcmf> ;
+ dcat:downloadURL <http://srcmf.org/public/qgraal-rdf.zip> .
+
+<http://srcmf.org/public/roland-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/srcmf> ;
+ dcat:downloadURL <http://srcmf.org/public/roland-rdf.zip> .
+
+<http://srcmf.org/public/yvainku-rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/srcmf> ;
+ dcat:downloadURL <http://srcmf.org/public/yvainku-rdf.zip> .
+
+<http://steak.kisti.re.kr/steak2skos/STEAK2SKOS_dump.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/steak> ;
+ dcat:downloadURL <http://steak.kisti.re.kr/steak2skos/STEAK2SKOS_dump.rdf> .
+
+<http://zbw.eu/stw/versions/latest/download/stw.rdf.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/stw-thesaurus-for-economics> ;
+ dcat:downloadURL <http://zbw.eu/stw/versions/latest/download/stw.rdf.zip> .
+
+<http://zbw.eu/stw/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/stw-thesaurus-for-economics> ;
+ dcat:downloadURL <http://zbw.eu/stw/void.ttl> .
+
+<https://ckannet-storage.commondatastorage.googleapis.com/2014-10-14T10:47:50.165Z/swefn-nt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/swefn-rdf> ;
+ dcat:downloadURL <https://ckannet-storage.commondatastorage.googleapis.com/2014-10-14T10:47:50.165Z/swefn-nt.gz> .
+
+<http://spraakbanken.gu.se/rdf/swefn.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/swefn-rdf> ;
+ dcat:downloadURL <http://spraakbanken.gu.se/rdf/swefn.rdf> .
+
+<http://data.uba.de/umt/_00100204.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/umthes> ;
+ dcat:downloadURL <http://data.uba.de/umt/_00100204.ttl> .
+
+<http://skos.um.es/unescothes/unescothes.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/unescothes> ;
+ dcat:downloadURL <http://skos.um.es/unescothes/unescothes.rdf> .
+
+<http://skos.um.es/unescothes/unescothes.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/unescothes> ;
+ dcat:downloadURL <http://skos.um.es/unescothes/unescothes.ttl> .
+
+<http://skos.um.es/unescothes/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/unescothes> ;
+ dcat:downloadURL <http://skos.um.es/unescothes/void.ttl> .
+
+<http://purl.org/vocabularies/princeton/wn30/synset-chair-noun-1.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/vu-wordnet> ;
+ dcat:downloadURL <http://purl.org/vocabularies/princeton/wn30/synset-chair-noun-1.rdf> .
+
+<http://semanticweb.cs.vu.nl/lod/wn30/rdf/void.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/vu-wordnet> ;
+ dcat:downloadURL <http://semanticweb.cs.vu.nl/lod/wn30/rdf/void.ttl> .
+
+<http://wiki-link.nlp2rdf.org/dataid.ttl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/wikilinks-rdf-nif> ;
+ dcat:downloadURL <http://wiki-link.nlp2rdf.org/dataid.ttl> .
+
+<http://wiki-link.nlp2rdf.org/wikilink_ne.csv.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/wikilinks-rdf-nif> ;
+ dcat:downloadURL <http://wiki-link.nlp2rdf.org/wikilink_ne.csv.tar.gz> .
+
+<http://wiktionary.dbpedia.org/data/dog.ntriples> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/wiktionary-dbpedia-org> ;
+ dcat:downloadURL <http://wiktionary.dbpedia.org/data/dog.ntriples> .
+
+<http://wiktionary.dbpedia.org/data/dog.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/wiktionary-dbpedia-org> ;
+ dcat:downloadURL <http://wiktionary.dbpedia.org/data/dog.rdf> .
+
+<http://mlode.nlp2rdf.org/datasets/wold.nt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/wold> ;
+ dcat:downloadURL <http://mlode.nlp2rdf.org/datasets/wold.nt.gz> .
+
+<http://wold.livingsources.org/language/19.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/wold> ;
+ dcat:downloadURL <http://wold.livingsources.org/language/19.rdf> .
+
+<http://wold.livingsources.org/meaning/1.58.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/wold> ;
+ dcat:downloadURL <http://wold.livingsources.org/meaning/1.58.rdf> .
+
+<http://wold.livingsources.org/vocabulary/19.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/wold> ;
+ dcat:downloadURL <http://wold.livingsources.org/vocabulary/19.rdf> .
+
+<http://wold.livingsources.org/word/71312352339070606.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/wold> ;
+ dcat:downloadURL <http://wold.livingsources.org/word/71312352339070606.rdf> .
+
+<http://wordnet-rdf.princeton.edu/wn31.nt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/wordnet-rdf> ;
+ dcat:downloadURL <http://wordnet-rdf.princeton.edu/wn31.nt.gz> .
+
+<http://km.aifb.kit.edu/resources/xLiD-lexica.nt> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/xlid-lexica> ;
+ dcat:downloadURL <http://km.aifb.kit.edu/resources/xLiD-lexica.nt> .
+
+<http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoSchema.ttl.7z> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/yago> ;
+ dcat:downloadURL <http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoSchema.ttl.7z> .
+
+<http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoTaxonomy.ttl.7z> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/yago> ;
+ dcat:downloadURL <http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoTaxonomy.ttl.7z> .
+
+<http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoTypes.ttl.7z> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/yago> ;
+ dcat:downloadURL <http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoTypes.ttl.7z> .
+
+<http://onki.fi/en/browser/downloadfile/ysa?o=http:%2F%2Fwww.yso.fi%2Fonto%2Fysa&f=ysa%2Flib.helsinki-ysa.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/ysa> ;
+ dcat:downloadURL <http://onki.fi/en/browser/downloadfile/ysa?o=http:%2F%2Fwww.yso.fi%2Fonto%2Fysa&f=ysa%2Flib.helsinki-ysa.rdf> .
+
+<http://onki.fi/en/browser/downloadfile/ysa?o=http:%2F%2Fwww.yso.fi%2Fonto%2Fysa&f=ysa%2Flib.helsinki-ysa-skos.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/datahub/ysa> ;
+ dcat:downloadURL <http://onki.fi/en/browser/downloadfile/ysa?o=http:%2F%2Fwww.yso.fi%2Fonto%2Fysa&f=ysa%2Flib.helsinki-ysa-skos.rdf> .
+
+<http://bcmi.sjtu.edu.cn/~yangshaohua/data.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/0247a778ef3c2cf02ce6cdf3ab8c10c2> ;
+ dcat:downloadURL <http://bcmi.sjtu.edu.cn/~yangshaohua/data.zip> .
+
+<http://www.gabormelli.com/Projects/SCMILO/v1.0/kdd09cma1.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/087922d716451c1b105d61e884e53d12> ;
+ dcat:downloadURL <http://www.gabormelli.com/Projects/SCMILO/v1.0/kdd09cma1.zip> .
+
+<http://wyner.info/research/L3S/Files/SPLeT2010CBR.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/097214267d6e59c0434e1a8979f8973f> ;
+ dcat:downloadURL <http://wyner.info/research/L3S/Files/SPLeT2010CBR.tar.gz> .
+
+<ftp://ftp.ncbi.nlm.nih.gov/pub/tanabe/GENETAG.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/0be1a3a04dcae583063ad03f0a6aab16> ;
+ dcat:downloadURL <ftp://ftp.ncbi.nlm.nih.gov/pub/tanabe/GENETAG.tar.gz> .
+
+<http://snowball.tartarus.org/download.php> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/0de0ec126333a56bd01d191d3a4f8717> ;
+ dcat:downloadURL <http://snowball.tartarus.org/download.php> .
+
+<http://lit.csci.unt.edu/~rada/downloads/AffectiveText.Semeval.2007.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/1a3e909f7d2117378c1bb629b22d12af> ;
+ dcat:downloadURL <http://lit.csci.unt.edu/~rada/downloads/AffectiveText.Semeval.2007.tar.gz> .
+
+<http> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/1e018eb45b97058193993cdacf3401a9> ;
+ dcat:downloadURL <http> .
+
+<http://www.hf.ntnu.no/hf/prosjekter/spraktek_english/prosjekter/nkl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/1e63515ba1f3adceee5530e1ea3546b9> ;
+ dcat:downloadURL <http://www.hf.ntnu.no/hf/prosjekter/spraktek_english/prosjekter/nkl> .
+
+<http://www.csie.ntu.edu.tw/~cjlin/liblinear/> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/20d136adbdb244416bb9980e393dd5b5> ;
+ dcat:downloadURL <http://www.csie.ntu.edu.tw/~cjlin/liblinear/> .
+
+<http://www.cs.toronto.edu/~jbrooke/Formality_Word_Lists.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/24e1fcf8bf2746ac15602922b835d77e> ;
+ dcat:downloadURL <http://www.cs.toronto.edu/~jbrooke/Formality_Word_Lists.zip> .
+
+<http://www.site.uottawa.ca/~szpak/pub/Emotion-Data.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/28b4e80fcae77105618ad5f2767248cd> ;
+ dcat:downloadURL <http://www.site.uottawa.ca/~szpak/pub/Emotion-Data.zip> .
+
+<http://www.jaist.ac.jp/~h-yamada/software/ptbconv-3.0.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/2a422d2437caecead7ed625c5a0b0303> ;
+ dcat:downloadURL <http://www.jaist.ac.jp/~h-yamada/software/ptbconv-3.0.tar.gz> .
+
+<http://kheafield.com/code/scoring.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/2ac1af80125f1cbff0704c1e81fbee19> ;
+ dcat:downloadURL <http://kheafield.com/code/scoring.tar.gz> .
+
+<http://www.cs.tau.ac.il/~jonatha6/homepage_files/resources/ACL2011Resource.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/2d43cf882f9c44fa0cb85e25046b3c0b> ;
+ dcat:downloadURL <http://www.cs.tau.ac.il/~jonatha6/homepage_files/resources/ACL2011Resource.zip> .
+
+<http://www.csie.ntu.edu.tw/~cjlin/libsvm> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/33c2a844222215d698cdafcf8408e955> ;
+ dcat:downloadURL <http://www.csie.ntu.edu.tw/~cjlin/libsvm> .
+
+<http://www.cel.iitkgp.ernet.in/~tirthankar/AuthorGenderDataSet.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/3400186d130c8e9df21562fb73d5fd4e> ;
+ dcat:downloadURL <http://www.cel.iitkgp.ernet.in/~tirthankar/AuthorGenderDataSet.tar.gz> .
+
+<http://www.ukp.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/data/TWSI/TWSI2_complete.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/39f0bb034e2d926cc0a30c12b9c520d1> ;
+ dcat:downloadURL <http://www.ukp.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/data/TWSI/TWSI2_complete.zip> .
+
+<http://www.h-its.org/downloads/nlp/cSR.tar> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/43b759732c8f3d558a1082cc7835996b> ;
+ dcat:downloadURL <http://www.h-its.org/downloads/nlp/cSR.tar> .
+
+<http://www.stanford.edu/~jurafsky/swb1_dialogact_annot.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/44ae3a67e79df4384bedce703f19276c> ;
+ dcat:downloadURL <http://www.stanford.edu/~jurafsky/swb1_dialogact_annot.tar.gz> .
+
+<http://verbs.colorado.edu/verb-index/propbank-1.7.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/463ce6dab58fa3e96a58c0d81cf09a5e> ;
+ dcat:downloadURL <http://verbs.colorado.edu/verb-index/propbank-1.7.tar.gz> .
+
+<http://www.cfilt.iitb.ac.in/download/corpus/parallel/agriculture_domain_parallel_corpus.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/472c734052d55aa789149f12c86ba9f3> ;
+ dcat:downloadURL <http://www.cfilt.iitb.ac.in/download/corpus/parallel/agriculture_domain_parallel_corpus.zip> .
+
+<http://www.statmt.org/wmt09/training-monolingual.tar> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/4804be53e123664fbc8292c0d2f02f86> ;
+ dcat:downloadURL <http://www.statmt.org/wmt09/training-monolingual.tar> .
+
+<http> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/4cf8ba6aaa9c7a26af6323895104c785> ;
+ dcat:downloadURL <http> .
+
+<http://www.cs.nyu.edu/~asun/data/TDT5_BrownWC.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/4d7459cc25e60b23cd80d09db474a56b> ;
+ dcat:downloadURL <http://www.cs.nyu.edu/~asun/data/TDT5_BrownWC.tar.gz> .
+
+<http://www.prajol.net.np/ijcnlp-2011/LINA-PAL-1.0.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/4e16850e2abfc7f81e3e20486d019360> ;
+ dcat:downloadURL <http://www.prajol.net.np/ijcnlp-2011/LINA-PAL-1.0.tar.gz> .
+
+<http://staffwww.dcs.shef.ac.uk/people/Z.> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/562dab2491138190dcbbf315220a3682> ;
+ dcat:downloadURL <http://staffwww.dcs.shef.ac.uk/people/Z.> .
+
+<http://lingcog.iit.edu/arc/appraisal_lexicon_2007b.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/592d422d4a0d9793c55cf54a1ebaa577> ;
+ dcat:downloadURL <http://lingcog.iit.edu/arc/appraisal_lexicon_2007b.tar.gz> .
+
+<http://www.linguateca.pt/HAREM/PacoteRecursosSegundoHAREM.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/660c4e56c115058c600bb1d663eacb58> ;
+ dcat:downloadURL <http://www.linguateca.pt/HAREM/PacoteRecursosSegundoHAREM.zip> .
+
+<http://lingcog.iit.edu/arc/appraisal_lexicon_2007b.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/6b9aa411ea27bc7b549f9461cad45417> ;
+ dcat:downloadURL <http://lingcog.iit.edu/arc/appraisal_lexicon_2007b.tar.gz> .
+
+<2010_JRC_1590-Quotes-annotated-for-sentiment.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/6bac4a5ecea6a1b58ad8a1d2bfa4d7d9> ;
+ dcat:downloadURL <2010_JRC_1590-Quotes-annotated-for-sentiment.zip> .
+
+<http://www.cel.iitkgp.ernet.in/~tirthankar/IITKGP-emotion-data.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/6d75fe517e314f130e1f782f13f22372> ;
+ dcat:downloadURL <http://www.cel.iitkgp.ernet.in/~tirthankar/IITKGP-emotion-data.tar.gz> .
+
+<http://personalpages.manchester.ac.uk/staff/xinglong.wang/files/species_corpus.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/755b6b14f0833c0dea1f1863ca78d677> ;
+ dcat:downloadURL <http://personalpages.manchester.ac.uk/staff/xinglong.wang/files/species_corpus.tar.gz> .
+
+<http://www.csie.ntu.edu.tw/~cjlin/libsvm/> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/77bab47e10524ecff6ffb8b36132f3e3> ;
+ dcat:downloadURL <http://www.csie.ntu.edu.tw/~cjlin/libsvm/> .
+
+<http://www.hf.ntnu.no/hf/prosjekter/spraktek_english/prosjekter/nkl> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/7811a49b29ae1f3c2ae7cc7873f956f7> ;
+ dcat:downloadURL <http://www.hf.ntnu.no/hf/prosjekter/spraktek_english/prosjekter/nkl> .
+
+<http://childes.psy.cmu.edu/data/Romance/Portuguese/Florianopolis.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/7c0000025a7b320180df26a9a4e8ee5b> ;
+ dcat:downloadURL <http://childes.psy.cmu.edu/data/Romance/Portuguese/Florianopolis.zip> .
+
+<http://www.coli.uni-saarland.de/~rwang/resources/LREC2012Data.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/8187fb51e93f954e58e98d4a26aae855> ;
+ dcat:downloadURL <http://www.coli.uni-saarland.de/~rwang/resources/LREC2012Data.zip> .
+
+<http://nlp.uned.es/semantics/qwordnet.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/83cb4bebe7101b341d4b43fd909ed354> ;
+ dcat:downloadURL <http://nlp.uned.es/semantics/qwordnet.tar.gz> .
+
+<http://www.csie.ntu.edu.tw/~cjlin/libsvm/> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/9bb06172da0647f9cccbba7920220899> ;
+ dcat:downloadURL <http://www.csie.ntu.edu.tw/~cjlin/libsvm/> .
+
+<http://ontologies.smile.deri.ie/smail.rdf> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/9ef1c96fff1bc5b6b0614b0117e4e3d8> ;
+ dcat:downloadURL <http://ontologies.smile.deri.ie/smail.rdf> .
+
+<http://www.csie.ntu.edu.tw/~cjlin/liblinear/> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/9fbcf72b8b63726ec1e6e3050c73b80f> ;
+ dcat:downloadURL <http://www.csie.ntu.edu.tw/~cjlin/liblinear/> .
+
+<http://www.clips.ua.ac.be/BiographTA/corpora-files/ConanDoyle-neg-v1.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/a4913e2103f949c5f1369c1ba13aa65d> ;
+ dcat:downloadURL <http://www.clips.ua.ac.be/BiographTA/corpora-files/ConanDoyle-neg-v1.zip> .
+
+<http://www.iit.demokritos.gr/~vrentoumi/corpus.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/a5b0864c93532e32058cf4745758fe1b> ;
+ dcat:downloadURL <http://www.iit.demokritos.gr/~vrentoumi/corpus.zip> .
+
+<http://greedy.cs.uiuc.edu/software/illinoisSRL-3.0.1.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/aa2f58cb1d6afcb1169fbcc5ac063d45> ;
+ dcat:downloadURL <http://greedy.cs.uiuc.edu/software/illinoisSRL-3.0.1.tar.gz> .
+
+<http://www.clsp.jhu.edu/~sbergsma/coordNP.ACL11.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/abfd8ea9d5b26a13866b919267a63d31> ;
+ dcat:downloadURL <http://www.clsp.jhu.edu/~sbergsma/coordNP.ACL11.zip> .
+
+<http://nlg18.csie.ntu.edu.tw:8080/opinion/pub1.html> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/ae2a841c82813ab64044a31c5b2a941e> ;
+ dcat:downloadURL <http://nlg18.csie.ntu.edu.tw:8080/opinion/pub1.html> .
+
+<http://www.csie.ntu.edu.tw/~cjlin/libsvm/> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/b2416c5e3b3c50419d98a6cb83aac4ec> ;
+ dcat:downloadURL <http://www.csie.ntu.edu.tw/~cjlin/libsvm/> .
+
+<ftp://ftp.cis.upenn.edu/pub/adwait/jmx/jmx.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/b6a595c93b5bd41da9fa9744a8d508b9> ;
+ dcat:downloadURL <ftp://ftp.cis.upenn.edu/pub/adwait/jmx/jmx.tar.gz> .
+
+<http://www.cnts.ua.ac.be/conll2000/chunking/train.txt.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/beb6c34f0dc5708ad0399c3885a5a21c> ;
+ dcat:downloadURL <http://www.cnts.ua.ac.be/conll2000/chunking/train.txt.gz> .
+
+<http://www.informatics.sussex.ac.uk/users/tz21/dataZH.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/c166cc7cee46700e2ec9ff066a1c2cd9> ;
+ dcat:downloadURL <http://www.informatics.sussex.ac.uk/users/tz21/dataZH.tar.gz> .
+
+<http://www.iet.ntnu.no/projects/fonema/index_eng.php> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/d14741d5c7a90eb56facc44f803ff3d6> ;
+ dcat:downloadURL <http://www.iet.ntnu.no/projects/fonema/index_eng.php> .
+
+<ftp://ftp.informatics.susx.ac.uk/pub/users/johnca/morph.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/d768a8d63953059bc8831b98d28e3820> ;
+ dcat:downloadURL <ftp://ftp.informatics.susx.ac.uk/pub/users/johnca/morph.tar.gz> .
+
+<http://people.dsv.su.se/~eli-carl/paper_lrec/lexicons_EC.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/d78800a2f468122334a0bbf9c17a834f> ;
+ dcat:downloadURL <http://people.dsv.su.se/~eli-carl/paper_lrec/lexicons_EC.zip> .
+
+<ftp://jaguar.ncsl.nist.gov/mt/resources/mteval-v13a-20091001.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/dd9bf5b9403f90bc10caa8b87190f655> ;
+ dcat:downloadURL <ftp://jaguar.ncsl.nist.gov/mt/resources/mteval-v13a-20091001.tar.gz> .
+
+<http://www.isi.edu/~chiang/software/hybrid.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/e1cede3fdd6b4508419496da54f73025> ;
+ dcat:downloadURL <http://www.isi.edu/~chiang/software/hybrid.tar.gz> .
+
+<ftp.ldc.upenn.edu/pub/ldc/public_data/swb1_dialogact_annot.tar.gz> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/e60fa560fb1707f90982a164e7293de5> ;
+ dcat:downloadURL <ftp.ldc.upenn.edu/pub/ldc/public_data/swb1_dialogact_annot.tar.gz> .
+
+<http://nlg18.csie.ntu.edu.tw:8080/opinion/> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/e87866e4fb073064bbf7d669ecf46977> ;
+ dcat:downloadURL <http://nlg18.csie.ntu.edu.tw:8080/opinion/> .
+
+<http://www.cs.pitt.edu/mpqa/lexiconrelease/hltemnlp05clues.tar> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/e906d6e30c25dc6b0171037d6761c89d> ;
+ dcat:downloadURL <http://www.cs.pitt.edu/mpqa/lexiconrelease/hltemnlp05clues.tar> .
+
+<http://nlg18.csie.ntu.edu.tw:8080/opinion/> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/ea0e61c41f155aaeb0d7de1f33796da4> ;
+ dcat:downloadURL <http://nlg18.csie.ntu.edu.tw:8080/opinion/> .
+
+<http://nlp.stanford.edu/pubs/crosswikis-data.tar.bz2> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/eaf4c6a54614f7071bfed5c4b19548f5> ;
+ dcat:downloadURL <http://nlp.stanford.edu/pubs/crosswikis-data.tar.bz2> .
+
+<www.hpi.uni-potsdam.de/fileadmin/hpi/> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/efbdcc3e39da60c1cc2638acc0a01c57> ;
+ dcat:downloadURL <www.hpi.uni-potsdam.de/fileadmin/hpi/> .
+
+<http://snowball.tartarus.org/> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/lremap/f02c4d553c7225b2aa63f375b0d06b2c> ;
+ dcat:downloadURL <http://snowball.tartarus.org/> .
+
+<http://clip.ipipan.waw.pl/LRT?action=AttachFile&do=view&target=gramatyka_Spejd_NKJP_1.0.zip> a dataid:Distribution ;
+ rdfs:label <http://linghub.lider-project.eu/metashare/f95d762a6aff11e284b6000423bfd61c5891270890b246d88f606717f0ce6ea7#identificationInfo> ;
+ dcat:downloadURL <http://clip.ipipan.waw.pl/LRT?action=AttachFile&do=view&target=gramatyka_Spejd_NKJP_1.0.zip> .
+
