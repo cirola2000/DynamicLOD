@@ -93,6 +93,9 @@ public class CreateOutput extends HttpServlet {
 								.createProperty(NS.VOID_URI + "objectsTarget"),
 								ResourceFactory.createProperty(linkset
 										.getObjectsDatasetTarget().toString()));
+						r.addProperty(ResourceFactory
+								.createProperty(NS.VOID_URI + "triples"),
+								ResourceFactory.createPlainLiteral(String.valueOf(linkset.getLinks())));
 					}
 				}
 

@@ -52,17 +52,17 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/article_categories_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> .
 
 
-<http://downloads.dbpedia.org/3.9/en/article_categories_en.ttl.bz2>
+<http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "article categories en" ;
   dct:description "DBpedia dumpfile: article_categories_en.ttl.bz2" ;
   dct:issued "17-Sep-2013"^^xsd:date ;
   dct:modified "09-Aug-2013"^^xsd:date ;
   dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.ttl.bz2> ;
+  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
   dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
   dcat:byteSize "159000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;

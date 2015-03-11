@@ -71,15 +71,15 @@ public class DataIDModel {
 					dataset.getSubject(), Distribution.dcatDistribution,
 					(RDFNode) null);
 
-			// case there's an distribution take the fist that has accessURL
-			boolean accessURLFound = false;
-			while (stmtDistribution.hasNext() && accessURLFound == false) {
+			// case there's an distribution take the fist that has downloadURL
+			boolean downloadURLFound = false;
+			while (stmtDistribution.hasNext() && downloadURLFound == false) {
 
 				// get distribution
 				Statement distribution = stmtDistribution.next();
 
-				// find accessURL property
-				StmtIterator stmtAccessURL = inModel.listStatements(
+				// find downloadURL property
+				StmtIterator stmtDownloadURL = inModel.listStatements(
 						distribution.getObject().asResource(),
 						Distribution.downloadURL, (RDFNode) null);
 
@@ -87,29 +87,29 @@ public class DataIDModel {
 						"Distribution found: "
 								+ distribution.getObject().toString());
 
-				// case there is an accessURL property
-				while (stmtAccessURL.hasNext() && !accessURLFound) {
-					// store accessurl statement
-					Statement accessURL = stmtAccessURL.next();
+				// case there is an downloadURL property
+				while (stmtDownloadURL.hasNext() && !downloadURLFound) {
+					// store downloadURL statement
+					Statement downloadURL = stmtDownloadURL.next();
 					try {
-						if (FileUtils.acceptedFormats(accessURL.getObject()
+						if (FileUtils.acceptedFormats(downloadURL.getObject()
 								.toString())) {
 
-							accessURLFound = true;
+							downloadURLFound = true;
 
-							// save distribution with accessURL to list
+							// save distribution with downloadURL to list
 							distributionsLinks.add(new DistributionModel(
 									numberOfDistributions, datasetURI,
 									distribution.getSubject().toString(),
-									distribution.getObject().toString(), accessURL
+									distribution.getObject().toString(), downloadURL
 									.getObject().toString()));
 							numberOfDistributions++;
 							someDownloadURLFound = true;
 
 							bean.addDisplayMessage(
 									DataIDGeneralProperties.MESSAGE_LOG,
-									"Distribution AccessURL found: "
-											+ accessURL.getObject().toString());
+									"Distribution DownloadURL found: "
+											+ downloadURL.getObject().toString());
 
 							// create a mongodb distribution object
 							DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
@@ -117,7 +117,7 @@ public class DataIDModel {
 							distributionMongoDBObj
 									.addDefaultDataset(datasetMongoDBObj
 											.getUri());
-							distributionMongoDBObj.setDownloadUrl(accessURL
+							distributionMongoDBObj.setDownloadUrl(downloadURL
 									.getObject().toString());
 
 							// case there is title property
@@ -220,9 +220,9 @@ public class DataIDModel {
 						.getObject().asResource(),
 						Distribution.dcatDistribution, (RDFNode) null);
 
-				// case there's an distribution take the fist that has accessURL
-				boolean accessURLFound = false;
-				while (stmtDistribution.hasNext() && accessURLFound == false) {
+				// case there's an distribution take the fist that has downloadURL
+				boolean downloadURLFound = false;
+				while (stmtDistribution.hasNext() && downloadURLFound == false) {
 					// store distribution
 					Statement distribution = stmtDistribution.next();
 
@@ -230,29 +230,29 @@ public class DataIDModel {
 							"Distribution found: "
 									+ distribution.getObject().toString());
 
-					// find accessURL property
-					StmtIterator stmtAccessURL = inModel.listStatements(
+					// find downloadURL property
+					StmtIterator stmtDownloadURL = inModel.listStatements(
 							distribution.getObject().asResource(),
 							Distribution.downloadURL, (RDFNode) null);
 
-					// case there is an accessURL property
-					if (stmtAccessURL.hasNext()) {
-						accessURLFound = true;
-						// store accessurl statement
-						Statement accessURL = stmtAccessURL.next();
+					// case there is an downloadURL property
+					if (stmtDownloadURL.hasNext()) {
+						downloadURLFound = true;
+						// store downloadURL statement
+						Statement downloadURL = stmtDownloadURL.next();
 						DataID.bean.addDisplayMessage(
 								DataIDGeneralProperties.MESSAGE_LOG,
-								"Distribution found: accessURL: "
-										+ accessURL.getObject().toString());
+								"Distribution found: downloadURL: "
+										+ downloadURL.getObject().toString());
 						try {
-							if (FileUtils.acceptedFormats(accessURL.getObject()
+							if (FileUtils.acceptedFormats(downloadURL.getObject()
 									.toString())) {
 
-								// save distribution with accessURL to list
+								// save distribution with downloadURL to list
 								distributionsLinks.add(new DistributionModel(
 										numberOfDistributions, datasetURI,
-										accessURL.getSubject().toString(),
-										distribution.getObject().toString(),accessURL
+										downloadURL.getSubject().toString(),
+										distribution.getObject().toString(),downloadURL
 										.getObject().toString()));
 								numberOfDistributions++;
 								someDownloadURLFound = true;
@@ -263,7 +263,7 @@ public class DataIDModel {
 								distributionMongoDBObj
 										.addDefaultDataset(subsetMongoDBObj
 												.getUri());
-								distributionMongoDBObj.setDownloadUrl(accessURL
+								distributionMongoDBObj.setDownloadUrl(downloadURL
 										.getObject().toString());
 								
 								
