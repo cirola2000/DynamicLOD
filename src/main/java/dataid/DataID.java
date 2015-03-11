@@ -262,6 +262,9 @@ public class DataID {
 			}
 
 		}
+		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
+				"We are done reading your distributions.");
+		
 	}
 
 	public DataID(String URL, DataIDBean bean) {
