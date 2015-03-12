@@ -63,10 +63,10 @@ public class CreateOutputByDistributions extends HttpServlet {
 									+ "Dataset"));
 					r.addProperty(
 							Dataset.title,
-							distribution.getTitle());
+							distribution.getUri());
 					r.addProperty(
 							Dataset.label,
-							distribution.getTitle());
+							distribution.getUri());
 				}
 
 			ArrayList<LinksetMongoDBObject> linksetList = queries
@@ -74,8 +74,7 @@ public class CreateOutputByDistributions extends HttpServlet {
 
 			if (linksetList != null)
 				for (LinksetMongoDBObject linkset : linksetList) {
-//					if(linkset.getLinks()>30)
-					System.out.println("oi "+linkset.getUri());
+					if(linkset.getLinks()>0){
 						Resource r = outModel.createResource(linkset.getUri());
 						r.addProperty(
 								Dataset.dataIDType,
@@ -95,6 +94,7 @@ public class CreateOutputByDistributions extends HttpServlet {
 								.createProperty(NS.VOID_URI + "triples"),
 								ResourceFactory.createPlainLiteral(String.valueOf(linkset.getLinks())));
 					}
+				}
 				
 
 			if (linksetList.isEmpty() && distributionList.isEmpty())
