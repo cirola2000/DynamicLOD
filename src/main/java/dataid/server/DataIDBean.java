@@ -15,6 +15,9 @@ import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 import dataid.mongodb.actions.MakeLinksets;
 import dataid.mongodb.actions.Queries;
+import dataid.mongodb.queries.DatasetQueries;
+import dataid.mongodb.queries.DistributionQueries;
+import dataid.mongodb.queries.SubsetQueries;
 
 @ViewScoped
 @ManagedBean
@@ -169,7 +172,7 @@ public class DataIDBean implements Serializable, Runnable {
 	}
 
 	public String getNumberOfTriples() {
-		this.numberOfTriples = Queries.getNumberOfTriples();
+		this.numberOfTriples = DistributionQueries.getNumberOfTriples();
 		NumberFormat df = new DecimalFormat("#,###.##");
 		return df.format(numberOfTriples);
 	}
@@ -189,7 +192,7 @@ public class DataIDBean implements Serializable, Runnable {
 
 	// mutator methods for statistical data
 	public int getNumberOfSubsets() {
-		this.numberOfSubsets = Queries.getNumberOfSubsets();
+		this.numberOfSubsets = SubsetQueries.getNumberOfSubsets();
 		return numberOfSubsets;
 	}
 
@@ -198,7 +201,7 @@ public class DataIDBean implements Serializable, Runnable {
 	}
 
 	public int getNumberOfDatasets() {
-		this.numberOfDatasets = Queries.getNumberOfDatasets();
+		this.numberOfDatasets = DatasetQueries.getNumberOfDatasets();
 		return numberOfDatasets;
 	}
 
@@ -207,7 +210,7 @@ public class DataIDBean implements Serializable, Runnable {
 	}
 
 	public int getNumberOfDistributions() {
-		this.numberOfDistributions = Queries.getNumberOfDistributions();
+		this.numberOfDistributions = DistributionQueries.getNumberOfDistributions();
 		return numberOfDistributions;
 	}
 

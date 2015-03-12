@@ -16,6 +16,10 @@
 		<servlet-name>OutputByDataset</servlet-name>
 		<servlet-class>dataid.server.CreateOutputByDatasets</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>Service</servlet-name>
+		<servlet-class>dataid.server.Service</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>OutputByDistribution</servlet-name>
 		<url-pattern>/outputByDistribution/*</url-pattern>
@@ -23,6 +27,10 @@
 	<servlet-mapping>
 		<servlet-name>OutputByDataset</servlet-name>
 		<url-pattern>/outputByDataset/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Service</servlet-name>
+		<url-pattern>/service/*</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

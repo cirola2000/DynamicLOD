@@ -33,6 +33,8 @@ public class DistributionMongoDBObject extends DataIDDB {
 	
 	public static final String LAST_ERROR_MSG = "lastErrorMsg";
 
+	public static final String LAST_TIME_LINKSET = "lastTimeLinkset";
+
 	public static final String DOMAIN = "domain";
 
 	public static final String TITLE = "title";
@@ -83,6 +85,8 @@ public class DistributionMongoDBObject extends DataIDDB {
 	private boolean successfullyDownloaded;
 	
 	private String lastErrorMsg;
+	
+	private String lastTimeLinkset;
 
 	public DistributionMongoDBObject(String uri) {
 		super(COLLECTION_NAME, uri);
@@ -123,6 +127,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 			mongoDBObject.put(DOMAIN, domain);
 			mongoDBObject.put(SUCCESSFULLY_DOWNLOADED, successfullyDownloaded);
 			mongoDBObject.put(LAST_ERROR_MSG, lastErrorMsg);
+			mongoDBObject.put(LAST_TIME_LINKSET, lastTimeLinkset);
 
 			insert(checkBeforeInsert);
 
@@ -163,7 +168,8 @@ public class DistributionMongoDBObject extends DataIDDB {
 			domain = (String) obj.get(DOMAIN);
 			successfullyDownloaded = (Boolean) obj.get(SUCCESSFULLY_DOWNLOADED);
 			lastErrorMsg = (String) obj.get(LAST_ERROR_MSG);
-
+			lastTimeLinkset = (String) obj.get(LAST_TIME_LINKSET);
+			
 			// loading default datasets to object
 			BasicDBList defaultDatasetList = (BasicDBList) obj
 					.get(PARENT_DATASETS);
@@ -312,6 +318,14 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	public void setLastErrorMsg(String lastErrorMsg) {
 		this.lastErrorMsg = lastErrorMsg;
+	}
+
+	public String getLastTimeLinkset() {
+		return lastTimeLinkset;
+	}
+
+	public void setLastTimeLinkset(String lastTimeLinkset) {
+		this.lastTimeLinkset = lastTimeLinkset;
 	}
 	
 	

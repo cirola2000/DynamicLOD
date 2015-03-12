@@ -16,6 +16,8 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import dataid.mongodb.actions.Queries;
 import dataid.mongodb.objects.DatasetMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
+import dataid.mongodb.queries.DatasetQueries;
+import dataid.mongodb.queries.LinksetQueries;
 import dataid.ontology.Dataset;
 import dataid.ontology.NS;
 
@@ -48,10 +50,7 @@ public class CreateOutputByDatasets extends HttpServlet {
 			outModel.setNsPrefix("foaf", NS.FOAF_URI);
 			outModel.setNsPrefix("dataid", NS.DATAID_URI);
 
-			// get all datasets
-			Queries queries = new Queries();
-
-			ArrayList<DatasetMongoDBObject> datasetList = queries.getDatasets();
+			ArrayList<DatasetMongoDBObject> datasetList = DatasetQueries.getDatasets();
 
 			if (datasetList != null)
 				for (DatasetMongoDBObject dataset : datasetList) {
@@ -68,7 +67,7 @@ public class CreateOutputByDatasets extends HttpServlet {
 							dataset.getLabel());
 				}
 
-			ArrayList<LinksetMongoDBObject> linksetList = queries
+			ArrayList<LinksetMongoDBObject> linksetList = LinksetQueries
 					.getLinksetsGroupByDatasets();
 
 			if (linksetList != null)

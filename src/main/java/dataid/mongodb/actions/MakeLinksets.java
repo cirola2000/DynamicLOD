@@ -3,6 +3,7 @@ package dataid.mongodb.actions;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -15,6 +16,7 @@ import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
 import dataid.filters.GoogleBloomFilter;
 import dataid.mongodb.DataIDDB;
+import dataid.mongodb.queries.*;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
 import dataid.server.DataIDBean;
@@ -33,45 +35,36 @@ public class MakeLinksets {
 
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 					"Updating linksets...");
+			
+			ArrayList<DistributionMongoDBObject> distributions = DistributionQueries.getDistributions();
 
-			// get distribution collection
-			DBCollection distributionCollection = DataIDDB.getInstance()
-					.getCollection(DistributionMongoDBObject.COLLECTION_NAME);
-
-			// getting all distributions from mongoDB
-			DBCursor distributions = distributionCollection.find();
-
-			// load distributions
-			while (distributions.hasNext()) {
+			for (DistributionMongoDBObject distribution : distributions) {
+			
 				try{
 				// creating a list of threads to process filters
 				List<DataModelThread> listOfDataThreads = new ArrayList<DataModelThread>();
-
-				DBObject distribution = distributions.next();
-
+ 
 				
 				// find which filters should be opened for this distribution
-				ArrayList<DistributionMongoDBObject> disributionsToCompare = Queries
+				ArrayList<DistributionMongoDBObject> disributionsToCompare = DistributionQueries
 						.getDistributionsByAuthority((String) distribution
-								.get(DistributionMongoDBObject.DOWNLOAD_URL));
+								.getDownloadUrl());
 
 				// make some validations
 				if(distribution
-						.get(DistributionMongoDBObject.OBJECT_PATH)
+						.getObjectPath()
 						 == null || distribution
-								.get(DistributionMongoDBObject.OBJECT_PATH)
+								.getObjectPath()
 								.toString().equals("")){
 					throw new DataIDException("distributionObjectPath is empty or null for "+distribution
-							.get(DistributionMongoDBObject.DOWNLOAD_URL)
-							.toString()+" distribution;");
+							.getDownloadUrl()+" distribution;");
 				}
 				
 				for (DistributionMongoDBObject distributionToCompare : disributionsToCompare) {
 					try {
 						if (!distributionToCompare.getSubjectFilterPath()
 								.equals(distribution
-										.get(DistributionMongoDBObject.SUBJECT_FILTER_PATH)
-										.toString())) {
+										.getSubjectFilterPath())) {
 							DataModelThread dataThread = new DataModelThread();
 							// save dataThread object
 							GoogleBloomFilter filter = new GoogleBloomFilter();
@@ -89,15 +82,11 @@ public class MakeLinksets {
 									.getDownloadUrl();
 							dataThread.subjectDatasetURI = distributionToCompare.getTopDataset();
 
-							dataThread.objectDatasetURI = distribution.get(
-									DistributionMongoDBObject.TOP_DATASET)
-									.toString();
+							dataThread.objectDatasetURI = distribution.getTopDataset();
 							dataThread.objectDistributionURI = distribution
-									.get(DistributionMongoDBObject.DOWNLOAD_URL)
-									.toString();
+									.getDownloadUrl();
 							dataThread.distributionObjectPath = distribution
-									.get(DistributionMongoDBObject.OBJECT_PATH)
-									.toString();
+									.getObjectPath();
 
 							listOfDataThreads.add(dataThread);
 						}
@@ -106,26 +95,23 @@ public class MakeLinksets {
 								"Error while loading bloom filter: "
 										+ e.getMessage());
 					}
+					
+					
 				}
 
 				System.out.println();
 
 				// reading object distribution file here
 				BufferedReader br = new BufferedReader(new FileReader(
-						distribution.get(DistributionMongoDBObject.OBJECT_PATH)
-								.toString()));
+						distribution.getObjectPath()));
 
 				bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_LOG,
 						"Loading objects from: "
-								+ distribution.get(
-										DistributionMongoDBObject.OBJECT_PATH)
-										.toString()
+								+ distribution.getObjectPath()
 								+ ". This might take a time, please be patient.");
 				System.out.println("Loading objects from: "
-						+ distribution.get(
-								DistributionMongoDBObject.OBJECT_PATH)
-								.toString()
+						+ distribution.getObjectPath()
 						+ ". This might take a time, please be patient.");
 
 				String sCurrentLine;
@@ -168,14 +154,10 @@ public class MakeLinksets {
 				bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_LOG,
 						"Loaded objects from: "
-								+ distribution.get(
-										DistributionMongoDBObject.OBJECT_PATH)
-										.toString());
+								+ distribution.getObjectPath());
 
 				System.out.println("Loaded objects from: "
-						+ distribution.get(
-								DistributionMongoDBObject.OBJECT_PATH)
-								.toString());
+						+ distribution.getObjectPath());
 
 				
 				// save linksets into mongodb
@@ -186,6 +168,8 @@ public class MakeLinksets {
 					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
 							e.getMessage());
 				}
+				distribution.setLastTimeLinkset(String.valueOf(new Date()));
+				distribution.updateObject(false);
 			}
 
 		} catch (Exception e) {

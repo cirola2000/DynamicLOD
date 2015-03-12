@@ -17,6 +17,8 @@ import dataid.mongodb.actions.Queries;
 import dataid.mongodb.objects.DatasetMongoDBObject;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
+import dataid.mongodb.queries.DistributionQueries;
+import dataid.mongodb.queries.LinksetQueries;
 import dataid.ontology.Dataset;
 import dataid.ontology.NS;
 
@@ -49,10 +51,7 @@ public class CreateOutputByDistributions extends HttpServlet {
 			outModel.setNsPrefix("foaf", NS.FOAF_URI);
 			outModel.setNsPrefix("dataid", NS.DATAID_URI);
 
-			// get all datasets
-			Queries queries = new Queries();
-
-			ArrayList<DistributionMongoDBObject> distributionList = queries.getDistributions();
+			ArrayList<DistributionMongoDBObject> distributionList = DistributionQueries.getDistributions();
 
 			if (distributionList != null)
 				for (DistributionMongoDBObject distribution : distributionList) {
@@ -69,7 +68,7 @@ public class CreateOutputByDistributions extends HttpServlet {
 							distribution.getUri());
 				}
 
-			ArrayList<LinksetMongoDBObject> linksetList = queries
+			ArrayList<LinksetMongoDBObject> linksetList = LinksetQueries
 					.getLinksetsGroupByDistributions();
 
 			if (linksetList != null)

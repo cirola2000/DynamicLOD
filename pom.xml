@@ -51,7 +51,6 @@
 		<dependency>
 			<groupId>org.atmosphere</groupId>
 			<artifactId>atmosphere-runtime</artifactId>
-			
 		</dependency>
 		<dependency>
 			<groupId>org.richfaces</groupId>
@@ -117,6 +116,11 @@
 			<version>1.5</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20140107</version>
+		</dependency>
 
 
 	</dependencies>
@@ -133,13 +137,13 @@
 				</configuration>
 			</plugin>
 			<plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
-                        <compilerArgument></compilerArgument>
-                    </configuration>
-                </plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<compilerArgument></compilerArgument>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
