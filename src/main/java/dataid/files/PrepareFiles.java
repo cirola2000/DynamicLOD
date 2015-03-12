@@ -28,8 +28,12 @@ public class PrepareFiles {
 		
 		String rapperFormat = null;
 		
-		if (extension.equals(Formats.DEFAULT_TURTLE)) rapperFormat = "turtle";
-		else if (extension.equals(Formats.DEFAULT_RDFXML)) rapperFormat = "rdfxml";
+		if (Formats.getEquivalentFormat(extension).equals(Formats.DEFAULT_TURTLE)) rapperFormat = "turtle";
+		else if (Formats.getEquivalentFormat(extension).equals(Formats.DEFAULT_RDFXML)) rapperFormat = "rdfxml";
+		
+		System.out.println(extension);
+		System.out.println("000000000000000");
+		System.out.println();
 		
 		if(extension.equals(Formats.DEFAULT_TURTLE) && isDbpedia) rapperFormat = "ntriples";
 		
