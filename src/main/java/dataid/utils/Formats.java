@@ -8,7 +8,7 @@ public class Formats {
 	
 	public static final String DEFAULT_NTRIPLES = "nt";
 	
-	public static final String DEFAULT_RDFXML = "rdfxml";
+	public static final String DEFAULT_RDFXML = "rdf";
 
 	private static final ArrayList<String> TURTLE_FORMATS = new ArrayList<String>(){{
 	    add("ttl");
@@ -22,6 +22,7 @@ public class Formats {
 	private static final ArrayList<String> RDFXML_FORMATS = new ArrayList<String>(){{
 	    add("application/rdf+xml");
 	    add("rdf");
+	    add("rdfxml");
 	}};
 	
 	public static String getEquivalentFormat(String str){

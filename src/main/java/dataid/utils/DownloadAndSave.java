@@ -128,7 +128,7 @@ public class DownloadAndSave {
 
 			checkExtensionFormat(format);
 
-			if (extension.equals(Formats.DEFAULT_NTRIPLES)) {
+			if (extension.equals(Formats.getEquivalentFormat(extension).equals(Formats.DEFAULT_NTRIPLES))) {
 
 				SplitAndStoreThread splitThread = new SplitAndStoreThread(bufferQueue,
 						subjectQueue, objectQueue, fileName, bean);
@@ -213,8 +213,8 @@ public class DownloadAndSave {
 				}
 
 
-			} else if (extension.equals(Formats.DEFAULT_TURTLE)
-					|| extension.equals(Formats.DEFAULT_RDFXML)) {
+			} else if (Formats.getEquivalentFormat(extension).equals(Formats.DEFAULT_TURTLE)
+					|| Formats.getEquivalentFormat(extension).equals(Formats.DEFAULT_RDFXML)) {
 				int bytesRead = -1;
 				FileOutputStream outputStream = new FileOutputStream(
 						dataIDFilePath);
