@@ -180,7 +180,6 @@ public class MakeLinksets {
 				
 				// save linksets into mongodb
 				saveLinksets(listOfDataThreads);
-				System.out.println("ssssssssssaaa");
 
 				}
 				catch(Exception e){

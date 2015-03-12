@@ -9,12 +9,20 @@
 	<display-name>DataID Dynamic Cloud</display-name>
 
 	<servlet>
-		<servlet-name>Output</servlet-name>
-		<servlet-class>dataid.server.CreateOutput</servlet-class>
+		<servlet-name>OutputByDistribution</servlet-name>
+		<servlet-class>dataid.server.CreateOutputByDistributions</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>OutputByDataset</servlet-name>
+		<servlet-class>dataid.server.CreateOutputByDatasets</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Output</servlet-name>
-		<url-pattern>/output/*</url-pattern>
+		<servlet-name>OutputByDistribution</servlet-name>
+		<url-pattern>/outputByDistribution/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OutputByDataset</servlet-name>
+		<url-pattern>/outputByDataset/*</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

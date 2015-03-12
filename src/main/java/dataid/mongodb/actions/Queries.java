@@ -189,6 +189,27 @@ public class Queries {
 		}
 		return list;
 	}
+	
+	// return all distributions
+	public ArrayList<DistributionMongoDBObject> getDistributions() {
+
+		ArrayList<DistributionMongoDBObject> list = new ArrayList<DistributionMongoDBObject>();
+
+		try {
+			DBCollection collection = DataIDDB.getInstance().getCollection(
+					DistributionMongoDBObject.COLLECTION_NAME);
+			DBCursor instances = collection.find();
+
+			for (DBObject instance : instances) {
+				list.add(new DistributionMongoDBObject(instance.get(DataIDDB.URI)
+						.toString()));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	public ArrayList<LinksetMongoDBObject> getLinksets() {
 
@@ -246,6 +267,33 @@ public class Queries {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public ArrayList<LinksetMongoDBObject> getLinksetsGroupByDistributions(){
+		AggregationOutput output;
+	try {
+
+		ArrayList<LinksetMongoDBObject> list = new ArrayList<LinksetMongoDBObject>();
+
+		try {
+			DBCollection collection = DataIDDB.getInstance().getCollection(
+					LinksetMongoDBObject.COLLECTION_NAME);
+			DBCursor instances = collection.find();
+
+			for (DBObject instance : instances) {
+				list.add(new LinksetMongoDBObject(instance.get(DataIDDB.URI)
+						.toString()));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return null;
 	}
 
 	public void getDatasetsLinksets() {

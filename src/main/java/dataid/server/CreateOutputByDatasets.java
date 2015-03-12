@@ -19,7 +19,7 @@ import dataid.mongodb.objects.LinksetMongoDBObject;
 import dataid.ontology.Dataset;
 import dataid.ontology.NS;
 
-public class CreateOutput extends HttpServlet {
+public class CreateOutputByDatasets extends HttpServlet {
 
 	private Model outModel =null;
 
@@ -70,8 +70,6 @@ public class CreateOutput extends HttpServlet {
 
 			ArrayList<LinksetMongoDBObject> linksetList = queries
 					.getLinksetsGroupByDatasets();
-			// Iterable<DBObject> linksets =
-			// queries.getLinksetsGroupByDatasets();
 
 			if (linksetList != null)
 				for (LinksetMongoDBObject linkset : linksetList) {

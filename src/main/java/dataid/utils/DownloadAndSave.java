@@ -128,7 +128,7 @@ public class DownloadAndSave {
 
 			checkExtensionFormat(format);
 
-			if (extension.equals(Formats.getEquivalentFormat(extension).equals(Formats.DEFAULT_NTRIPLES))) {
+			if (Formats.getEquivalentFormat(extension).equals(Formats.DEFAULT_NTRIPLES)) {
 
 				SplitAndStoreThread splitThread = new SplitAndStoreThread(bufferQueue,
 						subjectQueue, objectQueue, fileName, bean);
