@@ -16,9 +16,7 @@ public class SubsetQueries {
 						SubsetMongoDBObject.COLLECTION_NAME);
 				
 				BasicDBObject query = new BasicDBObject(SubsetMongoDBObject.DISTRIBUTIONS_URIS+".0", new BasicDBObject("$exists", true));
-				DBCursor cursor = collection.find(query);
-				
-				
+				DBCursor cursor = collection.find(query);			
 				
 				numberOfSubsets = (int) cursor.count();
 			} catch (Exception e) {

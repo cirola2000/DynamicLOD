@@ -1,6 +1,7 @@
 package dataid.server;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +12,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import dataid.mongodb.objects.DistributionMongoDBObject;
+import dataid.mongodb.objects.LinksetMongoDBObject;
 import dataid.mongodb.queries.DistributionQueries;
+import dataid.mongodb.queries.LinksetQueries;
 
 public class Service extends HttpServlet {
 	
@@ -32,30 +35,44 @@ public class Service extends HttpServlet {
 			String url = request.getParameter("url");
 			
 			// check if distribution was streamed
-			DistributionMongoDBObject dist = new DistributionMongoDBObject(url);
+			DistributionMongoDBObject dist = DistributionQueries.getByDownloadURL(url);
 			
 			JSONObject obj = new JSONObject();
 			obj.put("url", url);
 			
-			if(dist.getLastTimeLinkset() != null){
+			if(dist!= null){
 				obj.put(DistributionMongoDBObject.FORMAT, dist.getFormat() );
-				obj.put(DistributionMongoDBObject.LAST_TIME_LINKSET, dist.getLastTimeLinkset() );				
+				obj.put(DistributionMongoDBObject.LAST_TIME_LINKSET, dist.getLastTimeLinkset());
+				
+				ArrayList<LinksetMongoDBObject> linksets = LinksetQueries.getLinksetsInDegreeByDistribution(url);
+				
+				JSONArray indegreeArray = new JSONArray();
+				for(LinksetMongoDBObject linkset : linksets){
+					JSONObject jsonLinkset = new JSONObject();
+					jsonLinkset.put(linkset.SUBJECTS_DISTRIBUTION_TARGET, linkset.getSubjectsDistributionTarget().toString());
+					jsonLinkset.put(linkset.LINKS, linkset.getLinks());
+					indegreeArray.put(jsonLinkset);
+				}
+				obj.put("indegree", indegreeArray); 
+				
+				linksets = LinksetQueries.getLinksetsInDegreeByDistribution(url);
+				
+				JSONArray outdegreeArray = new JSONArray();
+				for(LinksetMongoDBObject linkset : linksets){
+					JSONObject jsonLinkset = new JSONObject();
+					jsonLinkset.put(linkset.SUBJECTS_DISTRIBUTION_TARGET, linkset.getSubjectsDistributionTarget().toString());
+					jsonLinkset.put(linkset.LINKS, linkset.getLinks());
+					outdegreeArray.put(jsonLinkset);
+				}
+				obj.put("outdegree", outdegreeArray); 
+				
+				
 			}
 			else{
-				obj.put(DistributionMongoDBObject.SUCCESSFULLY_DOWNLOADED, dist.isSuccessfullyDownloaded() );
-			}
-			
-		 
-//			JSONArray list = new JSONArray();
-//			list.put("msg 1");
-//			list.put("msg 2");
-//			list.put("msg 3");
-//			https://raw.githubusercontent.com/AKSW/n3-collection/master/RSSss
-//			obj.put("messages", list);
+				obj.put("distributionLoaded", false);
+			}			
 			
 			response.getWriter().print(obj.toString());
-			
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

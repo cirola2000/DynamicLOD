@@ -14,9 +14,10 @@ import dataid.mongodb.DataIDDB;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.DistributionObjectDomainsMongoDBObject;
 import dataid.mongodb.objects.DistributionSubjectDomainsMongoDBObject;
+import dataid.mongodb.objects.LinksetMongoDBObject;
 
 public class DistributionQueries {
-	
+
 	// return number of distributions
 	public static int getNumberOfDistributions() {
 		int numberOfDistributions = 0;
@@ -29,104 +30,136 @@ public class DistributionQueries {
 		}
 		return numberOfDistributions;
 	}
-	
-	
-		public static ArrayList<DistributionMongoDBObject> getDistributionsByAuthority(String distributionAccessURL){
-//		@Test
-//			public void getDistributionsByAuthority(){
-			ArrayList<DistributionMongoDBObject> list = new ArrayList<DistributionMongoDBObject>();
-			try {
 
-			
+	public static ArrayList<DistributionMongoDBObject> getDistributionsByAuthority(
+			String distributionAccessURL) {
+		ArrayList<DistributionMongoDBObject> list = new ArrayList<DistributionMongoDBObject>();
+		try {
+
 			DBCollection collection = DataIDDB.getInstance().getCollection(
 					DistributionObjectDomainsMongoDBObject.COLLECTION_NAME);
-			
-			// get all subject domain from distribution got as parameter
-			BasicDBObject query = new BasicDBObject(DistributionObjectDomainsMongoDBObject.DISTRIBUTION_URI, distributionAccessURL);
 
-			BasicDBObject fields = new BasicDBObject(DistributionObjectDomainsMongoDBObject.OBJECT_DOMAIN,1);
+			// get all subject domain from distribution got as parameter
+			BasicDBObject query = new BasicDBObject(
+					DistributionObjectDomainsMongoDBObject.DISTRIBUTION_URI,
+					distributionAccessURL);
+
+			BasicDBObject fields = new BasicDBObject(
+					DistributionObjectDomainsMongoDBObject.OBJECT_DOMAIN, 1);
 			fields.append("_id", 0);
-			DBCursor cursor = collection.find(query,fields);
-			
-			ArrayList<String> vals = new ArrayList<String>(); 
+			DBCursor cursor = collection.find(query, fields);
+
+			ArrayList<String> vals = new ArrayList<String>();
 			while (cursor.hasNext()) {
-				vals.add( (String) cursor.next().get(DistributionObjectDomainsMongoDBObject.OBJECT_DOMAIN));
+				vals.add((String) cursor.next().get(
+						DistributionObjectDomainsMongoDBObject.OBJECT_DOMAIN));
 			}
-			
-			BasicDBObject fields2 = new BasicDBObject(DistributionSubjectDomainsMongoDBObject.DISTRIBUTION_URI,1);
+
+			BasicDBObject fields2 = new BasicDBObject(
+					DistributionSubjectDomainsMongoDBObject.DISTRIBUTION_URI, 1);
 			fields2.append("_id", 0);
-			
+
 			// find distributions with subjects
-			BasicDBObject query2 = new BasicDBObject(DistributionSubjectDomainsMongoDBObject.SUBJECT_DOMAIN, new BasicDBObject("$in", vals));
-			
+			BasicDBObject query2 = new BasicDBObject(
+					DistributionSubjectDomainsMongoDBObject.SUBJECT_DOMAIN,
+					new BasicDBObject("$in", vals));
+
 			collection = DataIDDB.getInstance().getCollection(
 					DistributionSubjectDomainsMongoDBObject.COLLECTION_NAME);
-			
-			cursor = collection.find(query2,fields2);
-			
+
+			cursor = collection.find(query2, fields2);
+
 			while (cursor.hasNext()) {
-				DistributionMongoDBObject obj = new DistributionMongoDBObject(cursor.next().get(DistributionSubjectDomainsMongoDBObject.DISTRIBUTION_URI).toString());
-			    list.add(obj);
-			    System.out.println("Returned: " +obj.getDownloadUrl());
-			}		
-			
-			}catch (Exception e){
-				e.printStackTrace();
+				DistributionMongoDBObject obj = new DistributionMongoDBObject(
+						cursor.next()
+								.get(DistributionSubjectDomainsMongoDBObject.DISTRIBUTION_URI)
+								.toString());
+				list.add(obj);
+				System.out.println("Returned: " + obj.getDownloadUrl());
 			}
-			return list;			
-		}
-		
-		// return number of triples
-		public static int getNumberOfTriples() {
-			int numberOfTriples = 0;
-			try {
-				DBCollection collection = DataIDDB.getInstance().getCollection(
-						DistributionMongoDBObject.COLLECTION_NAME);
-				
-				BasicDBObject select = new BasicDBObject("$match", new BasicDBObject(DistributionMongoDBObject.SUCCESSFULLY_DOWNLOADED,true));
-				
-				BasicDBObject groupFields = new BasicDBObject( "_id", null);
-				
-				
-				groupFields.append("sum", new BasicDBObject("$sum","$triples"));
-				
-				
-				DBObject group = new BasicDBObject("$group", groupFields);
-				
-				
-				// run aggregation
-				List<DBObject> pipeline = Arrays.asList(select,group);
-				AggregationOutput output = collection.aggregate(pipeline);
 
-				for (DBObject result : output.results()) {
-				    numberOfTriples=Integer.valueOf(result.get("sum").toString());
-				}
-				
-				
-			} catch (Exception e) {
-				e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	// return number of triples
+	public static int getNumberOfTriples() {
+		int numberOfTriples = 0;
+		try {
+			DBCollection collection = DataIDDB.getInstance().getCollection(
+					DistributionMongoDBObject.COLLECTION_NAME);
+
+			BasicDBObject select = new BasicDBObject("$match",
+					new BasicDBObject(
+							DistributionMongoDBObject.SUCCESSFULLY_DOWNLOADED,
+							true));
+
+			BasicDBObject groupFields = new BasicDBObject("_id", null);
+
+			groupFields.append("sum", new BasicDBObject("$sum", "$triples"));
+
+			DBObject group = new BasicDBObject("$group", groupFields);
+
+			// run aggregation
+			List<DBObject> pipeline = Arrays.asList(select, group);
+			AggregationOutput output = collection.aggregate(pipeline);
+
+			for (DBObject result : output.results()) {
+				numberOfTriples = Integer.valueOf(result.get("sum").toString());
 			}
-			return numberOfTriples;
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		// return all distributions
-		public static ArrayList<DistributionMongoDBObject> getDistributions() {
+		return numberOfTriples;
+	}
 
-			ArrayList<DistributionMongoDBObject> list = new ArrayList<DistributionMongoDBObject>();
+	// return all distributions
+	public static ArrayList<DistributionMongoDBObject> getDistributions() {
 
-			try {
-				DBCollection collection = DataIDDB.getInstance().getCollection(
-						DistributionMongoDBObject.COLLECTION_NAME);
-				DBCursor instances = collection.find();
+		ArrayList<DistributionMongoDBObject> list = new ArrayList<DistributionMongoDBObject>();
 
-				for (DBObject instance : instances) {
-					list.add(new DistributionMongoDBObject(instance.get(DataIDDB.URI)
-							.toString()));
-				}
+		try {
+			DBCollection collection = DataIDDB.getInstance().getCollection(
+					DistributionMongoDBObject.COLLECTION_NAME);
+			DBCursor instances = collection.find();
 
-			} catch (Exception e) {
-				e.printStackTrace();
+			for (DBObject instance : instances) {
+				list.add(new DistributionMongoDBObject(instance.get(
+						DataIDDB.URI).toString()));
 			}
-			return list;
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return list;
+	}
+
+	public static DistributionMongoDBObject getByDownloadURL(String url) {
+
+		DistributionMongoDBObject dist = null;
+		try {
+
+			DBCollection collection = DataIDDB.getInstance().getCollection(
+					DistributionMongoDBObject.COLLECTION_NAME);
+
+			BasicDBObject query = new BasicDBObject(
+					DistributionMongoDBObject.DOWNLOAD_URL, url);
+			DBCursor d = collection.find(query);
+
+			if (d.hasNext()) {
+				dist = new DistributionMongoDBObject(d.next()
+						.get(DistributionMongoDBObject.URI).toString());
+				return dist;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
 }
