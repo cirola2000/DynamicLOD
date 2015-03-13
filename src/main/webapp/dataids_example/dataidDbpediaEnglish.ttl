@@ -33,7 +33,7 @@
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dcat:contactPoint <http://wiki.dbpedia.org/Association> ;
  dataid:latestVersion <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
- void:subset <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_category_labels_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_disambiguations_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_external_links_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_geo_coordinates_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_homepages_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_images_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_heuristic_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_interlanguage_links_chapters_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_iri_same_as_uri_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_labels_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_long_abstracts_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_mappingbased_properties_cleaned_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_page_ids_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_persondata_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_pnd_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_properties_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_property_definitions_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_redirects_transitive_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_ids_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_uris_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_short_abstracts_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_skos_categories_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_specific_mappingbased_properties_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_wikipedia_links_en> , <http://dbpedia.org/dataid.ttl#DBpedia_it_3.9_short_abstracts_en_uris_it> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_wordnet_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_bookmashup_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_eurostat_wbsg_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_bbcwildlife_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_dbtune_links> , <http://dbpedia.org/dataid.ttl#DBpedia_ja_3.9_labels_en_uris_ja> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_geonames_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_flickrwrappr_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_freebase_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_yago_links> , <http://dbpedia.org/dataid.ttl#DBpedia_ja_3.9_long_abstracts_en_uris_ja> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_eunis_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_disambiguations_en> , <http://dbpedia.org/dataid.ttl#DBpedia_pl_3.9_long_abstracts_en_uris_pl> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_short_abstracts_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_wikipedia_links_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_gutenberg_links> , <http://dbpedia.org/dataid.ttl#DBpedia_sv_3.9_short_abstracts_en_uris_sv> , <http://dbpedia.org/dataid.ttl#DBpedia_pl_3.9_labels_en_uris_pl> , <http://dbpedia.org/dataid.ttl#DBpedia_fr_3.9_long_abstracts_en_uris_fr> , <http://dbpedia.org/dataid.ttl#DBpedia_pt_3.9_long_abstracts_en_uris_pt> , <http://dbpedia.org/dataid.ttl#DBpedia_es_3.9_short_abstracts_en_uris_es> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_gadm_links> , <http://dbpedia.org/dataid.ttl#DBpedia_de_3.9_long_abstracts_en_uris_de> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_factbook_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_uris_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_external_links_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_redirects_transitive_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_dblp_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_italian_public_schools_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_musicbrainz_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_openei_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_bricklink_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_mappingbased_properties_cleaned_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_linkedmdb_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_interlanguage_links_chapters_en> , <http://dbpedia.org/dataid.ttl#DBpedia_fr_3.9_labels_en_uris_fr> , <http://dbpedia.org/dataid.ttl#DBpedia_sv_3.9_long_abstracts_en_uris_sv> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_linkedgeodata_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_labels_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_properties_en> , <http://dbpedia.org/dataid.ttl#DBpedia_it_3.9_long_abstracts_en_uris_it> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_yago_types> , <http://dbpedia.org/dataid.ttl#DBpedia_fr_3.9_short_abstracts_en_uris_fr> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_skos_categories_en> , <http://dbpedia.org/dataid.ttl#DBpedia_pl_3.9_short_abstracts_en_uris_pl> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_images_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_category_labels_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_geo_coordinates_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_eurostat_linkedstatistics_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_diseasome_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_yago_type_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_amsterdammuseum_links> , <http://dbpedia.org/dataid.ttl#DBpedia_ru_3.9_long_abstracts_en_uris_ru> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_revyu_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_specific_mappingbased_properties_en> , <http://dbpedia.org/dataid.ttl#DBpedia_de_3.9_short_abstracts_en_uris_de> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_wikicompany_links> , <http://dbpedia.org/dataid.ttl#DBpedia_es_3.9_labels_en_uris_es> , <http://dbpedia.org/dataid.ttl#DBpedia_zh_3.9_short_abstracts_en_uris_zh> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_yago_taxonomy> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_dailymed_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_property_definitions_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_sider_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_gho_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_iri_same_as_uri_en> , <http://dbpedia.org/dataid.ttl#DBpedia_pt_3.9_labels_en_uris_pt> , <http://dbpedia.org/dataid.ttl#DBpedia_nl_3.9_labels_en_uris_nl> , <http://dbpedia.org/dataid.ttl#DBpedia_zh_3.9_long_abstracts_en_uris_zh> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_heuristic_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_page_ids_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_tcm_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_ids_en> , <http://dbpedia.org/dataid.ttl#DBpedia_de_3.9_labels_en_uris_de> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_homepages_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_uscensus_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_umbel_links> , <http://dbpedia.org/dataid.ttl#DBpedia_pt_3.9_short_abstracts_en_uris_pt> , <http://dbpedia.org/dataid.ttl#DBpedia_ru_3.9_short_abstracts_en_uris_ru> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_cordis_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_opencyc_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_nytimes_links> , <http://dbpedia.org/dataid.ttl#DBpedia_de_3.9_pnd_en_uris_de> , <http://dbpedia.org/dataid.ttl#DBpedia_zh_3.9_labels_en_uris_zh> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_drugbank_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_geospecies_links> , <http://dbpedia.org/dataid.ttl#DBpedia_es_3.9_long_abstracts_en_uris_es> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_persondata_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_long_abstracts_en> , <http://dbpedia.org/dataid.ttl#DBpedia_ru_3.9_labels_en_uris_ru> , <http://dbpedia.org/dataid.ttl#DBpedia_ja_3.9_short_abstracts_en_uris_ja> , <http://dbpedia.org/dataid.ttl#DBpedia_sv_3.9_labels_en_uris_sv> , <http://dbpedia.org/dataid.ttl#DBpedia_nl_3.9_short_abstracts_en_uris_nl> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en> , <http://dbpedia.org/dataid.ttl#DBpedia_nl_3.9_long_abstracts_en_uris_nl> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_pnd_en> , <http://dbpedia.org/dataid.ttl#DBpedia_it_3.9_labels_en_uris_it> .
+ void:subset <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_category_labels_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_disambiguations_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_external_links_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_geo_coordinates_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_homepages_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_images_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_heuristic_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_interlanguage_links_chapters_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_iri_same_as_uri_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_labels_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_long_abstracts_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_mappingbased_properties_cleaned_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_page_ids_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_persondata_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_pnd_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_properties_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_property_definitions_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_redirects_transitive_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_ids_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_uris_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_short_abstracts_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_skos_categories_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_specific_mappingbased_properties_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_wikipedia_links_en> ,<http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_freebase_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_yago_links> , <http://dbpedia.org/dataid.ttl#DBpedia_ja_3.9_long_abstracts_en_uris_ja> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_eunis_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_disambiguations_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_short_abstracts_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_wikipedia_links_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_gutenberg_links> , <http://dbpedia.org/dataid.ttl#DBpedia_sv_3.9_short_abstracts_en_uris_sv> , <http://dbpedia.org/dataid.ttl#DBpedia_pl_3.9_labels_en_uris_pl> , <http://dbpedia.org/dataid.ttl#DBpedia_fr_3.9_long_abstracts_en_uris_fr> , <http://dbpedia.org/dataid.ttl#DBpedia_pt_3.9_long_abstracts_en_uris_pt> , <http://dbpedia.org/dataid.ttl#DBpedia_es_3.9_short_abstracts_en_uris_es> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_gadm_links> , <http://dbpedia.org/dataid.ttl#DBpedia_de_3.9_long_abstracts_en_uris_de> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_factbook_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_uris_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_external_links_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_redirects_transitive_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_dblp_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_italian_public_schools_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_musicbrainz_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_openei_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_bricklink_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_mappingbased_properties_cleaned_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_linkedmdb_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_interlanguage_links_chapters_en> , <http://dbpedia.org/dataid.ttl#DBpedia_fr_3.9_labels_en_uris_fr> , <http://dbpedia.org/dataid.ttl#DBpedia_sv_3.9_long_abstracts_en_uris_sv> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_linkedgeodata_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_labels_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_properties_en> , <http://dbpedia.org/dataid.ttl#DBpedia_it_3.9_long_abstracts_en_uris_it> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_yago_types> , <http://dbpedia.org/dataid.ttl#DBpedia_fr_3.9_short_abstracts_en_uris_fr> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_skos_categories_en> , <http://dbpedia.org/dataid.ttl#DBpedia_pl_3.9_short_abstracts_en_uris_pl> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_images_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_category_labels_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_geo_coordinates_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_eurostat_linkedstatistics_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_diseasome_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_yago_type_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_amsterdammuseum_links> , <http://dbpedia.org/dataid.ttl#DBpedia_ru_3.9_long_abstracts_en_uris_ru> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_revyu_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_specific_mappingbased_properties_en> , <http://dbpedia.org/dataid.ttl#DBpedia_de_3.9_short_abstracts_en_uris_de> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_wikicompany_links> , <http://dbpedia.org/dataid.ttl#DBpedia_es_3.9_labels_en_uris_es> , <http://dbpedia.org/dataid.ttl#DBpedia_zh_3.9_short_abstracts_en_uris_zh> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_yago_taxonomy> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_dailymed_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_property_definitions_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_sider_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_gho_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_iri_same_as_uri_en> , <http://dbpedia.org/dataid.ttl#DBpedia_pt_3.9_labels_en_uris_pt> , <http://dbpedia.org/dataid.ttl#DBpedia_nl_3.9_labels_en_uris_nl> , <http://dbpedia.org/dataid.ttl#DBpedia_zh_3.9_long_abstracts_en_uris_zh> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_heuristic_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_page_ids_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_tcm_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_ids_en> , <http://dbpedia.org/dataid.ttl#DBpedia_de_3.9_labels_en_uris_de> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_homepages_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_uscensus_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_umbel_links> , <http://dbpedia.org/dataid.ttl#DBpedia_pt_3.9_short_abstracts_en_uris_pt> , <http://dbpedia.org/dataid.ttl#DBpedia_ru_3.9_short_abstracts_en_uris_ru> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_cordis_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_opencyc_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_nytimes_links> , <http://dbpedia.org/dataid.ttl#DBpedia_de_3.9_pnd_en_uris_de> , <http://dbpedia.org/dataid.ttl#DBpedia_zh_3.9_labels_en_uris_zh> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_drugbank_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_geospecies_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_persondata_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_long_abstracts_en>, <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en>,  <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_pnd_en> .
 
  <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -51,7 +51,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/article_categories_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/article_categories_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/article_categories_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_category_labels_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -69,7 +69,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/category_labels_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/category_labels_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/category_labels_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_disambiguations_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -87,7 +87,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/disambiguations_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/disambiguations_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/disambiguations_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_external_links_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -123,7 +123,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2>  .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_homepages_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -141,7 +141,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/homepages_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/homepages_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/homepages_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/homepages_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/homepages_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_images_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -159,7 +159,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/images_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/images_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/images_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/images_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/images_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -177,7 +177,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/instance_types_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/instance_types_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/instance_types_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_heuristic_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -195,7 +195,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_interlanguage_links_chapters_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -213,7 +213,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_iri_same_as_uri_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -231,7 +231,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_labels_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -267,7 +267,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/long_abstracts_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/long_abstracts_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_mappingbased_properties_cleaned_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -285,7 +285,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_page_ids_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -303,7 +303,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/page_ids_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/page_ids_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/page_ids_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2>  .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_persondata_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -321,7 +321,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/persondata_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/persondata_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/persondata_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/persondata_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/persondata_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_pnd_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -339,7 +339,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/pnd_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/pnd_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/pnd_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_properties_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -357,7 +357,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_property_definitions_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -375,7 +375,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_redirects_transitive_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -393,7 +393,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_ids_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -411,7 +411,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/revision_ids_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/revision_ids_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_uris_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -429,7 +429,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/revision_uris_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/revision_uris_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_short_abstracts_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -447,7 +447,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/short_abstracts_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/short_abstracts_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_skos_categories_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -465,7 +465,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/skos_categories_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/skos_categories_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_specific_mappingbased_properties_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -483,7 +483,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2> .
 
 <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_wikipedia_links_en>
  a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
@@ -501,7 +501,7 @@
  dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.ttl.bz2> .
+ dcat:distribution <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/article_categories_en.nq.bz2>
   a dcat:Distribution ;
