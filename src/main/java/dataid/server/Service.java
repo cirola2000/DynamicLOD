@@ -65,8 +65,7 @@ public class Service extends HttpServlet {
 					outdegreeArray.put(jsonLinkset);
 				}
 				obj.put("outdegree", outdegreeArray); 
-				
-				
+
 			}
 			else{
 				obj.put("distributionLoaded", false);

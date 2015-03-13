@@ -51,7 +51,8 @@ public class CreateOutputByDistributions extends HttpServlet {
 			outModel.setNsPrefix("foaf", NS.FOAF_URI);
 			outModel.setNsPrefix("dataid", NS.DATAID_URI);
 
-			ArrayList<DistributionMongoDBObject> distributionList = DistributionQueries.getDistributions();
+//			ArrayList<DistributionMongoDBObject> distributionList = DistributionQueries.getDistributions();
+			ArrayList<DistributionMongoDBObject> distributionList = DistributionQueries.getDistributionsWithLinks();
 
 			if (distributionList != null)
 				for (DistributionMongoDBObject distribution : distributionList) {
@@ -102,7 +103,7 @@ public class CreateOutputByDistributions extends HttpServlet {
 								"There are no DataIDs files inserted! Please insert a DataID file and try again.");
 			else {
 
-				outModel.write(System.out, "TURTLE");
+//				outModel.write(System.out, "TURTLE");
 				outModel.write(response.getWriter(), "TURTLE");
 			}
 		} catch (Exception e) {

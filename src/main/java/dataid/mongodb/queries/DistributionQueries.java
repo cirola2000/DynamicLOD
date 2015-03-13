@@ -159,7 +159,60 @@ public class DistributionQueries {
 			e.printStackTrace();
 		}
 		return null;
-
 	}
+	
+	// return all distributions
+		public static ArrayList<DistributionMongoDBObject> getDistributionsWithLinks() {
+
+			ArrayList<DistributionMongoDBObject> list = new ArrayList<DistributionMongoDBObject>();
+			ArrayList<String> downloadURL = new ArrayList<String>();
+			ArrayList<String> distributions = new ArrayList<String>();
+			
+			try {
+				DBCollection collection = DataIDDB.getInstance().getCollection(
+						DistributionMongoDBObject.COLLECTION_NAME);
+				DBCollection collection2 = DataIDDB.getInstance().getCollection(
+						LinksetMongoDBObject.COLLECTION_NAME);
+				DBCursor instances = collection.find();
+
+				for (DBObject instance : instances) {					
+					BasicDBObject query = new BasicDBObject(LinksetMongoDBObject.SUBJECTS_DISTRIBUTION_TARGET, instance.get(DistributionMongoDBObject.DOWNLOAD_URL).toString());
+					DBCursor d = collection2.find(query);
+					
+					if(d.hasNext()){
+						if(!distributions.contains(instance.get(DistributionMongoDBObject.DOWNLOAD_URL).toString())){
+						distributions.add(instance.get(DistributionMongoDBObject.DOWNLOAD_URL).toString());
+						System.out.println(instance.get(DistributionMongoDBObject.DOWNLOAD_URL).toString());
+						}
+					}
+				}
+				
+
+				for (DBObject instance : instances) {
+					
+					BasicDBObject query = new BasicDBObject(LinksetMongoDBObject.OBJECTS_DISTRIBUTION_TARGET, instance.get(DistributionMongoDBObject.DOWNLOAD_URL).toString());
+					DBCursor d = collection2.find(query);
+					
+					if(d.hasNext()){
+						if(!distributions.contains(instance.get(DistributionMongoDBObject.DOWNLOAD_URL).toString())){
+							distributions.add(instance.get(DistributionMongoDBObject.DOWNLOAD_URL).toString());
+						}
+					}
+				}
+				
+				
+				for (DBObject instance : instances) {
+					if(distributions.contains(instance.get(DistributionMongoDBObject.DOWNLOAD_URL)))
+						list.add(new DistributionMongoDBObject(instance.get(DistributionMongoDBObject.URI).toString()));
+				}
+				
+
+				
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+		}
 
 }
