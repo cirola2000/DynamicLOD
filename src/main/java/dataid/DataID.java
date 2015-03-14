@@ -110,8 +110,8 @@ public class DataID {
 				distributionMongoDBObj.setTimeToCreateFilter(String
 						.valueOf(timer.stopTimer()));
 
-				// save filter
 				filter.saveFilter(downloadedFile.fileName);
+				// save filter
 
 				// save distribution in a mongodb object
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
@@ -255,6 +255,7 @@ public class DataID {
 						e.getMessage());
 				bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
 				bean.pushDownloadInfo();
+				bean.pushDataIDList();
 				e.printStackTrace();
 				distributionMongoDBObj.setLastErrorMsg(e.getMessage());
 				distributionMongoDBObj.setSuccessfullyDownloaded(false);

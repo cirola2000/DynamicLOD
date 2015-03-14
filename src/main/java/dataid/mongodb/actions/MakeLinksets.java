@@ -62,6 +62,9 @@ public class MakeLinksets {
 				
 				for (DistributionMongoDBObject distributionToCompare : disributionsToCompare) {
 					try {
+						// check if distributions had already been compared
+						if(!LinksetQueries.isOnLinksetList(distribution.getDownloadUrl(), distributionToCompare.getDownloadUrl()))
+							
 						if (!distributionToCompare.getSubjectFilterPath()
 								.equals(distribution
 										.getSubjectFilterPath())) {
@@ -123,7 +126,11 @@ public class MakeLinksets {
 
 				int bufferIndex = 0;
 
-				if (listOfDataThreads.size() > 0)
+				if (listOfDataThreads.size() > 0){
+					bean.addDisplayMessage(
+							DataIDGeneralProperties.MESSAGE_LOG,
+							"Loading bloom filters...");
+					System.out.println("Loading bloom filters...");
 					while ((sCurrentLine = br.readLine()) != null) {
 						buffer[bufferIndex] = (sCurrentLine);
 						bufferIndex++;
@@ -150,6 +157,14 @@ public class MakeLinksets {
 
 						}
 					}
+				}
+				else{
+					bean.addDisplayMessage(
+							DataIDGeneralProperties.MESSAGE_LOG,
+							"New filters were't found!");
+
+					System.out.println("New filters were't found!");
+				}
 
 				bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_LOG,

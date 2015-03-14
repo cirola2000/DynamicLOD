@@ -46,7 +46,9 @@ public class DataIDModel {
 		while (datasets.hasNext()) {
 
 			Statement dataset = datasets.next();
-			System.out.println("We found a dataset: " + dataset.getSubject());
+			System.out.println("We found a new dataset: " + dataset.getSubject());
+			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"We found a new dataset: " + dataset.getSubject()+"<br>");
+			
 			datasetURI = dataset.getSubject().toString();
 
 			// create a mongodb dataset object

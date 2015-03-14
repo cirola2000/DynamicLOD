@@ -50,16 +50,16 @@ public class FileToFilter {
 		}
 		
 		try{
-//			File f = new File(DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+
-//							fileName);
-//			f.delete();
-//			
-//			System.out.println("deleting "+ DataIDGeneralProperties.BASE_PATH+
-//					fileName);
-//			f = new File(DataIDGeneralProperties.BASE_PATH+
-//					fileName);
-//			
-//			f.delete();
+			File f = new File(DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+
+							fileName);
+			f.delete();
+			
+			System.out.println("deleting "+ DataIDGeneralProperties.BASE_PATH+
+					fileName);
+			f = new File(DataIDGeneralProperties.BASE_PATH+
+					fileName);
+			
+			f.delete();
 	
 		}
 		catch(Exception e){

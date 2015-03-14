@@ -17,9 +17,7 @@ public class JobThread implements Runnable {
 	}
 
 	public void run() {
-
 		try {
-
 			for (int i = 0; i < size; i++) {
 				if (dataThread.filter.compare(lines[i])) {
 						dataThread.links++;						
@@ -29,7 +27,6 @@ public class JobThread implements Runnable {
 		} catch (Exception e) {
 			// DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
 			e.printStackTrace();
-
 		}
 	}
 }

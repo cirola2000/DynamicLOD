@@ -33,7 +33,6 @@ public class GetDomainsFromTriplesThread extends Thread {
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			while (resourceQueue.size() > 0) {

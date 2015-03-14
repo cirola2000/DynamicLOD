@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.taglibs.standard.lang.jstl.test.Bean1;
+
 import com.mongodb.AggregationOutput;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
@@ -30,6 +32,7 @@ public class DistributionQueries {
 		}
 		return numberOfDistributions;
 	}
+	
 
 	public static ArrayList<DistributionMongoDBObject> getDistributionsByAuthority(
 			String distributionAccessURL) {
@@ -74,7 +77,8 @@ public class DistributionQueries {
 						cursor.next()
 								.get(DistributionSubjectDomainsMongoDBObject.DISTRIBUTION_URI)
 								.toString());
-				list.add(obj);
+
+					list.add(obj);
 				System.out.println("Returned: " + obj.getDownloadUrl());
 			}
 

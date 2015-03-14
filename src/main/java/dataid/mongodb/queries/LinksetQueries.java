@@ -139,5 +139,20 @@ public class LinksetQueries {
 		}
 		return null;
 	}
+	public static boolean isOnLinksetList(String downloadURLObject, String downloladURLSubject){
+		
+		DBCollection collection = DataIDDB.getInstance().getCollection(
+				LinksetMongoDBObject.COLLECTION_NAME);
+		BasicDBObject query = new BasicDBObject(LinksetMongoDBObject.SUBJECTS_DISTRIBUTION_TARGET, downloladURLSubject);
+		query.append(LinksetMongoDBObject.OBJECTS_DISTRIBUTION_TARGET, downloadURLObject);
+		
+		DBCursor d = collection.find(query);
+
+		if(d.hasNext()) {
+		    return true;
+		}
+		
+		return false;
+	}
 
 }
