@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FilenameUtils;
+
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 
-import dataid.mongodb.actions.Queries;
-import dataid.mongodb.objects.DatasetMongoDBObject;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
 import dataid.mongodb.queries.DistributionQueries;
@@ -56,17 +56,19 @@ public class CreateOutputByDistributions extends HttpServlet {
 
 			if (distributionList != null)
 				for (DistributionMongoDBObject distribution : distributionList) {
-					Resource r = outModel.createResource(distribution.getUri());
+					Resource r = outModel.createResource(distribution.getDownloadUrl());
 					r.addProperty(
 							Dataset.dataIDType,
 							ResourceFactory.createResource(NS.VOID_URI
 									+ "Dataset"));
+					 String baseName = FilenameUtils.getBaseName(distribution.getDownloadUrl());
+					
 					r.addProperty(
 							Dataset.title,
-							distribution.getUri());
+							baseName);
 					r.addProperty(
 							Dataset.label,
-							distribution.getUri());
+							baseName);
 				}
 
 			ArrayList<LinksetMongoDBObject> linksetList = LinksetQueries

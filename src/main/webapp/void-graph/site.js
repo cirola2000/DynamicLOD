@@ -71,7 +71,7 @@ function connect($c1, $c2, color, thickness) {
 $(function() {
 
 var N3Util = N3.Util;
-$.post( "/dataid/output", function( data ) {
+$.post( "/dataid/outputByDistribution", function( data ) {
 	$('textarea').val(data);
 	parseTextarea();
 });
