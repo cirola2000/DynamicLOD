@@ -5,27 +5,26 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.junit.Test;
-
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
-import com.mongodb.DBObject;
 
 import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
 import dataid.filters.GoogleBloomFilter;
-import dataid.mongodb.DataIDDB;
-import dataid.mongodb.queries.*;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
+import dataid.mongodb.queries.DistributionQueries;
+import dataid.mongodb.queries.LinksetQueries;
 import dataid.server.DataIDBean;
 import dataid.threads.DataModelThread;
 import dataid.utils.Timer;
 
 public class MakeLinksets {
+	Logger log = Logger.getLogger("MyLog"); 
 
-	@Test
+
 	public void updateLinksets(DataIDBean bean) {
 
 		Timer t = new Timer();
@@ -35,6 +34,9 @@ public class MakeLinksets {
 
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 					"Updating linksets...");
+			
+			log.info("Updating linksets...");
+			
 			
 			ArrayList<DistributionMongoDBObject> distributions = DistributionQueries.getDistributions();
 
@@ -56,12 +58,17 @@ public class MakeLinksets {
 						 == null || distribution
 								.getObjectPath()
 								.toString().equals("")){
+					log.warning("distributionObjectPath is empty or null for "+distribution
+							.getDownloadUrl()+" distribution;");
 					throw new DataIDException("distributionObjectPath is empty or null for "+distribution
 							.getDownloadUrl()+" distribution;");
 				}
 				
 				for (DistributionMongoDBObject distributionToCompare : disributionsToCompare) {
 					try {
+						// check if distributions has been successfully downloaded
+						if(distribution.isSuccessfullyDownloaded() && distributionToCompare.isSuccessfullyDownloaded())
+						
 						// check if distributions had already been compared
 						if(!LinksetQueries.isOnLinksetList(distribution.getDownloadUrl(), distributionToCompare.getDownloadUrl()))
 							
@@ -94,6 +101,8 @@ public class MakeLinksets {
 							listOfDataThreads.add(dataThread);
 						}
 					} catch (Exception e) {
+						log.warning("Error while loading bloom filter: "
+										+ e.getMessage());
 						throw new DataIDException(
 								"Error while loading bloom filter: "
 										+ e.getMessage());
@@ -113,7 +122,7 @@ public class MakeLinksets {
 						"Loading objects from: "
 								+ distribution.getObjectPath()
 								+ ". This might take a time, please be patient.");
-				System.out.println("Loading objects from: "
+				log.info("Loading objects from: "
 						+ distribution.getObjectPath()
 						+ ". This might take a time, please be patient.");
 
@@ -130,7 +139,7 @@ public class MakeLinksets {
 					bean.addDisplayMessage(
 							DataIDGeneralProperties.MESSAGE_LOG,
 							"Loading bloom filters...");
-					System.out.println("Loading bloom filters...");
+					log.info("Loading bloom filters...");
 					while ((sCurrentLine = br.readLine()) != null) {
 						buffer[bufferIndex] = (sCurrentLine);
 						bufferIndex++;
@@ -183,7 +192,7 @@ public class MakeLinksets {
 							DataIDGeneralProperties.MESSAGE_LOG,
 							"New filters were't found!");
 
-					System.out.println("New filters were't found!");
+					log.info("New filters were't found!");
 				}
 
 				bean.addDisplayMessage(
@@ -191,9 +200,8 @@ public class MakeLinksets {
 						"Loaded objects from: "
 								+ distribution.getObjectPath());
 
-				System.out.println("Loaded objects from: "
+				log.info("Loaded objects from: "
 						+ distribution.getObjectPath());
-
 				
 				// save linksets into mongodb
 				saveLinksets(listOfDataThreads);
@@ -212,6 +220,7 @@ public class MakeLinksets {
 		}
 		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 				"Time to update linksets: " + t.stopTimer() + "s");
+		log.info("Time to update linksets: " + t.stopTimer() + "s"); 
 	}
 
 	public void saveLinksets(List<DataModelThread> dataThreads) {

@@ -84,15 +84,15 @@
 
 		</ui:define>
 
-		<ui:define name="dataIDList">
+		<ui:define name="distributionList">
 			<h:form prependId="false">
 
-				<a4j:push address="dataIDListMessage">
-					<a4j:ajax event="dataavailable" render="outputDataIDList" />
+				<a4j:push address="distributionListMessage">
+					<a4j:ajax event="dataavailable" render="outputdistributionList" />
 				</a4j:push>
-				<a4j:outputPanel id="outputDataIDList">
+				<a4j:outputPanel id="outputdistributionList">
 
-					<h:outputText value="#{dataIDBean.dataIDList}" escape="false" />
+					<h:outputText value="#{dataIDBean.distributionList}" escape="false" />
 
 				</a4j:outputPanel>
 			</h:form>

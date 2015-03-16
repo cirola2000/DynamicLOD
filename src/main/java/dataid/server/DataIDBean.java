@@ -36,7 +36,7 @@ public class DataIDBean implements Serializable, Runnable {
 	private String display = "";
 	
 	// dataid list
-	private String dataIDList = "(empty)";
+	private String distributionIDList = "(empty)";
 	
 	
 	// statistic data
@@ -80,8 +80,8 @@ public class DataIDBean implements Serializable, Runnable {
 		topicsContext.publish(topicKey, "");
 	}
 	
-	public void pushDataIDList() throws MessageException {
-		TopicKey topicKey = new TopicKey("dataIDListMessage");
+	public void pushDistributionList() throws MessageException {
+		TopicKey topicKey = new TopicKey("distributionListMessage");
 		TopicKey topicKey2 = new TopicKey("statsMessage");
 		
 		topicsContext.publish(topicKey, "");
@@ -105,7 +105,7 @@ public class DataIDBean implements Serializable, Runnable {
 		thread.start();
 		
 		try {
-			pushDataIDList();
+			pushDistributionList();
 		} catch (MessageException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -140,7 +140,7 @@ public class DataIDBean implements Serializable, Runnable {
 				updateGraph();
 			 
 //			this.dataIDList = Queries.getDataIDs();
-			this.pushDataIDList();
+			this.pushDistributionList();
 			 
 			 
 		} catch (MessageException e) {
@@ -162,9 +162,9 @@ public class DataIDBean implements Serializable, Runnable {
 
 	}
 
-	public String getDataIDList() {
-		this.dataIDList = Queries.getDataIDs();
-		return dataIDList;
+	public String getDistributionList() {
+		this.distributionIDList = Queries.getDistributionStatus();
+		return distributionIDList;
 	}
 
 	public void setDataIDList(String dataIDList) {

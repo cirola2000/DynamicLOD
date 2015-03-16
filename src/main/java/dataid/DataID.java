@@ -8,6 +8,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Formatter;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import org.bson.types.ObjectId;
 
@@ -26,9 +32,9 @@ import dataid.utils.Formats;
 import dataid.utils.Timer;
 
 public class DataID {
-	// private static final Logger LOGGER =
-	// LoggerFactory.getLogger(DataID.class);
-
+	Logger log = Logger.getLogger("MyLog");  
+	Handler fh = new ConsoleHandler();
+	
 	private String name = null;
 	public static DataIDBean bean;
 
@@ -54,6 +60,9 @@ public class DataID {
 				bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_INFO,
 						"Downloading distribution: "
+								+ distributionModel.getDistriutionDownloadURL() + " (DownloadURL property).");
+				
+				log.info("Downloading distribution: "
 								+ distributionModel.getDistriutionDownloadURL() + " (DownloadURL property).");
 
 				downloadedFile.downloadDistribution(distributionModel
@@ -116,7 +125,7 @@ public class DataID {
 				// save distribution in a mongodb object
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 						"Saving mongodb \"Distribution\" document.");
-				System.out.println("Saving mongodb \"Distribution\" document.");
+				log.info("Saving mongodb \"Distribution\" document.");
 
 				distributionMongoDBObj.setNumberOfObjectTriples(String
 						.valueOf(downloadedFile.objectLines));
@@ -158,7 +167,7 @@ public class DataID {
 						// distributionMongoDBObj.addAuthorityObjects(d);
 						count++;
 					 	if(count%100000 == 0){
-						 	System.out.println(count +
+						 	log.info(count +
 								 	" different objects domain saved ("+(downloadedFile.objectDomains.size() - count )+" remaining).");
 						 	bean.addDisplayMessage(
 								 	DataIDGeneralProperties.MESSAGE_INFO,count
@@ -172,9 +181,6 @@ public class DataID {
 					
 					d2.updateObject(false);
 				}
-				
-				
-				
 				
 				// remove old subjects domains
 				id = new ObjectId();
@@ -192,7 +198,7 @@ public class DataID {
 						// distributionMongoDBObj.addAuthorityObjects(d);
 						count++;
 					 	if(count%100000 == 0){
-						 	System.out.println(count +
+						 	log.info(count +
 								 	" different subjects domain saved ("+(downloadedFile.subjectDomains.size() - count )+" remaining).");
 						 	bean.addDisplayMessage(
 								 	DataIDGeneralProperties.MESSAGE_INFO,count
@@ -209,13 +215,13 @@ public class DataID {
 				
 					
 				
-				 System.out.println(downloadedFile.objectDomains.size() +
+				 log.info(downloadedFile.objectDomains.size() +
 						 " different objects domain saved.");
 				 bean.addDisplayMessage(
 						 DataIDGeneralProperties.MESSAGE_INFO,downloadedFile.objectDomains.size() +
 						 " different objects domain saved.");
 				 
-				 System.out.println(downloadedFile.subjectDomains.size() +
+				 log.info(downloadedFile.subjectDomains.size() +
 						 " different subjects domain saved.");
 				 bean.addDisplayMessage(
 						 DataIDGeneralProperties.MESSAGE_INFO,downloadedFile.subjectDomains.size() +
@@ -226,7 +232,7 @@ public class DataID {
 
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 						"Done saving mongodb distribution object.");
-				System.out.println("Done saving mongodb distribution object.");
+				log.info("Done saving mongodb distribution object.");
 
 				// adding authority domain in the authority bloom filter
 				GoogleBloomFilter authorityFilter = new GoogleBloomFilter(
@@ -239,7 +245,7 @@ public class DataID {
 						DataIDGeneralProperties.MESSAGE_INFO,
 						"Distribution saved! "
 								+ distributionModel.getDistriutionDownloadURL());
-				System.out.println("Distribution saved! ");
+				log.info("Distribution saved! ");
 				bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
 				bean.pushDownloadInfo();
 
@@ -255,7 +261,7 @@ public class DataID {
 						e.getMessage());
 				bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
 				bean.pushDownloadInfo();
-				bean.pushDataIDList();
+				bean.pushDistributionList();
 				e.printStackTrace();
 				distributionMongoDBObj.setLastErrorMsg(e.getMessage());
 				distributionMongoDBObj.setSuccessfullyDownloaded(false);
@@ -273,6 +279,16 @@ public class DataID {
 			// BasicConfigurator.configure();
 
 			this.bean = bean;
+			
+	        fh.setFormatter(new Formatter() {
+	            public String format(LogRecord record) {
+	                return record.getLevel() + "  :  "
+	                    + record.getSourceClassName() + " -:- "
+	                    + record.getSourceMethodName() + " -:- "
+	                    + record.getMessage() + "\n";
+	              }
+	            });  
+	        log.addHandler(fh);
 
 			FileUtils.checkIfFolderExists();
 
@@ -285,13 +301,18 @@ public class DataID {
 			// create jena models
 			name = dataIDModel.readModel(URL);
 
-			if (name == null)
+			if (name == null){
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
 						"Impossible to read dataset. Perhaps that's not a valid DataID file. Dataset: "
 								+ name);
-			else
+				log.warning("Impossible to read dataset. Perhaps that's not a valid DataID file. Dataset: "
+								+ name);
+			}
+			else{
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 						"Dataset: " + name);
+				log.info("Dataset: " + name);
+			}
 
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 					"Downloading and parsing distribution.");
@@ -323,8 +344,9 @@ public class DataID {
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
 					e.getMessage());
 			e.printStackTrace();
+			log.warning(e.getMessage());
 		}
-		System.out.println("END");
+		log.info("END");
 		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "end");
 	}
 

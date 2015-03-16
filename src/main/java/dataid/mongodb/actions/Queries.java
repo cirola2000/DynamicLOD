@@ -25,32 +25,30 @@ public class Queries {
 	
 
 	// return all DataIDs file
-	public static String getDataIDs() {
+	public static String getDistributionStatus() {
 		String str = "";
 
 		try {
 			DBCollection collection = DataIDDB.getInstance().getCollection(
-					DatasetMongoDBObject.COLLECTION_NAME);
+					DistributionMongoDBObject.COLLECTION_NAME);
 			DBCursor instances = collection.find();
 
 			for (DBObject instance : instances) {
 
-				str = str + instance.get(DataIDDB.URI).toString() + "<br>";
+				str = str + instance.get(DistributionMongoDBObject.DOWNLOAD_URL).toString();
+				if(instance.get(DistributionMongoDBObject.SUCCESSFULLY_DOWNLOADED).toString() == "true"){
+					str = str + " <span style=\"color:green\"> OK! </span>";
+				}
+				else
+					str = str +" <span style=\"color:red\">"+ instance.get(DistributionMongoDBObject.LAST_ERROR_MSG).toString()+"</span>";
+				str = str + "<br>";
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return str;
-	}
-
-	
-
-
-
-
-	
-	
+	}	
 	
 	
 
