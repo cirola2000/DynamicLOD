@@ -503,18 +503,6 @@
  dataid:versionInfo "3.9" ;
  dcat:distribution <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/article_categories_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "article categories en" ;
-  dct:description "DBpedia dumpfile: article_categories_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "10-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.nq.bz2> ;
-  dcat:byteSize "270000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
 
 <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2>
   a dcat:Distribution ;
@@ -529,45 +517,6 @@
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
 
-<http://downloads.dbpedia.org/3.9/en/article_categories_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "article categories en" ;
-  dct:description "DBpedia dumpfile: article_categories_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.tql.bz2> ;
-  dcat:byteSize "268000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/article_categories_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "article categories en" ;
-  dct:description "DBpedia dumpfile: article_categories_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.ttl.bz2> ;
-  dcat:byteSize "159000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/category_labels_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "category labels en" ;
-  dct:description "DBpedia dumpfile: category_labels_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "10-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/category_labels_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/category_labels_en.nq.bz2> ;
-  dcat:byteSize "18000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
-
 <http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "category labels en" ;
@@ -580,45 +529,6 @@
   dcat:byteSize "11000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
-
-<http://downloads.dbpedia.org/3.9/en/category_labels_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "category labels en" ;
-  dct:description "DBpedia dumpfile: category_labels_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/category_labels_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/category_labels_en.tql.bz2> ;
-  dcat:byteSize "18000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/category_labels_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "category labels en" ;
-  dct:description "DBpedia dumpfile: category_labels_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/category_labels_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/category_labels_en.ttl.bz2> ;
-  dcat:byteSize "11000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/disambiguations_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "disambiguations en" ;
-  dct:description "DBpedia dumpfile: disambiguations_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "10-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nq.bz2> ;
-  dcat:byteSize "17000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
 
 <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nt.bz2>
   a dcat:Distribution ;
@@ -633,45 +543,6 @@
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
 
-<http://downloads.dbpedia.org/3.9/en/disambiguations_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "disambiguations en" ;
-  dct:description "DBpedia dumpfile: disambiguations_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/disambiguations_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/disambiguations_en.tql.bz2> ;
-  dcat:byteSize "17000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/disambiguations_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "disambiguations en" ;
-  dct:description "DBpedia dumpfile: disambiguations_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/disambiguations_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/disambiguations_en.ttl.bz2> ;
-  dcat:byteSize "10000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/external_links_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "external links en" ;
-  dct:description "DBpedia dumpfile: external_links_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "10-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/external_links_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/external_links_en.nq.bz2> ;
-  dcat:byteSize "194000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
-
 <http://downloads.dbpedia.org/3.9/en/external_links_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "external links en" ;
@@ -684,45 +555,6 @@
   dcat:byteSize "137000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
-
-<http://downloads.dbpedia.org/3.9/en/external_links_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "external links en" ;
-  dct:description "DBpedia dumpfile: external_links_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/external_links_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/external_links_en.tql.bz2> ;
-  dcat:byteSize "194000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/external_links_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "external links en" ;
-  dct:description "DBpedia dumpfile: external_links_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/external_links_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/external_links_en.ttl.bz2> ;
-  dcat:byteSize "137000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "geo coordinates en" ;
-  dct:description "DBpedia dumpfile: geo_coordinates_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "10-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nq.bz2> ;
-  dcat:byteSize "21000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
 
 <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2>
   a dcat:Distribution ;
@@ -737,45 +569,6 @@
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
 
-<http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "geo coordinates en" ;
-  dct:description "DBpedia dumpfile: geo_coordinates_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.tql.bz2> ;
-  dcat:byteSize "21000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "geo coordinates en" ;
-  dct:description "DBpedia dumpfile: geo_coordinates_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.ttl.bz2> ;
-  dcat:byteSize "14000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/homepages_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "homepages en" ;
-  dct:description "DBpedia dumpfile: homepages_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "10-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/homepages_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/homepages_en.nq.bz2> ;
-  dcat:byteSize "14000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
-
 <http://downloads.dbpedia.org/3.9/en/homepages_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "homepages en" ;
@@ -788,45 +581,6 @@
   dcat:byteSize "8500000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
-
-<http://downloads.dbpedia.org/3.9/en/homepages_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "homepages en" ;
-  dct:description "DBpedia dumpfile: homepages_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/homepages_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/homepages_en.tql.bz2> ;
-  dcat:byteSize "14000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/homepages_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "homepages en" ;
-  dct:description "DBpedia dumpfile: homepages_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/homepages_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/homepages_en.ttl.bz2> ;
-  dcat:byteSize "8500000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/images_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "images en" ;
-  dct:description "DBpedia dumpfile: images_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "10-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/images_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/images_en.nq.bz2> ;
-  dcat:byteSize "112000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
 
 <http://downloads.dbpedia.org/3.9/en/images_en.nt.bz2>
   a dcat:Distribution ;
@@ -841,45 +595,6 @@
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
 
-<http://downloads.dbpedia.org/3.9/en/images_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "images en" ;
-  dct:description "DBpedia dumpfile: images_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/images_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/images_en.tql.bz2> ;
-  dcat:byteSize "111000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/images_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "images en" ;
-  dct:description "DBpedia dumpfile: images_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/images_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/images_en.ttl.bz2> ;
-  dcat:byteSize "84000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/instance_types_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "instance types en" ;
-  dct:description "DBpedia dumpfile: instance_types_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "10-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/instance_types_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/instance_types_en.nq.bz2> ;
-  dcat:byteSize "113000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
-
 <http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "instance types en" ;
@@ -892,32 +607,6 @@
   dcat:byteSize "71000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
-
-<http://downloads.dbpedia.org/3.9/en/instance_types_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "instance types en" ;
-  dct:description "DBpedia dumpfile: instance_types_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/instance_types_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/instance_types_en.tql.bz2> ;
-  dcat:byteSize "111000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/instance_types_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "instance types en" ;
-  dct:description "DBpedia dumpfile: instance_types_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/instance_types_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/instance_types_en.ttl.bz2> ;
-  dcat:byteSize "71000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
 
 <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2>
   a dcat:Distribution ;
@@ -932,32 +621,6 @@
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
 
-<http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "instance types heuristic en" ;
-  dct:description "DBpedia dumpfile: instance_types_heuristic_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "30-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.ttl.bz2> ;
-  dcat:byteSize "17000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "interlanguage links chapters en" ;
-  dct:description "DBpedia dumpfile: interlanguage_links_chapters_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nq.bz2> ;
-  dcat:byteSize "130000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
-
 <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "interlanguage links chapters en" ;
@@ -970,32 +633,6 @@
   dcat:byteSize "113000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
-
-<http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "interlanguage links chapters en" ;
-  dct:description "DBpedia dumpfile: interlanguage_links_chapters_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.tql.bz2> ;
-  dcat:byteSize "128000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "interlanguage links chapters en" ;
-  dct:description "DBpedia dumpfile: interlanguage_links_chapters_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.ttl.bz2> ;
-  dcat:byteSize "111000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
 
 <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2>
   a dcat:Distribution ;
@@ -1010,32 +647,6 @@
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
 
-<http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "iri same as uri en" ;
-  dct:description "DBpedia dumpfile: iri_same_as_uri_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.ttl.bz2> ;
-  dcat:byteSize "12000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/labels_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "labels en" ;
-  dct:description "DBpedia dumpfile: labels_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "10-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels_en.nq.bz2> ;
-  dcat:byteSize "222000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
-
 <http://downloads.dbpedia.org/3.9/en/labels_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "labels en" ;
@@ -1048,45 +659,6 @@
   dcat:byteSize "144000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
-
-<http://downloads.dbpedia.org/3.9/en/labels_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "labels en" ;
-  dct:description "DBpedia dumpfile: labels_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels_en.tql.bz2> ;
-  dcat:byteSize "219000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/labels_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "labels en" ;
-  dct:description "DBpedia dumpfile: labels_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels_en.ttl.bz2> ;
-  dcat:byteSize "142000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "long abstracts en" ;
-  dct:description "DBpedia dumpfile: long_abstracts_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "10-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nq.bz2> ;
-  dcat:byteSize "706000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
 
 <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2>
   a dcat:Distribution ;
@@ -1101,45 +673,6 @@
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
 
-<http://downloads.dbpedia.org/3.9/en/long_abstracts_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "long abstracts en" ;
-  dct:description "DBpedia dumpfile: long_abstracts_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.tql.bz2> ;
-  dcat:byteSize "704000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/long_abstracts_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "long abstracts en" ;
-  dct:description "DBpedia dumpfile: long_abstracts_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.ttl.bz2> ;
-  dcat:byteSize "666000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "mappingbased properties cleaned en" ;
-  dct:description "DBpedia dumpfile: mappingbased_properties_cleaned_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "07-Feb-2014"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nq.bz2> ;
-  dcat:byteSize "302000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
-
 <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "mappingbased properties cleaned en" ;
@@ -1152,45 +685,6 @@
   dcat:byteSize "213000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
-
-<http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "mappingbased properties cleaned en" ;
-  dct:description "DBpedia dumpfile: mappingbased_properties_cleaned_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "07-Feb-2014"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.tql.bz2> ;
-  dcat:byteSize "300000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "mappingbased properties cleaned en" ;
-  dct:description "DBpedia dumpfile: mappingbased_properties_cleaned_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "07-Feb-2014"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.ttl.bz2> ;
-  dcat:byteSize "212000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/page_ids_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "page ids en" ;
-  dct:description "DBpedia dumpfile: page_ids_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "10-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_ids_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_ids_en.nq.bz2> ;
-  dcat:byteSize "232000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
 
 <http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2>
   a dcat:Distribution ;
@@ -1205,45 +699,6 @@
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
 
-<http://downloads.dbpedia.org/3.9/en/page_ids_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "page ids en" ;
-  dct:description "DBpedia dumpfile: page_ids_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_ids_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_ids_en.tql.bz2> ;
-  dcat:byteSize "229000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/page_ids_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "page ids en" ;
-  dct:description "DBpedia dumpfile: page_ids_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_ids_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_ids_en.ttl.bz2> ;
-  dcat:byteSize "131000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/persondata_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "persondata en" ;
-  dct:description "DBpedia dumpfile: persondata_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/persondata_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/persondata_en.nq.bz2> ;
-  dcat:byteSize "80000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
-
 <http://downloads.dbpedia.org/3.9/en/persondata_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "persondata en" ;
@@ -1256,45 +711,6 @@
   dcat:byteSize "47000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
-
-<http://downloads.dbpedia.org/3.9/en/persondata_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "persondata en" ;
-  dct:description "DBpedia dumpfile: persondata_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/persondata_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/persondata_en.tql.bz2> ;
-  dcat:byteSize "79000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/persondata_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "persondata en" ;
-  dct:description "DBpedia dumpfile: persondata_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/persondata_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/persondata_en.ttl.bz2> ;
-  dcat:byteSize "47000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/pnd_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "pnd en" ;
-  dct:description "DBpedia dumpfile: pnd_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/pnd_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/pnd_en.nq.bz2> ;
-  dcat:byteSize "1600"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
 
 <http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2>
   a dcat:Distribution ;
@@ -1309,45 +725,6 @@
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
 
-<http://downloads.dbpedia.org/3.9/en/pnd_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "pnd en" ;
-  dct:description "DBpedia dumpfile: pnd_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/pnd_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/pnd_en.tql.bz2> ;
-  dcat:byteSize "1600"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/pnd_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "pnd en" ;
-  dct:description "DBpedia dumpfile: pnd_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/pnd_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/pnd_en.ttl.bz2> ;
-  dcat:byteSize "1000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "raw infobox properties en" ;
-  dct:description "DBpedia dumpfile: raw_infobox_properties_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "10-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nq.bz2> ;
-  dcat:byteSize "789000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
-
 <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "raw infobox properties en" ;
@@ -1360,45 +737,6 @@
   dcat:byteSize "527000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
-
-<http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "raw infobox properties en" ;
-  dct:description "DBpedia dumpfile: raw_infobox_properties_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.tql.bz2> ;
-  dcat:byteSize "786000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "raw infobox properties en" ;
-  dct:description "DBpedia dumpfile: raw_infobox_properties_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://localhost:8080/dataids_example/raw_infobox_properties_en.ttl.bz2> ;
-  dcat:downloadURL <http://localhost:8080/dataids_example/raw_infobox_properties_en.ttl.bz2> ;
-  dcat:byteSize "525000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "raw infobox property definitions en" ;
-  dct:description "DBpedia dumpfile: raw_infobox_property_definitions_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "10-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nq.bz2> ;
-  dcat:byteSize "1500000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
 
 <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2>
   a dcat:Distribution ;
@@ -1413,32 +751,6 @@
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
 
-<http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "raw infobox property definitions en" ;
-  dct:description "DBpedia dumpfile: raw_infobox_property_definitions_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.tql.bz2> ;
-  dcat:byteSize "1500000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "raw infobox property definitions en" ;
-  dct:description "DBpedia dumpfile: raw_infobox_property_definitions_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.ttl.bz2> ;
-  dcat:byteSize "684000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
 <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "redirects transitive en" ;
@@ -1451,32 +763,6 @@
   dcat:byteSize "81000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
-
-<http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "redirects transitive en" ;
-  dct:description "DBpedia dumpfile: redirects_transitive_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.ttl.bz2> ;
-  dcat:byteSize "81000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/revision_ids_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "revision ids en" ;
-  dct:description "DBpedia dumpfile: revision_ids_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nq.bz2> ;
-  dcat:byteSize "240000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
 
 <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2>
   a dcat:Distribution ;
@@ -1491,45 +777,6 @@
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
 
-<http://downloads.dbpedia.org/3.9/en/revision_ids_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "revision ids en" ;
-  dct:description "DBpedia dumpfile: revision_ids_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision_ids_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision_ids_en.tql.bz2> ;
-  dcat:byteSize "238000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/revision_ids_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "revision ids en" ;
-  dct:description "DBpedia dumpfile: revision_ids_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision_ids_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision_ids_en.ttl.bz2> ;
-  dcat:byteSize "147000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/revision_uris_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "revision uris en" ;
-  dct:description "DBpedia dumpfile: revision_uris_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nq.bz2> ;
-  dcat:byteSize "260000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
-
 <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "revision uris en" ;
@@ -1542,45 +789,6 @@
   dcat:byteSize "197000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
-
-<http://downloads.dbpedia.org/3.9/en/revision_uris_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "revision uris en" ;
-  dct:description "DBpedia dumpfile: revision_uris_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision_uris_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision_uris_en.tql.bz2> ;
-  dcat:byteSize "257000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/revision_uris_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "revision uris en" ;
-  dct:description "DBpedia dumpfile: revision_uris_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision_uris_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision_uris_en.ttl.bz2> ;
-  dcat:byteSize "194000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "short abstracts en" ;
-  dct:description "DBpedia dumpfile: short_abstracts_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nq.bz2> ;
-  dcat:byteSize "402000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
 
 <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2>
   a dcat:Distribution ;
@@ -1595,45 +803,6 @@
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
 
-<http://downloads.dbpedia.org/3.9/en/short_abstracts_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "short abstracts en" ;
-  dct:description "DBpedia dumpfile: short_abstracts_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.tql.bz2> ;
-  dcat:byteSize "400000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/short_abstracts_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "short abstracts en" ;
-  dct:description "DBpedia dumpfile: short_abstracts_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.ttl.bz2> ;
-  dcat:byteSize "362000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/skos_categories_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "skos categories en" ;
-  dct:description "DBpedia dumpfile: skos_categories_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nq.bz2> ;
-  dcat:byteSize "46000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
-
 <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "skos categories en" ;
@@ -1646,45 +815,6 @@
   dcat:byteSize "29000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
-
-<http://downloads.dbpedia.org/3.9/en/skos_categories_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "skos categories en" ;
-  dct:description "DBpedia dumpfile: skos_categories_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/skos_categories_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/skos_categories_en.tql.bz2> ;
-  dcat:byteSize "46000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/skos_categories_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "skos categories en" ;
-  dct:description "DBpedia dumpfile: skos_categories_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/skos_categories_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/skos_categories_en.ttl.bz2> ;
-  dcat:byteSize "29000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "specific mappingbased properties en" ;
-  dct:description "DBpedia dumpfile: specific_mappingbased_properties_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nq.bz2> ;
-  dcat:byteSize "12000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
 
 <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2>
   a dcat:Distribution ;
@@ -1699,45 +829,6 @@
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
 
-<http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "specific mappingbased properties en" ;
-  dct:description "DBpedia dumpfile: specific_mappingbased_properties_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.tql.bz2> ;
-  dcat:byteSize "12000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "specific mappingbased properties en" ;
-  dct:description "DBpedia dumpfile: specific_mappingbased_properties_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.ttl.bz2> ;
-  dcat:byteSize "6700000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
-
-<http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nq.bz2>
-  a dcat:Distribution ;
-  dct:title "wikipedia links en" ;
-  dct:description "DBpedia dumpfile: wikipedia_links_en.nq.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nq.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nq.bz2> ;
-  dcat:byteSize "332000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nq" .
-
 <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2>
   a dcat:Distribution ;
   dct:title "wikipedia links en" ;
@@ -1750,29 +841,3 @@
   dcat:byteSize "215000000"^^xsd:decimal ;
   dcat:mediaType "application/x-bzip" ;
   dct:format  "nt" .
-
-<http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.tql.bz2>
-  a dcat:Distribution ;
-  dct:title "wikipedia links en" ;
-  dct:description "DBpedia dumpfile: wikipedia_links_en.tql.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "11-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.tql.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.tql.bz2> ;
-  dcat:byteSize "328000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "tql" .
-
-<http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.ttl.bz2>
-  a dcat:Distribution ;
-  dct:title "wikipedia links en" ;
-  dct:description "DBpedia dumpfile: wikipedia_links_en.ttl.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.ttl.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.ttl.bz2> ;
-  dcat:byteSize "212000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "ttl" .
