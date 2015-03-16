@@ -39,8 +39,12 @@ public class Queries {
 				if(instance.get(DistributionMongoDBObject.SUCCESSFULLY_DOWNLOADED).toString() == "true"){
 					str = str + " <span style=\"color:green\"> OK! </span>";
 				}
-				else
-					str = str +" <span style=\"color:red\">"+ instance.get(DistributionMongoDBObject.LAST_ERROR_MSG).toString()+"</span>";
+				else{
+					if(instance.get(DistributionMongoDBObject.LAST_ERROR_MSG).toString() != null)
+						str = str +" <span style=\"color:red\">"+ instance.get(DistributionMongoDBObject.LAST_ERROR_MSG).toString()+"</span>";
+					else
+						str = str +" <span style=\"color:red\"> Error! </span>";
+				}
 				str = str + "<br>";
 			}
 
