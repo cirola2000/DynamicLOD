@@ -82,12 +82,12 @@ public class CreateOutputByDatasets extends HttpServlet {
 										+ "Linkset"));
 						r.addProperty(
 								ResourceFactory.createProperty(NS.VOID_URI
-										+ "subjectsTarget"), ResourceFactory
+										+ "objectsTarget"), ResourceFactory
 										.createProperty(linkset
 												.getSubjectsDatasetTarget()
 												.toString()));
 						r.addProperty(ResourceFactory
-								.createProperty(NS.VOID_URI + "objectsTarget"),
+								.createProperty(NS.VOID_URI + "subjectsTarget"),
 								ResourceFactory.createProperty(linkset
 										.getObjectsDatasetTarget().toString()));
 						r.addProperty(ResourceFactory

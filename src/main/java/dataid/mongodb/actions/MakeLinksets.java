@@ -120,7 +120,7 @@ public class MakeLinksets {
 				String sCurrentLine;
 
 				// loading objects and creating a buffer to send to threads
-				int bufferSize = 500;
+				int bufferSize = 1400;
 
 				String[] buffer = new String[bufferSize];
 
@@ -157,6 +157,26 @@ public class MakeLinksets {
 
 						}
 					}
+					
+					int threadIndex = 0;
+					// using the rest of the buffer
+					Thread[] threads = new Thread[listOfDataThreads
+													.size()];
+					for (DataModelThread dataThread2 : listOfDataThreads) {
+						threads[threadIndex] = new Thread(
+								new JobThread(dataThread2,
+										buffer.clone(), bufferIndex));
+						threads[threadIndex].start();
+						threadIndex++;
+					}
+
+					// wait all threads finish and then start load
+					// buffer again
+					for (int d = 0; d < threads.length; d++)
+						threads[d].join();
+
+					bufferIndex = 0;					
+					
 				}
 				else{
 					bean.addDisplayMessage(

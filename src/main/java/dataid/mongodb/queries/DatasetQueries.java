@@ -11,6 +11,7 @@ import dataid.mongodb.objects.DatasetMongoDBObject;
 
 public class DatasetQueries {
 	// return number of datasets
+	
 	public static int getNumberOfDatasets() {
 		int numberOfDatasets = 0;
 		try {

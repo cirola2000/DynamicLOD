@@ -84,12 +84,12 @@ public class CreateOutputByDistributions extends HttpServlet {
 										+ "Linkset"));
 						r.addProperty(
 								ResourceFactory.createProperty(NS.VOID_URI
-										+ "subjectsTarget"), ResourceFactory
+										+ "objectsTarget"), ResourceFactory
 										.createProperty(linkset
 												.getSubjectsDistributionTarget()
 												.toString()));
 						r.addProperty(ResourceFactory
-								.createProperty(NS.VOID_URI + "objectsTarget"),
+								.createProperty(NS.VOID_URI + "subjectsTarget"),
 								ResourceFactory.createProperty(linkset
 										.getObjectsDistributionTarget().toString()));
 						r.addProperty(ResourceFactory
