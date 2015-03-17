@@ -51,6 +51,10 @@ public class MakeLinksets {
 				ArrayList<DistributionMongoDBObject> disributionsToCompare = DistributionQueries
 						.getDistributionsByAuthority((String) distribution
 								.getDownloadUrl());
+				
+				// uptate status of distribution
+				distribution.setStatus(DistributionMongoDBObject.STATUS_CREATING_LINKSETS);
+				distribution.updateObject(true);
 
 				// make some validations
 				if(distribution
@@ -213,6 +217,10 @@ public class MakeLinksets {
 				}
 				distribution.setLastTimeLinkset(String.valueOf(new Date()));
 				distribution.updateObject(false);
+				
+				// uptate status of distribution
+				distribution.setStatus(DistributionMongoDBObject.STATUS_DONE);
+				distribution.updateObject(true);
 			}
 
 		} catch (Exception e) {

@@ -15,17 +15,21 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	
 	// Distributions status on the system
-	public static final String STATUS_FIRST_CREATED_ON_DB = "FIRST_CREATED_ON_DB";
+	public static final String STATUS_WAITING_TO_CREATE_LINKSETS = "WAITING_TO_CREATE_LINKSETS";
 	
 	public static final String STATUS_DOWNLOADING = "DOWNLOADING";
 
-	public static final String STATUS_SAVED_ON_DB = "SAVED_ON_DB";
+	public static final String STATUS_DOWNLOADED = "DOWNLOADED";
+
+	public static final String STATUS_SEPARATING_SUBJECTS_AND_OBJECTS = "SEPARATING_SUBJECTS_AND_OBJECTS";
+
+	public static final String STATUS_WAITING_TO_DOWNLOAD = "WAITING_TO_DOWNLOAD";
 	
 	public static final String STATUS_CREATING_BLOOM_FILTER = "CREATING_BLOOM_FILTER";
 	
 	public static final String STATUS_CREATING_LINKSETS = "CREATING_LINKSETS";
 	
-	public static final String STATUS_SAVING_LINKSETS = "SAVING_LINKSETS";
+	public static final String STATUS_ERROR = "ERROR";
 	
 	public static final String STATUS_DONE = "DONE";
 	
@@ -106,6 +110,8 @@ public class DistributionMongoDBObject extends DataIDDB {
 	
 	private String lastErrorMsg;
 	
+	private String status;
+	
 	private String lastTimeLinkset;
 
 	public DistributionMongoDBObject(String uri) {
@@ -144,6 +150,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 			mongoDBObject.put(TIME_TO_CREATE_FILTER, timeToCreateFilter);
 			mongoDBObject.put(TITLE, title);
 			mongoDBObject.put(FORMAT, format);	
+			mongoDBObject.put(STATUS, status);	
 			mongoDBObject.put(DOMAIN, domain);
 			mongoDBObject.put(SUCCESSFULLY_DOWNLOADED, successfullyDownloaded);
 			mongoDBObject.put(LAST_ERROR_MSG, lastErrorMsg);
@@ -179,6 +186,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 			httpFormat = (String) obj.get(HTTP_FORMAT);
 			httpLastModified = (String) obj.get(HTTP_LAST_MODIFIED);
 			format = (String) obj.get(FORMAT);
+			status = (String) obj.get(STATUS);
 			timeToCreateFilter = (String) obj.get(TIME_TO_CREATE_FILTER);
 //			((Number) mapObj.get("autostart")).intValue();
 			triples = ((Number) obj.get(TRIPLES)).intValue() ;
@@ -346,6 +354,14 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	public void setLastTimeLinkset(String lastTimeLinkset) {
 		this.lastTimeLinkset = lastTimeLinkset;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

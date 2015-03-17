@@ -145,6 +145,7 @@ public class DataIDModel {
 										.getObject().toString());
 							}
 
+							distributionMongoDBObj.setStatus(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD);
 							distributionMongoDBObj.updateObject(true);
 
 							// update dataset on mongodb with distribution
@@ -292,6 +293,7 @@ public class DataIDModel {
 											.getObject().toString());
 								}
 								
+								distributionMongoDBObj.setStatus(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD);
 								distributionMongoDBObj.updateObject(true);
 
 								// update dataset on mongodb with distribution
@@ -321,7 +323,7 @@ public class DataIDModel {
 		inModel.read(URL, null, "TTL");
 		ResIterator i = inModel.listResourcesWithProperty(Dataset.dataIDType,
 				Dataset.dataIDDataset);
-		if (i.hasNext()) {
+		while (i.hasNext()) {
 			name = i.next().getURI().toString();
 			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 					"Jena model created. ");
@@ -331,7 +333,7 @@ public class DataIDModel {
 			inModel.write(new FileOutputStream(new File(
 					DataIDGeneralProperties.DATAID_PATH + dataIDURL)));
 		}
-		else{
+		if(name==null){
 			throw new DataIDException("It's not possible to find a dataid:Dataset. Check your dataid namespace "+NS.DATAID_URI);
 		}
 

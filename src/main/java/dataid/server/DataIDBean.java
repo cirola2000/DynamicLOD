@@ -163,7 +163,7 @@ public class DataIDBean implements Serializable, Runnable {
 	}
 
 	public String getDistributionList() {
-		this.distributionIDList = Queries.getDistributionStatus();
+		this.distributionIDList = Queries.getHTMLDistributionStatus();
 		return distributionIDList;
 	}
 

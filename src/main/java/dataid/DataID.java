@@ -54,6 +54,16 @@ public class DataID {
 			DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
 					distributionModel.getDistribution());
 			try {
+				// check if distribution have not already been handled
+				if(!distributionMongoDBObj.getStatus().equals(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD)){
+					throw new DataIDException("Distribution "+distributionMongoDBObj.getDownloadUrl()+" is being downloaded now from other thread.");
+				}
+				
+				// uptate status of distribution to downloading
+				distributionMongoDBObj.setStatus(DistributionMongoDBObject.STATUS_DOWNLOADING);
+				distributionMongoDBObj.updateObject(true);
+				bean.pushDistributionList();
+				
 				// now we need to download the distribution
 				DownloadAndSave downloadedFile = new DownloadAndSave();
 
@@ -70,9 +80,20 @@ public class DataID {
 						.getDistriutionDownloadURL(),
 						Formats.getEquivalentFormat(distributionMongoDBObj
 								.getFormat()), bean);
+				
+				// uptate status of distribution
+				distributionMongoDBObj.setStatus(DistributionMongoDBObject.STATUS_DOWNLOADED);
+				distributionMongoDBObj.updateObject(true);
+				bean.pushDistributionList();
 
 				// check if format is not ntriples
 				if (!downloadedFile.extension.equals(Formats.DEFAULT_NTRIPLES)) {
+					
+					// uptate status of distribution
+					distributionMongoDBObj.setStatus(DistributionMongoDBObject.STATUS_SEPARATING_SUBJECTS_AND_OBJECTS);
+					distributionMongoDBObj.updateObject(true);
+					bean.pushDistributionList();
+					
 					PrepareFiles p = new PrepareFiles();
 					// separating subjects and objects using rapper and awk
 					// error to convert dbpedia files from turtle using rapper
@@ -93,6 +114,11 @@ public class DataID {
 
 				}
 
+				// uptate status of distribution 
+				distributionMongoDBObj.setStatus(DistributionMongoDBObject.STATUS_CREATING_BLOOM_FILTER);
+				distributionMongoDBObj.updateObject(true);
+				bean.pushDistributionList();
+				
 				// make a filter with subjects
 				GoogleBloomFilter filter;
 				if (downloadedFile.subjectLines != 0) {
@@ -122,6 +148,8 @@ public class DataID {
 				filter.saveFilter(downloadedFile.fileName);
 				// save filter
 
+				
+				
 				// save distribution in a mongodb object
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 						"Saving mongodb \"Distribution\" document.");
@@ -229,17 +257,16 @@ public class DataID {
 
 				distributionMongoDBObj.setSuccessfullyDownloaded(true);
 				distributionMongoDBObj.updateObject(true);
+				bean.pushDistributionList();
 
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 						"Done saving mongodb distribution object.");
 				log.info("Done saving mongodb distribution object.");
-
-				// adding authority domain in the authority bloom filter
-				GoogleBloomFilter authorityFilter = new GoogleBloomFilter(
-						100000, 0.0001);
-				authorityFilter
-						.addAuthorityDomainToFilter(distributionMongoDBObj
-								.getDomain());
+				
+				
+				// uptate status of distribution 
+				distributionMongoDBObj.setStatus(DistributionMongoDBObject.STATUS_WAITING_TO_CREATE_LINKSETS);
+				distributionMongoDBObj.updateObject(true);
 				
 				bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_INFO,
@@ -249,7 +276,7 @@ public class DataID {
 				bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
 				bean.pushDownloadInfo();
 
-			} catch (DataIDException e) {
+			} catch (DataIDException e) {				
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
 						e.getMessage());
 				bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
@@ -257,6 +284,10 @@ public class DataID {
 				e.printStackTrace();
 			}
 			catch (Exception e) {
+				// uptate status of distribution 
+				distributionMongoDBObj.setStatus(DistributionMongoDBObject.STATUS_ERROR);
+				distributionMongoDBObj.updateObject(true);
+				
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
 						e.getMessage());
 				bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
@@ -276,8 +307,8 @@ public class DataID {
 
 	public DataID(String URL, DataIDBean bean) {
 		try {
-			// BasicConfigurator.configure();
-
+			
+			
 			this.bean = bean;
 			
 	        fh.setFormatter(new Formatter() {

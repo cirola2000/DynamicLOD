@@ -18,7 +18,7 @@ public class Queries {
 	
 
 	// return all DataIDs file
-	public static String getDistributionStatus() {
+	public static String getHTMLDistributionStatus() {
 		String str = "";
 
 		try {
@@ -26,22 +26,27 @@ public class Queries {
 					DistributionMongoDBObject.COLLECTION_NAME);
 			DBCursor instances = collection.find();
 
+			str = str + "<table><tr><th style=\"width:570px\">DownloadURL</th><th style=\"margin-left:15px\">Status</th></tr>";
 			for (DBObject instance : instances) {
-
+				str = str + "<tr><td>";
 				str = str + instance.get(DistributionMongoDBObject.DOWNLOAD_URL).toString();
-				if(instance.get(DistributionMongoDBObject.SUCCESSFULLY_DOWNLOADED).toString() == "true"){
-					str = str + " <span style=\"color:green\"> OK! </span>";
-				}
-				else{
-					if(instance.get(DistributionMongoDBObject.LAST_ERROR_MSG) != null)
-						str = str +" <span style=\"color:red\">"+ instance.get(DistributionMongoDBObject.LAST_ERROR_MSG).toString()+"</span>";
-					else
-						str = str +" <span style=\"color:red\"> Error! </span>";
-				}
-				str = str + "<br>";
+				str = str + "</td><td>";
+				str = str + "<span style=\"color:green\"> "+instance.get(DistributionMongoDBObject.STATUS).toString()+"</span>";
+//				str = str + "</td><td>";
+//				if(instance.get(DistributionMongoDBObject.SUCCESSFULLY_DOWNLOADED).toString() == "true"){
+////					str = str + " <span style=\"color:green\"> OK! </span>";
+//				}
+//				else{
+//					if(instance.get(DistributionMongoDBObject.LAST_ERROR_MSG) != null)
+//						str = str +" <span style=\"color:red\">"+ instance.get(DistributionMongoDBObject.LAST_ERROR_MSG).toString()+"</span>";
+//					
+//				}
+				str = str + "</tr></td>";
 			}
+			str = str + "</table>";
 
 		} catch (Exception e) {
+			str = str + "</table>";
 			e.printStackTrace();
 		}
 		return str;
