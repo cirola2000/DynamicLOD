@@ -60,7 +60,7 @@ public class Service extends HttpServlet {
 				JSONArray outdegreeArray = new JSONArray();
 				for(LinksetMongoDBObject linkset : linksets){
 					JSONObject jsonLinkset = new JSONObject();
-					jsonLinkset.put(linkset.OBJECTS_DISTRIBUTION_TARGET, linkset.getSubjectsDistributionTarget().toString());
+					jsonLinkset.put(linkset.OBJECTS_DISTRIBUTION_TARGET, linkset.getObjectsDistributionTarget().toString());
 					jsonLinkset.put(linkset.LINKS, linkset.getLinks());
 					outdegreeArray.put(jsonLinkset);
 				}

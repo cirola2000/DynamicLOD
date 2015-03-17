@@ -13,6 +13,24 @@ public class DistributionMongoDBObject extends DataIDDB {
 	// Collection name
 	public static final String COLLECTION_NAME = "Distribution";
 
+	
+	// Distributions status on the system
+	public static final String STATUS_FIRST_CREATED_ON_DB = "FIRST_CREATED_ON_DB";
+	
+	public static final String STATUS_DOWNLOADING = "DOWNLOADING";
+
+	public static final String STATUS_SAVED_ON_DB = "SAVED_ON_DB";
+	
+	public static final String STATUS_CREATING_BLOOM_FILTER = "CREATING_BLOOM_FILTER";
+	
+	public static final String STATUS_CREATING_LINKSETS = "CREATING_LINKSETS";
+	
+	public static final String STATUS_SAVING_LINKSETS = "SAVING_LINKSETS";
+	
+	public static final String STATUS_DONE = "DONE";
+	
+	
+	// collection properties
 	public static final String DOWNLOAD_URL = "DownloadUrl";
 
 	public static final String PARENT_DATASETS = "parentDataset";
@@ -28,6 +46,8 @@ public class DistributionMongoDBObject extends DataIDDB {
 	public static final String NUMBER_OF_OBJECTS_TRIPLES = "numberOfObjectTriples";
 
 	public static final String TIME_TO_CREATE_FILTER = "timeToCreateFilter";
+	
+	public static final String STATUS = "status";
 	
 	public static final String SUCCESSFULLY_DOWNLOADED = "successfully_downloaded";
 	
