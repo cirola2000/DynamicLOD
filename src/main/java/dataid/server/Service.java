@@ -55,12 +55,12 @@ public class Service extends HttpServlet {
 				}
 				obj.put("indegree", indegreeArray); 
 				
-				linksets = LinksetQueries.getLinksetsInDegreeByDistribution(url);
+				linksets = LinksetQueries.getLinksetsOutDegreeByDistribution(url);
 				
 				JSONArray outdegreeArray = new JSONArray();
 				for(LinksetMongoDBObject linkset : linksets){
 					JSONObject jsonLinkset = new JSONObject();
-					jsonLinkset.put(linkset.SUBJECTS_DISTRIBUTION_TARGET, linkset.getSubjectsDistributionTarget().toString());
+					jsonLinkset.put(linkset.OBJECTS_DISTRIBUTION_TARGET, linkset.getSubjectsDistributionTarget().toString());
 					jsonLinkset.put(linkset.LINKS, linkset.getLinks());
 					outdegreeArray.put(jsonLinkset);
 				}

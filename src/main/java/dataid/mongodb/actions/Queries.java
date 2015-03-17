@@ -1,10 +1,7 @@
 package dataid.mongodb.actions;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import org.junit.Test;
 
 import com.mongodb.AggregationOutput;
 import com.mongodb.BasicDBObject;
@@ -14,12 +11,8 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
 import dataid.mongodb.DataIDDB;
-import dataid.mongodb.objects.DatasetMongoDBObject;
 import dataid.mongodb.objects.DistributionMongoDBObject;
-import dataid.mongodb.objects.DistributionObjectDomainsMongoDBObject;
-import dataid.mongodb.objects.DistributionSubjectDomainsMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
-import dataid.mongodb.objects.SubsetMongoDBObject;
 
 public class Queries {
 	
