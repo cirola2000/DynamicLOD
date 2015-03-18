@@ -92,8 +92,11 @@
 				</a4j:push>
 				<a4j:outputPanel id="outputdistributionList">
 
-					<h:outputText style="max-height: 450px;" value="#{dataIDBean.distributionList}" escape="false" />
-
+				<div
+						style="border: 1px solid; height: 460px; max-height: 460px; max-width: 725px; overflow: auto;"
+						>
+					<h:outputText  value="#{dataIDBean.distributionList}" escape="false" />
+				</div>
 				</a4j:outputPanel>
 			</h:form>
 		</ui:define>

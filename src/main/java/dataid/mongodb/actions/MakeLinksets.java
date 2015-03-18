@@ -42,6 +42,8 @@ public class MakeLinksets {
 
 			for (DistributionMongoDBObject distribution : distributions) {
 			
+				if(distribution.getStatus().equals(DistributionMongoDBObject.STATUS_WAITING_TO_CREATE_LINKSETS))
+				
 				try{
 				// creating a list of threads to process filters
 				List<DataModelThread> listOfDataThreads = new ArrayList<DataModelThread>();
@@ -51,6 +53,8 @@ public class MakeLinksets {
 				ArrayList<DistributionMongoDBObject> disributionsToCompare = DistributionQueries
 						.getDistributionsByAuthority((String) distribution
 								.getDownloadUrl());
+				
+					
 				
 				// uptate status of distribution
 				distribution.setStatus(DistributionMongoDBObject.STATUS_CREATING_LINKSETS);
@@ -210,6 +214,9 @@ public class MakeLinksets {
 				// save linksets into mongodb
 				saveLinksets(listOfDataThreads);
 
+				// uptate status of distribution
+				distribution.setStatus(DistributionMongoDBObject.STATUS_DONE);
+				distribution.updateObject(true);
 				}
 				catch(Exception e){
 					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
@@ -218,9 +225,6 @@ public class MakeLinksets {
 				distribution.setLastTimeLinkset(String.valueOf(new Date()));
 				distribution.updateObject(false);
 				
-				// uptate status of distribution
-				distribution.setStatus(DistributionMongoDBObject.STATUS_DONE);
-				distribution.updateObject(true);
 			}
 
 		} catch (Exception e) {
