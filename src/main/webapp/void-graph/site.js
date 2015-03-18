@@ -67,11 +67,20 @@ function connect($c1, $c2, color, thickness) {
     $('svg style').after($arrow);
 }
 
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
+}
 
 $(function() {
 
 var N3Util = N3.Util;
-$.post( "/dataid/outputByDistribution", function( data ) {
+$.post( "/dataid/"+$.urlParam('basedOn'), function( data ) {
 	$('textarea').val(data);
 	parseTextarea();
 });

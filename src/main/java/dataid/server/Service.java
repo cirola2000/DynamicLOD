@@ -41,7 +41,6 @@ public class Service extends HttpServlet {
 			obj.put("url", url);
 			
 			if(dist!= null){
-				obj.put(DistributionMongoDBObject.FORMAT, dist.getFormat() );
 				obj.put(DistributionMongoDBObject.LAST_TIME_LINKSET, dist.getLastTimeLinkset());
 				
 				ArrayList<LinksetMongoDBObject> linksets = LinksetQueries.getLinksetsInDegreeByDistribution(url);
@@ -53,7 +52,7 @@ public class Service extends HttpServlet {
 					jsonLinkset.put(linkset.LINKS, linkset.getLinks());
 					indegreeArray.put(jsonLinkset);
 				}
-				obj.put("indegree", indegreeArray); 
+				obj.put("indegreeLinks", indegreeArray); 
 				
 				linksets = LinksetQueries.getLinksetsOutDegreeByDistribution(url);
 				
@@ -64,7 +63,7 @@ public class Service extends HttpServlet {
 					jsonLinkset.put(linkset.LINKS, linkset.getLinks());
 					outdegreeArray.put(jsonLinkset);
 				}
-				obj.put("outdegree", outdegreeArray); 
+				obj.put("outdegreeLinks", outdegreeArray); 
 
 			}
 			else{
