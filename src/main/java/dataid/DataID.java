@@ -53,11 +53,10 @@ public class DataID {
 			// loading mongodb distribution object
 			DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
 					distributionModel.getDistribution());
+			// check if distribution have not already been handled
+			
+			if(distributionMongoDBObj.getStatus().equals(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD))
 			try {
-				// check if distribution have not already been handled
-				if(!distributionMongoDBObj.getStatus().equals(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD)){
-					throw new DataIDException("Distribution "+distributionMongoDBObj.getDownloadUrl()+" is being downloaded now from other thread.");
-				}
 				
 				// uptate status of distribution to downloading
 				distributionMongoDBObj.setStatus(DistributionMongoDBObject.STATUS_DOWNLOADING);
@@ -281,6 +280,7 @@ public class DataID {
 						e.getMessage());
 				bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
 				bean.pushDownloadInfo();
+				bean.pushDistributionList();
 				e.printStackTrace();
 			}
 			catch (Exception e) {

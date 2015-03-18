@@ -59,6 +59,7 @@ public class MakeLinksets {
 				// uptate status of distribution
 				distribution.setStatus(DistributionMongoDBObject.STATUS_CREATING_LINKSETS);
 				distribution.updateObject(true);
+				bean.pushDistributionList();
 
 				// make some validations
 				if(distribution
@@ -217,6 +218,7 @@ public class MakeLinksets {
 				// uptate status of distribution
 				distribution.setStatus(DistributionMongoDBObject.STATUS_DONE);
 				distribution.updateObject(true);
+				bean.pushDistributionList();
 				}
 				catch(Exception e){
 					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
@@ -224,6 +226,7 @@ public class MakeLinksets {
 				}
 				distribution.setLastTimeLinkset(String.valueOf(new Date()));
 				distribution.updateObject(false);
+				bean.pushDistributionList();
 				
 			}
 

@@ -145,8 +145,10 @@ public class DataIDModel {
 										.getObject().toString());
 							}
 
-							distributionMongoDBObj.setStatus(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD);
-							distributionMongoDBObj.updateObject(true);
+							if(distributionMongoDBObj.getStatus() == null){
+								distributionMongoDBObj.setStatus(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD);
+								distributionMongoDBObj.updateObject(true);
+							}
 
 							// update dataset on mongodb with distribution
 							datasetMongoDBObj.addDistributionURI(distribution
@@ -292,9 +294,10 @@ public class DataIDModel {
 											.getProperty(Distribution.format)
 											.getObject().toString());
 								}
-								
-								distributionMongoDBObj.setStatus(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD);
-								distributionMongoDBObj.updateObject(true);
+								if(distributionMongoDBObj.getStatus() == null){
+									distributionMongoDBObj.setStatus(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD);
+									distributionMongoDBObj.updateObject(true);
+								}
 
 								// update dataset on mongodb with distribution
 								subsetMongoDBObj

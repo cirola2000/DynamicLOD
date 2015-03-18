@@ -236,7 +236,7 @@ public class DownloadAndSave {
 				outputStream.close();
 			} else {
 				httpConn.disconnect();
-				throw new DataIDException("RDF format not supported: "
+				throw new Exception("RDF format not supported: "
 						+ extension);
 			}
 
