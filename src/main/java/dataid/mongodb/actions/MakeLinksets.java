@@ -42,7 +42,7 @@ public class MakeLinksets {
 
 			for (DistributionMongoDBObject distribution : distributions) {
 			
-				if(distribution.getStatus().equals(DistributionMongoDBObject.STATUS_WAITING_TO_CREATE_LINKSETS))
+				if(distribution.getStatus().equals(DistributionMongoDBObject.STATUS_WAITING_TO_CREATE_LINKSETS) || distribution.getStatus().equals(DistributionMongoDBObject.STATUS_DONE))
 				
 				try{
 				// creating list of threads to process filters

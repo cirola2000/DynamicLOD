@@ -163,7 +163,7 @@ public class DownloadAndSave {
 					countBytesReaded = countBytesReaded + n;
 
 					if (aux % 1000 == 0) {
-						logger.info(countBytesReaded / 1024 / 1024);
+						logger.info(countBytesReaded / 1024 / 1024 + "MB uncompressed/lodaded.");
 						aux = 0;
 					}
 					aux++;
