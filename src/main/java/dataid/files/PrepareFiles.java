@@ -6,13 +6,18 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import org.apache.log4j.Logger;
+
+import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 import dataid.server.DataIDBean;
 import dataid.threads.GetDomainsFromTriplesThread;
 import dataid.utils.Formats;
 
 public class PrepareFiles {
-
+	
+	final static Logger logger = Logger.getLogger(PrepareFiles.class);
+	
 	public String subjectFile;
 	public String objectFile;
 	
@@ -24,7 +29,7 @@ public class PrepareFiles {
 	public ConcurrentHashMap<String,Integer> subjectDomains = new ConcurrentHashMap<String,Integer>();
 	public ConcurrentLinkedQueue<String> results = new ConcurrentLinkedQueue<String>();
 
-	public void separateSubjectAndObject(String fileName, String extension,  DataIDBean bean, boolean isDbpedia) throws Exception {
+	public void separateSubjectAndObject(String fileName, String extension,  boolean isDbpedia) throws Exception {
 		
 		String rapperFormat = null;
 		
@@ -35,7 +40,7 @@ public class PrepareFiles {
 		
 		
 		// creates 2 files, one with subjects and other with objects
-		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Creating subject and object files: "
+		logger.info("Creating subject and object files: "
 				+ DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
 				+ fileName+ DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
 				+ fileName);
@@ -54,7 +59,7 @@ public class PrepareFiles {
 				DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+ fileName+
 				"\"; print \"[subjectDomain]\"subjects; lastlineSubjects=subjects} if(objects~/^</){print objects>\""+
 				DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH+ fileName+
-				"\"; print \"[objectDomain]\"objects; objcount++}} END{print \"objectTriples \" objcount}'  | awk -F/ '{gsub(\">\",\"\",$0);print $1\"//\"$3\"/\"$4\"/\"}' | awk '{x[$0]++; if(x[$0]==50 || ($0 ~ \"objectTriples\" )){print $0} }'", bean,subjectDomains, objectDomains);
+				"\"; print \"[objectDomain]\"objects; objcount++}} END{print \"objectTriples \" objcount}'  | awk -F/ '{gsub(\">\",\"\",$0);print $1\"//\"$3\"/\"$4\"/\"}' | awk '{x[$0]++; if(x[$0]==50 || ($0 ~ \"objectTriples\" )){print $0} }'", subjectDomains, objectDomains);
 	
 		
 		objectFile = DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH+ fileName;

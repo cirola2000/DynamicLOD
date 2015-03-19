@@ -71,13 +71,13 @@ public class DataIDBean implements Serializable, Runnable {
 	}
 
 
-	public void push() throws MessageException {
+	public static void push() throws MessageException {
 		TopicKey topicKey = new TopicKey("logMessage");
 		TopicsContext topicsContext = TopicsContext.lookup();
 		topicsContext.publish(topicKey, "");
 	}
 
-	public void pushDistributionList() throws MessageException {
+	public static void pushDistributionList() throws MessageException {
 		TopicKey topicKey = new TopicKey("distributionListMessage");
 		TopicKey topicKey2 = new TopicKey("statsMessage");
 		TopicsContext topicsContext = TopicsContext.lookup();
@@ -86,7 +86,7 @@ public class DataIDBean implements Serializable, Runnable {
 		topicsContext.publish(topicKey2, "");
 	}
 
-	public void pushDownloadInfo() throws MessageException {
+	public static void pushDownloadInfo() throws MessageException {
 		TopicKey topicKey = new TopicKey("downloadDataIDMessage");
 		TopicsContext topicsContext = TopicsContext.lookup();
 
@@ -261,6 +261,7 @@ public class DataIDBean implements Serializable, Runnable {
 		this.downloadedMB = downloadPercentage;
 	}
 
+	
 	public void addDisplayMessage(String level, String info) {
 		if (startTime == 0)
 			startTime = System.currentTimeMillis();
@@ -286,7 +287,7 @@ public class DataIDBean implements Serializable, Runnable {
 				+ "<span style=\"margin-left:30px\">" + info + "</span>"
 				+ "</span>");
 		try {
-			this.push();
+			push();
 		} catch (MessageException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

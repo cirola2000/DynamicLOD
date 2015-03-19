@@ -9,6 +9,7 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import dataid.DataID;
@@ -17,17 +18,18 @@ import dataid.exceptions.DataIDException;
 import dataid.server.DataIDBean;
 
 public class RunCommand {
+	
+	final static Logger logger = Logger.getLogger(RunCommand.class);
 
 	int objectTriples = 0;
 	int totalTriples = 0;
 
-	public void runRapper(String c, DataIDBean bean, ConcurrentHashMap<String,Integer> subjectDomains,ConcurrentHashMap<String,Integer> objectDomains)
+	public void runRapper(String c, ConcurrentHashMap<String,Integer> subjectDomains,ConcurrentHashMap<String,Integer> objectDomains)
 			throws Exception {
 
 		String[] cmd = { "/bin/sh", "-c", c };
 
-		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-				"<b>Running rapper command:</b> <i>" + c + "</i>");
+		logger.debug("<b>Running rapper command:</b> <i>" + c + "</i>");
 		System.out.println("Running rapper command: " + c);
 
 		Runtime rt = Runtime.getRuntime();
@@ -99,8 +101,7 @@ public class RunCommand {
 			if (errorCount < 100) {
 				errorCount++;
 				System.out.println(string);
-				bean.addDisplayMessage(
-						DataIDGeneralProperties.MESSAGE_ERROR, string);
+				logger.error(string);
 				if (c.contains("rapper")) {
 					if (string.contains("returned")) {
 						String a[] = string.split(" ");

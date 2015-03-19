@@ -11,8 +11,6 @@ import dataid.server.DataIDBean;
 
 public class SplitAndStoreThread extends Thread {
 
-	DataIDBean bean;
-
 	private String fileName;
 
 	private boolean doneReadingFile = false;
@@ -30,12 +28,11 @@ public class SplitAndStoreThread extends Thread {
 	public Integer totalTriples = 0;
 
 	public SplitAndStoreThread(Queue<String> bufferQueue,
-			 Queue<String> subjectQueue, Queue<String> objectQueue, String fileName, DataIDBean bean) {
+			 Queue<String> subjectQueue, Queue<String> objectQueue, String fileName) {
 		this.bufferQueue = bufferQueue;
 		this.objectQueue = objectQueue;
 		this.subjectQueue = subjectQueue;
 		this.fileName = fileName;
-		this.bean = bean;
 	}
 
 	public String getFileName() {
@@ -137,17 +134,6 @@ public class SplitAndStoreThread extends Thread {
 									}
 									totalTriples++;
 
-									// send message to view
-									if (totalTriples % 100000 == 0) {
-//										System.out.println(totalTriples
-//												+ " registers written");
-//										System.out
-//												.println("Buffer queue size: "
-//														+ bufferQueue.size());
-										bean.setDownloadNumberOfTriplesLoaded(totalTriples);
-										bean.pushDownloadInfo();
-									}
-
 								} catch (ArrayIndexOutOfBoundsException e) {
 									// e.printStackTrace();
 									lastLine = u;
@@ -163,9 +149,8 @@ public class SplitAndStoreThread extends Thread {
 
 				}
 			}
-			bean.setDownloadNumberOfTriplesLoaded(totalTriples);
 
-			bean.pushDownloadInfo();
+			DataIDBean.pushDownloadInfo();
 			object.close();
 			subject.close();
 

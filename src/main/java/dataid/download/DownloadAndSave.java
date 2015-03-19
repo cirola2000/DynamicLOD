@@ -71,12 +71,9 @@ public class DownloadAndSave {
 	boolean doneSplittingString = false;
 	boolean doneAuthorityObject = false;
 
-	DataIDBean bean;
-
 	public void downloadDistribution(String distributionURI, String accessURL,
-			String format, DataIDBean bean) throws Exception {
+			String format) throws Exception {
 
-		this.bean = bean;
 
 		url = new URL(accessURL);
 		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
@@ -140,7 +137,7 @@ public class DownloadAndSave {
 			if (Formats.getEquivalentFormat(extension).equals(Formats.DEFAULT_NTRIPLES)) {
 
 				SplitAndStoreThread splitThread = new SplitAndStoreThread(bufferQueue,
-						subjectQueue, objectQueue, fileName, bean);
+						subjectQueue, objectQueue, fileName);
 				splitThread.start();
 
 				GetDomainsFromTriplesThread getDomainFromObjectsThread = new GetDomainsFromTriplesThread(
@@ -166,8 +163,7 @@ public class DownloadAndSave {
 					countBytesReaded = countBytesReaded + n;
 
 					if (aux % 1000 == 0) {
-						bean.setDownloadedMB(countBytesReaded / 1024 / 1024);
-						bean.pushDownloadInfo();
+						logger.info(countBytesReaded / 1024 / 1024);
 						aux = 0;
 					}
 					aux++;
@@ -232,16 +228,7 @@ public class DownloadAndSave {
 					contentLengthAfterDownloaded = contentLengthAfterDownloaded
 							+ bytesRead;
 					countBytesReaded = countBytesReaded + bytesRead;
-
-					if (aux % 1000 == 0) {
-						bean.setDownloadedMB(countBytesReaded / 1024 / 1024);
-						bean.pushDownloadInfo();
-					}
-					aux++;
-
 				}
-				bean.setDownloadedMB(countBytesReaded / 1024 / 1024);
-				bean.pushDownloadInfo();
 				outputStream.close();
 			} else {
 				httpConn.disconnect();
@@ -257,8 +244,6 @@ public class DownloadAndSave {
 				httpContentLength = f.length();
 			}
 
-			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-					"File downloaded: " + fileName);
 			httpConn.disconnect();
 		} else {
 			httpConn.disconnect();

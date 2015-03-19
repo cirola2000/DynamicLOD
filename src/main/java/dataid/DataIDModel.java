@@ -320,13 +320,15 @@ public class DataIDModel {
 	}
 
 	// read dataID file and return the dataset uri
-	public String readModel(String URL) throws Exception {
+	public String readModel(String URL, DataIDBean bean) throws Exception {
 		String name = null;
 
+		this.bean = bean;
+		
 		inModel.read(URL, null, "TTL");
 		ResIterator i = inModel.listResourcesWithProperty(Dataset.dataIDType,
 				Dataset.dataIDDataset);
-		while (i.hasNext()) {
+		if (i.hasNext()) {
 			name = i.next().getURI().toString();
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 					"Jena model created. ");
@@ -337,7 +339,7 @@ public class DataIDModel {
 					DataIDGeneralProperties.DATAID_PATH + dataIDURL)));
 		}
 		if(name==null){
-			throw new DataIDException("It's not possible to find a dataid:Dataset. Check your dataid namespace "+NS.DATAID_URI);
+			throw new Exception("It's not possible to find a dataid:Dataset. Check your dataid namespace "+NS.DATAID_URI);
 		}
 
 		return name;

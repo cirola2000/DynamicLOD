@@ -25,12 +25,10 @@ public class FileToFilter {
 	public List<String> linksUniq = new ArrayList<String>();
 	public int subjectsLoadedIntoFilter = 0;
 
-	public void loadFileToFilter(GoogleBloomFilter filter, String fileName, DataIDBean bean) {
+	public void loadFileToFilter(GoogleBloomFilter filter, String fileName) {
 
 		BufferedReader br = null;
 		
-		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Loading file to bloom filter: "+ 
-						DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+fileName);
 		logger.info("Loading file to bloom filter: "+ 
 						DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+fileName);
 		
@@ -42,18 +40,16 @@ public class FileToFilter {
 				filter.add(sCurrentLine);
 				subjectsLoadedIntoFilter++;
 			}
-			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Bloom filter loaded "+subjectsLoadedIntoFilter + " lines.");
 			logger.info("Bloom filter loaded "+subjectsLoadedIntoFilter + " lines.");
 			
 		} catch (Exception e) {
-			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
 			e.printStackTrace();
 		} finally {
 			try {
 				if (br != null)
 					br.close();
 			} catch (IOException ex) {
-				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,ex.getMessage());
+				
 			}
 		}
 		
