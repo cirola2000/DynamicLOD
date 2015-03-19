@@ -74,9 +74,8 @@ public class DataID {
 			logger.info("Distribution n. "+counter+": "+distribution.getDistributionURI());
 
 			if (!needDownload) {
-				logger.info("Distribution is already in the last version. No needs to download again. "
-						+ distribution.getDistriutionDownloadURL()
-						+ " (DownloadURL property).");
+				logger.info("Distribution is already in the last version. No needs to download again. ");
+				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Distribution is already in the last version. No needs to download again. ");
 			}
 
 			// if distribution have not already been handled
@@ -119,6 +118,9 @@ public class DataID {
 								.setStatus(DistributionMongoDBObject.STATUS_SEPARATING_SUBJECTS_AND_OBJECTS);
 						distributionMongoDBObj.updateObject(true);
 						DataIDBean.pushDistributionList();
+						
+						bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Separating subjects and objects.");
+						logger.info("Separating subjects and objects.");
 
 						PrepareFiles p = new PrepareFiles();
 						// separating subjects and objects using rapper and awk
@@ -144,6 +146,9 @@ public class DataID {
 							.setStatus(DistributionMongoDBObject.STATUS_CREATING_BLOOM_FILTER);
 					distributionMongoDBObj.updateObject(true);
 					DataIDBean.pushDistributionList();
+					
+					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Creating bloom filter.");
+					logger.info("Creating bloom filter.");
 
 					// make a filter with subjects
 					GoogleBloomFilter filter;
@@ -175,6 +180,7 @@ public class DataID {
 					// save filter
 
 					// save distribution in a mongodb object
+					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Saving mongodb \"Distribution\" document.");
 					logger.info("Saving mongodb \"Distribution\" document.");
 
 					distributionMongoDBObj.setNumberOfObjectTriples(String
@@ -282,11 +288,12 @@ public class DataID {
 							.setStatus(DistributionMongoDBObject.STATUS_WAITING_TO_CREATE_LINKSETS);
 					distributionMongoDBObj.updateObject(true);
 
-					logger.info("Distribution saved! "
-							+ distribution.getDistriutionDownloadURL());
+					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Distribution saved!");
+					logger.info("Distribution saved! ");
+					
 					bean.setDownloadNumberOfDownloadedDistributions(bean
 							.getDownloadNumberOfDownloadedDistributions() + 1);
-					bean.pushDownloadInfo();
+					DataIDBean.pushDownloadInfo();
 
 				} catch (DataIDException e) {
 					bean.addDisplayMessage(
@@ -294,8 +301,8 @@ public class DataID {
 							e.getMessage());
 					bean.setDownloadNumberOfDownloadedDistributions(bean
 							.getDownloadNumberOfDownloadedDistributions() + 1);
-					bean.pushDownloadInfo();
-					bean.pushDistributionList();
+					DataIDBean.pushDownloadInfo();
+					DataIDBean.pushDistributionList();
 					e.printStackTrace();
 				} catch (Exception e) {
 					// uptate status of distribution
@@ -308,8 +315,8 @@ public class DataID {
 							e.getMessage());
 					bean.setDownloadNumberOfDownloadedDistributions(bean
 							.getDownloadNumberOfDownloadedDistributions() + 1);
-					bean.pushDownloadInfo();
-					bean.pushDistributionList();
+					DataIDBean.pushDownloadInfo();
+					DataIDBean.pushDistributionList();
 					e.printStackTrace();
 					distributionMongoDBObj.setLastErrorMsg(e.getMessage());
 					distributionMongoDBObj.setSuccessfullyDownloaded(false);

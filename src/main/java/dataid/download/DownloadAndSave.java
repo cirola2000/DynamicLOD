@@ -29,7 +29,7 @@ import dataid.utils.Formats;
 
 public class DownloadAndSave {
 	
-	final static Logger logger = Logger.getLogger(CheckWhetherDownload.class);
+	final static Logger logger = Logger.getLogger(DownloadAndSave.class);
 	
 	private static final int BUFFER_SIZE = 16384;
 
