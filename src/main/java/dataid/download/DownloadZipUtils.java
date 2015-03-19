@@ -1,4 +1,4 @@
-package dataid.utils;
+package dataid.download;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -14,8 +14,9 @@ import java.util.zip.ZipInputStream;
 import org.junit.Test;
 
 import dataid.exceptions.DataIDException;
+import dataid.utils.FileUtils;
 
-public class DownloadUtils {
+public class DownloadZipUtils {
 
 	static final int BUFFER = 512;
 
@@ -24,7 +25,7 @@ public class DownloadUtils {
 		return false;
 	}
 
-	public void checkZip(URL url) throws DataIDException {
+	public void checkZipFile(URL url) throws DataIDException {
 		ZipInputStream zis = null;
 		try {
 			try {

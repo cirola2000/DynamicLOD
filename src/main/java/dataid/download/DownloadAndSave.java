@@ -25,7 +25,6 @@ import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
 import dataid.threads.GetDomainsFromTriplesThread;
 import dataid.threads.SplitAndStoreThread;
-import dataid.utils.DownloadUtils;
 import dataid.utils.Formats;
 
 public class DownloadAndSave {
@@ -82,40 +81,51 @@ public class DownloadAndSave {
 		url = new URL(accessURL);
 		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
 		int responseCode = httpConn.getResponseCode();
+		
+		logger.debug("Open HTTP connection for URL: "+url.toString());
 
 		// check HTTP response code first
 		if (responseCode == HttpURLConnection.HTTP_OK) {
 
+			logger.debug("Successfuly connected with HTTP OK status.");
+					
 			// get some data from headers
 			getMetadataFromHTTPHeaders(httpConn);
 
 			// extracts file name from header field
-			createFileName(accessURL);
+			fileName = new FileNameFromURL().getFileName(accessURL, httpDisposition);
+			logger.debug("Found file name: "+ fileName);
 
-			// print header at stdout
+			// print http headers
 			printHeaders();
 
-			// opens input stream from the HTTP connection
+			// opens input stream from HTTP connection
 			InputStream inputStream = httpConn.getInputStream();
+			logger.debug("InputStream from http connection opened");
 
 			extension = FilenameUtils.getExtension(fileName);
 
 			// check whether file is bz2 type
 			if (extension.equals("bz2")) {
+				logger.debug("File extension is bz2, creating BZip2CompressorInputStream...");
 				inputStream = new BZip2CompressorInputStream(
 						httpConn.getInputStream(), true);
 				fileName = fileName.replace(".bz2", "");
+				
+				logger.debug("Done creating BZip2CompressorInputStream! New file name is "+fileName);
 			}
 
 			// check whether file is zip type
 			if (extension.equals("zip")) {
-				DownloadUtils d = new DownloadUtils();
-				d.checkZip(url);
+				logger.debug("File extension is zip, creating ZipInputStream and checking compressed files...");
+				DownloadZipUtils d = new DownloadZipUtils();
+				d.checkZipFile(url);
 				ZipInputStream zip = new ZipInputStream(
 						httpConn.getInputStream());
 				ZipEntry entry = zip.getNextEntry();
 				fileName = entry.getName();
 				inputStream = zip;
+				logger.debug("Done, we found a single file: "+fileName);
 			}
 
 			dataIDFilePath = DataIDGeneralProperties.BASE_PATH + fileName;
@@ -268,19 +278,6 @@ public class DownloadAndSave {
 
 	}
 
-	private void createFileName(String accessURL) {
-		if (httpDisposition != null) {
-			int index = httpDisposition.indexOf("filename=");
-			if (index > 0) {
-				fileName = httpDisposition.substring(index + 10,
-						httpDisposition.length() - 1);
-			}
-		} else {
-			// extracts file name from URL
-			fileName = accessURL.substring(accessURL.lastIndexOf("/") + 1,
-					accessURL.length());
-		}
-	}
 
 	private void printHeaders() {
 		DecimalFormat df = new DecimalFormat("#.##");
