@@ -250,7 +250,7 @@ public class DataIDModel {
 						downloadURLFound = true;
 						// store downloadURL statement
 						Statement downloadURL = stmtDownloadURL.next();
-						DataID.bean.addDisplayMessage(
+						bean.addDisplayMessage(
 								DataIDGeneralProperties.MESSAGE_LOG,
 								"Distribution found: downloadURL: "
 										+ downloadURL.getObject().toString());
@@ -328,9 +328,9 @@ public class DataIDModel {
 				Dataset.dataIDDataset);
 		while (i.hasNext()) {
 			name = i.next().getURI().toString();
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 					"Jena model created. ");
-			DataID.bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 					"Looks that this is a valid DataID file! " + name);
 			dataIDURL = FileUtils.stringToHash(URL);
 			inModel.write(new FileOutputStream(new File(

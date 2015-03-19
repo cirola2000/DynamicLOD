@@ -63,8 +63,6 @@ public class GoogleBloomFilter implements DataIDFilterInterface {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			DataID.bean.addDisplayMessage(
-					DataIDGeneralProperties.MESSAGE_ERROR, e.getMessage());
 		}
 		return true;
 	}

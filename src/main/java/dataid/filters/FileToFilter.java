@@ -8,12 +8,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import dataid.DataID;
 import dataid.DataIDGeneralProperties;
+import dataid.download.CheckWhetherDownload;
 import dataid.ontology.Linkset;
 import dataid.server.DataIDBean;
 
 public class FileToFilter {
+	
+	final static Logger logger = Logger.getLogger(CheckWhetherDownload.class);
 
 	// list of linksets
 	List<String> links = new ArrayList<String>();
@@ -26,6 +31,8 @@ public class FileToFilter {
 		
 		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Loading file to bloom filter: "+ 
 						DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+fileName);
+		logger.info("Loading file to bloom filter: "+ 
+						DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+fileName);
 		
 		try {
 			String sCurrentLine;
@@ -36,6 +43,7 @@ public class FileToFilter {
 				subjectsLoadedIntoFilter++;
 			}
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,"Bloom filter loaded "+subjectsLoadedIntoFilter + " lines.");
+			logger.info("Bloom filter loaded "+subjectsLoadedIntoFilter + " lines.");
 			
 		} catch (Exception e) {
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
@@ -54,7 +62,7 @@ public class FileToFilter {
 							fileName);
 			f.delete();
 			
-			System.out.println("deleting "+ DataIDGeneralProperties.BASE_PATH+
+			logger.debug("deleting "+ DataIDGeneralProperties.BASE_PATH+
 					fileName);
 			f = new File(DataIDGeneralProperties.BASE_PATH+
 					fileName);

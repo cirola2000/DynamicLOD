@@ -11,10 +11,12 @@ import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
 
 public class CheckWhetherDownload {
+	
 	final static Logger logger = Logger.getLogger(CheckWhetherDownload.class);
 
 	public boolean checkDistribution(DistributionMongoDBObject distribution)
 			throws Exception {
+		
 		logger.debug("Checking whether we need to download "+ distribution.getDownloadUrl()+ " again.");
 		
 		URL url = new URL(distribution.getDownloadUrl());

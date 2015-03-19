@@ -5,11 +5,11 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
+import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
 import dataid.filters.GoogleBloomFilter;
@@ -22,7 +22,7 @@ import dataid.threads.DataModelThread;
 import dataid.utils.Timer;
 
 public class MakeLinksets {
-	Logger log = Logger.getLogger("MyLog"); 
+	final static Logger logger = Logger.getLogger(MakeLinksets.class);
 
 
 	public void updateLinksets(DataIDBean bean) {
@@ -35,7 +35,7 @@ public class MakeLinksets {
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 					"Updating linksets...");
 			
-			log.info("Updating linksets...");
+			logger.info("Updating linksets...");
 			
 			
 			ArrayList<DistributionMongoDBObject> distributions = DistributionQueries.getDistributions();
@@ -45,7 +45,7 @@ public class MakeLinksets {
 				if(distribution.getStatus().equals(DistributionMongoDBObject.STATUS_WAITING_TO_CREATE_LINKSETS))
 				
 				try{
-				// creating a list of threads to process filters
+				// creating list of threads to process filters
 				List<DataModelThread> listOfDataThreads = new ArrayList<DataModelThread>();
  
 				
@@ -67,7 +67,7 @@ public class MakeLinksets {
 						 == null || distribution
 								.getObjectPath()
 								.toString().equals("")){
-					log.warning("distributionObjectPath is empty or null for "+distribution
+					logger.error("distributionObjectPath is empty or null for "+distribution
 							.getDownloadUrl()+" distribution;");
 					throw new DataIDException("distributionObjectPath is empty or null for "+distribution
 							.getDownloadUrl()+" distribution;");
@@ -107,7 +107,7 @@ public class MakeLinksets {
 							listOfDataThreads.add(dataThread);
 						}
 					} catch (Exception e) {
-						log.warning("Error while loading bloom filter: "
+						logger.error("Error while loading bloom filter: "
 										+ e.getMessage());
 						throw new DataIDException(
 								"Error while loading bloom filter: "
@@ -117,7 +117,6 @@ public class MakeLinksets {
 					
 				}
 
-				System.out.println();
 
 				// reading object distribution file here
 				BufferedReader br = new BufferedReader(new FileReader(
@@ -128,7 +127,7 @@ public class MakeLinksets {
 						"Loading objects from: "
 								+ distribution.getObjectPath()
 								+ ". This might take a time, please be patient.");
-				log.info("Loading objects from: "
+				logger.info("Loading objects from: "
 						+ distribution.getObjectPath()
 						+ ". This might take a time, please be patient.");
 
@@ -143,9 +142,9 @@ public class MakeLinksets {
 
 				if (listOfDataThreads.size() > 0){
 					bean.addDisplayMessage(
-							DataIDGeneralProperties.MESSAGE_LOG,
-							"Loading bloom filters...");
-					log.info("Loading bloom filters...");
+							DataIDGeneralProperties.MESSAGE_INFO,
+							"Creating liksets for distribution: "+distribution.getDownloadUrl()+" . We are comparing with "+listOfDataThreads.size()+" different bloom filters.");
+					logger.info("Creating liksets for distribution: "+distribution.getDownloadUrl()+" . We are comparing with "+listOfDataThreads.size()+" different bloom filters.");
 					while ((sCurrentLine = br.readLine()) != null) {
 						buffer[bufferIndex] = (sCurrentLine);
 						bufferIndex++;
@@ -198,7 +197,7 @@ public class MakeLinksets {
 							DataIDGeneralProperties.MESSAGE_LOG,
 							"New filters were't found!");
 
-					log.info("New filters were't found!");
+					logger.info("New filters were't found!");
 				}
 
 				bean.addDisplayMessage(
@@ -206,7 +205,7 @@ public class MakeLinksets {
 						"Loaded objects from: "
 								+ distribution.getObjectPath());
 
-				log.info("Loaded objects from: "
+				logger.info("Loaded objects from: "
 						+ distribution.getObjectPath());
 				
 				// save linksets into mongodb
@@ -232,7 +231,7 @@ public class MakeLinksets {
 		}
 		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 				"Time to update linksets: " + t.stopTimer() + "s");
-		log.info("Time to update linksets: " + t.stopTimer() + "s"); 
+		logger.info("Time to update linksets: " + t.stopTimer() + "s"); 
 	}
 
 	public void saveLinksets(List<DataModelThread> dataThreads) {

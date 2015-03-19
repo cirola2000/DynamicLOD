@@ -141,9 +141,9 @@ public class SplitAndStoreThread extends Thread {
 									if (totalTriples % 100000 == 0) {
 //										System.out.println(totalTriples
 //												+ " registers written");
-										System.out
-												.println("Buffer queue size: "
-														+ bufferQueue.size());
+//										System.out
+//												.println("Buffer queue size: "
+//														+ bufferQueue.size());
 										bean.setDownloadNumberOfTriplesLoaded(totalTriples);
 										bean.pushDownloadInfo();
 									}

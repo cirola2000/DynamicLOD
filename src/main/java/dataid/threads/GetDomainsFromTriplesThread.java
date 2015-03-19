@@ -4,7 +4,13 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import org.apache.log4j.Logger;
+
+import dataid.DataID;
+
 public class GetDomainsFromTriplesThread extends Thread {
+	
+	final static Logger logger = Logger.getLogger(GetDomainsFromTriplesThread.class);
 
 	private boolean doneSplittingString;
 
@@ -28,6 +34,9 @@ public class GetDomainsFromTriplesThread extends Thread {
 	}
 
 	public synchronized void run() {
+		
+		logger.debug("Starting GetDomainsFromTriplesThread class.");
+		
 		String obj = "";
 		while (!doneSplittingString) {
 			try {
@@ -47,7 +56,6 @@ public class GetDomainsFromTriplesThread extends Thread {
 					else if (ar.length > 2)
 						obj = ar[0] + "//" + ar[2] + "/";
 					else {
-//						System.out.println(obj);
 						obj = "";
 					}
 					
@@ -65,7 +73,7 @@ public class GetDomainsFromTriplesThread extends Thread {
 				}
 			}
 		}
-		System.out.println("Ending GetDomainsFromTriplesThread.");
+		logger.debug("Ending GetDomainsFromTriplesThread class.");
 	}
 
 }

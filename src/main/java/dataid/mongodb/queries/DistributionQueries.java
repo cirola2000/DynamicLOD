@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.apache.taglibs.standard.lang.jstl.test.Bean1;
 
 import com.mongodb.AggregationOutput;
@@ -13,12 +14,15 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
 import dataid.mongodb.DataIDDB;
+import dataid.mongodb.actions.MakeLinksets;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.DistributionObjectDomainsMongoDBObject;
 import dataid.mongodb.objects.DistributionSubjectDomainsMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
 
 public class DistributionQueries {
+	
+	final static Logger logger = Logger.getLogger(DistributionQueries.class);
 
 	// return number of distributions
 	public static int getNumberOfDistributions() {
@@ -79,7 +83,8 @@ public class DistributionQueries {
 								.toString());
 
 					list.add(obj);
-				System.out.println("Returned: " + obj.getDownloadUrl());
+				logger.debug("Returned: " + obj.getDownloadUrl());
+				
 			}
 
 		} catch (Exception e) {

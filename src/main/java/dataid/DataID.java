@@ -31,7 +31,7 @@ public class DataID {
 	final static Logger logger = Logger.getLogger(DataID.class);
 	
 	private String name = null;
-	public static DataIDBean bean;
+	public DataIDBean bean;
 
 	// list of subset and their distributions
 	private List<DistributionModel> distributionsLinks = new ArrayList<DistributionModel>();
@@ -49,11 +49,27 @@ public class DataID {
 			DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
 					distributionModel.getDistribution());
 			
-			// check is download need to be streamed again 
-			boolean needDownloadAgain = new CheckWhetherDownload().checkDistribution(distributionMongoDBObj);
+			// check is dostribution need to be streamed
+			boolean needDownload = false;
+			
+			if(distributionMongoDBObj.getStatus().equals(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD))
+				needDownload = true;
+			else if (distributionMongoDBObj.getStatus().equals(DistributionMongoDBObject.STATUS_DOWNLOADING))
+					needDownload = false;
+			else if(new CheckWhetherDownload().checkDistribution(distributionMongoDBObj))
+				needDownload = true;
+			
+			if(!needDownload){
+				bean.addDisplayMessage(
+						DataIDGeneralProperties.MESSAGE_INFO,
+						"Distribution is already in the last version. No needs to download again. "
+								+ distributionModel.getDistriutionDownloadURL() + " (DownloadURL property).");
+				logger.info("Distribution is already in the last version. No needs to download again. "
+						+ distributionModel.getDistriutionDownloadURL() + " (DownloadURL property).");
+			}
 			
 			// check if distribution have not already been handled
-			if(distributionMongoDBObj.getStatus().equals(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD) || needDownloadAgain)
+			if(needDownload)
 			try {
 				
 				// uptate status of distribution to downloading

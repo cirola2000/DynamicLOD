@@ -99,7 +99,7 @@ public class RunCommand {
 			if (errorCount < 100) {
 				errorCount++;
 				System.out.println(string);
-				DataID.bean.addDisplayMessage(
+				bean.addDisplayMessage(
 						DataIDGeneralProperties.MESSAGE_ERROR, string);
 				if (c.contains("rapper")) {
 					if (string.contains("returned")) {

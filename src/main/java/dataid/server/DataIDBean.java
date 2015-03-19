@@ -3,6 +3,7 @@ package dataid.server;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.EventListener;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -24,7 +25,7 @@ import dataid.mongodb.queries.SubsetQueries;
 public class DataIDBean implements Serializable, Runnable {
 
 	private static final long serialVersionUID = -6239437588285327644L;
-
+	
 	public DataID dataid = null;
 
 	static private double startTime = 0;
@@ -34,37 +35,32 @@ public class DataIDBean implements Serializable, Runnable {
 
 	// log screen
 	private String display = "";
-	
+
 	// dataid list
 	private String distributionIDList = "(empty)";
-	
-	
+
 	// statistic data
 	private int numberOfDatasets;
-	
+
 	private int numberOfSubsets;
-	
+
 	private int numberOfDistributions;
-	
+
 	private int numberOfTriples;
-	
-	
+
 	// info about download
-	private String downloadDatasetURI; 
-	
+	private String downloadDatasetURI;
+
 	private int downloadNumberOfTriplesLoaded;
-	
+
 	private int downloadNumberTotalOfDistributions;
-	
+
 	private int downloadNumberOfDownloadedDistributions;
-	
+
 	private double downloadedMB;
-	
-	
-	
+
 	// TODO implement a smarter way to choose between add dataid or update graph
 	String action = "";
-	
 
 	public String getUrl() {
 		return url;
@@ -73,23 +69,27 @@ public class DataIDBean implements Serializable, Runnable {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	TopicsContext topicsContext = TopicsContext.lookup();
+
 
 	public void push() throws MessageException {
 		TopicKey topicKey = new TopicKey("logMessage");
+		TopicsContext topicsContext = TopicsContext.lookup();
 		topicsContext.publish(topicKey, "");
 	}
-	
+
 	public void pushDistributionList() throws MessageException {
 		TopicKey topicKey = new TopicKey("distributionListMessage");
 		TopicKey topicKey2 = new TopicKey("statsMessage");
-		
+		TopicsContext topicsContext = TopicsContext.lookup();
+
 		topicsContext.publish(topicKey, "");
 		topicsContext.publish(topicKey2, "");
 	}
-	
+
 	public void pushDownloadInfo() throws MessageException {
 		TopicKey topicKey = new TopicKey("downloadDataIDMessage");
+		TopicsContext topicsContext = TopicsContext.lookup();
+
 		topicsContext.publish(topicKey, "");
 	}
 	
@@ -97,13 +97,13 @@ public class DataIDBean implements Serializable, Runnable {
 	public void start() {
 		startTime = 0;
 		endTime = 0;
-		
+
 		action = "runDataid";
 
 		Thread thread = new Thread(this);
 		thread.setDaemon(true);
 		thread.start();
-		
+
 		try {
 			pushDistributionList();
 		} catch (MessageException e) {
@@ -112,10 +112,11 @@ public class DataIDBean implements Serializable, Runnable {
 		}
 
 	}
+
 	public void update() {
 		startTime = 0;
 		endTime = 0;
-		
+
 		action = "updateGraph";
 
 		Thread thread = new Thread(this);
@@ -123,8 +124,6 @@ public class DataIDBean implements Serializable, Runnable {
 		thread.start();
 
 	}
-	
-	
 
 	public void run() {
 		DataIDGeneralProperties a = new DataIDGeneralProperties();
@@ -133,29 +132,27 @@ public class DataIDBean implements Serializable, Runnable {
 		this.setDownloadDatasetURI("");
 		try {
 			this.push();
-			
-			if(action=="runDataid")
+
+			if (action == "runDataid")
 				startDataID();
 			else
 				updateGraph();
-			 
-//			this.dataIDList = Queries.getDataIDs();
+
+			// this.dataIDList = Queries.getDataIDs();
 			this.pushDistributionList();
-			 
-			 
+
 		} catch (MessageException e) {
 			e.printStackTrace();
 		}
 
 	}
-	
 
 	public void updateGraph() {
-		
+
 		MakeLinksets m = new MakeLinksets();
 		m.updateLinksets(this);
 	}
-	
+
 	public void startDataID() {
 
 		dataid = new DataID(this.getUrl(), this);
@@ -168,7 +165,7 @@ public class DataIDBean implements Serializable, Runnable {
 	}
 
 	public void setDataIDList(String dataIDList) {
-	
+
 	}
 
 	public String getNumberOfTriples() {
@@ -188,7 +185,6 @@ public class DataIDBean implements Serializable, Runnable {
 	public void setDisplay(String display) {
 		this.display = display;
 	}
-		
 
 	// mutator methods for statistical data
 	public int getNumberOfSubsets() {
@@ -210,16 +206,16 @@ public class DataIDBean implements Serializable, Runnable {
 	}
 
 	public int getNumberOfDistributions() {
-		this.numberOfDistributions = DistributionQueries.getNumberOfDistributions();
+		this.numberOfDistributions = DistributionQueries
+				.getNumberOfDistributions();
 		return numberOfDistributions;
 	}
 
 	public void setNumberOfDistributions(int numberOfDistributions) {
 		this.numberOfDistributions = numberOfDistributions;
 	}
-	
 
-	// mutator methods for download info 
+	// mutator methods for download info
 	public String getDownloadDatasetURI() {
 		return downloadDatasetURI;
 	}
