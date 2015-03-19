@@ -8,15 +8,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Formatter;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
+import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 
+import dataid.download.CheckWhetherDownload;
+import dataid.download.DownloadAndSave;
 import dataid.exceptions.DataIDException;
 import dataid.files.PrepareFiles;
 import dataid.filters.FileToFilter;
@@ -26,14 +23,12 @@ import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.DistributionObjectDomainsMongoDBObject;
 import dataid.mongodb.objects.DistributionSubjectDomainsMongoDBObject;
 import dataid.server.DataIDBean;
-import dataid.utils.DownloadAndSave;
 import dataid.utils.FileUtils;
 import dataid.utils.Formats;
 import dataid.utils.Timer;
 
 public class DataID {
-	Logger log = Logger.getLogger("MyLog");  
-	Handler fh = new ConsoleHandler();
+	final static Logger logger = Logger.getLogger(DataID.class);
 	
 	private String name = null;
 	public static DataIDBean bean;
@@ -53,9 +48,12 @@ public class DataID {
 			// loading mongodb distribution object
 			DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
 					distributionModel.getDistribution());
-			// check if distribution have not already been handled
 			
-			if(distributionMongoDBObj.getStatus().equals(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD))
+			// check is download need to be streamed again 
+			boolean needDownloadAgain = new CheckWhetherDownload().checkDistribution(distributionMongoDBObj);
+			
+			// check if distribution have not already been handled
+			if(distributionMongoDBObj.getStatus().equals(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD) || needDownloadAgain)
 			try {
 				
 				// uptate status of distribution to downloading
@@ -71,7 +69,7 @@ public class DataID {
 						"Downloading distribution: "
 								+ distributionModel.getDistriutionDownloadURL() + " (DownloadURL property).");
 				
-				log.info("Downloading distribution: "
+				logger.info("Downloading distribution: "
 								+ distributionModel.getDistriutionDownloadURL() + " (DownloadURL property).");
 
 				downloadedFile.downloadDistribution(distributionModel
@@ -152,7 +150,7 @@ public class DataID {
 				// save distribution in a mongodb object
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 						"Saving mongodb \"Distribution\" document.");
-				log.info("Saving mongodb \"Distribution\" document.");
+				logger.info("Saving mongodb \"Distribution\" document.");
 
 				distributionMongoDBObj.setNumberOfObjectTriples(String
 						.valueOf(downloadedFile.objectLines));
@@ -161,7 +159,7 @@ public class DataID {
 				distributionMongoDBObj.setFormat(downloadedFile.extension
 						.toString());
 				distributionMongoDBObj.setHttpByteSize(String
-						.valueOf(downloadedFile.httpContentLength));
+						.valueOf((int) downloadedFile.httpContentLength));
 				distributionMongoDBObj
 						.setHttpFormat(downloadedFile.httpContentType);
 				distributionMongoDBObj
@@ -194,7 +192,7 @@ public class DataID {
 						// distributionMongoDBObj.addAuthorityObjects(d);
 						count++;
 					 	if(count%100000 == 0){
-						 	log.info(count +
+					 		logger.debug(count +
 								 	" different objects domain saved ("+(downloadedFile.objectDomains.size() - count )+" remaining).");
 						 	bean.addDisplayMessage(
 								 	DataIDGeneralProperties.MESSAGE_INFO,count
@@ -225,7 +223,7 @@ public class DataID {
 						// distributionMongoDBObj.addAuthorityObjects(d);
 						count++;
 					 	if(count%100000 == 0){
-						 	log.info(count +
+					 		logger.debug(count +
 								 	" different subjects domain saved ("+(downloadedFile.subjectDomains.size() - count )+" remaining).");
 						 	bean.addDisplayMessage(
 								 	DataIDGeneralProperties.MESSAGE_INFO,count
@@ -242,13 +240,13 @@ public class DataID {
 				
 					
 				
-				 log.info(downloadedFile.objectDomains.size() +
+				logger.info(downloadedFile.objectDomains.size() +
 						 " different objects domain saved.");
 				 bean.addDisplayMessage(
 						 DataIDGeneralProperties.MESSAGE_INFO,downloadedFile.objectDomains.size() +
 						 " different objects domain saved.");
 				 
-				 log.info(downloadedFile.subjectDomains.size() +
+				 logger.info(downloadedFile.subjectDomains.size() +
 						 " different subjects domain saved.");
 				 bean.addDisplayMessage(
 						 DataIDGeneralProperties.MESSAGE_INFO,downloadedFile.subjectDomains.size() +
@@ -260,7 +258,7 @@ public class DataID {
 
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 						"Done saving mongodb distribution object.");
-				log.info("Done saving mongodb distribution object.");
+				logger.info("Done saving mongodb distribution object.");
 				
 				
 				// uptate status of distribution 
@@ -271,7 +269,7 @@ public class DataID {
 						DataIDGeneralProperties.MESSAGE_INFO,
 						"Distribution saved! "
 								+ distributionModel.getDistriutionDownloadURL());
-				log.info("Distribution saved! ");
+				logger.info("Distribution saved! ");
 				bean.setDownloadNumberOfDownloadedDistributions(bean.getDownloadNumberOfDownloadedDistributions()+1);
 				bean.pushDownloadInfo();
 
@@ -311,16 +309,6 @@ public class DataID {
 			
 			this.bean = bean;
 			
-	        fh.setFormatter(new Formatter() {
-	            public String format(LogRecord record) {
-	                return record.getLevel() + "  :  "
-	                    + record.getSourceClassName() + " -:- "
-	                    + record.getSourceMethodName() + " -:- "
-	                    + record.getMessage() + "\n";
-	              }
-	            });  
-	        log.addHandler(fh);
-
 			FileUtils.checkIfFolderExists();
 
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
@@ -336,13 +324,13 @@ public class DataID {
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
 						"Impossible to read dataset. Perhaps that's not a valid DataID file. Dataset: "
 								+ name);
-				log.warning("Impossible to read dataset. Perhaps that's not a valid DataID file. Dataset: "
+				logger.error("Impossible to read dataset. Perhaps that's not a valid DataID file. Dataset: "
 								+ name);
 			}
 			else{
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 						"Dataset: " + name);
-				log.info("Dataset: " + name);
+				logger.info("Dataset: " + name);
 			}
 
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
@@ -375,9 +363,9 @@ public class DataID {
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
 					e.getMessage());
 			e.printStackTrace();
-			log.warning(e.getMessage());
+			logger.error(e.getMessage());
 		}
-		log.info("END");
+		logger.info("END");
 		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "end");
 	}
 

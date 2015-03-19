@@ -1,4 +1,4 @@
-package dataid.utils;
+package dataid.download;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -17,6 +17,7 @@ import java.util.zip.ZipInputStream;
 
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.Logger;
 
 import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
@@ -24,8 +25,13 @@ import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
 import dataid.threads.GetDomainsFromTriplesThread;
 import dataid.threads.SplitAndStoreThread;
+import dataid.utils.DownloadUtils;
+import dataid.utils.Formats;
 
 public class DownloadAndSave {
+	
+	final static Logger logger = Logger.getLogger(CheckWhetherDownload.class);
+	
 	private static final int BUFFER_SIZE = 16384;
 
 	public String fileName = "";
@@ -82,13 +88,6 @@ public class DownloadAndSave {
 
 			// get some data from headers
 			getMetadataFromHTTPHeaders(httpConn);
-
-			// check if distribution already exists
-			if (!checkWhetherDownload(accessURL,
-					String.valueOf(httpContentLength), httpLastModified)) {
-				throw new DataIDException("File previously downloaded: "
-						+ accessURL + " No modification found. ");
-			}
 
 			// extracts file name from header field
 			createFileName(accessURL);
@@ -259,31 +258,6 @@ public class DownloadAndSave {
 		}
 	}
 
-	private boolean checkWhetherDownload(String uri, String httpContentLength,
-			String httpLastModified) {
-		try {
-			DistributionMongoDBObject distribution = new DistributionMongoDBObject(
-					uri);
-			// case failed in the last attempt
-			if (!distribution.isSuccessfullyDownloaded()) {
-				return true;
-			}
-
-			if (distribution.getHttpByteSize().equals(httpContentLength)
-					|| distribution.getHttpLastModified().equals(
-							httpLastModified)) {
-				bean.setDownloadNumberOfDownloadedDistributions(bean
-						.getDownloadNumberOfDownloadedDistributions() + 1);
-				bean.pushDownloadInfo();
-				return false;
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return true;
-	}
-
 	private void getMetadataFromHTTPHeaders(HttpURLConnection httpConn) {
 
 		httpDisposition = httpConn.getHeaderField("Content-Disposition");
@@ -311,12 +285,12 @@ public class DownloadAndSave {
 	private void printHeaders() {
 		DecimalFormat df = new DecimalFormat("#.##");
 
-		System.out.println("Content-Type = " + httpContentType);
-		System.out.println("Last-Modified = " + httpLastModified);
-		System.out.println("Content-Disposition = " + httpDisposition);
-		System.out.println("Content-Length = "
+		logger.debug("Content-Type = " + httpContentType);
+		logger.debug("Last-Modified = " + httpLastModified);
+		logger.debug("Content-Disposition = " + httpDisposition);
+		logger.debug("Content-Length = "
 				+ df.format(httpContentLength / 1024 / 1024) + " MB");
-		System.out.println("fileName = " + fileName);
+		logger.debug("fileName = " + fileName);
 	}
 
 	private void checkExtensionFormat(String format) {

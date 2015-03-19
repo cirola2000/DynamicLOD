@@ -74,10 +74,7 @@ public class MakeLinksets {
 				}
 				
 				for (DistributionMongoDBObject distributionToCompare : disributionsToCompare) {
-					try {
-						// check if distributions has been successfully downloaded
-						if(distribution.isSuccessfullyDownloaded() && distributionToCompare.isSuccessfullyDownloaded())
-						
+					try {						
 						// check if distributions had already been compared
 						if(!LinksetQueries.isOnLinksetList(distribution.getDownloadUrl(), distributionToCompare.getDownloadUrl()))
 							
