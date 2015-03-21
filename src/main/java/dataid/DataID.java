@@ -127,11 +127,11 @@ public class DataID {
 						// error to convert dbpedia files from turtle using
 						// rapper
 						boolean isDbpedia = false;
-						if (distributionMongoDBObj.getDownloadUrl().contains(
-								"dbpedia"))
-							isDbpedia = true;
-						if (isDbpedia)
-							throw new DataIDException("DBpedia ttl format");
+//						if (distributionMongoDBObj.getDownloadUrl().contains(
+//								"dbpedia"))
+//							isDbpedia = true;
+//						if (isDbpedia)
+//							throw new DataIDException("DBpedia ttl format");
 						p.separateSubjectAndObject(downloadedFile.fileName,
 								downloadedFile.extension, isDbpedia);
 						downloadedFile.objectDomains = p.objectDomains;
