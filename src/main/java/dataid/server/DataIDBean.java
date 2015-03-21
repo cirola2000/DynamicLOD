@@ -37,6 +37,8 @@ public class DataIDBean implements Serializable, Runnable {
 	// log screen
 	private ArrayList<String> display = new ArrayList<String>();
 
+	public boolean hasNewLog = false;
+
 	// dataid list
 	private String distributionIDList = "(empty)";
 
@@ -129,8 +131,24 @@ public class DataIDBean implements Serializable, Runnable {
 		a.loadProperties();
 		this.setDownloadNumberOfDownloadedDistributions(0);
 		this.setDownloadDatasetURI("");
+
 		try {
-			this.push();
+			new Thread(new Runnable() {
+
+				public void run() {
+					try {
+						while (true) {
+							Thread.sleep(1000);
+							if (hasNewLog) {
+								DataIDBean.push();
+								hasNewLog = false;
+							}
+						}
+					} catch (Exception e) {
+					}
+
+				}
+			}).start();
 
 			if (action == "runDataid")
 				startDataID();
@@ -138,7 +156,7 @@ public class DataIDBean implements Serializable, Runnable {
 				updateGraph();
 
 			// this.dataIDList = Queries.getDataIDs();
-			this.pushDistributionList();
+			pushDistributionList();
 
 		} catch (MessageException e) {
 			e.printStackTrace();
@@ -178,11 +196,11 @@ public class DataIDBean implements Serializable, Runnable {
 	}
 
 	public String getDisplay() {
-		if(display.size()>50)
-			display.remove(display.size()-50);
-		
+		if (display.size() > 50)
+			display.remove(display.size() - 50);
+
 		if (display.size() > 0)
-			return display.get(display.size()-1);
+			return display.get(display.size() - 1);
 		else
 			return "";
 	}
@@ -266,9 +284,10 @@ public class DataIDBean implements Serializable, Runnable {
 		this.downloadedMB = downloadPercentage;
 	}
 
-	
-	
 	public void addDisplayMessage(String level, String info) {
+
+		hasNewLog = true;
+
 		if (startTime == 0)
 			startTime = System.currentTimeMillis();
 		double endTime2 = endTime;
@@ -292,12 +311,12 @@ public class DataIDBean implements Serializable, Runnable {
 				+ "; width:340px\">" + "[" + level + "]" + timer
 				+ "<span style=\"margin-left:30px\">" + info + "</span>"
 				+ "</span>");
-		try {
-			push();
-		} catch (MessageException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// try {
+		// // push();
+		// } catch (MessageException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 	}
 
 }

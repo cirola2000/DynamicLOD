@@ -10,6 +10,7 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.sun.istack.logging.Logger;
 
 import dataid.exceptions.DataIDException;
 import dataid.models.DistributionModel;
@@ -89,9 +90,9 @@ public class DataIDModel {
 						distribution.getObject().asResource(),
 						Distribution.downloadURL, (RDFNode) null);
 
-				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-						"Distribution found: "
-								+ distribution.getObject().toString());
+//				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+//						"Distribution found: "
+//								+ distribution.getObject().toString());
 
 				// case there is an downloadURL property
 				while (stmtDownloadURL.hasNext()) {
@@ -156,10 +157,10 @@ public class DataIDModel {
 							datasetMongoDBObj.updateObject(true);
 						}
 					} catch (DataIDException ex) {
-						bean.addDisplayMessage(
-								DataIDGeneralProperties.MESSAGE_ERROR,
-								ex.getMessage());
-						ex.printStackTrace();
+//						bean.addDisplayMessage(
+//								DataIDGeneralProperties.MESSAGE_ERROR,
+//								ex.getMessage());
+//						ex.printStackTrace();
 					}
 
 					datasetMongoDBObj.updateObject(true);
@@ -210,8 +211,8 @@ public class DataIDModel {
 					.addParentDatasetURI(subset.getSubject().toString());
 			subsetMongoDBObj.updateObject(true);
 
-			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-					"Subset found: " + subset.getObject().toString());
+//			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+//					"Subset found: " + subset.getObject().toString());
 
 			// find subset within subset
 			StmtIterator stmtSubsets2 = inModel.listStatements(subset
@@ -236,9 +237,9 @@ public class DataIDModel {
 					// store distribution
 					Statement distribution = stmtDistribution.next();
 
-					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
-							"Distribution found: "
-									+ distribution.getObject().toString());
+//					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
+//							"Distribution found: "
+//									+ distribution.getObject().toString());
 
 					// find downloadURL property
 					StmtIterator stmtDownloadURL = inModel.listStatements(
@@ -250,13 +251,13 @@ public class DataIDModel {
 						downloadURLFound = true;
 						// store downloadURL statement
 						Statement downloadURL = stmtDownloadURL.next();
-						bean.addDisplayMessage(
-								DataIDGeneralProperties.MESSAGE_LOG,
-								"Distribution found: downloadURL: "
-										+ downloadURL.getObject().toString());
 						try {
 							if (FileUtils.acceptedFormats(downloadURL.getObject()
 									.toString())) {
+								bean.addDisplayMessage(
+										DataIDGeneralProperties.MESSAGE_LOG,
+										"Distribution found: downloadURL: "
+												+ downloadURL.getObject().toString());
 
 								// save distribution with downloadURL to list
 								distributionsLinks.add(new DistributionModel(
@@ -307,10 +308,10 @@ public class DataIDModel {
 
 							}
 						} catch (DataIDException ex) {
-							bean.addDisplayMessage(
-									DataIDGeneralProperties.MESSAGE_ERROR,
-									ex.getMessage());
-							ex.printStackTrace();
+//							bean.addDisplayMessage(
+//									DataIDGeneralProperties.MESSAGE_ERROR,
+//									ex.getMessage());
+//							
 						}
 					}
 				}
