@@ -6,7 +6,7 @@ public class FileNameFromURL {
 		String fileName = null;
 		if (httpDisposition != null) {
 			int index = httpDisposition.indexOf("filename=");
-			if (index > 0) {
+			if (index > 0) { 
 				fileName = httpDisposition.substring(index + 10,
 						httpDisposition.length() - 1);
 			}

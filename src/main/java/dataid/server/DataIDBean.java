@@ -3,6 +3,7 @@ package dataid.server;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.EventListener;
 
 import javax.faces.bean.ManagedBean;
@@ -25,7 +26,7 @@ import dataid.mongodb.queries.SubsetQueries;
 public class DataIDBean implements Serializable, Runnable {
 
 	private static final long serialVersionUID = -6239437588285327644L;
-	
+
 	public DataID dataid = null;
 
 	static private double startTime = 0;
@@ -34,7 +35,7 @@ public class DataIDBean implements Serializable, Runnable {
 	private String url = "https://raw.githubusercontent.com/cirola2000/DynamicLOD/master/src/main/webapp/dataids_example/dataid-news100.ttl";
 
 	// log screen
-	private String display = "";
+	private ArrayList<String> display = new ArrayList<String>();
 
 	// dataid list
 	private String distributionIDList = "(empty)";
@@ -70,7 +71,6 @@ public class DataIDBean implements Serializable, Runnable {
 		this.url = url;
 	}
 
-
 	public static void push() throws MessageException {
 		TopicKey topicKey = new TopicKey("logMessage");
 		TopicsContext topicsContext = TopicsContext.lookup();
@@ -92,7 +92,6 @@ public class DataIDBean implements Serializable, Runnable {
 
 		topicsContext.publish(topicKey, "");
 	}
-	
 
 	public void start() {
 		startTime = 0;
@@ -179,11 +178,17 @@ public class DataIDBean implements Serializable, Runnable {
 	}
 
 	public String getDisplay() {
-		return display;
+		if(display.size()>50)
+			display.remove(display.size()-50);
+		
+		if (display.size() > 0)
+			return display.get(display.size()-1);
+		else
+			return "";
 	}
 
 	public void setDisplay(String display) {
-		this.display = display;
+		this.display.add(display);
 	}
 
 	// mutator methods for statistical data
@@ -261,6 +266,7 @@ public class DataIDBean implements Serializable, Runnable {
 		this.downloadedMB = downloadPercentage;
 	}
 
+	
 	
 	public void addDisplayMessage(String level, String info) {
 		if (startTime == 0)

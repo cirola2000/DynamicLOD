@@ -387,9 +387,8 @@ public class DataID {
 			load();
 
 		} catch (Exception e) {
-			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
-					e.getMessage());
-			e.printStackTrace();
+//			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
+//					e.getMessage());
 			logger.error(e.getMessage());
 		}
 		logger.info("END");
