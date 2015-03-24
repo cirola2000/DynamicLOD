@@ -59,7 +59,6 @@ public class MakeLinksets {
 				// uptate status of distribution
 				distribution.setStatus(DistributionMongoDBObject.STATUS_CREATING_LINKSETS);
 				distribution.updateObject(true);
-				bean.pushDistributionList();
 
 				// make some validations
 				if(distribution
@@ -72,6 +71,7 @@ public class MakeLinksets {
 					throw new DataIDException("distributionObjectPath is empty or null for "+distribution
 							.getDownloadUrl()+" distribution;");
 				}
+				bean.pushDistributionList();
 				
 				for (DistributionMongoDBObject distributionToCompare : disributionsToCompare) {
 					try {						
