@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 
 import dataid.download.CheckWhetherDownload;
-import dataid.download.DownloadAndSave;
+import dataid.download.DownloadAndSaveDistribution;
 import dataid.exceptions.DataIDException;
 import dataid.files.PrepareFiles;
 import dataid.filters.FileToFilter;
@@ -89,7 +89,7 @@ public class DataID {
 					DataIDBean.pushDistributionList();
 
 					// now we need to download the distribution
-					DownloadAndSave downloadedFile = new DownloadAndSave();
+					DownloadAndSaveDistribution downloadedFile = new DownloadAndSaveDistribution();
 
 					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Downloading distribution.");
 					logger.info("Downloading distribution.");
