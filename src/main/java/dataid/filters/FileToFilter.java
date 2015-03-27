@@ -18,14 +18,14 @@ import dataid.server.DataIDBean;
 
 public class FileToFilter {
 	
-	final static Logger logger = Logger.getLogger(CheckWhetherDownload.class);
+	final static Logger logger = Logger.getLogger(FileToFilter.class);
 
 	// list of linksets
 	List<String> links = new ArrayList<String>();
 	public List<String> linksUniq = new ArrayList<String>();
 	public int subjectsLoadedIntoFilter = 0;
 
-	public void loadFileToFilter(GoogleBloomFilter filter, String fileName) {
+	public GoogleBloomFilter loadFileToFilter(GoogleBloomFilter filter, String fileName) {
 
 		BufferedReader br = null;
 		
@@ -41,6 +41,7 @@ public class FileToFilter {
 				subjectsLoadedIntoFilter++;
 			}
 			logger.info("Bloom filter loaded "+subjectsLoadedIntoFilter + " lines.");
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -70,6 +71,7 @@ public class FileToFilter {
 			e.printStackTrace();
 //			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
 		}
+		return filter;
 
 	}
 

@@ -19,19 +19,21 @@ public class LinksetMongoDBObject extends DataIDDB {
 
 	public static final String OBJECTS_DATASET_TARGET = "objectsDatasetTarget";
 
+	public static final String ONTOLOGY_LINKS = "ontologyLinks";
 
-	
 	public static final String LINKS = "links";
 
 	private String subjectsDistributionTarget;
 
 	private String objectsDistributionTarget;
- 
+
 	private String subjectsDatasetTarget;
 
 	private String objectsDatasetTarget;
 
-	private int links;
+	private int ontologyLinks = 0;
+
+	private int links = 0;
 
 	public LinksetMongoDBObject(String uri) {
 		super(COLLECTION_NAME, uri);
@@ -43,10 +45,12 @@ public class LinksetMongoDBObject extends DataIDDB {
 		// save object case it doens't exists
 		try {
 			// updating subjectsTarget on mongodb
-			mongoDBObject.put(SUBJECTS_DISTRIBUTION_TARGET, subjectsDistributionTarget);
+			mongoDBObject.put(SUBJECTS_DISTRIBUTION_TARGET,
+					subjectsDistributionTarget);
 
 			// updating objectsTarget on mongodb
-			mongoDBObject.put(OBJECTS_DISTRIBUTION_TARGET, objectsDistributionTarget);
+			mongoDBObject.put(OBJECTS_DISTRIBUTION_TARGET,
+					objectsDistributionTarget);
 
 			// updating subjectsTarget on mongodb
 			mongoDBObject.put(SUBJECTS_DATASET_TARGET, subjectsDatasetTarget);
@@ -54,8 +58,11 @@ public class LinksetMongoDBObject extends DataIDDB {
 			// updating objectsTarget on mongodb
 			mongoDBObject.put(OBJECTS_DATASET_TARGET, objectsDatasetTarget);
 
-			// updating objectsTarget on mongodb
+			// updating links on mongodb
 			mongoDBObject.put(LINKS, links);
+
+			// updating links on mongodb
+			mongoDBObject.put(ONTOLOGY_LINKS, ontologyLinks);
 
 			insert(checkBeforeInsert);
 		} catch (Exception e2) {
@@ -80,15 +87,19 @@ public class LinksetMongoDBObject extends DataIDDB {
 
 		if (obj != null) {
 
-			subjectsDistributionTarget = (String) obj.get(SUBJECTS_DISTRIBUTION_TARGET);
+			subjectsDistributionTarget = (String) obj
+					.get(SUBJECTS_DISTRIBUTION_TARGET);
 
-			objectsDistributionTarget = (String) obj.get(OBJECTS_DISTRIBUTION_TARGET);
+			objectsDistributionTarget = (String) obj
+					.get(OBJECTS_DISTRIBUTION_TARGET);
 
 			objectsDatasetTarget = (String) obj.get(OBJECTS_DATASET_TARGET);
 
-			subjectsDatasetTarget= (String) obj.get(SUBJECTS_DATASET_TARGET);
-			
-			links = Integer.valueOf(obj.get(LINKS).toString() );
+			subjectsDatasetTarget = (String) obj.get(SUBJECTS_DATASET_TARGET);
+
+			ontologyLinks = Integer.valueOf(obj.get(ONTOLOGY_LINKS).toString());
+
+			links = Integer.valueOf(obj.get(LINKS).toString());
 
 			return true;
 		}
@@ -131,10 +142,16 @@ public class LinksetMongoDBObject extends DataIDDB {
 		return links;
 	}
 
+	public int getOntologyLinks() {
+		return ontologyLinks;
+	}
+
+	public void setOntologyLinks(int ontologyLinks) {
+		this.ontologyLinks = ontologyLinks;
+	}
+
 	public void setLinks(int links) {
 		this.links = links;
 	}
 
-	
-	
 }

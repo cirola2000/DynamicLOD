@@ -11,6 +11,8 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
+import org.apache.log4j.Logger;
+
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnel;
 import com.google.common.hash.Funnels;
@@ -19,6 +21,8 @@ import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 
 public class GoogleBloomFilter implements DataIDFilterInterface {
+	
+	final static Logger logger = Logger.getLogger(GoogleBloomFilter.class);
 
 	public BloomFilter<byte[]> filter = null;
 
@@ -64,32 +68,8 @@ public class GoogleBloomFilter implements DataIDFilterInterface {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return true;
-	}
-
-	public boolean addAuthorityDomainToFilter(String authorityDomain) {
-
-		try {
-			String path = DataIDGeneralProperties.AUTHORITY_FILTER_PATH;
-
-			// check if filter already exists
-			File f = new File(path);
-			if (f.exists()) {
-				filter = BloomFilter.readFrom(new FileInputStream(new File(path)),
-						funnel);
-				fullFilePath = path;
-			}
-
-			// make a filter with subjects
-			add(authorityDomain);
-
-			filter.writeTo(new FileOutputStream(new File(path)));
-
-			System.out.println("Domain: "+authorityDomain+" added to Authority domain filter.");
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		logger.debug("Filter saved: "+path);
+		
 		return true;
 	}
 
@@ -98,6 +78,8 @@ public class GoogleBloomFilter implements DataIDFilterInterface {
 			filter = BloomFilter.readFrom(new FileInputStream(new File(path)),
 					funnel);
 			fullFilePath = path;
+			
+			logger.debug("Filter loaded from file: "+ fullFilePath);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

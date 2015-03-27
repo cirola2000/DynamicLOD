@@ -7,9 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.junit.Test;
+import org.bson.types.ObjectId;
 
-import dataid.DataID;
 import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
 import dataid.filters.GoogleBloomFilter;
@@ -71,7 +70,7 @@ public class MakeLinksets {
 					throw new DataIDException("distributionObjectPath is empty or null for "+distribution
 							.getDownloadUrl()+" distribution;");
 				}
-				bean.pushDistributionList();
+				DataIDBean.pushDistributionList();
 				
 				for (DistributionMongoDBObject distributionToCompare : disributionsToCompare) {
 					try {						
@@ -240,7 +239,11 @@ public class MakeLinksets {
 			LinksetMongoDBObject l = new LinksetMongoDBObject(
 					dataThread.objectDistributionURI + "-2-"
 							+ dataThread.subjectDistributionURI);
+//			LinksetMongoDBObject l = new LinksetMongoDBObject(
+//					ObjectId.get().toString());
+		
 			l.setLinks(dataThread.links);
+			l.setOntologyLinks(dataThread.ontologyLinks);
 			l.setObjectsDistributionTarget(dataThread.objectDistributionURI);
 			l.setSubjectsDistributionTarget(dataThread.subjectDistributionURI);
 			l.setObjectsDatasetTarget(dataThread.objectDatasetURI);
