@@ -25,7 +25,7 @@ public class FileToFilter {
 	public List<String> linksUniq = new ArrayList<String>();
 	public int subjectsLoadedIntoFilter = 0;
 
-	public GoogleBloomFilter loadFileToFilter(GoogleBloomFilter filter, String fileName) {
+	public void loadFileToFilter(GoogleBloomFilter filter, String fileName) {
 
 		BufferedReader br = null;
 		
@@ -71,7 +71,7 @@ public class FileToFilter {
 			e.printStackTrace();
 //			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,e.getMessage());
 		}
-		return filter;
+	
 
 	}
 

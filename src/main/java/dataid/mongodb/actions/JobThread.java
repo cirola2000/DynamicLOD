@@ -20,11 +20,11 @@ public class JobThread implements Runnable {
 	public void run() {
 		try {
 			for (int i = 0; i < size; i++) {
-				if(dataThread.ontologyFilter.compare(lines[i])){
-					dataThread.ontologyLinks++;
-				}
 					
-				else if (dataThread.filter.compare(lines[i])) {
+				if (dataThread.filter.compare(lines[i])) {
+					if(dataThread.ontologyFilter.compare(lines[i]))
+						dataThread.ontologyLinks++;
+					else
 						dataThread.links++;		
 				}
 			}

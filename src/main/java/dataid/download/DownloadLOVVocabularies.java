@@ -75,6 +75,7 @@ public class DownloadLOVVocabularies extends Download {
 				
 			}
 			splitThread.setDoneReadingFile(true);
+			
 		splitThread.join();
 		
 		logger.info("Creating bloom filter.");
