@@ -8,10 +8,9 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
+import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
-
-import dataid.utils.Formats;
 
 public class Download {
 
@@ -38,6 +37,8 @@ public class Download {
 		httpContentLength = httpConn.getContentLength();
 		if (httpConn.getLastModified() > 0)
 			httpLastModified = String.valueOf(httpConn.getLastModified());
+		
+		printHeaders();
 
 	}
 
@@ -48,6 +49,9 @@ public class Download {
 		// opens input stream from HTTP connection
 		InputStream inputStream = httpConn.getInputStream();
 		logger.debug("InputStream from http connection opened");
+		
+		// get some data from headers
+				getMetadataFromHTTPHeaders(httpConn);
 
 		return inputStream;
 
@@ -81,37 +85,55 @@ public class Download {
 		logger.debug("fileName = " + fileName);
 	}
 
-	protected InputStream getBZip2InputStream(InputStream inputStream) throws Exception {
-		
+	protected InputStream getBZip2InputStream(InputStream inputStream)
+			throws Exception {
+
 		// check whether file is bz2 type
 		if (getExtension().equals("bz2")) {
 			logger.debug("File extension is bz2, creating BZip2CompressorInputStream...");
 			inputStream = new BZip2CompressorInputStream(
 					httpConn.getInputStream(), true);
 			setFileName(getFileName().replace(".bz2", ""));
+			setExtension(null);
 
 			logger.debug("Done creating BZip2CompressorInputStream! New file name is "
-					+ fileName);
+					+ getFileName());
 		}
 		return inputStream;
 	}
-	
-	protected InputStream getZipInputStream(InputStream inputStream) throws Exception {
-		// check whether file is zip type
-				if (getExtension().equals("zip")) {
-					logger.debug("File extension is zip, creating ZipInputStream and checking compressed files...");
-					DownloadZipUtils d = new DownloadZipUtils();
-					d.checkZipFile(url);
-					ZipInputStream zip = new ZipInputStream(httpConn.getInputStream());
-					ZipEntry entry = zip.getNextEntry();
-					fileName = entry.getName();
-					inputStream = zip;
-					logger.debug("Done, we found a single file: " + fileName);
-				}
+
+	protected InputStream getGZipInputStream(InputStream inputStream)
+			throws Exception {
+
+		// check whether file is bz2 type
+		if (getExtension().equals("gz")) {
+			logger.debug("File extension is gz, creating GzipCompressorInputStream...");
+			inputStream = new GzipCompressorInputStream(
+					httpConn.getInputStream(), true);
+			setFileName(getFileName().replace(".gz", ""));
+			setExtension(null);
+
+			logger.debug("Done creating GzipCompressorInputStream! New file name is "
+					+ getFileName());
+		}
 		return inputStream;
 	}
 
-	
+	protected InputStream getZipInputStream(InputStream inputStream)
+			throws Exception {
+		// check whether file is zip type
+		if (getExtension().equals("zip")) {
+			logger.debug("File extension is zip, creating ZipInputStream and checking compressed files...");
+			DownloadZipUtils d = new DownloadZipUtils();
+			d.checkZipFile(url);
+			ZipInputStream zip = new ZipInputStream(httpConn.getInputStream());
+			ZipEntry entry = zip.getNextEntry();
+			setFileName(entry.getName());
+			inputStream = zip;
+			logger.debug("Done, we found a single file: " + fileName);
+		}
+		return inputStream;
+	}
 
 	public String getFileName() {
 		if (fileName == null) {
@@ -129,7 +151,9 @@ public class Download {
 
 	public String getExtension() {
 		if (extension == null) {
+			logger.debug("Setting file extension.");
 			extension = FilenameUtils.getExtension(getFileName());
+			logger.debug(extension);
 		}
 		return extension;
 	}

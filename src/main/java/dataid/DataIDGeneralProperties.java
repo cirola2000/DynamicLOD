@@ -47,6 +47,10 @@ public class DataIDGeneralProperties {
 					+ "object_distribution_";
 			SUBJECT_FILE_FILTER_PATH = FILTER_PATH + "subject_filter_";
 			OBJECT_FILE_FILTER_PATH = FILTER_PATH + "object_filter_";
+			OBJECT_FILE_LOV_PATH = FILTER_PATH + "lov_object";
+			SUBJECT_FILE_LOV_PATH = FILTER_PATH + "lov_subject";
+			FILTER_FILE_LOV_PATH = FILTER_PATH + "lov_filter";
+			
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -80,6 +84,11 @@ public class DataIDGeneralProperties {
 	// defining file names for filters for subjects and objects
 	public static String SUBJECT_FILE_FILTER_PATH;
 	public static String OBJECT_FILE_FILTER_PATH;
+	
+	// defining path for LOV
+	public static String SUBJECT_FILE_LOV_PATH;
+	public static String OBJECT_FILE_LOV_PATH;
+	public static String FILTER_FILE_LOV_PATH;
 
 	// defining server properties
 	public static final String MESSAGE_INFO = "info";

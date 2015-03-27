@@ -27,12 +27,25 @@ public class SplitAndStoreThread extends Thread {
 
 	public Integer totalTriples = 0;
 
+	public boolean isChain = true;
+
 	public SplitAndStoreThread(Queue<String> bufferQueue,
-			 Queue<String> subjectQueue, Queue<String> objectQueue, String fileName) {
+			Queue<String> subjectQueue, Queue<String> objectQueue,
+			String fileName) {
 		this.bufferQueue = bufferQueue;
 		this.objectQueue = objectQueue;
 		this.subjectQueue = subjectQueue;
 		this.fileName = fileName;
+	}
+
+	public SplitAndStoreThread(Queue<String> bufferQueue,
+			Queue<String> subjectQueue, Queue<String> objectQueue,
+			String fileName, boolean isChain) {
+		this.bufferQueue = bufferQueue;
+		this.objectQueue = objectQueue;
+		this.subjectQueue = subjectQueue;
+		this.fileName = fileName;
+		this.isChain = isChain;
 	}
 
 	public String getFileName() {
@@ -61,23 +74,34 @@ public class SplitAndStoreThread extends Thread {
 
 	public synchronized void run() {
 
+		FileOutputStream subject = null;
+
+		FileOutputStream object = null;
+
 		try {
+			
+			if (DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH == null){
+				new DataIDGeneralProperties().loadProperties();
+			}
 
-			// creates subject file in disk
-			FileOutputStream subject = new FileOutputStream(
-					DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
-							+ fileName);
-
-			// creates object file in disk
-			FileOutputStream object = new FileOutputStream(
-					DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
-							+ fileName);
+			if (subjectQueue != null){
+				// creates subject file in disk
+				subject = new FileOutputStream(
+						DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
+								+ fileName);
+			}
+			if (objectQueue != null)
+				// creates object file in disk
+				object = new FileOutputStream(
+						DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
+								+ fileName);
 
 			String lastLine = "";
 			String tmpLastSubject = "";
 
 			// starts reading buffer queue
 			while (!doneReadingFile) {
+
 				while (bufferQueue.size() > 0) {
 					// aint.decrementAndGet();
 					try {
@@ -88,7 +112,6 @@ public class SplitAndStoreThread extends Thread {
 
 							lastLine = "";
 						}
-						// System.out.println(o[0]);
 
 						for (int q = 0; q < o.length; q++) {
 							String u = o[q];
@@ -98,40 +121,47 @@ public class SplitAndStoreThread extends Thread {
 									Pattern pattern = Pattern
 											.compile("^(<[^>]+>)\\s+(<[^>]+>)\\s(.*)(\\s\\.)");
 
-									// System.out.println(u);
 									Matcher matcher = pattern.matcher(u);
 									if (!matcher.matches()) {
 										throw new ArrayIndexOutOfBoundsException();
 									}
 
 									// get subject and save to file
-									if (!tmpLastSubject
-											.equals(matcher.group(1))) {
-										tmpLastSubject = matcher.group(1);
-										subject.write(new String(matcher
-												.group(1) + "\n").getBytes());
-										while (subjectQueue.size()>1000) {}
-										subjectQueue.add(matcher.group(1));
-										subjectLines++;
-										
-									}
+									if (subject != null)
+										if (!tmpLastSubject.equals(matcher
+												.group(1))) {
+											tmpLastSubject = matcher.group(1);
+											subject.write(new String(matcher
+													.group(1) + "\n")
+													.getBytes());
+											while (subjectQueue.size() > 1000) {
+												Thread.sleep(1);
+											}
+											if (isChain)
+												subjectQueue.add(matcher
+														.group(1));
+											subjectLines++;
+										}
 
 									// get object (make sure that its a
-									// resource
-									// and not a literal), add to queue and
-									// save
-									// to file
-									if (!matcher.group(3).startsWith("\"")) {
-										object.write(new String(matcher
-												.group(3) + "\n").getBytes());
+									// resource and not a literal), add
+									// to queue and save to file
+									if (object != null)
+										if (!matcher.group(3).startsWith("\"")) {
+											object.write(new String(matcher
+													.group(3) + "\n")
+													.getBytes());
 
-										// add object to object queue (the
-										// queue
-										// is read by other thread)
-										while (objectQueue.size()>1000) {}
-										objectQueue.add(matcher.group(3));
-										objectLines++;
-									}
+											// add object to object queue (the
+											// queue is read by other thread)
+											while (objectQueue.size() > 1000) {
+												Thread.sleep(1);
+											}
+											if (isChain)
+												objectQueue.add(matcher
+														.group(3));
+											objectLines++;
+										}
 									totalTriples++;
 
 								} catch (ArrayIndexOutOfBoundsException e) {
@@ -150,9 +180,15 @@ public class SplitAndStoreThread extends Thread {
 				}
 			}
 
-			DataIDBean.pushDownloadInfo();
-			object.close();
-			subject.close();
+			try {
+				if (object != null)
+					object.close();
+				if (subject != null)
+					subject.close();
+				DataIDBean.pushDownloadInfo();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

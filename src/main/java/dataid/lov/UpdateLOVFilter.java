@@ -1,12 +1,19 @@
 package dataid.lov;
 
-import dataid.download.DownloadAndSaveDistribution;
+import dataid.download.DownloadLOVVocabularies;
 
 public class UpdateLOVFilter {
 
 	public UpdateLOVFilter() {
-		DownloadAndSaveDistribution d = new DownloadAndSaveDistribution();
-		
+		try {
+			DownloadLOVVocabularies d = new DownloadLOVVocabularies();
+			d.downloadLOV();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
-	
+
 }

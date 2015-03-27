@@ -64,14 +64,11 @@ public class DownloadAndSaveDistribution extends Download {
 
 		InputStream inputStream = getStream(new URL(accessURL));
 
-		// get some data from headers
-		getMetadataFromHTTPHeaders(httpConn);
-
-		// print http headers
-		printHeaders();
-
 		// allowing bzip2 format
 		inputStream = getBZip2InputStream(inputStream);
+		
+		// allowing gzip format
+		inputStream = getGZipInputStream(inputStream);
 		
 		// allowinf zip format
 		inputStream = getZipInputStream(inputStream);
@@ -90,7 +87,7 @@ public class DownloadAndSaveDistribution extends Download {
 				Formats.DEFAULT_NTRIPLES)) {
 
 			SplitAndStoreThread splitThread = new SplitAndStoreThread(
-					bufferQueue, subjectQueue, objectQueue, fileName);
+					bufferQueue, subjectQueue, objectQueue, getFileName());
 			splitThread.start();
 
 			GetDomainsFromTriplesThread getDomainFromObjectsThread = new GetDomainsFromTriplesThread(
