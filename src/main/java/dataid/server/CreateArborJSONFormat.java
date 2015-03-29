@@ -54,11 +54,18 @@ public class CreateArborJSONFormat extends HttpServlet {
 			JSONObject edges = new JSONObject();
 			if (linksetList != null)
 				for (LinksetMongoDBObject linkset : linksetList) {
-					if(linkset.getLinks()>30)
 					if (!linkset.getObjectsDatasetTarget().equals(
 							linkset.getSubjectsDatasetTarget())) {
 						JSONObject edgeDetail = new JSONObject();
 						edgeDetail.put("directed", true);
+						if(linkset.getLinks()>0 && linkset.getOntologyLinks()>0)
+							edgeDetail.put("color", "red");
+						else if (linkset.getOntologyLinks()>0)
+							edgeDetail.put("color", "green");
+						else if (linkset.getLinks()>0)
+							edgeDetail.put("color", "blue");
+							
+						
 						JSONObject edge = null;
 						if(edges.has(linkset.getObjectsDatasetTarget().toString())){
 							edge = (JSONObject) edges.get(linkset.getObjectsDatasetTarget().toString());

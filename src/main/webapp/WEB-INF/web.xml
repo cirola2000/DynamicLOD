@@ -20,6 +20,10 @@
 		<servlet-name>Service</servlet-name>
 		<servlet-class>dataid.server.Service</servlet-class>
 	</servlet>
+		<servlet>
+		<servlet-name>CreateArborJSONFormat</servlet-name>
+		<servlet-class>dataid.server.CreateArborJSONFormat</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>OutputByDistribution</servlet-name>
 		<url-pattern>/outputByDistribution/*</url-pattern>
@@ -27,6 +31,10 @@
 	<servlet-mapping>
 		<servlet-name>OutputByDataset</servlet-name>
 		<url-pattern>/outputByDataset/*</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>CreateArborJSONFormat</servlet-name>
+		<url-pattern>/CreateArborJSONFormat/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Service</servlet-name>

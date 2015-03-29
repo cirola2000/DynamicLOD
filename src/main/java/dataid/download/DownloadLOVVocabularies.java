@@ -23,16 +23,15 @@ public class DownloadLOVVocabularies extends Download {
 	ConcurrentLinkedQueue<String> bufferQueue = new ConcurrentLinkedQueue<String>();
 	public ConcurrentHashMap<String, Integer> countSubjectDomainsHashMap = new ConcurrentHashMap<String, Integer>();
 	
-	SplitAndStoreThread splitThread = null;
+	public SplitAndStoreThread splitThread = null;
 	
 	public double contentLengthAfterDownloaded = 0;
 	public double countBytesReaded = 0;
 	int aux;
 
-	@Test
-	public void downloadLOV() throws Exception {
+	public void downloadLOV(String url) throws Exception {
 		InputStream inputStream = getStream(new URL(
-				"http://lov.okfn.org/lov.nq.gz"));
+				url));
 
 		// allowing bzip2 format
 		inputStream = getGZipInputStream(inputStream);
@@ -77,23 +76,7 @@ public class DownloadLOVVocabularies extends Download {
 			splitThread.setDoneReadingFile(true);
 			
 		splitThread.join();
-		
-		logger.info("Creating bloom filter.");
-
-		// make a filter with subjects
-		GoogleBloomFilter filter;
-			filter = new GoogleBloomFilter(
-					(int) splitThread.subjectLines, (0.9)/splitThread.subjectLines);
-		
-		
-		// load file to filter and take the process time
-		FileToFilter f = new FileToFilter();
-
-		// Loading file to filter
-		f.loadFileToFilter(filter, getFileName());
-
-		filter.saveFilter(getFileName());
-		// save filter
+	
 	}
 
 }
