@@ -64,15 +64,17 @@
 
         // draw the edges
         particleSystem.eachEdge(function(edge, pt1, pt2){
+        	var color = edge.data.color
+        	var weight = edge.data.weight
+        	
+        	if (!color || (""+color).match(/^[ \t]*$/)) color = null
+
+        	if(color != "transparent"){
           // edge: {source:Node, target:Node, length:#, data:{}}
           // pt1:  {x:#, y:#}  source position in screen coords
           // pt2:  {x:#, y:#}  target position in screen coords
 
         	
-          var weight = edge.data.weight
-          var color = edge.data.color
-
-          if (!color || (""+color).match(/^[ \t]*$/)) color = null
 
           // find the start point
           var tail = intersect_line_box(pt1, pt2, nodeBoxes[edge.source.name])
@@ -113,9 +115,10 @@
               ctx.fill();
             ctx.restore()
           }
+        	}
         })
 
-
+        
 
       },
       initMouseHandling:function(){
@@ -129,6 +132,7 @@
         // for moves and mouseups while dragging
         var handler = {
           clicked:function(e){
+        	  console.log("Click")
             var pos = $(canvas).offset();
             _mouseP = arbor.Point(e.pageX-pos.left, e.pageY-pos.top)
             selected = nearest = dragged = particleSystem.nearest(_mouseP);
@@ -137,10 +141,13 @@
 
             $(canvas).bind('mousemove', handler.dragged)
             $(window).bind('mouseup', handler.dropped)
+            
+        	  console.log("Click2")
 
             return false
           },
           dragged:function(e){
+        	  console.log("Drag")
             var old_nearest = nearest && nearest.node._id
             var pos = $(canvas).offset();
             var s = arbor.Point(e.pageX-pos.left, e.pageY-pos.top)
@@ -155,6 +162,7 @@
           },
 
           dropped:function(e){
+        	  console.log("Drop")
             if (dragged===null || dragged.node===undefined) return
             if (dragged.node !== null) dragged.node.fixed = false
             dragged.node.tempMass = 50

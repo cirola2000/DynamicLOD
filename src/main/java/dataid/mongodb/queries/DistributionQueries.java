@@ -191,7 +191,7 @@ public class DistributionQueries {
 					if(d.hasNext()){
 						if(!distributions.contains(instance.get(DistributionMongoDBObject.DOWNLOAD_URL).toString())){
 						distributions.add(instance.get(DistributionMongoDBObject.DOWNLOAD_URL).toString());
-						System.out.println(instance.get(DistributionMongoDBObject.DOWNLOAD_URL).toString());
+//						System.out.println(instance.get(DistributionMongoDBObject.DOWNLOAD_URL).toString());
 						}
 					}
 				}

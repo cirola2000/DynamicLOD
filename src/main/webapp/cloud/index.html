@@ -8,10 +8,16 @@
 
 
 
-
 	<div>
-		<canvas id="viewport" width="800" height="600"></canvas>
-
+		<div style="float: left">
+			<input type="checkbox" onclick="addLink()" checked>Only Links <br /> <input
+				type="checkbox" onclick="addOntology()" checked>Only Ontology <br /> <input
+				type="checkbox" onclick="addOntologyAndLink()" checked> Links +
+			Ontology <br />
+		</div>
+		<div style="float: right">
+			<canvas id="viewport" width="1200" height="900"></canvas>
+		</div>
 	</div>
 
 
@@ -21,50 +27,59 @@
 	<script src="../resources/js/renderer.js"></script>
 
 	<script type="text/javascript">
-		var sys = arbor.ParticleSystem(15, 50, 10);
+		var sys = arbor.ParticleSystem(10000, 5, 100);
+
+		var data;
+
 		sys.parameters({
 			gravity : true
 		});
 		sys.renderer = Renderer("#viewport");
-		
-			$.getJSON( "/dataid/CreateArborJSONFormat", function( data ) {
-				console.log(data)
-				sys.graft(data);
-			});
-			
-			
-//		var data = {
-//			nodes : {
-//				animals : {
-//					'color' : 'red',
-//					'shape' : 'dot',
-//					'label' : 'Animals'
-//				},
-//				dog : {
-//					'color' : 'green',
-//					'shape' : 'dot',
-//					'label' : 'dog'
-//				},
-//				cat : {
-//					'color' : 'blue',
-//					'shape' : 'dot',
-//					'label' : 'cat'
-//				},
-//				cat2 : {
-//					'color' : 'blue',
-//					'shape' : 'dot',
-//					'label' : 'cat'
-//				}
-//			},
-//			edges : {
-//				animals : {
-//					dog : {directed:true,'color' : 'blue', },
-//					cat : {},
-//					cat2 : {},
-//				}
-//			}
-//		};
-//		sys.graft(data);
+
+		$.getJSON("/dataid/CreateArborJSONFormat", function(d) {
+			console.log(d)
+			data = d;
+			sys.graft(data);
+		});
+
+		function addLink() {
+			for (i in data.edges) {
+				for (j in data.edges[i]) {
+					if (data.edges[i][j].linkType == "link") {
+						if (data.edges[i][j].color == "transparent")
+							data.edges[i][j].color = "blue";
+						else
+							data.edges[i][j].color = "transparent";
+					}
+				}
+			}
+		}
+
+		function addOntology() {
+			for (i in data.edges) {
+				for (j in data.edges[i]) {
+					if (data.edges[i][j].linkType == "ontology") {
+						if (data.edges[i][j].color == "transparent")
+							data.edges[i][j].color = "green";
+						else
+							data.edges[i][j].color = "transparent";
+					}
+				}
+			}
+		}
+
+		function addOntologyAndLink() {
+			for (i in data.edges) {
+				for (j in data.edges[i]) {
+					if (data.edges[i][j].linkType == "ontologyAndLink") {
+						if (data.edges[i][j].color == "transparent")
+							data.edges[i][j].color = "red";
+						else
+							data.edges[i][j].color = "transparent";
+					}
+				}
+			}
+		}
 	</script>
 
 </body>

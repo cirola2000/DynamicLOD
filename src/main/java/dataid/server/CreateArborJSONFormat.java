@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 
 import dataid.mongodb.objects.DatasetMongoDBObject;
+import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.LinksetMongoDBObject;
 import dataid.mongodb.queries.DatasetQueries;
+import dataid.mongodb.queries.DistributionQueries;
 import dataid.mongodb.queries.LinksetQueries;
 
 public class CreateArborJSONFormat extends HttpServlet {
@@ -27,68 +29,104 @@ public class CreateArborJSONFormat extends HttpServlet {
 		printOutput(request, response);
 	}
 
-	public void printOutput(HttpServletRequest request, HttpServletResponse response){
+	public void printOutput(HttpServletRequest request,
+			HttpServletResponse response) {
 
 		try {
-			
-//			String paramDataset = request.getParameter("dataset");
-			
+			String paramDataset = request.getParameter("dataset");
+			System.out.println(paramDataset);
+
 			JSONObject obj = new JSONObject();
-			
-			ArrayList<DatasetMongoDBObject> datasetList = DatasetQueries.getDatasets();
 
 			JSONObject nodes = new JSONObject();
-			if (datasetList != null)
-				for (DatasetMongoDBObject dataset : datasetList) {
-					JSONObject node = new JSONObject();
-					node.put("label", dataset.getLabel());
-//					node.put("shape", "dot");
-					nodes.put(dataset.getUri(), node);
-				}
-			obj.put("nodes", nodes);
-
-			
-			ArrayList<LinksetMongoDBObject> linksetList = LinksetQueries
-					.getLinksetsGroupByDatasets();
-
 			JSONObject edges = new JSONObject();
-			if (linksetList != null)
-				for (LinksetMongoDBObject linkset : linksetList) {
-					if (!linkset.getObjectsDatasetTarget().equals(
-							linkset.getSubjectsDatasetTarget())) {
-						JSONObject edgeDetail = new JSONObject();
-						edgeDetail.put("directed", true);
-						if(linkset.getLinks()>0 && linkset.getOntologyLinks()>0)
-							edgeDetail.put("color", "red");
-						else if (linkset.getOntologyLinks()>0)
-							edgeDetail.put("color", "green");
-						else if (linkset.getLinks()>0)
-							edgeDetail.put("color", "blue");
-							
-						
-						JSONObject edge = null;
-						if(edges.has(linkset.getObjectsDatasetTarget().toString())){
-							edge = (JSONObject) edges.get(linkset.getObjectsDatasetTarget().toString());
-						}
+			ArrayList<LinksetMongoDBObject> edgeList = null;
+
+			if (paramDataset != null) {
+				ArrayList<DatasetMongoDBObject> nodeList = DatasetQueries
+						.getDatasets();
+				if (nodeList != null)
+					for (DatasetMongoDBObject dataset : nodeList) {
+						JSONObject node = new JSONObject();
+						if (dataset.getLabel() != "")
+							node.put("label", dataset.getLabel());
 						else
-							edge= new JSONObject();
-						
-						edge.put(linkset.getSubjectsDatasetTarget().toString(), edgeDetail);
-					
-						edges.put(linkset.getObjectsDatasetTarget().toString(), edge);
+							node.put("label", "-");
+						// node.put("shape", "dot");
+						node.put("mass", 1);
+						nodes.put(dataset.getUri(), node);
 					}
+				edgeList = LinksetQueries.getLinksetsGroupByDatasets();
+			} else {
+				ArrayList<DistributionMongoDBObject> nodeList = DistributionQueries
+						.getDistributionsWithLinks();
+
+				if (nodeList != null)
+					for (DistributionMongoDBObject singleNode : nodeList) {
+						JSONObject node = new JSONObject();
+						node.put("label", singleNode.getTitle());
+						// node.put("shape", "dot");
+						node.put("mass", 19);
+						node.put("fixed", true);
+						nodes.put(singleNode.getUri(), node);
+					}
+				edgeList = LinksetQueries.getLinksetsGroupByDistributions();
+			}
+
+			if (edgeList != null)
+				for (LinksetMongoDBObject singleEdge : edgeList) {
+					// if (!singleEdge.getObjectsDatasetTarget().equals(
+					// singleEdge.getSubjectsDatasetTarget())) {
+					JSONObject edge = null;
+
+					JSONObject edgeDetail = new JSONObject();
+					edgeDetail.put("directed", true);
+					if (singleEdge.getLinks() > 0
+							&& singleEdge.getOntologyLinks() > 0) {
+						edgeDetail.put("color", "red");
+						edgeDetail.put("linkType", "ontologyAndLink");
+					} else if (singleEdge.getOntologyLinks() > 0) {
+						edgeDetail.put("color", "green");
+						edgeDetail.put("linkType", "ontology");
+					} else if (singleEdge.getLinks() > 0) {
+						edgeDetail.put("color", "blue");
+						edgeDetail.put("linkType", "link");
+					}
+					
+					if(singleEdge.getLinks() > 0 || singleEdge.getOntologyLinks() > 0)
+					if (paramDataset != null) {
+						if (edges.has(singleEdge.getObjectsDatasetTarget()
+								.toString())) {
+							edge = (JSONObject) edges.get(singleEdge
+									.getObjectsDatasetTarget().toString());
+						} else
+							edge = new JSONObject();
+
+						edge.put(singleEdge.getSubjectsDatasetTarget()
+								.toString(), edgeDetail);
+
+						edges.put(singleEdge.getObjectsDatasetTarget()
+								.toString(), edge);
+					} else {
+						if (edges.has(singleEdge.getObjectsDistributionTarget()
+								.toString())) {
+							edge = (JSONObject) edges.get(singleEdge
+									.getObjectsDistributionTarget().toString());
+						} else
+							edge = new JSONObject();
+
+						edge.put(singleEdge.getSubjectsDistributionTarget()
+								.toString(), edgeDetail);
+
+						edges.put(singleEdge.getObjectsDistributionTarget()
+								.toString(), edge);
+					}
+					// }
 				}
+
+			obj.put("nodes", nodes);
 			obj.put("edges", edges);
-//
-//			if (linksetList.isEmpty() && datasetList.isEmpty())
-//				response.getWriter()
-//						.println(
-//								"There are no DataIDs files inserted! Please insert a DataID file and try again.");
-//			else {
-//
-//				outModel.write(System.out, "TURTLE");
-//				outModel.write(response.getWriter(), "TURTLE");
-//			}
+
 			response.getWriter().print(obj.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
