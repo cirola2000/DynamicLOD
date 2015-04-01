@@ -66,9 +66,13 @@ public class DataID {
 			else if (distributionMongoDBObj.getStatus().equals(
 					DistributionMongoDBObject.STATUS_DOWNLOADING))
 				needDownload = false;
+			else if (distributionMongoDBObj.getStatus().equals(
+					DistributionMongoDBObject.STATUS_ERROR))
+				needDownload = true;
 			else if (new CheckWhetherDownload()
 					.checkDistribution(distributionMongoDBObj))
 				needDownload = true;
+			
 			
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "Distribution n. "+counter+": "+distribution.getDistributionURI());
 			logger.info("Distribution n. "+counter+": "+distribution.getDistributionURI());

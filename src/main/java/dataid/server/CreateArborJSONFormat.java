@@ -68,7 +68,7 @@ public class CreateArborJSONFormat extends HttpServlet {
 						// node.put("shape", "dot");
 						node.put("mass", 19);
 						node.put("fixed", true);
-						nodes.put(singleNode.getUri(), node);
+						nodes.put(singleNode.getDownloadUrl(), node);
 					}
 				edgeList = LinksetQueries.getLinksetsGroupByDistributions();
 			}
