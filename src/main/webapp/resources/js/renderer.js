@@ -241,6 +241,7 @@
 							dragged.node.fixed = false
 
 						dragged.node.tempMass = 50
+						var name = dragged.node.name
 						dragged = null
 						selected = null
 						$(canvas).unbind('mousemove', handler.dragged)
@@ -248,10 +249,11 @@
 						_mouseP = null
 						
 						if (!wasDragged){
-							console.log(particleSystem);							
-							particleSystem.merge({})
+							$.getJSON("/dataid/CreateArborJSONFormat?dataset="+name, function(d) {
+								console.log(d)
+								particleSystem.merge(d)
+							});							
 						}
-						
 						return false
 					}
 				}
