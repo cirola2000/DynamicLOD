@@ -34,7 +34,8 @@ public class CreateArborJSONFormat extends HttpServlet {
 
 		try {
 			String paramDataset = request.getParameter("dataset");
-			System.out.println(paramDataset);
+			if(paramDataset!=null)
+				paramDataset = request.getParameter("dataset").replace("@@@@@@", "#");
 
 			JSONObject obj = new JSONObject();
 
@@ -42,7 +43,7 @@ public class CreateArborJSONFormat extends HttpServlet {
 			JSONObject edges = new JSONObject();
 			ArrayList<LinksetMongoDBObject> edgeList = null;
 
-			if (paramDataset != null) {
+			if (paramDataset == null) {
 				ArrayList<DatasetMongoDBObject> nodeList = DatasetQueries
 						.getDatasets();
 				if (nodeList != null)
@@ -59,7 +60,7 @@ public class CreateArborJSONFormat extends HttpServlet {
 				edgeList = LinksetQueries.getLinksetsGroupByDatasets();
 			} else {
 				ArrayList<DistributionMongoDBObject> nodeList = DistributionQueries
-						.getDistributionsWithLinks();
+						.getDistributionsWithLinksFilterByDataset(paramDataset);
 
 				if (nodeList != null)
 					for (DistributionMongoDBObject singleNode : nodeList) {
@@ -70,8 +71,10 @@ public class CreateArborJSONFormat extends HttpServlet {
 						node.put("fixed", true);
 						nodes.put(singleNode.getDownloadUrl(), node);
 					}
-				edgeList = LinksetQueries.getLinksetsGroupByDistributions();
+				edgeList = LinksetQueries.getLinksetsFilterByDataset(paramDataset);
 			}
+			
+			
 
 			if (edgeList != null)
 				for (LinksetMongoDBObject singleEdge : edgeList) {
@@ -94,13 +97,15 @@ public class CreateArborJSONFormat extends HttpServlet {
 					}
 					
 					if(singleEdge.getLinks() > 0 || singleEdge.getOntologyLinks() > 0)
-					if (paramDataset != null) {
+					if (paramDataset == null) {
 						if (edges.has(singleEdge.getObjectsDatasetTarget()
 								.toString())) {
 							edge = (JSONObject) edges.get(singleEdge
 									.getObjectsDatasetTarget().toString());
-						} else
+						} else{
 							edge = new JSONObject();
+							
+						}
 
 						edge.put(singleEdge.getSubjectsDatasetTarget()
 								.toString(), edgeDetail);

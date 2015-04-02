@@ -11,9 +11,10 @@ public class UpdateLOVFilter {
 	
 	final static Logger logger = Logger
 			.getLogger(UpdateLOVFilter.class);
+	
+	public Boolean status = false;
 
-	@Test 
-	public void UpdateLOVFilter() {
+	public UpdateLOVFilter() {
 		try {
 			DownloadLOVVocabularies d = new DownloadLOVVocabularies();
 			
@@ -38,6 +39,7 @@ public class UpdateLOVFilter {
 			filter.saveFilter(d.getFileName());
 			// save filter
 			
+			status = true;
 			
 		} catch (Exception e) {
 			e.printStackTrace();

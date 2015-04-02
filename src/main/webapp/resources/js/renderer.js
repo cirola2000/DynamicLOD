@@ -265,6 +265,7 @@
 									particleSystem.merge(d)
 									break;
 								}
+								
 							});
 						}
 						return false
