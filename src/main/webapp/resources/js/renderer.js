@@ -19,6 +19,8 @@
 				if (!particleSystem)
 					return
 
+				
+
 				gfx.clear() // convenience ƒ: clears the whole canvas rect
 
 				// draw the nodes & save their bounds for edge drawing
@@ -225,6 +227,10 @@
 
 						
 
+												
+
+						
+
 						if (dragged !== null && dragged.node !== null) {
 							var p = particleSystem.fromScreen(s)
 							dragged.node.p = p
@@ -237,6 +243,8 @@
 						if (dragged === null || dragged.node === undefined)
 							return										
 
+						
+
 						if (dragged.node !== null)
 							dragged.node.fixed = false
 
@@ -247,12 +255,17 @@
 						$(canvas).unbind('mousemove', handler.dragged)
 						$(window).unbind('mouseup', handler.dropped)
 						_mouseP = null
-						
-						if (!wasDragged){
-							$.getJSON("/dataid/CreateArborJSONFormat?dataset="+name, function(d) {
-								console.log(d)
-								particleSystem.merge(d)
-							});							
+
+						if (!wasDragged) {
+							// to send anchor to server side, we need to replace
+							// for different char.. not the best solution
+							$.getJSON("/dataid/CreateArborJSONFormat?dataset="
+									+ name.replace("#", "@@@@@@"), function(d) {
+								for (i in d.edges) {
+									particleSystem.merge(d)
+									break;
+								}
+							});
 						}
 						return false
 					}

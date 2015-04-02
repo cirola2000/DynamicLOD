@@ -96,6 +96,35 @@ public class LinksetQueries {
 		return null;
 	}
 	
+	public static ArrayList<LinksetMongoDBObject> getLinksetsFilterByDataset(String dataset) {
+		
+		try {
+			ArrayList<LinksetMongoDBObject> list = new ArrayList<LinksetMongoDBObject>();
+
+				DBCollection collection = DataIDDB.getInstance().getCollection(
+						LinksetMongoDBObject.COLLECTION_NAME);
+				
+				ArrayList<BasicDBObject> a = new ArrayList<BasicDBObject>();
+				a.add(new BasicDBObject(LinksetMongoDBObject.OBJECTS_DATASET_TARGET,dataset));
+				a.add(new BasicDBObject(LinksetMongoDBObject.SUBJECTS_DATASET_TARGET,dataset));
+				
+				
+				BasicDBObject or = new BasicDBObject(new BasicDBObject("$and", a));
+				
+				DBCursor instances = collection.find(or);
+
+				for (DBObject instance : instances) {
+					list.add(new LinksetMongoDBObject(instance
+							.get(DataIDDB.URI).toString()));
+				}
+
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static ArrayList<LinksetMongoDBObject> getLinksetsInDegreeByDistribution(String url) {
 		ArrayList<LinksetMongoDBObject> list = new ArrayList<LinksetMongoDBObject>();
 		try {

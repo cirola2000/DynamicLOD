@@ -10,10 +10,10 @@
 
 	<div>
 		<div style="float: left">
-			<input type="checkbox" onclick="addLink()" checked>Only Links <br /> <input
-				type="checkbox" onclick="addOntology()" checked>Only Ontology <br /> <input
-				type="checkbox" onclick="addOntologyAndLink()" checked> Links +
-			Ontology <br />
+			<input type="checkbox" onclick="addLink()" checked>Only Links
+			<br /> <input type="checkbox" onclick="addOntology()" checked>Only
+			Ontology <br /> <input type="checkbox"
+				onclick="addOntologyAndLink()" checked> Links + Ontology <br />
 		</div>
 		<div style="float: right">
 			<canvas id="viewport" width="1200" height="900"></canvas>
@@ -43,42 +43,39 @@
 		});
 
 		function addLink() {
-			for (i in data.edges) {
-				for (j in data.edges[i]) {
-					if (data.edges[i][j].linkType == "link") {
-						if (data.edges[i][j].color == "transparent")
-							data.edges[i][j].color = "blue";
-						else
-							data.edges[i][j].color = "transparent";
-					}
+			sys.eachEdge(function(edge, pt1, pt2) {
+				if (edge.data.linkType == "link") {
+					if (edge.data.color == "transparent")
+						edge.data.color = "blue";
+					else
+						edge.data.color = "transparent";
 				}
-			}
+			});
 		}
 
+		
+		
 		function addOntology() {
-			for (i in data.edges) {
-				for (j in data.edges[i]) {
-					if (data.edges[i][j].linkType == "ontology") {
-						if (data.edges[i][j].color == "transparent")
-							data.edges[i][j].color = "green";
-						else
-							data.edges[i][j].color = "transparent";
-					}
+			sys.eachEdge(function(edge, pt1, pt2) {
+				if (edge.data.linkType == "ontology") {
+					if (edge.data.color == "transparent")
+						edge.data.color = "green";
+					else
+						edge.data.color = "transparent";
 				}
-			}
+			});
 		}
+		
 
 		function addOntologyAndLink() {
-			for (i in data.edges) {
-				for (j in data.edges[i]) {
-					if (data.edges[i][j].linkType == "ontologyAndLink") {
-						if (data.edges[i][j].color == "transparent")
-							data.edges[i][j].color = "red";
-						else
-							data.edges[i][j].color = "transparent";
-					}
+			sys.eachEdge(function(edge, pt1, pt2) {
+				if (edge.data.linkType == "ontologyAndLink") {
+					if (edge.data.color == "transparent")
+						edge.data.color = "red";
+					else
+						edge.data.color = "transparent";
 				}
-			}
+			});
 		}
 	</script>
 
