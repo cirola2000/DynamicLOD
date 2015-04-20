@@ -63,13 +63,15 @@ public class Evaluation implements Serializable {
 
 			treeMap.AddElements(file1);
 
-			treeMap.SearchElements(file2);
+			treeMap.SearchElements(file2);			
+			treeMap.Save(DataIDGeneralProperties.BASE_PATH+"treeMap");
 
 			System.out.println();
 			
 			hashMap.AddElements(file1);
 
 			hashMap.SearchElements(file2);
+			hashMap.Save(DataIDGeneralProperties.BASE_PATH+"hashMap");
 
 			fpp = (double) 1 / treeMap.tm.size();
 			
@@ -78,6 +80,8 @@ public class Evaluation implements Serializable {
 			filter.AddElements(file1);
 
 			filter.SearchElements(file2);
+			filter.Save(DataIDGeneralProperties.BASE_PATH+"filter");
+
 
 			
 			truePositive = treeMap.getPositives();
@@ -100,10 +104,7 @@ public class Evaluation implements Serializable {
 			logger.info("Bloom filter recall: " + formatter.format(recall));
 			logger.info("Bloom filter fmeasure: " + formatter.format(fMeasure));
 
-			SerializeObject s = new SerializeObject("/home/ciro/dataid/bumbum");
-			s.save(treeMap.tm);
-
-			System.out.println(s.getFileSize());
+			
 			
 
 		} catch (Exception e) {

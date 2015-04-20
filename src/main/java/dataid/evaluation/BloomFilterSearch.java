@@ -1,6 +1,9 @@
 package dataid.evaluation;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.HashMap;
@@ -20,6 +23,8 @@ public class BloomFilterSearch implements SearchAlgorithm {
 	NumberFormat formatter = new DecimalFormat("#0.0000000000000000");
 
 	Timer t = new Timer();
+	
+	File f=null;
 	
 	int size;
 	
@@ -57,7 +62,7 @@ public class BloomFilterSearch implements SearchAlgorithm {
 		for (String object : new FileIterator(file)) {
 			try {
 				if (filter.compare(object)) {
-					logger.debug(object);
+//					logger.debug(object);
 					positives++;
 				}
 			} catch (Exception e) {
@@ -67,5 +72,17 @@ public class BloomFilterSearch implements SearchAlgorithm {
 		}
 		logger.info("Time search objects on Bloom filter: " + t.stopTimer());
 	}
+
+	public void Save(String file) throws IOException {
+		f = new File(file);
+		filter.filter.writeTo(new FileOutputStream(f));
+		
+	}
+
+	public long getFileSize() {
+		return f.length();
+	}
+	
+	
 
 }

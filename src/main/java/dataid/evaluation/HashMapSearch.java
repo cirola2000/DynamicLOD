@@ -1,11 +1,13 @@
 package dataid.evaluation;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
 import dataid.files.FileIterator;
+import dataid.files.SerializeObject;
 import dataid.utils.Timer;
 
 public class HashMapSearch implements SearchAlgorithm{
@@ -13,6 +15,8 @@ public class HashMapSearch implements SearchAlgorithm{
 	final static Logger logger = Logger.getLogger(HashMapSearch.class);
 	
 	int positives = 0;
+	
+	SerializeObject s = null;
 	
 	HashMap<Integer, String> hs = new HashMap<Integer, String>();
 	
@@ -39,10 +43,19 @@ public class HashMapSearch implements SearchAlgorithm{
 
 		for (String object : new FileIterator(file)) {
 			if (hs.containsKey(object.hashCode())) {
-				logger.debug(object);
+//				logger.debug(object);
 				positives++;
 			}
 		}
 		logger.info("Time search objects on tree: " + t.stopTimer());
+	}
+
+	public void Save(String file) throws IOException {
+		s = new SerializeObject(file);
+		s.save(hs);			
+	}
+	
+	public long getFileSize() {
+		return s.getFileSize();
 	}
 }
