@@ -37,7 +37,9 @@ public class DataIDBean implements Serializable, Runnable {
 	// log screen
 	private ArrayList<String> display = new ArrayList<String>();
 
-	public boolean hasNewLog = false;
+	public boolean updateLog = false;
+
+	public boolean updateDistributionList = false;
 
 	// dataid list
 	private String distributionIDList = "(empty)";
@@ -139,14 +141,17 @@ public class DataIDBean implements Serializable, Runnable {
 					try {
 						while (true) {
 							Thread.sleep(1000);
-							if (hasNewLog) {
+							if (updateLog) {
 								DataIDBean.push();
-								hasNewLog = false;
+								updateLog = false;
+							}
+							if (updateDistributionList) {
+								DataIDBean.pushDistributionList();
+								updateDistributionList = false;
 							}
 						}
 					} catch (Exception e) {
 					}
-
 				}
 			}).start();
 
@@ -283,10 +288,16 @@ public class DataIDBean implements Serializable, Runnable {
 	public void setDownloadedMB(double downloadPercentage) {
 		this.downloadedMB = downloadPercentage;
 	}
+	
+	public void shouldUpdateLog(double downloadPercentage) {
+		this.downloadedMB = downloadPercentage;
+	}
+	
+	
 
 	public void addDisplayMessage(String level, String info) {
 
-		hasNewLog = true;
+		updateLog = true;
 
 		if (startTime == 0)
 			startTime = System.currentTimeMillis();

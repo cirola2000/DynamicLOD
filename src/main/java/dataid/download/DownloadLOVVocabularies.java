@@ -30,8 +30,8 @@ public class DownloadLOVVocabularies extends Download {
 	int aux;
 
 	public void downloadLOV(String url) throws Exception {
-		InputStream inputStream = getStream(new URL(
-				url));
+		this.url = new URL(url);
+		InputStream inputStream = getStream();
 
 		// allowing bzip2 format
 		inputStream = getGZipInputStream(inputStream);

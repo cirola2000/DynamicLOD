@@ -24,11 +24,19 @@ public class Download {
 
 	protected static final int BUFFER_SIZE = 16384;
 	public URL url = null;
+	
+	InputStream inputStream = null;
+	
+	final byte[] buffer = new byte[BUFFER_SIZE];
+	int n = 0;
+	int aux = 0;
 
 	public String fileName = null;
 	public String extension = null;
 
 	HttpURLConnection httpConn = null;
+	
+	String accessURL = null;
 
 	protected void getMetadataFromHTTPHeaders(HttpURLConnection httpConn) {
 
@@ -42,8 +50,7 @@ public class Download {
 
 	}
 
-	protected InputStream getStream(URL url) throws Exception {
-		this.url = url;
+	protected InputStream getStream() throws Exception {
 		openConnection();
 
 		// opens input stream from HTTP connection

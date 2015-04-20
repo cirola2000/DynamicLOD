@@ -39,8 +39,6 @@ public class GoogleBloomFilter implements DataIDFilterInterface {
 	}
 
 	public boolean create(int insertions, double fpp) {
-		// 59222200, 0.01
-
 		if (filter == null)
 			filter = BloomFilter.create(funnel, insertions, fpp);
 

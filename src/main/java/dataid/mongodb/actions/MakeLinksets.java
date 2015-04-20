@@ -70,7 +70,7 @@ public class MakeLinksets {
 					throw new DataIDException("distributionObjectPath is empty or null for "+distribution
 							.getDownloadUrl()+" distribution;");
 				}
-				DataIDBean.pushDistributionList();
+				bean.updateDistributionList = true; 
 				
 				for (DistributionMongoDBObject distributionToCompare : disributionsToCompare) {
 					try {						
@@ -213,7 +213,7 @@ public class MakeLinksets {
 				// uptate status of distribution
 				distribution.setStatus(DistributionMongoDBObject.STATUS_DONE);
 				distribution.updateObject(true);
-				bean.pushDistributionList();
+				bean.updateDistributionList = true; 
 				}
 				catch(Exception e){
 					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
@@ -221,7 +221,7 @@ public class MakeLinksets {
 				}
 				distribution.setLastTimeLinkset(String.valueOf(new Date()));
 				distribution.updateObject(false);
-				bean.pushDistributionList();
+				bean.updateDistributionList = true; 
 				
 			}
 

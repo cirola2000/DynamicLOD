@@ -79,12 +79,12 @@ public class SplitAndStoreThread extends Thread {
 		FileOutputStream object = null;
 
 		try {
-			
-			if (DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH == null){
+
+			if (DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH == null) {
 				new DataIDGeneralProperties().loadProperties();
 			}
 
-			if (subjectQueue != null){
+			if (subjectQueue != null) {
 				// creates subject file in disk
 				subject = new FileOutputStream(
 						DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
@@ -126,43 +126,55 @@ public class SplitAndStoreThread extends Thread {
 										throw new ArrayIndexOutOfBoundsException();
 									}
 
-									// get subject and save to file
-									if (subject != null)
-										if (!tmpLastSubject.equals(matcher
-												.group(1))) {
-											tmpLastSubject = matcher.group(1);
-											subject.write(new String(matcher
-													.group(1) + "\n")
-													.getBytes());
-											while (subjectQueue.size() > 1000) {
-												Thread.sleep(1);
+									if (!matcher
+											.group(3)
+											.equals("<http://www.w3.org/2002/07/owl#Class>")
+											&& !matcher
+													.group(2)
+													.equals("<http://www.w3.org/2000/01/rdf-schema#subClassOf>")) {
+
+										// get subject and save to file
+										if (subject != null) {
+											if (!tmpLastSubject.equals(matcher
+													.group(1))) {
+												tmpLastSubject = matcher
+														.group(1);
+												subject.write(new String(
+														matcher.group(1) + "\n")
+														.getBytes());
+												while (subjectQueue.size() > 1000) {
+													Thread.sleep(1);
+												}
+												if (isChain)
+													subjectQueue.add(matcher
+															.group(1));
+												subjectLines++;
 											}
-											if (isChain)
-												subjectQueue.add(matcher
-														.group(1));
-											subjectLines++;
 										}
 
-									// get object (make sure that its a
-									// resource and not a literal), add
-									// to queue and save to file
-									if (object != null)
-										if (!matcher.group(3).startsWith("\"")) {
-											object.write(new String(matcher
-													.group(3) + "\n")
-													.getBytes());
+										// get object (make sure that its a
+										// resource and not a literal), add
+										// to queue and save to file
+										if (object != null)
+											if (!matcher.group(3).startsWith(
+													"\"")) {
+												object.write(new String(matcher
+														.group(3) + "\n")
+														.getBytes());
 
-											// add object to object queue (the
-											// queue is read by other thread)
-											while (objectQueue.size() > 1000) {
-												Thread.sleep(1);
+												// add object to object queue
+												// (the queue is read by other
+												// thread)
+												while (objectQueue.size() > 1000) {
+													Thread.sleep(1);
+												}
+												if (isChain)
+													objectQueue.add(matcher
+															.group(3));
+												objectLines++;
 											}
-											if (isChain)
-												objectQueue.add(matcher
-														.group(3));
-											objectLines++;
-										}
-									totalTriples++;
+										totalTriples++;
+									}
 
 								} catch (ArrayIndexOutOfBoundsException e) {
 									// e.printStackTrace();

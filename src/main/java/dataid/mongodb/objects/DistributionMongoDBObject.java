@@ -73,6 +73,8 @@ public class DistributionMongoDBObject extends DataIDDB {
 	
 	public static final String FORMAT = "format";
 	
+	public static final String IS_VOCABULARY = "isVocabulary";
+	
 
 	private ArrayList<String> defaultDatasets = new ArrayList<String>();
 
@@ -107,6 +109,8 @@ public class DistributionMongoDBObject extends DataIDDB {
 	private String domain;
 	
 	private boolean successfullyDownloaded;
+	
+	private boolean isVocabulary = false;
 	
 	private String lastErrorMsg;
 	
@@ -153,6 +157,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 			mongoDBObject.put(STATUS, status);	
 			mongoDBObject.put(DOMAIN, domain);
 			mongoDBObject.put(SUCCESSFULLY_DOWNLOADED, successfullyDownloaded);
+			mongoDBObject.put(IS_VOCABULARY, isVocabulary);
 			mongoDBObject.put(LAST_ERROR_MSG, lastErrorMsg);
 			mongoDBObject.put(LAST_TIME_LINKSET, lastTimeLinkset);
 
@@ -195,6 +200,7 @@ public class DistributionMongoDBObject extends DataIDDB {
 			numberOfObjectTriples = (String) obj.get(NUMBER_OF_OBJECTS_TRIPLES);
 			domain = (String) obj.get(DOMAIN);
 			successfullyDownloaded = (Boolean) obj.get(SUCCESSFULLY_DOWNLOADED);
+			isVocabulary = (Boolean) obj.get(IS_VOCABULARY);
 			lastErrorMsg = (String) obj.get(LAST_ERROR_MSG);
 			lastTimeLinkset = (String) obj.get(LAST_TIME_LINKSET);
 			
@@ -362,6 +368,14 @@ public class DistributionMongoDBObject extends DataIDDB {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public boolean isVocabulary() {
+		return isVocabulary;
+	}
+
+	public void setVocabulary(boolean isVocabulary) {
+		this.isVocabulary = isVocabulary;
 	}
 	
 	

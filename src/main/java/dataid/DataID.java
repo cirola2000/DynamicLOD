@@ -90,25 +90,22 @@ public class DataID {
 					distributionMongoDBObj
 							.setStatus(DistributionMongoDBObject.STATUS_DOWNLOADING);
 					distributionMongoDBObj.updateObject(true);
-					DataIDBean.pushDistributionList();
+					bean.updateDistributionList = true;
 
 					// now we need to download the distribution
-					DownloadAndSaveDistribution downloadedFile = new DownloadAndSaveDistribution();
+					DownloadAndSaveDistribution downloadedFile = new DownloadAndSaveDistribution(distribution
+							.getDistriutionDownloadURL());
 
 					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Downloading distribution.");
 					logger.info("Downloading distribution.");
 
-					downloadedFile.downloadDistribution(distribution
-							.getDistribution(), distribution
-							.getDistriutionDownloadURL(), Formats
-							.getEquivalentFormat(distributionMongoDBObj
-									.getFormat()));
+					downloadedFile.downloadDistribution();
 
 					// uptate status of distribution
 					distributionMongoDBObj
 							.setStatus(DistributionMongoDBObject.STATUS_DOWNLOADED);
 					distributionMongoDBObj.updateObject(true);
-					DataIDBean.pushDistributionList();
+					bean.updateDistributionList = true;
 					
 					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Distribution downloaded. ");
 					logger.info("Distribution downloaded. ");
@@ -121,7 +118,7 @@ public class DataID {
 						distributionMongoDBObj
 								.setStatus(DistributionMongoDBObject.STATUS_SEPARATING_SUBJECTS_AND_OBJECTS);
 						distributionMongoDBObj.updateObject(true);
-						DataIDBean.pushDistributionList();
+						bean.updateDistributionList = true;
 						
 						bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Separating subjects and objects.");
 						logger.info("Separating subjects and objects.");
@@ -149,7 +146,7 @@ public class DataID {
 					distributionMongoDBObj
 							.setStatus(DistributionMongoDBObject.STATUS_CREATING_BLOOM_FILTER);
 					distributionMongoDBObj.updateObject(true);
-					DataIDBean.pushDistributionList();
+					bean.updateDistributionList = true;
 					
 					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Creating bloom filter.");
 					logger.info("Creating bloom filter.");
@@ -283,7 +280,7 @@ public class DataID {
 
 					distributionMongoDBObj.setSuccessfullyDownloaded(true);
 					distributionMongoDBObj.updateObject(true);
-					DataIDBean.pushDistributionList();
+					bean.updateDistributionList = true;
 
 					logger.info("Done saving mongodb distribution object.");
 
@@ -306,7 +303,7 @@ public class DataID {
 					bean.setDownloadNumberOfDownloadedDistributions(bean
 							.getDownloadNumberOfDownloadedDistributions() + 1);
 					DataIDBean.pushDownloadInfo();
-					DataIDBean.pushDistributionList();
+					bean.updateDistributionList = true;
 					e.printStackTrace();
 				} catch (Exception e) {
 					// uptate status of distribution
@@ -320,7 +317,7 @@ public class DataID {
 					bean.setDownloadNumberOfDownloadedDistributions(bean
 							.getDownloadNumberOfDownloadedDistributions() + 1);
 					DataIDBean.pushDownloadInfo();
-					DataIDBean.pushDistributionList();
+					bean.updateDistributionList = true;
 					e.printStackTrace();
 					distributionMongoDBObj.setLastErrorMsg(e.getMessage());
 					distributionMongoDBObj.setSuccessfullyDownloaded(false);

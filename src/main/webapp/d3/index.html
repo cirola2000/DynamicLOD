@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+path.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+circle {
+  fill: #ccc;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+text {
+  fill: #000;
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+</style>
+<body>
+<script src="../resources/js/d3.v3.min.js"></script>
+
+
+<script>
+
+//var circleData= {
+//		  "nodes":[
+//		           {"name":"node1","group":1,"radius":23,"color" : "green", "text":"dataset1"},
+//		           {"name":"node2","group":1,"radius":13,"color" : "green", "text":"dataset2"},
+//		           {"name":"node3","group":1,"radius":33,"color" : "green", "text":"dataset3"},
+//		           {"name":"node4","group":1,"radius":25,"color" : "green", "text":"dataset4"}
+//		         ],
+//		         "links":[
+//		           {"source":"node1","target":"node3","value":2, type: "suit"},
+//		           {"source":"node2","target":"node1","value":8, type: "r"}
+//		         ]
+//		       };
+
+var width = 1500;
+var height = 850;
+
+var color = d3.scale.category20();
+  
+var force = d3.layout.force()
+.charge(-120)
+.linkDistance(158)
+.size([width, height]);  
+                  
+                  
+                  
+var nodeMap = {};    
+makeGraph("");
+
+
+function makeGraph(param) { d3.json("../dataid/CreateD3JSONFormat?dataset="+param, function(error, circleData) {
+	
+	
+d3.select("svg")
+    .remove();
+//Create the SVG Viewport
+var svgContainer = d3.select("body").append("svg")
+                                     .attr("width",width)
+                                     .attr("height",height);
+    
+console.log(circleData);
+
+
+circleData.nodes.forEach(function(x) { nodeMap[x.name] = x; });
+circleData.links = circleData.links.map(function(x) {
+  return {
+    source: nodeMap[x.source],
+    target: nodeMap[x.target],
+    value: x.value
+  };
+});
+
+
+
+//build the arrow.
+svgContainer.append("svg:defs").selectAll("marker")
+    .data(["end"])
+  .enter().append("svg:marker")
+    .attr("id", String)
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX", 15)
+    .attr("refY", -1.5)
+    .attr("markerWidth", 6)
+    .attr("markerHeight", 6)
+    .attr("orient", "auto")
+  .append("svg:path")
+    .attr("d", "M0,-5L10,0L0,5");
+
+
+
+
+
+
+
+                  
+                                     
+                                     
+force
+	.nodes(circleData.nodes)
+	.links(circleData.links)
+	.start();
+
+var path = svgContainer.append("svg:g").selectAll("path")
+.data(circleData.links)
+.enter().append("svg:path")
+.attr("class", "link")
+.attr("marker-end", "url(#end)");
+
+
+var circles = svgContainer.selectAll("circle")
+                           .data(circleData.nodes)
+                           .enter()
+                           .append("circle");
+                           
+var circleAttr = circles
+    .attr("r", function (d) { return d.radius; })
+    .attr("class", "node")
+//    .on("click", function(d) { window.open(d["url"],"_blank"); })
+    .on("click", function(d) { makeGraph(d.name.replace("#", "@@@@@@"));})
+    .attr("cursor", "pointer")
+    .style("fill", function (d) { return d.color; })
+    .call(force.drag);
+
+    
+var text = svgContainer.selectAll("text")
+	.data(circleData.nodes)
+	.enter()
+	.append("text")
+	.text(function (d) { return d.text; });
+	
+	                       
+                           
+
+force.on("tick", function() {
+    path.attr('d', function(d) {
+    var deltaX = d.target.x - d.source.x,
+        deltaY = d.target.y - d.source.y,
+        dist = Math.sqrt(deltaX * deltaX + deltaY * deltaY),
+        normX = deltaX / dist,
+        normY = deltaY / dist,
+        sourcePadding = d.left ? 17 : 12,
+        targetPadding = d.right ? 17 : 12,
+        sourceX = d.source.x + (sourcePadding * normX),
+        sourceY = d.source.y + (sourcePadding * normY),
+        targetX = d.target.x - (targetPadding * normX),
+        targetY = d.target.y - (targetPadding * normY);
+    return 'M' + sourceX + ',' + sourceY + 'L' + targetX + ',' + targetY;
+  });
+
+
+      circles.attr('transform', function(d) {
+    	    return 'translate(' + d.x + ',' + d.y + ')';
+    	  });
+  
+  text
+  .attr("x", function(d) { return d.x; })
+  .attr("y", function(d) { return d.y; });
+  
+  
+	})
+});
+}
+
+                 
+</script>

@@ -28,6 +28,8 @@ public class DatasetMongoDBObject extends DataIDDB {
 	
 	public static final String SUBJECT_FILTER_FILENAME = "subject_file_name";
 	
+	public static final String IS_VOCABULARY = "is_vocabulary";
+	
 	
 
 	// class properties
@@ -38,6 +40,9 @@ public class DatasetMongoDBObject extends DataIDDB {
 
 	private String dataIdFileName;
 	
+	private boolean isVocabulary = false;
+	
+
 	private ArrayList<String> subsetsURIs = new ArrayList<String> ();
 
 	private ArrayList<String>  distributionsURIs = new ArrayList<String> ();
@@ -62,6 +67,8 @@ public class DatasetMongoDBObject extends DataIDDB {
 			mongoDBObject.put(DATAID_FILENAME, dataIdFileName);
 
 			mongoDBObject.put(LABEL, label);
+			
+			mongoDBObject.put(IS_VOCABULARY, isVocabulary);
 			
 			
 			insert(checkBeforeInsert);
@@ -90,6 +97,7 @@ public class DatasetMongoDBObject extends DataIDDB {
 			label = (String) obj.get(LABEL);
 			title = (String) obj.get(TITLE);
 			dataIdFileName = (String) obj.get(DATAID_FILENAME);
+			isVocabulary = (Boolean) obj.get(IS_VOCABULARY);
 
 			// loading subsets to object
 			BasicDBList subsetList = (BasicDBList) obj.get(SUBSET_URIS);
@@ -153,6 +161,13 @@ public class DatasetMongoDBObject extends DataIDDB {
 		this.dataIdFileName = dataIdFileName;
 	}
 	
+	public Boolean getIsVocabulary() {
+		return isVocabulary;
+	}
+	
+	public void setIsVocabulary(Boolean isVocabulary) {
+		this.isVocabulary = isVocabulary;
+	}
 	
 
 }
