@@ -5,11 +5,12 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import org.apache.log4j.Logger;
+import org.bson.types.ObjectId;
 import org.junit.Test;
 
 import dataid.DataIDGeneralProperties;
-import dataid.files.SerializeObject;
-import dataid.utils.Timer;
+import dataid.download.DownloadAndSaveDistribution;
+import dataid.mongodb.objects.EvaluationMongoDBObject;
 
 public class Evaluation implements Serializable {
 
@@ -40,21 +41,21 @@ public class Evaluation implements Serializable {
 			new DataIDGeneralProperties().loadProperties();
 
 			// downloding distributions
-			// DownloadAndSaveDistribution dist1 = new
-			// DownloadAndSaveDistribution(
-			// "http://downloads.dbpedia.org/3.9/en/geonames_links_en.nt.bz2");
-			// dist1.downloadDistribution();
-			// DownloadAndSaveDistribution dist2 = new
-			// DownloadAndSaveDistribution(
-			// "http://downloads.dbpedia.org/3.9/en/homepages_en.nt.bz2");
-			// dist2.downloadDistribution();
-			//
-			// String file1 =
-			// DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
-			// + dist1.getFileName();
-			// String file2 =
-			// DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
-			// + dist2.getFileName();
+//			 DownloadAndSaveDistribution dist1 = new
+//			 DownloadAndSaveDistribution(
+//			 "http://downloads.dbpedia.org/3.9/en/article_templates_en.nt.bz2");
+//			 dist1.downloadDistribution();
+//			 DownloadAndSaveDistribution dist2 = new
+//			 DownloadAndSaveDistribution(
+//			 "http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2");
+//			 dist2.downloadDistribution();
+			
+//			 String file1 =
+//			 DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
+//			 + dist1.getFileName();
+//			 String file2 =
+//			 DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
+//			 + dist2.getFileName();
 
 			file1 = DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
 					+ "geonames_links_en.nt";
@@ -98,11 +99,15 @@ public class Evaluation implements Serializable {
 			System.out.println();
 
 			logger.info("Tree true positives: " + truePositive);
-			logger.info("Bloom filter false positives: " + falsePositive);
+			logger.info("Bloom filter true positives: " + filter.getPositives());
 			logger.info("Bloom filter precision: "
 					+ formatter.format(precision));
 			logger.info("Bloom filter recall: " + formatter.format(recall));
 			logger.info("Bloom filter fmeasure: " + formatter.format(fMeasure));
+			
+			
+			EvaluationMongoDBObject e = new EvaluationMongoDBObject(new ObjectId().get().toString());
+			
 
 			
 			
