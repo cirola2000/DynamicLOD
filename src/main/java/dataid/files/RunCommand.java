@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import dataid.DataID;
+import dataid.Manager;
 import dataid.DataIDGeneralProperties;
 import dataid.exceptions.DataIDException;
 import dataid.server.DataIDBean;

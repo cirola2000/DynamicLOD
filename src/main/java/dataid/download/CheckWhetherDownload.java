@@ -6,7 +6,7 @@ import java.net.URL;
 
 import org.apache.log4j.Logger;
 
-import dataid.DataID;
+import dataid.Manager;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.server.DataIDBean;
 

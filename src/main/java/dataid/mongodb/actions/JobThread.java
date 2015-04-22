@@ -22,9 +22,9 @@ public class JobThread implements Runnable {
 			for (int i = 0; i < size; i++) {
 					
 				if (dataThread.filter.compare(lines[i])) {
-					if(dataThread.ontologyFilter.compare(lines[i]))
-						dataThread.ontologyLinks++;
-					else
+//					if(dataThread.ontologyFilter.compare(lines[i]))
+//						dataThread.ontologyLinks++;
+//					else
 						dataThread.links++;		
 				}
 			}

@@ -21,6 +21,10 @@ public class BloomFilterSearch implements SearchAlgorithm {
 	GoogleBloomFilter filter = null;
 	
 	NumberFormat formatter = new DecimalFormat("#0.0000000000000000");
+	
+	String timeToCreate;
+
+	String timeToSearch;
 
 	Timer t = new Timer();
 	
@@ -53,7 +57,8 @@ public class BloomFilterSearch implements SearchAlgorithm {
 			filter.add(subject);
 		}
 
-		logger.info("Time to create Bloom filter: " + t.stopTimer());
+		timeToCreate = t.stopTimer();
+		logger.info("Time to create Bloom filter: " + timeToCreate);
 
 	}
 
@@ -70,7 +75,8 @@ public class BloomFilterSearch implements SearchAlgorithm {
 				e.printStackTrace();
 			}
 		}
-		logger.info("Time search objects on Bloom filter: " + t.stopTimer());
+		timeToSearch = t.stopTimer();
+		logger.info("Time search objects on Bloom filter: " +timeToSearch);
 	}
 
 	public void Save(String file) throws IOException {
@@ -81,6 +87,14 @@ public class BloomFilterSearch implements SearchAlgorithm {
 
 	public long getFileSize() {
 		return f.length();
+	}
+
+	public String getTimeToCreate() {
+		return timeToCreate;
+	}
+
+	public String getTimeToSearch() {
+		return timeToSearch;
 	}
 	
 	

@@ -13,7 +13,7 @@ import org.richfaces.application.push.MessageException;
 import org.richfaces.application.push.TopicKey;
 import org.richfaces.application.push.TopicsContext;
 
-import dataid.DataID;
+import dataid.Manager;
 import dataid.DataIDGeneralProperties;
 import dataid.mongodb.actions.MakeLinksets;
 import dataid.mongodb.actions.Queries;
@@ -27,7 +27,7 @@ public class DataIDBean implements Serializable, Runnable {
 
 	private static final long serialVersionUID = -6239437588285327644L;
 
-	public DataID dataid = null;
+	public Manager dataid = null;
 
 	static private double startTime = 0;
 	static private double endTime = 0;
@@ -177,7 +177,7 @@ public class DataIDBean implements Serializable, Runnable {
 
 	public void startDataID() {
 
-		dataid = new DataID(this.getUrl(), this);
+		dataid = new Manager(this.getUrl(), this);
 
 	}
 

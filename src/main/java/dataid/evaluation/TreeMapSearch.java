@@ -18,12 +18,21 @@ public class TreeMapSearch implements SearchAlgorithm {
 	 
 	int positives = 0;
 	
+	String timeToCreate;
+	
+	String timeToSearch;
+	
+	int subjects = 0;
+	
 	Timer t = new Timer();
 	
 	SerializeObject s = null;
 
 	public int getPositives() {
 		return positives;
+	}
+	public int getSubjects() {
+		return subjects;
 	}
 	
 	public void AddElements(String file) throws FileNotFoundException {
@@ -34,7 +43,8 @@ public class TreeMapSearch implements SearchAlgorithm {
 			tm.put(subject, null);
 		}
 
-		logger.info("Time to create tree: " + t.stopTimer());
+		timeToCreate = t.stopTimer();
+		logger.info("Time to create tree: " + timeToCreate);
 	}
 
 	public void SearchElements(String file) throws FileNotFoundException {
@@ -46,16 +56,27 @@ public class TreeMapSearch implements SearchAlgorithm {
 //				logger.debug(object);
 				positives++;
 			}
+			subjects++;
 		}
-		logger.info("Time search objects on tree: " + t.stopTimer());
+		timeToSearch = t.stopTimer();
+		logger.info("Time search objects on tree: " + timeToSearch);
 	}
 
 	public void Save(String file) throws IOException {
+		logger.info("saving tree");
 		s = new SerializeObject(file);
 		s.save(tm);	
 	}
 
 	public long getFileSize() {
 		return s.getFileSize();
+	}
+	
+	public String getTimeToCreate() {
+		return timeToCreate;
+	}
+
+	public String getTimeToSearch() {
+		return timeToSearch;
 	}
 }

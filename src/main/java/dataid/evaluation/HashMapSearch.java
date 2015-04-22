@@ -16,6 +16,10 @@ public class HashMapSearch implements SearchAlgorithm{
 	
 	int positives = 0;
 	
+	String timeToCreate;
+	
+	String timeToSearch;
+	
 	SerializeObject s = null;
 	
 	HashMap<Integer, String> hs = new HashMap<Integer, String>();
@@ -34,7 +38,8 @@ public class HashMapSearch implements SearchAlgorithm{
 			hs.put(subject.hashCode(), subject);
 		}
 
-		logger.info("Time to create HasMap: " + t.stopTimer());
+		timeToCreate = t.stopTimer();
+		logger.info("Time to create HasMap: " +timeToCreate);
 	}
 	
 	public void SearchElements(String file) throws FileNotFoundException {
@@ -47,15 +52,25 @@ public class HashMapSearch implements SearchAlgorithm{
 				positives++;
 			}
 		}
-		logger.info("Time search objects on tree: " + t.stopTimer());
+		timeToSearch = t.stopTimer();
+		logger.info("Time search objects on hasMap: " + timeToSearch);
 	}
 
 	public void Save(String file) throws IOException {
+		logger.info("saving hashmap");
 		s = new SerializeObject(file);
 		s.save(hs);			
 	}
 	
 	public long getFileSize() {
 		return s.getFileSize();
+	}
+	
+	public String getTimeToCreate() {
+		return timeToCreate;
+	}
+
+	public String getTimeToSearch() {
+		return timeToSearch;
 	}
 }

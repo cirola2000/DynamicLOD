@@ -133,7 +133,8 @@ public class MakeLinksets {
 				String sCurrentLine;
 
 				// loading objects and creating a buffer to send to threads
-				int bufferSize = 1400;
+//				int bufferSize = 1400;
+				int bufferSize = 500000;
 
 				String[] buffer = new String[bufferSize];
 
@@ -157,6 +158,7 @@ public class MakeLinksets {
 								threads[threadIndex] = new Thread(
 										new JobThread(dataThread2,
 												buffer.clone(), bufferSize));
+								threads[threadIndex].setName("MakeLinkSetWorker-"+threadIndex);
 								threads[threadIndex].start();
 								threadIndex++;
 							}

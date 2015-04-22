@@ -19,10 +19,10 @@ public class DataModelThread {
 	public int ontologyLinks = 0; 
 
 	public GoogleBloomFilter filter = new GoogleBloomFilter();
-	public GoogleBloomFilter ontologyFilter = new GoogleBloomFilter();
+//	public GoogleBloomFilter ontologyFilter = new GoogleBloomFilter();
 	
 	public DataModelThread() {
-		ontologyFilter.loadFilter(DataIDGeneralProperties.SUBJECT_FILE_FILTER_PATH+"lov.nq");
+//		ontologyFilter.loadFilter(DataIDGeneralProperties.SUBJECT_FILE_FILTER_PATH+"lov.nq");
 	}
 
 }

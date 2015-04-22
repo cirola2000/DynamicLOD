@@ -16,5 +16,9 @@ public interface SearchAlgorithm {
 	
 	public long getFileSize();
 	
+	public String getTimeToCreate();
+	
+	public String getTimeToSearch();
+	
 	
 }

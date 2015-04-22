@@ -27,37 +27,45 @@ import dataid.utils.FileUtils;
 import dataid.utils.Formats;
 import dataid.utils.Timer;
 
-public class DataID {
-	final static Logger logger = Logger.getLogger(DataID.class);
+public class Manager {
+	final static Logger logger = Logger.getLogger(Manager.class);
 
 	private String name = null;
 
 	// list of subset and their distributions
-	private List<DistributionModel> distributionsLinks = new ArrayList<DistributionModel>();
+	public List<DistributionModel> distributionsLinks = new ArrayList<DistributionModel>();
 
 	DataIDModel dataIDModel = new DataIDModel();
 
 	DataIDBean bean;
 
-	private void load() throws Exception {
+	public void load() throws Exception {
 		// if there is at least one distribution, load them
 		Iterator<DistributionModel> distributions = distributionsLinks
 				.iterator();
-		
+
 		int counter = 0;
-		
-		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "Loading "+distributionsLinks.size()+" distributions...");
-		logger.info("Loading "+distributionsLinks.size()+" distributions...");
+
+		bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "Loading "
+				+ distributionsLinks.size() + " distributions...");
+		logger.info("Loading " + distributionsLinks.size()
+				+ " distributions...");
 
 		while (distributions.hasNext()) {
-			counter ++;
-			 
+			counter++;
+
 			DistributionModel distribution = distributions.next();
 			// loading mongodb distribution object
 			DistributionMongoDBObject distributionMongoDBObj = new DistributionMongoDBObject(
 					distribution.getDistribution());
 
-			// check is dostribution need to be streamed
+			// case there is no such distribution, create one.
+			if (distributionMongoDBObj.getStatus() == null) {
+				distributionMongoDBObj
+						.setStatus(DistributionMongoDBObject.STATUS_WAITING_TO_DOWNLOAD);
+			}
+
+			// check is distribution need to be streamed
 			boolean needDownload = false;
 
 			if (distributionMongoDBObj.getStatus().equals(
@@ -72,14 +80,18 @@ public class DataID {
 			else if (new CheckWhetherDownload()
 					.checkDistribution(distributionMongoDBObj))
 				needDownload = true;
-			
-			
-			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "Distribution n. "+counter+": "+distribution.getDistributionURI());
-			logger.info("Distribution n. "+counter+": "+distribution.getDistributionURI());
+
+			bean.addDisplayMessage(
+					DataIDGeneralProperties.MESSAGE_INFO,
+					"Distribution n. " + counter + ": "
+							+ distribution.getDistributionURI());
+			logger.info("Distribution n. " + counter + ": "
+					+ distribution.getDistributionURI());
 
 			if (!needDownload) {
 				logger.info("Distribution is already in the last version. No needs to download again. ");
-				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Distribution is already in the last version. No needs to download again. ");
+				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
+						"Distribution is already in the last version. No needs to download again. ");
 			}
 
 			// if distribution have not already been handled
@@ -93,10 +105,12 @@ public class DataID {
 					bean.updateDistributionList = true;
 
 					// now we need to download the distribution
-					DownloadAndSaveDistribution downloadedFile = new DownloadAndSaveDistribution(distribution
-							.getDistriutionDownloadURL());
+					DownloadAndSaveDistribution downloadedFile = new DownloadAndSaveDistribution(
+							distribution.getDistriutionDownloadURL());
 
-					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Downloading distribution.");
+					bean.addDisplayMessage(
+							DataIDGeneralProperties.MESSAGE_INFO,
+							"Downloading distribution.");
 					logger.info("Downloading distribution.");
 
 					downloadedFile.downloadDistribution();
@@ -106,8 +120,10 @@ public class DataID {
 							.setStatus(DistributionMongoDBObject.STATUS_DOWNLOADED);
 					distributionMongoDBObj.updateObject(true);
 					bean.updateDistributionList = true;
-					
-					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Distribution downloaded. ");
+
+					bean.addDisplayMessage(
+							DataIDGeneralProperties.MESSAGE_INFO,
+							"Distribution downloaded. ");
 					logger.info("Distribution downloaded. ");
 
 					// check if format is not ntriples
@@ -119,8 +135,10 @@ public class DataID {
 								.setStatus(DistributionMongoDBObject.STATUS_SEPARATING_SUBJECTS_AND_OBJECTS);
 						distributionMongoDBObj.updateObject(true);
 						bean.updateDistributionList = true;
-						
-						bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Separating subjects and objects.");
+
+						bean.addDisplayMessage(
+								DataIDGeneralProperties.MESSAGE_INFO,
+								"Separating subjects and objects.");
 						logger.info("Separating subjects and objects.");
 
 						PrepareFiles p = new PrepareFiles();
@@ -128,11 +146,11 @@ public class DataID {
 						// error to convert dbpedia files from turtle using
 						// rapper
 						boolean isDbpedia = false;
-//						if (distributionMongoDBObj.getDownloadUrl().contains(
-//								"dbpedia"))
-//							isDbpedia = true;
-//						if (isDbpedia)
-//							throw new DataIDException("DBpedia ttl format");
+						// if (distributionMongoDBObj.getDownloadUrl().contains(
+						// "dbpedia"))
+						// isDbpedia = true;
+						// if (isDbpedia)
+						// throw new DataIDException("DBpedia ttl format");
 						p.separateSubjectAndObject(downloadedFile.fileName,
 								downloadedFile.extension, isDbpedia);
 						downloadedFile.objectDomains = p.objectDomains;
@@ -147,15 +165,21 @@ public class DataID {
 							.setStatus(DistributionMongoDBObject.STATUS_CREATING_BLOOM_FILTER);
 					distributionMongoDBObj.updateObject(true);
 					bean.updateDistributionList = true;
-					
-					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Creating bloom filter.");
+
+					bean.addDisplayMessage(
+							DataIDGeneralProperties.MESSAGE_INFO,
+							"Creating bloom filter.");
 					logger.info("Creating bloom filter.");
 
 					// make a filter with subjects
 					GoogleBloomFilter filter;
 					if (downloadedFile.subjectLines != 0) {
-						filter = new GoogleBloomFilter(
-								(int) downloadedFile.subjectLines, 0.000001);
+						if (downloadedFile.subjectLines > 1000000)
+							filter = new GoogleBloomFilter(
+									(int) downloadedFile.subjectLines, 1.0/downloadedFile.subjectLines);
+						else
+							filter = new GoogleBloomFilter(
+									(int) downloadedFile.subjectLines, 0.000001);
 					} else {
 						filter = new GoogleBloomFilter(
 								(int) downloadedFile.contentLengthAfterDownloaded / 40,
@@ -181,7 +205,9 @@ public class DataID {
 					// save filter
 
 					// save distribution in a mongodb object
-					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Saving mongodb \"Distribution\" document.");
+					bean.addDisplayMessage(
+							DataIDGeneralProperties.MESSAGE_INFO,
+							"Saving mongodb \"Distribution\" document.");
 					logger.info("Saving mongodb \"Distribution\" document.");
 
 					distributionMongoDBObj.setNumberOfObjectTriples(String
@@ -289,12 +315,18 @@ public class DataID {
 							.setStatus(DistributionMongoDBObject.STATUS_WAITING_TO_CREATE_LINKSETS);
 					distributionMongoDBObj.updateObject(true);
 
-					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,"Distribution saved!");
+					bean.addDisplayMessage(
+							DataIDGeneralProperties.MESSAGE_INFO,
+							"Distribution saved!");
 					logger.info("Distribution saved! ");
-					
+
 					bean.setDownloadNumberOfDownloadedDistributions(bean
 							.getDownloadNumberOfDownloadedDistributions() + 1);
-					DataIDBean.pushDownloadInfo();
+					try {
+						DataIDBean.pushDownloadInfo();
+					} catch (Exception exc) {
+						exc.printStackTrace();
+					}
 
 				} catch (DataIDException e) {
 					bean.addDisplayMessage(
@@ -309,6 +341,8 @@ public class DataID {
 					// uptate status of distribution
 					distributionMongoDBObj
 							.setStatus(DistributionMongoDBObject.STATUS_ERROR);
+					distributionMongoDBObj.setLastErrorMsg(e.getMessage());
+
 					distributionMongoDBObj.updateObject(true);
 
 					bean.addDisplayMessage(
@@ -330,7 +364,17 @@ public class DataID {
 
 	}
 
-	public DataID(String URL, DataIDBean bean) {
+	public Manager(List<DistributionModel> distributionsLinks) {
+		this.distributionsLinks = distributionsLinks;
+		bean = new DataIDBean();
+		try {
+			load();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Manager(String URL, DataIDBean bean) {
 		try {
 
 			this.bean = bean;

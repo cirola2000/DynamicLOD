@@ -39,6 +39,19 @@ public class EvaluationMongoDBObject  extends DataIDDB {
 		
 		public static final String POSITIVES_BLOOM = "positivesBloom";
 		
+		public static final String FILTER_SIZE = "filterSize";
+		
+		public static final String HASH_SIZE = "hashSize";
+		
+		public static final String TREE_SIZE = "treeSize";
+		
+		public static final String PRECISION = "precision";
+		
+		public static final String RECALL = "recall";
+		
+		public static final String FMEASURE = "fmeasure";
+		
+		
 		
 
 		// class properties
@@ -47,9 +60,9 @@ public class EvaluationMongoDBObject  extends DataIDDB {
 
 		private String dsSubject;
 
-		private String dsObjectTriples;
+		private int dsObjectTriples;
 
-		private String dsSubjectTriples;
+		private int dsSubjectTriples;
 
 		private String timeCreateTree;
 
@@ -63,11 +76,25 @@ public class EvaluationMongoDBObject  extends DataIDDB {
 		
 		private String timeSearchBloom;
 		
-		private String truePositives;
+		private int truePositives;
 
-		private String positivesHash;
+		private int positivesHash;
 
-		private String positivesBloom;
+		private int positivesBloom;
+
+		private long filterSize;
+
+		private long hashSize;
+
+		private long treeSize;
+		
+		private double precision;
+		
+		private double recall;
+		
+		private double fmeasure;
+		
+		
 
 		public EvaluationMongoDBObject(String uri) {
 			super(COLLECTION_NAME, uri);
@@ -102,6 +129,18 @@ public class EvaluationMongoDBObject  extends DataIDDB {
 				
 				mongoDBObject.put(POSITIVES_BLOOM, positivesBloom);
 				
+				mongoDBObject.put(FILTER_SIZE, filterSize);
+				
+				mongoDBObject.put(HASH_SIZE, hashSize);
+				
+				mongoDBObject.put(TREE_SIZE, treeSize);
+				
+				mongoDBObject.put(PRECISION, precision);
+				
+				mongoDBObject.put(RECALL, recall);
+				
+				mongoDBObject.put(FMEASURE, fmeasure);
+				
 				
 				insert(checkBeforeInsert);
 				return true;
@@ -130,9 +169,9 @@ public class EvaluationMongoDBObject  extends DataIDDB {
 
 				dsSubject = (String) obj.get(DS_SUBJECT);
 				
-				dsObjectTriples = (String) obj.get(DS_OBJECT_TRIPLES);
+				dsObjectTriples = ((Number) (obj.get(DS_OBJECT_TRIPLES))).intValue();
 				
-				dsSubjectTriples = (String) obj.get(DS_SUBJECT_TRIPLES);
+				dsSubjectTriples =((Number)(obj.get(DS_SUBJECT_TRIPLES))).intValue();
 				
 				timeCreateTree = (String) obj.get(TIME_CREATE_TREE);
 				
@@ -146,13 +185,24 @@ public class EvaluationMongoDBObject  extends DataIDDB {
 				
 				timeSearchBloom = (String) obj.get(TIME_SEARCH_BLOOM);
 				
-				truePositives = (String) obj.get(TRUE_POSITIVES);
+				truePositives = ((Number)(obj.get(TRUE_POSITIVES))).intValue();
 				
-				positivesHash = (String) obj.get(POSITIVES_HASH);
+				positivesHash = ((Number)(obj.get(POSITIVES_HASH))).intValue();
 				
-				positivesBloom = (String) obj.get(POSITIVES_BLOOM);
+				positivesBloom = ((Number)(obj.get(POSITIVES_BLOOM))).intValue();
 				
+				filterSize = ((Number)(obj.get(FILTER_SIZE))).longValue();
+				
+				hashSize = ((Number)(obj.get(HASH_SIZE))).longValue();
+				
+				treeSize =((Number)(obj.get(TREE_SIZE))).longValue();
 
+				precision = ((Number)(obj.get(PRECISION))).doubleValue();
+				
+				recall = ((Number)(obj.get(RECALL))).doubleValue();
+				
+				fmeasure = ((Number)(obj.get(FMEASURE))).doubleValue();
+				
 //				System.out.println(obj);
 				return true;
 			}
@@ -175,19 +225,19 @@ public class EvaluationMongoDBObject  extends DataIDDB {
 			this.dsSubject = dsSubject;
 		}
 
-		public String getDsObjectTriples() {
+		public int getDsObjectTriples() {
 			return dsObjectTriples;
 		}
 
-		public void setDsObjectTriples(String dsObjectTriples) {
+		public void setDsObjectTriples(int dsObjectTriples) {
 			this.dsObjectTriples = dsObjectTriples;
 		}
 
-		public String getDsSubjectTriples() {
+		public int getDsSubjectTriples() {
 			return dsSubjectTriples;
 		}
 
-		public void setDsSubjectTriples(String dsSubjectTriples) {
+		public void setDsSubjectTriples(int dsSubjectTriples) {
 			this.dsSubjectTriples = dsSubjectTriples;
 		}
 
@@ -239,28 +289,78 @@ public class EvaluationMongoDBObject  extends DataIDDB {
 			this.timeSearchBloom = timeSearchBloom;
 		}
 
-		public String getTruePositives() {
+		public int getTruePositives() {
 			return truePositives;
 		}
 
-		public void setTruePositives(String truePositives) {
+		public void setTruePositives(int truePositives) {
 			this.truePositives = truePositives;
 		}
 
-		public String getPositivesHash() {
+		public int getPositivesHash() {
 			return positivesHash;
 		}
 
-		public void setPositivesHash(String positivesHash) {
+		public void setPositivesHash(int positivesHash) {
 			this.positivesHash = positivesHash;
 		}
 
-		public String getPositivesBloom() {
+		public int getPositivesBloom() {
 			return positivesBloom;
 		}
 
-		public void setPositivesBloom(String positivesBloom) {
+		public void setPositivesBloom(int positivesBloom) {
 			this.positivesBloom = positivesBloom;
 		}
+
+		public long getFilterSize() {
+			return filterSize;
+		}
+
+		public void setFilterSize(long filterSize) {
+			this.filterSize = filterSize;
+		}
+
+		public long getHashSize() {
+			return hashSize;
+		}
+
+		public void setHashSize(long hashSize) {
+			this.hashSize = hashSize;
+		}
+
+		public long getTreeSize() {
+			return treeSize;
+		}
+
+		public void setTreeSize(long treeSize) {
+			this.treeSize = treeSize;
+		}
+
+		public double getPrecision() {
+			return precision;
+		}
+
+		public void setPrecision(double precision) {
+			this.precision = precision;
+		}
+
+		public double getRecall() {
+			return recall;
+		}
+
+		public void setRecall(double recall) {
+			this.recall = recall;
+		}
+
+		public double getFmeasure() {
+			return fmeasure;
+		}
+
+		public void setFmeasure(double fmeasure) {
+			this.fmeasure = fmeasure;
+		}
+		
+		
 
 }

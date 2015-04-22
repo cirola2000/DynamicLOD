@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import dataid.DataID;
+import dataid.Manager;
 import dataid.DataIDGeneralProperties;
 import dataid.download.CheckWhetherDownload;
 import dataid.ontology.Linkset;

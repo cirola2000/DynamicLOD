@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.log4j.Logger;
 
-import dataid.DataID;
+import dataid.Manager;
 import dataid.DataIDGeneralProperties;
 import dataid.server.DataIDBean;
 import dataid.threads.GetDomainsFromTriplesThread;
