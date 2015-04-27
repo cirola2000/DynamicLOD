@@ -39,7 +39,7 @@ public class LOV {
 	DistributionMongoDBObject dist = null; 
 
 	@Test
-	public void Go() {
+	public void Go() { 
 		try {
 			Model m = ModelFactory.createDefaultModel();
 
@@ -169,8 +169,12 @@ public class LOV {
 		
 		// make a filter with subjects
 		GoogleBloomFilter filter;
+		if(subjects.size()>1000000)
 			filter = new GoogleBloomFilter(
 					(int) subjects.size(), (0.9)/subjects.size());
+		else
+			filter = new GoogleBloomFilter(
+					(int) subjects.size(),0.0000001);		
 		
 		
 		// load file to filter and take the process time

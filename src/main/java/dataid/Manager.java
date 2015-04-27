@@ -176,10 +176,10 @@ public class Manager {
 					if (downloadedFile.subjectLines != 0) {
 						if (downloadedFile.subjectLines > 1000000)
 							filter = new GoogleBloomFilter(
-									(int) downloadedFile.subjectLines, 1.0/downloadedFile.subjectLines);
+									(int) downloadedFile.subjectLines, 0.9/downloadedFile.subjectLines);
 						else
 							filter = new GoogleBloomFilter(
-									(int) downloadedFile.subjectLines, 0.000001);
+									(int) downloadedFile.subjectLines, 0.0000001);
 					} else {
 						filter = new GoogleBloomFilter(
 								(int) downloadedFile.contentLengthAfterDownloaded / 40,

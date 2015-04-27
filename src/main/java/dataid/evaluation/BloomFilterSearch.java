@@ -51,6 +51,7 @@ public class BloomFilterSearch implements SearchAlgorithm {
 		filter = new GoogleBloomFilter((int) size, fpp);
 		System.out.println();
 		logger.info("Bloom filter fpp: " + formatter.format(fpp));
+		logger.info("Bloom filter adding elements: " + file);
 
 		t.startTimer();
 		for (String subject : new FileIterator(file)) {
@@ -64,6 +65,7 @@ public class BloomFilterSearch implements SearchAlgorithm {
 
 	public void SearchElements(String file) throws FileNotFoundException {
 		t.startTimer();
+		logger.info("Bloom filter searching elements: " + file);
 		for (String object : new FileIterator(file)) {
 			try {
 				if (filter.compare(object)) {

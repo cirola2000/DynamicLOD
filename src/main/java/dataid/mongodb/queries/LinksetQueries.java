@@ -17,7 +17,7 @@ import dataid.mongodb.objects.LinksetMongoDBObject;
 
 public class LinksetQueries {
 
-	public ArrayList<LinksetMongoDBObject> getLinksets() {
+	public static ArrayList<LinksetMongoDBObject> getLinksets() {
 
 		ArrayList<LinksetMongoDBObject> list = new ArrayList<LinksetMongoDBObject>();
 

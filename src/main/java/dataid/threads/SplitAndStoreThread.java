@@ -132,6 +132,7 @@ public class SplitAndStoreThread extends Thread {
 											&& !matcher
 													.group(2)
 													.equals("<http://www.w3.org/2000/01/rdf-schema#subClassOf>")) {
+//									if(true){
 
 										// get subject and save to file
 										if (subject != null) {

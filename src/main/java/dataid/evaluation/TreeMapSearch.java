@@ -1,8 +1,11 @@
 package dataid.evaluation;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.TreeMap;
+import java.io.ObjectInputStream;
+import java.util.TreeSet;
+import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
@@ -14,7 +17,7 @@ public class TreeMapSearch implements SearchAlgorithm {
 	
 	final static Logger logger = Logger.getLogger(TreeMapSearch.class);
 	
-	public TreeMap<String, Integer> tm = new TreeMap<String, Integer>();
+	public TreeSet<String> tm = new TreeSet<String>();
 	 
 	int positives = 0;
 	
@@ -37,14 +40,17 @@ public class TreeMapSearch implements SearchAlgorithm {
 	
 	public void AddElements(String file) throws FileNotFoundException {
 
+		logger.info("Adding elements: " + file);
+		
 		t.startTimer();
 
 		for (String subject : new FileIterator(file)) {
-			tm.put(subject, null);
+			tm.add(subject);
 		}
 
 		timeToCreate = t.stopTimer();
-		logger.info("Time to create tree: " + timeToCreate);
+		logger.info("Time to add elements in tree: " + timeToCreate);
+		
 	}
 
 	public void SearchElements(String file) throws FileNotFoundException {
@@ -52,7 +58,7 @@ public class TreeMapSearch implements SearchAlgorithm {
 		t.startTimer();
 
 		for (String object : new FileIterator(file)) {
-			if (tm.containsKey(object)) {
+			if (tm.contains(object)) {
 //				logger.debug(object);
 				positives++;
 			}
@@ -67,6 +73,31 @@ public class TreeMapSearch implements SearchAlgorithm {
 		s = new SerializeObject(file);
 		s.save(tm);	
 	}
+	
+	public void load(String file)  throws Exception{
+		// Read from disk using FileInputStream
+		logger.info("loading tree file: " +file);
+		
+		FileInputStream f_in = new 
+			FileInputStream(file);
+
+		// Read object using ObjectInputStream
+		ObjectInputStream obj_in = 
+			new ObjectInputStream (f_in);
+
+		// Read an object
+		Object obj = obj_in.readObject();
+
+		if (obj instanceof TreeSet)
+		{
+			// Cast object to a Vector
+			tm = (TreeSet<String>) obj;
+
+			// Do something with vector....
+		}
+	}
+	
+	
 
 	public long getFileSize() {
 		return s.getFileSize();

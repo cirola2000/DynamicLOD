@@ -57,7 +57,7 @@ public class FileToFilter {
 		try{
 			File f = new File(DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH+
 							fileName);
-			f.delete();
+//			f.delete();
 			
 			logger.debug("deleting "+ DataIDGeneralProperties.BASE_PATH+
 					fileName);

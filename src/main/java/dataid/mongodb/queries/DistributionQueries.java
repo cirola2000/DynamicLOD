@@ -83,7 +83,7 @@ public class DistributionQueries {
 								.toString());
 
 					list.add(obj);
-				logger.debug("Returned: " + obj.getDownloadUrl());
+//				logger.debug("Returned: " + obj.getDownloadUrl());
 				
 			}
 

@@ -99,18 +99,7 @@ public class CreateD3JSONFormat extends HttpServlet {
 
 					JSONObject edgeDetail = new JSONObject();
 					// edgeDetail.put("directed", true);
-					if (singleLink.getLinks() > 0
-							&& singleLink.getOntologyLinks() > 0) {
-						edgeDetail.put("color", "red");
-						edgeDetail.put("linkType", "ontologyAndLink");
-					} else if (singleLink.getOntologyLinks() > 0) {
-						edgeDetail.put("color", "green");
-						edgeDetail.put("linkType", "ontology");
-					} else if (singleLink.getLinks() > 0) {
-						edgeDetail.put("color", "blue");
-						edgeDetail.put("linkType", "link");
-					}
-
+					edgeDetail.put("color", "red");
 					if (singleLink.getLinks() > 0) {
 
 						edgeDetail.put("source", singleLink

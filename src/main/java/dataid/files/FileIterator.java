@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 public class FileIterator implements Iterable<String> {
 
@@ -44,7 +46,22 @@ public class FileIterator implements Iterable<String> {
                 throw new UnsupportedOperationException();
             }
 
+			public void forEachRemaining(Consumer<? super String> action) {
+				// TODO Auto-generated method stub
+				
+			}
+
         };
     }
+
+	public void forEach(Consumer<? super String> action) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Spliterator<String> spliterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

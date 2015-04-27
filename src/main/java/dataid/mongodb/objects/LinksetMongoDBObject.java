@@ -19,7 +19,7 @@ public class LinksetMongoDBObject extends DataIDDB {
 
 	public static final String OBJECTS_DATASET_TARGET = "objectsDatasetTarget";
 
-	public static final String ONTOLOGY_LINKS = "ontologyLinks";
+	public static final String AVAILABILITY = "availability";
 
 	public static final String LINKS = "links";
 
@@ -31,7 +31,7 @@ public class LinksetMongoDBObject extends DataIDDB {
 
 	private String objectsDatasetTarget;
 
-	private int ontologyLinks = 0;
+	private int availability = 0;
 
 	private int links = 0;
 
@@ -62,7 +62,7 @@ public class LinksetMongoDBObject extends DataIDDB {
 			mongoDBObject.put(LINKS, links);
 
 			// updating links on mongodb
-			mongoDBObject.put(ONTOLOGY_LINKS, ontologyLinks);
+			mongoDBObject.put(AVAILABILITY, availability);
 
 			insert(checkBeforeInsert);
 		} catch (Exception e2) {
@@ -97,7 +97,7 @@ public class LinksetMongoDBObject extends DataIDDB {
 
 			subjectsDatasetTarget = (String) obj.get(SUBJECTS_DATASET_TARGET);
 
-			ontologyLinks = Integer.valueOf(obj.get(ONTOLOGY_LINKS).toString());
+			availability = Integer.valueOf(obj.get(AVAILABILITY).toString());
 
 			links = Integer.valueOf(obj.get(LINKS).toString());
 
@@ -142,16 +142,19 @@ public class LinksetMongoDBObject extends DataIDDB {
 		return links;
 	}
 
-	public int getOntologyLinks() {
-		return ontologyLinks;
-	}
-
-	public void setOntologyLinks(int ontologyLinks) {
-		this.ontologyLinks = ontologyLinks;
-	}
-
 	public void setLinks(int links) {
 		this.links = links;
 	}
 
+	public int getAvailability() {
+		return availability;
+	}
+
+	public void setAvailability(int availability) {
+		this.availability = availability;
+	}
+
+	
+	
+	
 }
