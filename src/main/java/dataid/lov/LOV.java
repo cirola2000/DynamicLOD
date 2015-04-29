@@ -53,8 +53,8 @@ public class LOV extends Download {
 		Model m = ModelFactory.createDefaultModel();
 		new DataIDGeneralProperties().loadProperties();
 
-//		setUrl(new URL(DataIDGeneralProperties.LOV_URL));
-		setUrl(new URL("http://data.pokepedia.fr/dumps/pokepedia-fr_rdfdump.tar.gz"));
+		setUrl(new URL(DataIDGeneralProperties.LOV_URL));
+//		setUrl(new URL("http://data.pokepedia.fr/dumps/pokepedia-fr_rdfdump.tar.gz"));
 //		
 		// download lov file
 		InputStream inputStream = getStream();
@@ -62,7 +62,7 @@ public class LOV extends Download {
 		// allowing gzip format
 		inputStream = getGZipInputStream(inputStream);
 		
-		inputStream = getTarInputStream(inputStream);
+//		inputStream = getTarInputStream(inputStream);
 		
 
 		simpleDownload(DataIDGeneralProperties.BASE_PATH + "lov.tmp",

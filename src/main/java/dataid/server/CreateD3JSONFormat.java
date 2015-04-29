@@ -45,17 +45,23 @@ public class CreateD3JSONFormat extends HttpServlet {
 		try {
 			paramDataset = request.getParameter("dataset");
 			if (paramDataset != null){
+				if(!paramDataset.equals("")){
 				paramDataset = request.getParameter("dataset").replace(
 						"@@@@@@", "#");
 				hasParameters = true;
 				System.out.println(paramDataset);
 			}
+			}
 
 			JSONObject obj = new JSONObject();
 
 			ArrayList<LinksetMongoDBObject> linkList = null;
+			
+			System.out.println(hasParameters);
 
-			if (paramDataset == null || paramDataset.equals("")) {
+			if (!hasParameters) {
+				System.out.println("no");
+//				if (paramDataset == null || paramDataset.equals("")) {
 				// ArrayList<DatasetMongoDBObject> nodeList = DatasetQueries
 				// .getDatasets();
 				// if (nodeList != null)
@@ -93,6 +99,7 @@ public class CreateD3JSONFormat extends HttpServlet {
 
 			if (linkList != null)
 				for (LinksetMongoDBObject singleLink : linkList) {
+					
 					// if (!singleEdge.getObjectsDatasetTarget().equals(
 					// singleEdge.getSubjectsDatasetTarget())) {
 					JSONObject link = null;
@@ -102,9 +109,9 @@ public class CreateD3JSONFormat extends HttpServlet {
 					edgeDetail.put("color", "red");
 					if (singleLink.getLinks() > 0) {
 
-						edgeDetail.put("source", singleLink
-								.getSubjectsDatasetTarget().toString());
 						edgeDetail.put("target", singleLink
+								.getSubjectsDatasetTarget().toString());
+						edgeDetail.put("source", singleLink
 								.getObjectsDatasetTarget().toString());
 						edgeDetail.put("value", 5);
 
@@ -126,18 +133,20 @@ public class CreateD3JSONFormat extends HttpServlet {
 	}
 
 	public void addNode(String link) {
+		
 
 		if (!nodeList.contains(link)) {
 			nodeList.add(link);
 			JSONObject node = new JSONObject();
 
-			if (hasParameters) {
+			if (!hasParameters) {
 				DatasetMongoDBObject dt = new DatasetMongoDBObject(link);
 				node.put("text", dt.getTitle());
 				node.put("name", dt.getUri());
 			} else {
 				DistributionMongoDBObject dt = new DistributionMongoDBObject(
 						link);
+				System.out.println(link);
 				node.put("text", dt.getTitle());
 				node.put("name", dt.getUri());
 				
