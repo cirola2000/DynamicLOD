@@ -1,8 +1,11 @@
 package dataid.evaluation;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.HashMap;
+import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 
@@ -60,6 +63,29 @@ public class HashMapSearch implements SearchAlgorithm{
 		logger.info("saving hashmap");
 		s = new SerializeObject(file);
 		s.save(hs);			
+	}
+	
+	public void load(String file)  throws Exception{
+		// Read from disk using FileInputStream
+		logger.info("loading tree file: " +file);
+		
+		FileInputStream f_in = new 
+			FileInputStream(file);
+
+		// Read object using ObjectInputStream
+		ObjectInputStream obj_in = 
+			new ObjectInputStream (f_in);
+
+		// Read an object
+		Object obj = obj_in.readObject();
+
+		if (obj instanceof TreeSet)
+		{
+			// Cast object to a Vector
+			hs = (HashMap<Integer, String>) obj;
+
+			// Do something with vector....
+		}
 	}
 	
 	public long getFileSize() {

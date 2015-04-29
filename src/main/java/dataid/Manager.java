@@ -35,7 +35,7 @@ public class Manager {
 	// list of subset and their distributions
 	public List<DistributionModel> distributionsLinks = new ArrayList<DistributionModel>();
 
-	DataIDModel dataIDModel = new DataIDModel();
+	FileInputParser fileInputParserModel = new FileInputParser();
 
 	DataIDBean bean;
 
@@ -389,7 +389,7 @@ public class Manager {
 			FileUtils.acceptedFormats(URL.toString());
 
 			// create jena model
-			name = dataIDModel.readModel(URL, bean);
+			name = fileInputParserModel.readModel(URL, bean);
 
 			if (name == null) {
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
@@ -409,7 +409,7 @@ public class Manager {
 			logger.info("Parsing model in order to find distributions...");
 
 			// parse model in order to find distributions
-			List<DistributionModel> listOfSubsets = dataIDModel
+			List<DistributionModel> listOfSubsets = fileInputParserModel
 					.parseDistributions(distributionsLinks, bean);
 			int numberOfDistributions = listOfSubsets.size();
 
@@ -420,7 +420,7 @@ public class Manager {
 				DataIDBean.pushDownloadInfo();
 			}
 
-			if (!dataIDModel.someDownloadURLFound)
+			if (!fileInputParserModel.someDownloadURLFound)
 				throw new Exception("No dcat:downloadURL property found!");
 			else if (numberOfDistributions == 0)
 				throw new Exception("### 0 distribution found! ###");

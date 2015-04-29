@@ -12,7 +12,7 @@ public class NS {
 //	public static final String DATAID_URI = "http://dataid.dbpedia.org/ns#";
 	public static final String RDFS_URI = "http://www.w3.org/2000/01/rdf-schema#";
 	public static final String DCAT_URI = "http://www.w3.org/ns/dcat#";
-	public static final String VOID_URI = "http://rdfs.org/ns/void#";
+	public static final String VOID_URI = "http://rdfs.org/ns/void#"; 
 	public static final String SD_URI = "http://www.w3.org/ns/sparql-service-description#";
 	public static final String PROV_URI = "http://www.w3.org/ns/prov#";
 	public static final String DCT_URI = "http://purl.org/dc/terms/";

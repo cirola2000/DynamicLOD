@@ -58,7 +58,6 @@ public class Evaluation implements Serializable {
 		}
 	}
 
-	@Test
 	public void makeLinksets() {
 
 		loadLinksets();
@@ -75,7 +74,7 @@ public class Evaluation implements Serializable {
 			
 			for (LinksetMongoDBObject linksetMongoDBObject : linkSets) {
 				if(linksetMongoDBObject.getSubjectsDistributionTarget().equals("http://dbpedia.org/ontology/") || !linksetMongoDBObject.getSubjectsDistributionTarget().contains("pedia"))
-				if(linksetMongoDBObject.getLinks()>0 && linksetMongoDBObject.getOntologyLinks() ==0){
+//				if(linksetMongoDBObject.getLinks()>0 && linksetMongoDBObject.getOntologyLinks() ==0){
 					try {
 						if(t.tm==null)
 							t.load(getFile(DataIDGeneralProperties.BASE_PATH+"tree/"+FileUtils.stringToHash(linksetMongoDBObject.getSubjectsDistributionTarget())));
@@ -87,10 +86,10 @@ public class Evaluation implements Serializable {
 					}
 					
 				System.out.println("----"+linksetMongoDBObject.getObjectsDistributionTarget());
-				linksetMongoDBObject.setOntologyLinks(t.getPositives());
+//				linksetMongoDBObject.setOntologyLinks(t.getPositives());
 				linksetMongoDBObject.updateObject(true);
 				t.positives = 0;
-				}
+//				}
 			}
 		}
 		
@@ -138,18 +137,19 @@ public class Evaluation implements Serializable {
 	static public ArrayList<String> objectList = new ArrayList<String>() {
 		{
 			
-			add("article_categories_en.nt.bz2");
+			add("10m");
 		}
 	};
 	
 	static public ArrayList<String> subjectList = new ArrayList<String>() {
 		{
 			
-			add("flickrwrappr_links_en.nt.bz2");
+			add("opa");
 		}
 	};
 	
 
+	@Test
 	public void SearchTree() {
 		new DataIDGeneralProperties().loadProperties();
 
@@ -175,7 +175,9 @@ public class Evaluation implements Serializable {
 
 		for (String objectFileName : objectList) {
 //			for (String file2 : DBPediaLinks.links) {
-			objectFileName = DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
+//			objectFileName = DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
+//					+ objectFileName;
+			objectFileName = DataIDGeneralProperties.BASE_PATH+"objects/"
 					+ objectFileName;
 			objectFileName = objectFileName.replace(".bz2", "");
 
@@ -186,37 +188,52 @@ public class Evaluation implements Serializable {
 				BloomFilterSearch filter = null;
 				subjectFileName = subjectFileName.replace(".bz2", "");
 
-				subjectFileName = DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
+//				subjectFileName = DataIDGeneralProperties.SUBJECT_FILE_DISTRIBUTION_PATH
+//						+ subjectFileName;
+				subjectFileName = DataIDGeneralProperties.BASE_PATH+"subjects/"
 						+ subjectFileName;
+				
 				EvaluationMongoDBObject e = new EvaluationMongoDBObject(objectFileName
 						+ subjectFileName);
 				System.out.println(objectFileName + " " + subjectFileName);
 
-				int size = 0;
+				int size = 1000000;
 
 //				if (e.getDsObject() == null) {
 					if (true) {
 					try {
 						if (treeMap.tm.size() < 1) {
-							treeMap.AddElements(subjectFileName);
-							size = treeMap.tm.size();
-//							treeMap.SearchElements(file2);
-//							treeMap.Save(DataIDGeneralProperties.BASE_PATH
-//									+ "treeMap");
-							treeMap.tm = null;
 
-							System.out.println("size: "+size);
+//							size = treeMap.tm.size();
+//							hashMap.Save("/tmp/opa");
+//							hashMap.load("/tmp/opa");
+
+							
+//							treeMap.AddElements(subjectFileName);
+//							treeMap.SearchElements(objectFileName);
+
+//							hashMap.AddElements(subjectFileName);
+//							hashMap.SearchElements(objectFileName);
+
 							fpp = (double) 0.9 / size;
-
 							filter = new BloomFilterSearch(size, fpp);
-
 							filter.AddElements(subjectFileName);
 							filter.SearchElements(objectFileName);
+
+							
+							
+							
+//							treeMap.Save(DataIDGeneralProperties.BASE_PATH
+//									+ "treeMap");
+//							treeMap.tm = null;
+
+							System.out.println("size: "+size);
+
 
 //							filter.Save(DataIDGeneralProperties.BASE_PATH
 //									+ "filter");
 
-							filter.filter = null;
+//							filter.filter = null;
 
 //							hashMap.AddElements(file1);
 //							hashMap.SearchElements(file2);
@@ -229,28 +246,28 @@ public class Evaluation implements Serializable {
 
 							truePositive = treeMap.getPositives();
 
-							falsePositive = filter.getPositives()
-									- truePositive;
+//							falsePositive = filter.getPositives()
+//									- truePositive;
 
-							precision = (double) truePositive
-									/ (truePositive + falsePositive);
+//							precision = (double) truePositive
+//									/ (truePositive + falsePositive);
 
 							// recal is always 1
-							recall = (double) truePositive / truePositive;
-
-							fMeasure = 2 * ((precision * recall) / (precision + recall));
-
-							System.out.println();
-
-							logger.info("Tree true positives: " + truePositive);
-							logger.info("Bloom filter true positives: "
-									+ filter.getPositives());
-							logger.info("Bloom filter precision: "
-									+ formatter.format(precision));
-							logger.info("Bloom filter recall: "
-									+ formatter.format(recall));
-							logger.info("Bloom filter fmeasure: "
-									+ formatter.format(fMeasure));
+//							recall = (double) truePositive / truePositive;
+//
+//							fMeasure = 2 * ((precision * recall) / (precision + recall));
+//
+//							System.out.println();
+//
+//							logger.info("Tree true positives: " + truePositive);
+//							logger.info("Bloom filter true positives: "
+//									+ filter.getPositives());
+//							logger.info("Bloom filter precision: "
+//									+ formatter.format(precision));
+//							logger.info("Bloom filter recall: "
+//									+ formatter.format(recall));
+//							logger.info("Bloom filter fmeasure: "
+//									+ formatter.format(fMeasure));
 
 //							e = new EvaluationMongoDBObject(file2 + file1);
 //							e.setDsObject(file2);
