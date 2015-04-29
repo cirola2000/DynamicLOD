@@ -54,14 +54,14 @@ public class LOV extends Download {
 		new DataIDGeneralProperties().loadProperties();
 
 		setUrl(new URL(DataIDGeneralProperties.LOV_URL));
-		setUrl(new URL("http://id.loc.gov/static/data/authoritiessubjects.nt.skos.zip"));
+//		setUrl(new URL("http://id.loc.gov/static/data/authoritiessubjects.nt.skos.zip"));
 		
 		// download lov file
 		InputStream inputStream = getStream();
 
 		// allowing gzip format
-		inputStream = getZipInputStream(inputStream);
-//		inputStream = getGZipInputStream(inputStream);
+//		inputStream = getZipInputStream(inputStream);
+		inputStream = getGZipInputStream(inputStream);
 
 		simpleDownload(DataIDGeneralProperties.BASE_PATH + "lov.tmp",
 				inputStream);
