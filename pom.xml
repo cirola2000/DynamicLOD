@@ -149,9 +149,9 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
-					<compilerArgument></compilerArgument>
 				<debug>true</debug>
-				<debuglevel>lines</debuglevel>
+				<debuglevel>lines,vars,source</debuglevel>
+				<compilerArgument></compilerArgument>
 				</configuration>
 			</plugin>
 		</plugins>
