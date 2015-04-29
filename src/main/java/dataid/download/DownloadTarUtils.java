@@ -26,12 +26,12 @@ public class DownloadTarUtils {
 		return false;
 	}
 
-	public void checkTarFile(URL url) throws DataIDException {
+	public void checkTarFile(InputStream inputStream) throws DataIDException {
 		TarArchiveInputStream is = null;
 		try {
 			try {
-			HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
-			InputStream inputStream = httpConn.getInputStream();
+//			HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
+//			InputStream inputStream = httpConn.getInputStream();
 		 
 		   is = new TarArchiveInputStream(new BufferedInputStream(inputStream));
 		   
@@ -44,20 +44,22 @@ public class DownloadTarUtils {
 				while ((entry = (TarArchiveEntry) is.getNextEntry()) != null) {
 					fileName = entry.getName();
 					if (count2 > 1) {
+						is.close();
 						throw new DataIDException(
 								"Too many entries compressed! TAR files should contains only the dump file.");
 					}
 					if (entry.isDirectory()) {
+						is.close();
 						throw new DataIDException(
 								"We found a compressed directory ("
 										+ entry.getName()
 										+ "). TAR files should contains only the dump file.");
 					}
-					if (!FileUtils.acceptedFormats(entry.getName())) {
-						throw new DataIDException(
-								"The file format is invalid. "
-										+ entry.getName());
-					}
+//					if (!FileUtils.acceptedFormats(entry.getName())) {
+//						throw new DataIDException(
+//								"The file format is invalid. "
+//										+ entry.getName());
+//					}
 					count2++;
 				}
 				
@@ -69,7 +71,7 @@ public class DownloadTarUtils {
 			
 		} finally {
 			try {
-				is.close();
+				
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}

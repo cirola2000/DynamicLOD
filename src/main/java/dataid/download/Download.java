@@ -1,5 +1,6 @@
 package dataid.download;
 
+import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -10,11 +11,13 @@ import java.text.DecimalFormat;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
+import org.apache.tools.tar.TarInputStream;
 
 public class Download {
 
@@ -125,6 +128,7 @@ public class Download {
 			logger.info("File extension is " +getExtension()+ ", creating GzipCompressorInputStream...");
 			System.out.println(new FileNameFromURL().getFileName(url.toString(),
 					httpDisposition));
+			httpConn = (HttpURLConnection) url.openConnection();
 			inputStream = new GzipCompressorInputStream(
 					httpConn.getInputStream(), true);
 			setFileName(getFileName().replace(".gz", ""));
@@ -142,7 +146,7 @@ public class Download {
 		if (getExtension().equals("zip")) {
 			logger.info("File extension is zip, creating ZipInputStream and checking compressed files...");
 			DownloadZipUtils d = new DownloadZipUtils();
-			d.checkZipFile(url);
+//			d.checkZipFile(url);
 			httpConn = (HttpURLConnection) url.openConnection();
 			ZipInputStream zip = new ZipInputStream( httpConn.getInputStream());
 			ZipEntry entry = zip.getNextEntry();
@@ -157,14 +161,15 @@ public class Download {
 	
 	protected InputStream getTarInputStream(InputStream inputStream)
 			throws Exception {
+		InputStream data = new BufferedInputStream(inputStream);
+
 		// check whether file is zip type
 		if (getExtension().equals("tar")) {
 			logger.info("File extension is tar, creating TarArchiveInputStream and checking compressed files...");
 			DownloadTarUtils d = new DownloadTarUtils();
-			d.checkTarFile(url);
-			httpConn = (HttpURLConnection) url.openConnection();
-			ZipInputStream tar = new ZipInputStream( httpConn.getInputStream());
-			ZipEntry entry = tar.getNextEntry();
+//			d.checkTarFile(data);		
+			TarArchiveInputStream tar = new TarArchiveInputStream(data);
+			TarArchiveEntry entry = (TarArchiveEntry) tar.getNextEntry();
 			setFileName(entry.getName());
 			setExtension(FilenameUtils.getExtension(getFileName()));
 			inputStream = tar;
