@@ -49,11 +49,13 @@ public class LOV extends Download {
 		
 		logger.info("Loading LOV vocabulary.");;
 
+		
 		Model m = ModelFactory.createDefaultModel();
 		new DataIDGeneralProperties().loadProperties();
 
 		setUrl(new URL(DataIDGeneralProperties.LOV_URL));
-
+//		setUrl(new URL("http://dblp.l3s.de/dblp.rdf.gz"));
+		
 		// download lov file
 		InputStream inputStream = getStream();
 

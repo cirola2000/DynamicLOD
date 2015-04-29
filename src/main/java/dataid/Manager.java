@@ -436,6 +436,7 @@ public class Manager {
 
 			// check if LOV was already downloaded
 			GeneralPropertiesMongoDBObject g = new GeneralPropertiesMongoDBObject();
+			System.out.println(g.getDownloadedLOV());
 			if (g.getDownloadedLOV()== null || !g.getDownloadedLOV())
 					logger.info("LOV vocabularies still not lodaded! Loading now...");
 					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "LOV vocabularies still not lodaded! Loading now...");
