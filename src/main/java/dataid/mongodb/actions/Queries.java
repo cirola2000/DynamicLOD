@@ -24,7 +24,7 @@ public class Queries {
 		try {
 			DBCollection collection = DataIDDB.getInstance().getCollection(
 					DistributionMongoDBObject.COLLECTION_NAME);
-			DBCursor instances = collection.find().limit(100);
+			DBCursor instances = collection.find().limit(1000);
 
 			str = str + "<table><tr><th style=\"width:570px\">DownloadURL</th><th style=\"margin-left:15px\">Status</th></tr>";
 			for (DBObject instance : instances) {
