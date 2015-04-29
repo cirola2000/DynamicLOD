@@ -68,6 +68,8 @@ public class DownloadAndSaveDistribution extends Download {
 		// allowinf zip format
 		inputStream = getZipInputStream(inputStream);
 
+		inputStream = getTarInputStream(inputStream);
+
 		dataIDFilePath = DataIDGeneralProperties.BASE_PATH + getFileName();
 		objectFilePath = DataIDGeneralProperties.OBJECT_FILE_DISTRIBUTION_PATH
 				+ getFileName();
