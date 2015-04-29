@@ -69,8 +69,8 @@ public class Download {
 	}
 
 	private void openConnection() throws Exception {
-		httpConn = (HttpURLConnection) url.openConnection();
 		httpConn.setConnectTimeout(5000);
+		httpConn = (HttpURLConnection) url.openConnection();
 		int responseCode = httpConn.getResponseCode();
 
 		logger.debug("Open HTTP connection for URL: " + url.toString());
