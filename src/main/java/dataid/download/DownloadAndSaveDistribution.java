@@ -100,7 +100,7 @@ public class DownloadAndSaveDistribution extends Download {
 			outputStream.close();
 		} else {
 			httpConn.disconnect();
-			throw new Exception("RDF format not supported: " + extension);
+			throw new Exception("RDF format not supported: " + getExtension());
 		}
 
 		doneReadingFile = true;

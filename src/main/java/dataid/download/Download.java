@@ -146,8 +146,10 @@ public class Download {
 			ZipInputStream zip = new ZipInputStream( httpConn.getInputStream());
 			ZipEntry entry = zip.getNextEntry();
 			setFileName(entry.getName());
+			setExtension(FilenameUtils.getExtension(getFileName()));
 			inputStream = zip;
 			logger.info("Done, we found a single file: " + fileName);
+			
 		}
 		return inputStream;
 	}
