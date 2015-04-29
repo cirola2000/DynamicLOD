@@ -13,20 +13,12 @@
 		<servlet-class>dataid.server.CreateOutputByDistributions</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>UpdateLOV</servlet-name>
-		<servlet-class>dataid.server.UpdateLOV</servlet-class>
-	</servlet>
-		<servlet>
 		<servlet-name>OutputByDataset</servlet-name>
 		<servlet-class>dataid.server.CreateOutputByDatasets</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>Service</servlet-name>
 		<servlet-class>dataid.server.Service</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>CreateArborJSONFormat</servlet-name>
-		<servlet-class>dataid.server.CreateArborJSONFormat</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>CreateD3JSONFormat</servlet-name>
@@ -41,16 +33,8 @@
 		<url-pattern>/outputByDataset/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>CreateArborJSONFormat</servlet-name>
-		<url-pattern>/CreateArborJSONFormat/*</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
 		<servlet-name>CreateD3JSONFormat</servlet-name>
 		<url-pattern>/CreateD3JSONFormat/*</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>UpdateLOV</servlet-name>
-		<url-pattern>/UpdateLOV/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Service</servlet-name>
