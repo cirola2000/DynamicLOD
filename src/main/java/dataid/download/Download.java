@@ -109,6 +109,7 @@ public class Download {
 		// check whether file is bz2 type
 		if (getExtension().equals("bz2")) {
 			logger.info("File extension is bz2, creating BZip2CompressorInputStream...");
+			httpConn = (HttpURLConnection) url.openConnection();
 			inputStream = new BZip2CompressorInputStream(
 					httpConn.getInputStream(), true);
 			setFileName(getFileName().replace(".bz2", ""));
