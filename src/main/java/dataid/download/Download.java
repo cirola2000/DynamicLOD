@@ -3,7 +3,6 @@ package dataid.download;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
@@ -11,11 +10,11 @@ import java.text.DecimalFormat;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
-import org.apache.tools.ant.types.CommandlineJava.SysProperties;
 
 public class Download {
 
@@ -123,7 +122,9 @@ public class Download {
 
 		// check whether file is gz type
 		if (getExtension().equals("gz")) {
-			logger.info("File extension is gz, creating GzipCompressorInputStream...");
+			logger.info("File extension is " +getExtension()+ ", creating GzipCompressorInputStream...");
+			System.out.println(new FileNameFromURL().getFileName(url.toString(),
+					httpDisposition));
 			inputStream = new GzipCompressorInputStream(
 					httpConn.getInputStream(), true);
 			setFileName(getFileName().replace(".gz", ""));
@@ -148,6 +149,25 @@ public class Download {
 			setFileName(entry.getName());
 			setExtension(FilenameUtils.getExtension(getFileName()));
 			inputStream = zip;
+			logger.info("Done, we found a single file: " + fileName);
+			
+		}
+		return inputStream;
+	}
+	
+	protected InputStream getTarInputStream(InputStream inputStream)
+			throws Exception {
+		// check whether file is zip type
+		if (getExtension().equals("tar")) {
+			logger.info("File extension is tar, creating TarArchiveInputStream and checking compressed files...");
+			DownloadTarUtils d = new DownloadTarUtils();
+			d.checkTarFile(url);
+			httpConn = (HttpURLConnection) url.openConnection();
+			ZipInputStream tar = new ZipInputStream( httpConn.getInputStream());
+			ZipEntry entry = tar.getNextEntry();
+			setFileName(entry.getName());
+			setExtension(FilenameUtils.getExtension(getFileName()));
+			inputStream = tar;
 			logger.info("Done, we found a single file: " + fileName);
 			
 		}
