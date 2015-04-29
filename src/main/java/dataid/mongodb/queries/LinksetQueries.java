@@ -116,6 +116,8 @@ public class LinksetQueries {
 				for (DBObject instance : instances) {
 					list.add(new LinksetMongoDBObject(instance
 							.get(DataIDDB.URI).toString()));
+					System.out.println(instance
+							.get(DataIDDB.URI).toString());
 				}
 
 			return list;

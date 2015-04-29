@@ -35,14 +35,14 @@ public class FileInputParser {
 	private String datasetURI;
 	private String dataIDURL;
 	DataIDBean bean;
-	public static final Property downloadProperty = Void.dataDump;
-	public static final Property downloadProperty2 = Distribution.downloadURL;
+	public static final Property downloadProperty2 = Void.dataDump;
+	public static final Property downloadProperty = Distribution.downloadURL;
 
-	public static final Property distributionResource = Void.dataDump;
-	public static final Property distributionResource2 = Distribution.dcatDistribution;
+	public static final Property distributionResource2 = Void.dataDump;
+	public static final Property distributionResource = Distribution.dcatDistribution;
 
-	public static final Resource datasetResource = Void.voidDataset;
-	public static final Resource datasetResource2 = Dataset.dataIDDataset;
+	public static final Resource datasetResource2 = Void.voidDataset;
+	public static final Resource datasetResource = Dataset.dataIDDataset;
 
 	DatasetMongoDBObject datasetMongoDBObj;
 

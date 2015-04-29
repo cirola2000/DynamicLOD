@@ -56,7 +56,8 @@ var nodeMap = {};
 makeGraph("");
 
 
-function makeGraph(param) { d3.json("../dataid/CreateD3JSONFormat?dataset="+param, function(error, circleData) {
+function makeGraph(param) { 
+	d3.json("../dataid/CreateD3JSONFormat?dataset="+param, function(error, circleData) {
 	
 	
 d3.select("svg")
