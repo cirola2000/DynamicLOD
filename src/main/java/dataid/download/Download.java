@@ -166,9 +166,9 @@ public class Download {
 
 	public String getExtension() {
 		if (extension == null) {
-			logger.debug("Setting file extension.");
+			logger.info("Setting file extension.");
 			extension = FilenameUtils.getExtension(getFileName());
-			logger.debug(extension);
+			logger.info(extension);
 		}
 		return extension;
 	}
