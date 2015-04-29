@@ -61,8 +61,8 @@ public class LOV extends Download {
 
 		// allowing gzip format
 //		inputStream = getZipInputStream(inputStream);
-		inputStream = getGZipInputStream(inputStream);
 
+		inputStream = getGZipInputStream(inputStream);
 		simpleDownload(DataIDGeneralProperties.BASE_PATH + "lov.tmp",
 				inputStream);
 

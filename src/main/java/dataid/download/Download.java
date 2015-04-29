@@ -15,6 +15,7 @@ import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
+import org.apache.tools.ant.types.CommandlineJava.SysProperties;
 
 public class Download {
 
@@ -105,13 +106,13 @@ public class Download {
 
 		// check whether file is bz2 type
 		if (getExtension().equals("bz2")) {
-			logger.debug("File extension is bz2, creating BZip2CompressorInputStream...");
+			logger.info("File extension is bz2, creating BZip2CompressorInputStream...");
 			inputStream = new BZip2CompressorInputStream(
 					httpConn.getInputStream(), true);
 			setFileName(getFileName().replace(".bz2", ""));
 			setExtension(null);
 
-			logger.debug("Done creating BZip2CompressorInputStream! New file name is "
+			logger.info("Done creating BZip2CompressorInputStream! New file name is "
 					+ getFileName());
 		}
 		return inputStream;
@@ -120,15 +121,15 @@ public class Download {
 	protected InputStream getGZipInputStream(InputStream inputStream)
 			throws Exception {
 
-		// check whether file is bz2 type
+		// check whether file is gz type
 		if (getExtension().equals("gz")) {
-			logger.debug("File extension is gz, creating GzipCompressorInputStream...");
+			logger.info("File extension is gz, creating GzipCompressorInputStream...");
 			inputStream = new GzipCompressorInputStream(
 					httpConn.getInputStream(), true);
 			setFileName(getFileName().replace(".gz", ""));
 			setExtension(null);
 
-			logger.debug("Done creating GzipCompressorInputStream! New file name is "
+			logger.info("Done creating GzipCompressorInputStream! New file name is "
 					+ getFileName());
 		}
 		return inputStream;
@@ -141,7 +142,8 @@ public class Download {
 			logger.info("File extension is zip, creating ZipInputStream and checking compressed files...");
 			DownloadZipUtils d = new DownloadZipUtils();
 			d.checkZipFile(url);
-			ZipInputStream zip = new ZipInputStream(httpConn.getInputStream());
+			httpConn = (HttpURLConnection) url.openConnection();
+			ZipInputStream zip = new ZipInputStream( httpConn.getInputStream());
 			ZipEntry entry = zip.getNextEntry();
 			setFileName(entry.getName());
 			inputStream = zip;
