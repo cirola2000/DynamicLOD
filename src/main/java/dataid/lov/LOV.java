@@ -54,7 +54,7 @@ public class LOV extends Download {
 		new DataIDGeneralProperties().loadProperties();
 
 		setUrl(new URL(DataIDGeneralProperties.LOV_URL));
-//		setUrl(new URL("http://dblp.l3s.de/dblp.rdf.gz"));
+//		setUrl(new URL("http://soa4all.isoco.net/luf/about/downloads/luf_statements.zip"));
 		
 		// download lov file
 		InputStream inputStream = getStream();

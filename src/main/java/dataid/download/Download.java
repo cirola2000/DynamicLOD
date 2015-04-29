@@ -72,7 +72,8 @@ public class Download {
 		httpConn = (HttpURLConnection) url.openConnection();
 		httpConn.setRequestMethod("HEAD");
 
-		httpConn.setConnectTimeout(5400);
+		httpConn.setReadTimeout(5000);
+		httpConn.setConnectTimeout(5000);
 		int responseCode = httpConn.getResponseCode();
 
 		logger.debug("Open HTTP connection for URL: " + url.toString());
@@ -137,14 +138,14 @@ public class Download {
 			throws Exception {
 		// check whether file is zip type
 		if (getExtension().equals("zip")) {
-			logger.debug("File extension is zip, creating ZipInputStream and checking compressed files...");
+			logger.info("File extension is zip, creating ZipInputStream and checking compressed files...");
 			DownloadZipUtils d = new DownloadZipUtils();
 			d.checkZipFile(url);
 			ZipInputStream zip = new ZipInputStream(httpConn.getInputStream());
 			ZipEntry entry = zip.getNextEntry();
 			setFileName(entry.getName());
 			inputStream = zip;
-			logger.debug("Done, we found a single file: " + fileName);
+			logger.info("Done, we found a single file: " + fileName);
 		}
 		return inputStream;
 	}

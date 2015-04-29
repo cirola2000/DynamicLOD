@@ -11,12 +11,15 @@ import java.net.URL;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import dataid.exceptions.DataIDException;
 import dataid.utils.FileUtils;
 
 public class DownloadZipUtils {
+	
+	final static Logger logger = Logger.getLogger(DownloadZipUtils.class);
 
 	static final int BUFFER = 512;
 
@@ -36,6 +39,8 @@ public class DownloadZipUtils {
 			ZipEntry entry = null;
 			int count2 = 1;
 			String fileName = null;
+			
+			logger.info("Testing ZIP file...");
 
 				while ((entry = zis.getNextEntry()) != null) {
 					fileName = entry.getName();
@@ -56,6 +61,9 @@ public class DownloadZipUtils {
 					}
 					count2++;
 				}
+				
+				logger.info("ZIP file is good to go.");
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
