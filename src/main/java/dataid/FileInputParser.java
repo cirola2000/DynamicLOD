@@ -39,7 +39,7 @@ public class FileInputParser {
 	public static final Property downloadProperty2 = Distribution.downloadURL;
 
 	public static final Property distributionResource = Void.dataDump;
-	public static final Property distributionResource2 = Distribution.dataIDDistribution;
+	public static final Property distributionResource2 = Distribution.dcatDistribution;
 
 	public static final Resource datasetResource = Void.voidDataset;
 	public static final Resource datasetResource2 = Dataset.dataIDDataset;
@@ -117,6 +117,7 @@ public class FileInputParser {
 				StmtIterator stmtDownloadURL = inModel.listStatements(
 						distribution.getObject().asResource(),
 						downloadProperty, (RDFNode) null);
+				System.out.println("oooo "+distribution.getObject());
 
 				// bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_LOG,
 				// "Distribution found: "
@@ -130,6 +131,7 @@ public class FileInputParser {
 					try {
 						if (FileUtils.acceptedFormats(downloadURL.getObject()
 								.toString())) {
+							downloadURLFound = true;
 							addDistribution(downloadURL, distribution, null, datasetMongoDBObj);
 						}
 					} catch (DataIDException ex) {

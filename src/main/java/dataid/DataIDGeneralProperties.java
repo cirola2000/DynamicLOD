@@ -32,6 +32,7 @@ public class DataIDGeneralProperties {
 			MONGODB_SECURE_MODE = Boolean.valueOf(prop.getProperty("MONGODB_SECURE_MODE"));
 			MONGODB_USERNAME = prop.getProperty("MONGODB_USERNAME");
 			MONGODB_PASSWORD = prop.getProperty("MONGODB_PASSWORD");
+			LOV_URL = prop.getProperty("LOV_URL");
 			
 			
 			USE_MULTITHREAD = prop.getProperty("USE_MULTITHREAD");
@@ -105,5 +106,6 @@ public class DataIDGeneralProperties {
 	public static String MONGODB_PASSWORD;
 
 	public static String USE_MULTITHREAD;
+	public static String LOV_URL;
 
 }

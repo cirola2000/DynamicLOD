@@ -18,10 +18,12 @@ import dataid.exceptions.DataIDException;
 import dataid.files.PrepareFiles;
 import dataid.filters.FileToFilter;
 import dataid.filters.GoogleBloomFilter;
+import dataid.lov.LOV;
 import dataid.models.DistributionModel;
 import dataid.mongodb.objects.DistributionMongoDBObject;
 import dataid.mongodb.objects.DistributionObjectDomainsMongoDBObject;
 import dataid.mongodb.objects.DistributionSubjectDomainsMongoDBObject;
+import dataid.mongodb.objects.GeneralPropertiesMongoDBObject;
 import dataid.server.DataIDBean;
 import dataid.utils.FileUtils;
 import dataid.utils.Formats;
@@ -39,7 +41,7 @@ public class Manager {
 
 	DataIDBean bean;
 
-	public void load() throws Exception {
+	public void streamAndCreateFilters() throws Exception {
 		// if there is at least one distribution, load them
 		Iterator<DistributionModel> distributions = distributionsLinks
 				.iterator();
@@ -176,10 +178,12 @@ public class Manager {
 					if (downloadedFile.subjectLines != 0) {
 						if (downloadedFile.subjectLines > 1000000)
 							filter = new GoogleBloomFilter(
-									(int) downloadedFile.subjectLines, 0.9/downloadedFile.subjectLines);
+									(int) downloadedFile.subjectLines,
+									0.9 / downloadedFile.subjectLines);
 						else
 							filter = new GoogleBloomFilter(
-									(int) downloadedFile.subjectLines, 0.0000001);
+									(int) downloadedFile.subjectLines,
+									0.0000001);
 					} else {
 						filter = new GoogleBloomFilter(
 								(int) downloadedFile.contentLengthAfterDownloaded / 40,
@@ -368,7 +372,7 @@ public class Manager {
 		this.distributionsLinks = distributionsLinks;
 		bean = new DataIDBean();
 		try {
-			load();
+			streamAndCreateFilters();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -421,19 +425,41 @@ public class Manager {
 			}
 
 			if (!fileInputParserModel.someDownloadURLFound)
-				throw new Exception("No dcat:downloadURL property found!");
+				throw new Exception("No "
+						+ FileInputParser.downloadProperty.toString()
+						+ " property found!");
 			else if (numberOfDistributions == 0)
 				throw new Exception("### 0 distribution found! ###");
 			else
 				bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO,
 						numberOfDistributions + " distribution(s) found");
 
+			// check if LOV was already downloaded
+			GeneralPropertiesMongoDBObject g = new GeneralPropertiesMongoDBObject();
+			if (g.getDownloadedLOV()== null || !g.getDownloadedLOV())
+					logger.info("LOV vocabularies still not lodaded! Loading now...");
+					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "LOV vocabularies still not lodaded! Loading now...");
+					try {
+						new LOV().loadLOVVocabularies();
+						g.setDownloadedLOV(true);
+						g.updateObject(true);
+						logger.info("LOV vocabularies loaded!");
+						bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "LOV vocabularies loaded!");
+					} catch (Exception e) {
+						e.printStackTrace();
+						g.setDownloadedLOV(false);
+						g.updateObject(true);
+						logger.info("We got an error trying to load LOV vocabularies! "+ e.getMessage());
+						bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "We got an error trying to load LOV vocabularies! "+ e.getMessage());
+					}
+
 			// try to load distributions and make filters
-			load();
+			streamAndCreateFilters();
 
 		} catch (Exception e) {
 			bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_ERROR,
 					e.getMessage());
+			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
 		logger.info("END");

@@ -8,7 +8,7 @@ import com.mongodb.DBObject;
 import dataid.exceptions.DataIDException;
 import dataid.mongodb.DataIDDB;
 
-public class EvaluationMongoDBObject  extends DataIDDB {
+public class EvaluationMongoDBObject extends DataIDDB {
 	
 	// Collection name
 		public static final String COLLECTION_NAME = "Evaluation";

@@ -1,8 +1,12 @@
 package dataid.download;
 
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.text.DecimalFormat;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -24,9 +28,9 @@ public class Download {
 
 	protected static final int BUFFER_SIZE = 16384;
 	public URL url = null;
-	
+
 	InputStream inputStream = null;
-	
+
 	final byte[] buffer = new byte[BUFFER_SIZE];
 	int n = 0;
 	int aux = 0;
@@ -35,7 +39,7 @@ public class Download {
 	public String extension = null;
 
 	HttpURLConnection httpConn = null;
-	
+
 	String accessURL = null;
 
 	protected void getMetadataFromHTTPHeaders(HttpURLConnection httpConn) {
@@ -45,7 +49,7 @@ public class Download {
 		httpContentLength = httpConn.getContentLength();
 		if (httpConn.getLastModified() > 0)
 			httpLastModified = String.valueOf(httpConn.getLastModified());
-		
+
 		printHeaders();
 
 	}
@@ -56,9 +60,9 @@ public class Download {
 		// opens input stream from HTTP connection
 		InputStream inputStream = httpConn.getInputStream();
 		logger.debug("InputStream from http connection opened");
-		
+
 		// get some data from headers
-				getMetadataFromHTTPHeaders(httpConn);
+		getMetadataFromHTTPHeaders(httpConn);
 
 		return inputStream;
 
@@ -167,6 +171,25 @@ public class Download {
 
 	public void setExtension(String extension) {
 		this.extension = extension;
+	}
+
+	public URL getUrl() {
+		return url;
+	}
+
+	public void setUrl(URL url) {
+		this.url = url;
+	}
+
+	public void simpleDownload(String file, InputStream stream) {
+		try {
+			ReadableByteChannel rbc = Channels.newChannel(stream);
+			FileOutputStream fos = new FileOutputStream(file);
+			fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
