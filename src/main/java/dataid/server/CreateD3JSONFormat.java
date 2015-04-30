@@ -127,6 +127,10 @@ public class CreateD3JSONFormat extends HttpServlet {
 					node.put("text", dt.getTitle());
 				else
 					node.put("text", dt.getLabel());
+				if(dt.getIsVocabulary())
+					node.put("color", "rgb(255, 127, 14)");
+				else
+					node.put("color", "green");
 					
 				node.put("name", dt.getUri());
 			} else {
@@ -139,9 +143,13 @@ public class CreateD3JSONFormat extends HttpServlet {
 					node.put("text", dt.getDownloadUrl());
 				node.put("name", dt.getUri());
 				
+				if(dt.isVocabulary())
+					node.put("color", "rgb(255, 127, 14)");
+				else
+					node.put("color", "green");
+				
 			}
 			node.put("radius", 20);
-			node.put("color", "green");
 			nodes.put(node);
 		}
 	}
