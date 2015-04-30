@@ -36,11 +36,11 @@ public class FileInputParser {
 	private String dataIDURL;
 	DataIDBean bean;
 		
-	public static Property downloadProperty = Distribution.downloadURL;
+	public static Property downloadProperty = null;
 
-	public static Property distributionResource = Distribution.dcatDistribution;
+	public static Property distributionResource = null;
 
-	public static Resource datasetResource = Dataset.dataIDDataset;
+	public static Resource datasetResource = null;
 
 	DatasetMongoDBObject datasetMongoDBObj;
 
