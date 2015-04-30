@@ -36,6 +36,8 @@ public class FileInputParser {
 	private String dataIDURL;
 	DataIDBean bean;
 		
+	boolean isVoid = false;
+
 	public static Property downloadProperty = null;
 
 	public static Property distributionResource = null;
@@ -49,18 +51,6 @@ public class FileInputParser {
 		
 		this.distributionsLinks = distributionsLinks;
 		this.bean = bean;
-
-		boolean isVoid = false;
-		if(isVoid){
-			downloadProperty = Void.dataDump;
-			distributionResource= Void.dataDump;
-			datasetResource = Void.voidDataset;
-		}
-		else{
-			downloadProperty = Distribution.downloadURL;
-			distributionResource = Distribution.dcatDistribution;
-			datasetResource = Dataset.dataIDDataset;
-		}
 		
 		// select dataset
 		StmtIterator datasets = inModel.listStatements(null,
@@ -327,6 +317,17 @@ public class FileInputParser {
 
 		this.bean = bean;
 
+		if(isVoid){
+			downloadProperty = Void.dataDump;
+			distributionResource= Void.dataDump;
+			datasetResource = Void.voidDataset;
+		}
+		else{
+			downloadProperty = Distribution.downloadURL;
+			distributionResource = Distribution.dcatDistribution;
+			datasetResource = Dataset.dataIDDataset;
+		}
+		
 		inModel.read(URL, null, "TTL");
 		ResIterator i = inModel.listResourcesWithProperty(Dataset.dataIDType,
 				datasetResource);
