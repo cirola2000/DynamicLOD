@@ -1,0 +1,1447 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix dataid: <http://schema.dbpedia.org/dataid#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl>
+ a void:DatasetDescription;
+ foaf:primaryTopic <http://downloads.dbpedia.org/2014/commons/dataid.ttl#dataset> .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#dataset>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 commons dumps dataset" ;
+ rdfs:label "DBpedia_2014_commons" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dc:description "DBpedia is a crowd-sourced community effort to extract structured information from Wikipedia and make this information available on the Web. DBpedia allows you to ask sophisticated queries against Wikipedia, and to link the different data sets on the Web to Wikipedia data. We hope that this work will make it easier for the huge amount of information in Wikipedia to be used in some new interesting ways. Furthermore, it might inspire new mechanisms for navigating, linking, and improving the encyclopedia itself." ;
+ void:subset <http://downloads.dbpedia.org/2014/commons/dataid.ttl#article_categories_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#article_templates_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#category_labels_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#external_links_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#file_information_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#geo_coordinates_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#image_annotations_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#image_galleries_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#infobox_properties_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#infobox_property_definitions_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#infobox_test_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#instance_types_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#interlanguage_links_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#kml_files_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#labels_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#mappingbased_properties_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#out_degree_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#page_ids_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#page_length_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#page_links_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#redirects_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#revision_ids_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#revision_meta_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#revision_uris_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#skos_categories_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#specific_mappingbased_properties_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#template_parameters_commons>, <http://downloads.dbpedia.org/2014/commons/dataid.ttl#wikipedia_links_commons> .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#article_categories_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 article categories commons dump dataset" ;
+ rdfs:label "article_categories_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/article_categories_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/article_categories_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/article_categories_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/article_categories_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/article_categories_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "article categories commons" ;
+  dc:description "DBpedia dumpfile: article_categories_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/article_categories_commons.nq.bz2> ;
+  dcat:byteSize "1096110617"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/article_categories_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "article categories commons" ;
+  dc:description "DBpedia dumpfile: article_categories_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/article_categories_commons.nt.bz2> ;
+  dcat:byteSize "694566463"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/article_categories_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "article categories commons" ;
+  dc:description "DBpedia dumpfile: article_categories_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/article_categories_commons.tql.bz2> ;
+  dcat:byteSize "1092619890"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/article_categories_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "article categories commons" ;
+  dc:description "DBpedia dumpfile: article_categories_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/article_categories_commons.ttl.bz2> ;
+  dcat:byteSize "692478406"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#article_templates_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 article templates commons dump dataset" ;
+ rdfs:label "article_templates_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/article_templates_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/article_templates_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/article_templates_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/article_templates_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/article_templates_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "article templates commons" ;
+  dc:description "DBpedia dumpfile: article_templates_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/article_templates_commons.nq.bz2> ;
+  dcat:byteSize "856825614"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/article_templates_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "article templates commons" ;
+  dc:description "DBpedia dumpfile: article_templates_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/article_templates_commons.nt.bz2> ;
+  dcat:byteSize "489791552"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/article_templates_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "article templates commons" ;
+  dc:description "DBpedia dumpfile: article_templates_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/article_templates_commons.tql.bz2> ;
+  dcat:byteSize "853033217"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/article_templates_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "article templates commons" ;
+  dc:description "DBpedia dumpfile: article_templates_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/article_templates_commons.ttl.bz2> ;
+  dcat:byteSize "488110525"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#category_labels_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 category labels commons dump dataset" ;
+ rdfs:label "category_labels_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/category_labels_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/category_labels_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/category_labels_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/category_labels_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/category_labels_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "category labels commons" ;
+  dc:description "DBpedia dumpfile: category_labels_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/category_labels_commons.nq.bz2> ;
+  dcat:byteSize "80476620"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/category_labels_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "category labels commons" ;
+  dc:description "DBpedia dumpfile: category_labels_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/category_labels_commons.nt.bz2> ;
+  dcat:byteSize "52494511"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/category_labels_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "category labels commons" ;
+  dc:description "DBpedia dumpfile: category_labels_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/category_labels_commons.tql.bz2> ;
+  dcat:byteSize "80244578"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/category_labels_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "category labels commons" ;
+  dc:description "DBpedia dumpfile: category_labels_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/category_labels_commons.ttl.bz2> ;
+  dcat:byteSize "52319727"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#external_links_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 external links commons dump dataset" ;
+ rdfs:label "external_links_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/external_links_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/external_links_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/external_links_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/external_links_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/external_links_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "external links commons" ;
+  dc:description "DBpedia dumpfile: external_links_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/external_links_commons.nq.bz2> ;
+  dcat:byteSize "306637595"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/external_links_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "external links commons" ;
+  dc:description "DBpedia dumpfile: external_links_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/external_links_commons.nt.bz2> ;
+  dcat:byteSize "203688553"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/external_links_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "external links commons" ;
+  dc:description "DBpedia dumpfile: external_links_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/external_links_commons.tql.bz2> ;
+  dcat:byteSize "306318922"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/external_links_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "external links commons" ;
+  dc:description "DBpedia dumpfile: external_links_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/external_links_commons.ttl.bz2> ;
+  dcat:byteSize "203530515"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#file_information_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 file information commons dump dataset" ;
+ rdfs:label "file_information_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/file_information_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/file_information_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/file_information_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/file_information_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/file_information_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "file information commons" ;
+  dc:description "DBpedia dumpfile: file_information_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/file_information_commons.nq.bz2> ;
+  dcat:byteSize "1795654814"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/file_information_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "file information commons" ;
+  dc:description "DBpedia dumpfile: file_information_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/file_information_commons.nt.bz2> ;
+  dcat:byteSize "1355192869"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/file_information_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "file information commons" ;
+  dc:description "DBpedia dumpfile: file_information_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/file_information_commons.tql.bz2> ;
+  dcat:byteSize "1786046584"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/file_information_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "file information commons" ;
+  dc:description "DBpedia dumpfile: file_information_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/file_information_commons.ttl.bz2> ;
+  dcat:byteSize "1351009956"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#geo_coordinates_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 geo coordinates commons dump dataset" ;
+ rdfs:label "geo_coordinates_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/geo_coordinates_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/geo_coordinates_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/geo_coordinates_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/geo_coordinates_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/geo_coordinates_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "geo coordinates commons" ;
+  dc:description "DBpedia dumpfile: geo_coordinates_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/geo_coordinates_commons.nq.bz2> ;
+  dcat:byteSize "200196600"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/geo_coordinates_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "geo coordinates commons" ;
+  dc:description "DBpedia dumpfile: geo_coordinates_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/geo_coordinates_commons.nt.bz2> ;
+  dcat:byteSize "142389929"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/geo_coordinates_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "geo coordinates commons" ;
+  dc:description "DBpedia dumpfile: geo_coordinates_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/geo_coordinates_commons.tql.bz2> ;
+  dcat:byteSize "199613974"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/geo_coordinates_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "geo coordinates commons" ;
+  dc:description "DBpedia dumpfile: geo_coordinates_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/geo_coordinates_commons.ttl.bz2> ;
+  dcat:byteSize "142143926"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#image_annotations_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 image annotations commons dump dataset" ;
+ rdfs:label "image_annotations_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/image_annotations_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/image_annotations_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/image_annotations_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/image_annotations_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/image_annotations_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "image annotations commons" ;
+  dc:description "DBpedia dumpfile: image_annotations_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/image_annotations_commons.nq.bz2> ;
+  dcat:byteSize "13796785"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/image_annotations_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "image annotations commons" ;
+  dc:description "DBpedia dumpfile: image_annotations_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/image_annotations_commons.nt.bz2> ;
+  dcat:byteSize "11807608"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/image_annotations_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "image annotations commons" ;
+  dc:description "DBpedia dumpfile: image_annotations_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/image_annotations_commons.tql.bz2> ;
+  dcat:byteSize "13738751"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/image_annotations_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "image annotations commons" ;
+  dc:description "DBpedia dumpfile: image_annotations_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/image_annotations_commons.ttl.bz2> ;
+  dcat:byteSize "11738331"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#image_galleries_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 image galleries commons dump dataset" ;
+ rdfs:label "image_galleries_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/image_galleries_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/image_galleries_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/image_galleries_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/image_galleries_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/image_galleries_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "image galleries commons" ;
+  dc:description "DBpedia dumpfile: image_galleries_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/image_galleries_commons.nq.bz2> ;
+  dcat:byteSize "35517002"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/image_galleries_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "image galleries commons" ;
+  dc:description "DBpedia dumpfile: image_galleries_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/image_galleries_commons.nt.bz2> ;
+  dcat:byteSize "27408994"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/image_galleries_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "image galleries commons" ;
+  dc:description "DBpedia dumpfile: image_galleries_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/image_galleries_commons.tql.bz2> ;
+  dcat:byteSize "35437602"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/image_galleries_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "image galleries commons" ;
+  dc:description "DBpedia dumpfile: image_galleries_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/image_galleries_commons.ttl.bz2> ;
+  dcat:byteSize "27374711"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#infobox_properties_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 infobox properties commons dump dataset" ;
+ rdfs:label "infobox_properties_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/infobox_properties_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/infobox_properties_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/infobox_properties_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/infobox_properties_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/infobox_properties_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "infobox properties commons" ;
+  dc:description "DBpedia dumpfile: infobox_properties_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/infobox_properties_commons.nq.bz2> ;
+  dcat:byteSize "1241091056"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/infobox_properties_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "infobox properties commons" ;
+  dc:description "DBpedia dumpfile: infobox_properties_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/infobox_properties_commons.nt.bz2> ;
+  dcat:byteSize "850916622"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/infobox_properties_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "infobox properties commons" ;
+  dc:description "DBpedia dumpfile: infobox_properties_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/infobox_properties_commons.tql.bz2> ;
+  dcat:byteSize "1236343516"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/infobox_properties_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "infobox properties commons" ;
+  dc:description "DBpedia dumpfile: infobox_properties_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/infobox_properties_commons.ttl.bz2> ;
+  dcat:byteSize "847598565"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#infobox_property_definitions_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 infobox property definitions commons dump dataset" ;
+ rdfs:label "infobox_property_definitions_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/infobox_property_definitions_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/infobox_property_definitions_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/infobox_property_definitions_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/infobox_property_definitions_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/infobox_property_definitions_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "infobox property definitions commons" ;
+  dc:description "DBpedia dumpfile: infobox_property_definitions_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/infobox_property_definitions_commons.nq.bz2> ;
+  dcat:byteSize "150442"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/infobox_property_definitions_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "infobox property definitions commons" ;
+  dc:description "DBpedia dumpfile: infobox_property_definitions_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/infobox_property_definitions_commons.nt.bz2> ;
+  dcat:byteSize "62661"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/infobox_property_definitions_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "infobox property definitions commons" ;
+  dc:description "DBpedia dumpfile: infobox_property_definitions_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/infobox_property_definitions_commons.tql.bz2> ;
+  dcat:byteSize "149273"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/infobox_property_definitions_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "infobox property definitions commons" ;
+  dc:description "DBpedia dumpfile: infobox_property_definitions_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/infobox_property_definitions_commons.ttl.bz2> ;
+  dcat:byteSize "62386"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#infobox_test_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 infobox test commons dump dataset" ;
+ rdfs:label "infobox_test_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/infobox_test_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/infobox_test_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/infobox_test_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/infobox_test_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/infobox_test_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "infobox test commons" ;
+  dc:description "DBpedia dumpfile: infobox_test_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/infobox_test_commons.nq.bz2> ;
+  dcat:byteSize "90"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/infobox_test_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "infobox test commons" ;
+  dc:description "DBpedia dumpfile: infobox_test_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/infobox_test_commons.nt.bz2> ;
+  dcat:byteSize "90"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/infobox_test_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "infobox test commons" ;
+  dc:description "DBpedia dumpfile: infobox_test_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/infobox_test_commons.tql.bz2> ;
+  dcat:byteSize "90"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/infobox_test_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "infobox test commons" ;
+  dc:description "DBpedia dumpfile: infobox_test_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/infobox_test_commons.ttl.bz2> ;
+  dcat:byteSize "90"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#instance_types_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 instance types commons dump dataset" ;
+ rdfs:label "instance_types_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/instance_types_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/instance_types_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/instance_types_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/instance_types_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/instance_types_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "instance types commons" ;
+  dc:description "DBpedia dumpfile: instance_types_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/instance_types_commons.nq.bz2> ;
+  dcat:byteSize "938169414"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/instance_types_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "instance types commons" ;
+  dc:description "DBpedia dumpfile: instance_types_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/instance_types_commons.nt.bz2> ;
+  dcat:byteSize "557303643"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/instance_types_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "instance types commons" ;
+  dc:description "DBpedia dumpfile: instance_types_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/instance_types_commons.tql.bz2> ;
+  dcat:byteSize "933398931"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/instance_types_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "instance types commons" ;
+  dc:description "DBpedia dumpfile: instance_types_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/instance_types_commons.ttl.bz2> ;
+  dcat:byteSize "555180206"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#interlanguage_links_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 interlanguage links commons dump dataset" ;
+ rdfs:label "interlanguage_links_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/interlanguage_links_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/interlanguage_links_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/interlanguage_links_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/interlanguage_links_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/interlanguage_links_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "interlanguage links commons" ;
+  dc:description "DBpedia dumpfile: interlanguage_links_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/interlanguage_links_commons.nq.bz2> ;
+  dcat:byteSize "74709565"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/interlanguage_links_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "interlanguage links commons" ;
+  dc:description "DBpedia dumpfile: interlanguage_links_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/interlanguage_links_commons.nt.bz2> ;
+  dcat:byteSize "51999032"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/interlanguage_links_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "interlanguage links commons" ;
+  dc:description "DBpedia dumpfile: interlanguage_links_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/interlanguage_links_commons.tql.bz2> ;
+  dcat:byteSize "72818928"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/interlanguage_links_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "interlanguage links commons" ;
+  dc:description "DBpedia dumpfile: interlanguage_links_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/interlanguage_links_commons.ttl.bz2> ;
+  dcat:byteSize "50739584"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#kml_files_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 kml files commons dump dataset" ;
+ rdfs:label "kml_files_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/kml_files_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/kml_files_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/kml_files_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/kml_files_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/kml_files_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "kml files commons" ;
+  dc:description "DBpedia dumpfile: kml_files_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/kml_files_commons.nq.bz2> ;
+  dcat:byteSize "123187"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/kml_files_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "kml files commons" ;
+  dc:description "DBpedia dumpfile: kml_files_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/kml_files_commons.nt.bz2> ;
+  dcat:byteSize "122138"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/kml_files_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "kml files commons" ;
+  dc:description "DBpedia dumpfile: kml_files_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/kml_files_commons.tql.bz2> ;
+  dcat:byteSize "123210"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/kml_files_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "kml files commons" ;
+  dc:description "DBpedia dumpfile: kml_files_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/kml_files_commons.ttl.bz2> ;
+  dcat:byteSize "122644"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#labels_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 labels commons dump dataset" ;
+ rdfs:label "labels_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/labels_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/labels_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/labels_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/labels_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/labels_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "labels commons" ;
+  dc:description "DBpedia dumpfile: labels_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/labels_commons.nq.bz2> ;
+  dcat:byteSize "706577263"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/labels_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "labels commons" ;
+  dc:description "DBpedia dumpfile: labels_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/labels_commons.nt.bz2> ;
+  dcat:byteSize "495982245"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/labels_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "labels commons" ;
+  dc:description "DBpedia dumpfile: labels_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/labels_commons.tql.bz2> ;
+  dcat:byteSize "702938556"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/labels_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "labels commons" ;
+  dc:description "DBpedia dumpfile: labels_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/labels_commons.ttl.bz2> ;
+  dcat:byteSize "493432151"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#mappingbased_properties_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 mappingbased properties commons dump dataset" ;
+ rdfs:label "mappingbased_properties_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/mappingbased_properties_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/mappingbased_properties_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/mappingbased_properties_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/mappingbased_properties_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/mappingbased_properties_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "mappingbased properties commons" ;
+  dc:description "DBpedia dumpfile: mappingbased_properties_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/mappingbased_properties_commons.nq.bz2> ;
+  dcat:byteSize "1071872219"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/mappingbased_properties_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "mappingbased properties commons" ;
+  dc:description "DBpedia dumpfile: mappingbased_properties_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/mappingbased_properties_commons.nt.bz2> ;
+  dcat:byteSize "698164243"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/mappingbased_properties_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "mappingbased properties commons" ;
+  dc:description "DBpedia dumpfile: mappingbased_properties_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/mappingbased_properties_commons.tql.bz2> ;
+  dcat:byteSize "1067709818"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/mappingbased_properties_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "mappingbased properties commons" ;
+  dc:description "DBpedia dumpfile: mappingbased_properties_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/mappingbased_properties_commons.ttl.bz2> ;
+  dcat:byteSize "696000560"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#out_degree_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 out degree commons dump dataset" ;
+ rdfs:label "out_degree_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/out_degree_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/out_degree_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/out_degree_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/out_degree_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/out_degree_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "out degree commons" ;
+  dc:description "DBpedia dumpfile: out_degree_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/out_degree_commons.nq.bz2> ;
+  dcat:byteSize "502171464"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/out_degree_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "out degree commons" ;
+  dc:description "DBpedia dumpfile: out_degree_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/out_degree_commons.nt.bz2> ;
+  dcat:byteSize "297567896"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/out_degree_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "out degree commons" ;
+  dc:description "DBpedia dumpfile: out_degree_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/out_degree_commons.tql.bz2> ;
+  dcat:byteSize "499949740"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/out_degree_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "out degree commons" ;
+  dc:description "DBpedia dumpfile: out_degree_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/out_degree_commons.ttl.bz2> ;
+  dcat:byteSize "296569533"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#page_ids_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 page ids commons dump dataset" ;
+ rdfs:label "page_ids_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/page_ids_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/page_ids_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/page_ids_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/page_ids_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/page_ids_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "page ids commons" ;
+  dc:description "DBpedia dumpfile: page_ids_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/page_ids_commons.nq.bz2> ;
+  dcat:byteSize "562776726"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/page_ids_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "page ids commons" ;
+  dc:description "DBpedia dumpfile: page_ids_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/page_ids_commons.nt.bz2> ;
+  dcat:byteSize "345658171"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/page_ids_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "page ids commons" ;
+  dc:description "DBpedia dumpfile: page_ids_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/page_ids_commons.tql.bz2> ;
+  dcat:byteSize "560067063"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/page_ids_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "page ids commons" ;
+  dc:description "DBpedia dumpfile: page_ids_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/page_ids_commons.ttl.bz2> ;
+  dcat:byteSize "344228373"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#page_length_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 page length commons dump dataset" ;
+ rdfs:label "page_length_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/page_length_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/page_length_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/page_length_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/page_length_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/page_length_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "page length commons" ;
+  dc:description "DBpedia dumpfile: page_length_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/page_length_commons.nq.bz2> ;
+  dcat:byteSize "536507107"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/page_length_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "page length commons" ;
+  dc:description "DBpedia dumpfile: page_length_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/page_length_commons.nt.bz2> ;
+  dcat:byteSize "325364079"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/page_length_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "page length commons" ;
+  dc:description "DBpedia dumpfile: page_length_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/page_length_commons.tql.bz2> ;
+  dcat:byteSize "534244442"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/page_length_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "page length commons" ;
+  dc:description "DBpedia dumpfile: page_length_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/page_length_commons.ttl.bz2> ;
+  dcat:byteSize "324191513"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#page_links_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 page links commons dump dataset" ;
+ rdfs:label "page_links_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/page_links_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/page_links_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/page_links_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/page_links_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/page_links_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "page links commons" ;
+  dc:description "DBpedia dumpfile: page_links_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/page_links_commons.nq.bz2> ;
+  dcat:byteSize "1310400492"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/page_links_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "page links commons" ;
+  dc:description "DBpedia dumpfile: page_links_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/page_links_commons.nt.bz2> ;
+  dcat:byteSize "833841930"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/page_links_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "page links commons" ;
+  dc:description "DBpedia dumpfile: page_links_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/page_links_commons.tql.bz2> ;
+  dcat:byteSize "1305683573"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/page_links_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "page links commons" ;
+  dc:description "DBpedia dumpfile: page_links_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/page_links_commons.ttl.bz2> ;
+  dcat:byteSize "831319266"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#redirects_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 redirects commons dump dataset" ;
+ rdfs:label "redirects_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/redirects_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/redirects_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/redirects_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/redirects_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/redirects_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "redirects commons" ;
+  dc:description "DBpedia dumpfile: redirects_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/redirects_commons.nq.bz2> ;
+  dcat:byteSize "14082645"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/redirects_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "redirects commons" ;
+  dc:description "DBpedia dumpfile: redirects_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/redirects_commons.nt.bz2> ;
+  dcat:byteSize "10161059"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/redirects_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "redirects commons" ;
+  dc:description "DBpedia dumpfile: redirects_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/redirects_commons.tql.bz2> ;
+  dcat:byteSize "13990507"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/redirects_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "redirects commons" ;
+  dc:description "DBpedia dumpfile: redirects_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/redirects_commons.ttl.bz2> ;
+  dcat:byteSize "10101321"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#revision_ids_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 revision ids commons dump dataset" ;
+ rdfs:label "revision_ids_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/revision_ids_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/revision_ids_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/revision_ids_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/revision_ids_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/revision_ids_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "revision ids commons" ;
+  dc:description "DBpedia dumpfile: revision_ids_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/revision_ids_commons.nq.bz2> ;
+  dcat:byteSize "575681630"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/revision_ids_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "revision ids commons" ;
+  dc:description "DBpedia dumpfile: revision_ids_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/revision_ids_commons.nt.bz2> ;
+  dcat:byteSize "376190035"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/revision_ids_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "revision ids commons" ;
+  dc:description "DBpedia dumpfile: revision_ids_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/revision_ids_commons.tql.bz2> ;
+  dcat:byteSize "573912043"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/revision_ids_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "revision ids commons" ;
+  dc:description "DBpedia dumpfile: revision_ids_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/revision_ids_commons.ttl.bz2> ;
+  dcat:byteSize "374572977"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#revision_meta_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 revision meta commons dump dataset" ;
+ rdfs:label "revision_meta_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/revision_meta_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/revision_meta_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/revision_meta_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/revision_meta_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/revision_meta_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "revision meta commons" ;
+  dc:description "DBpedia dumpfile: revision_meta_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/revision_meta_commons.nq.bz2> ;
+  dcat:byteSize "892365953"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/revision_meta_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "revision meta commons" ;
+  dc:description "DBpedia dumpfile: revision_meta_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/revision_meta_commons.nt.bz2> ;
+  dcat:byteSize "451270382"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/revision_meta_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "revision meta commons" ;
+  dc:description "DBpedia dumpfile: revision_meta_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/revision_meta_commons.tql.bz2> ;
+  dcat:byteSize "889205346"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/revision_meta_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "revision meta commons" ;
+  dc:description "DBpedia dumpfile: revision_meta_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/revision_meta_commons.ttl.bz2> ;
+  dcat:byteSize "450721485"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#revision_uris_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 revision uris commons dump dataset" ;
+ rdfs:label "revision_uris_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/revision_uris_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/revision_uris_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/revision_uris_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/revision_uris_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/revision_uris_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "revision uris commons" ;
+  dc:description "DBpedia dumpfile: revision_uris_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/revision_uris_commons.nq.bz2> ;
+  dcat:byteSize "629723708"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/revision_uris_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "revision uris commons" ;
+  dc:description "DBpedia dumpfile: revision_uris_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/revision_uris_commons.nt.bz2> ;
+  dcat:byteSize "486255905"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/revision_uris_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "revision uris commons" ;
+  dc:description "DBpedia dumpfile: revision_uris_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/revision_uris_commons.tql.bz2> ;
+  dcat:byteSize "626661743"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/revision_uris_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "revision uris commons" ;
+  dc:description "DBpedia dumpfile: revision_uris_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/revision_uris_commons.ttl.bz2> ;
+  dcat:byteSize "483971207"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#skos_categories_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 skos categories commons dump dataset" ;
+ rdfs:label "skos_categories_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/skos_categories_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/skos_categories_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/skos_categories_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/skos_categories_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/skos_categories_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "skos categories commons" ;
+  dc:description "DBpedia dumpfile: skos_categories_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/skos_categories_commons.nq.bz2> ;
+  dcat:byteSize "213680258"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/skos_categories_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "skos categories commons" ;
+  dc:description "DBpedia dumpfile: skos_categories_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/skos_categories_commons.nt.bz2> ;
+  dcat:byteSize "142232906"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/skos_categories_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "skos categories commons" ;
+  dc:description "DBpedia dumpfile: skos_categories_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/skos_categories_commons.tql.bz2> ;
+  dcat:byteSize "213295866"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/skos_categories_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "skos categories commons" ;
+  dc:description "DBpedia dumpfile: skos_categories_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/skos_categories_commons.ttl.bz2> ;
+  dcat:byteSize "141999482"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#specific_mappingbased_properties_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 specific mappingbased properties commons dump dataset" ;
+ rdfs:label "specific_mappingbased_properties_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/specific_mappingbased_properties_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/specific_mappingbased_properties_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/specific_mappingbased_properties_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/specific_mappingbased_properties_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/specific_mappingbased_properties_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "specific mappingbased properties commons" ;
+  dc:description "DBpedia dumpfile: specific_mappingbased_properties_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/specific_mappingbased_properties_commons.nq.bz2> ;
+  dcat:byteSize "90"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/specific_mappingbased_properties_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "specific mappingbased properties commons" ;
+  dc:description "DBpedia dumpfile: specific_mappingbased_properties_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/specific_mappingbased_properties_commons.nt.bz2> ;
+  dcat:byteSize "90"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/specific_mappingbased_properties_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "specific mappingbased properties commons" ;
+  dc:description "DBpedia dumpfile: specific_mappingbased_properties_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/specific_mappingbased_properties_commons.tql.bz2> ;
+  dcat:byteSize "91"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/specific_mappingbased_properties_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "specific mappingbased properties commons" ;
+  dc:description "DBpedia dumpfile: specific_mappingbased_properties_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/specific_mappingbased_properties_commons.ttl.bz2> ;
+  dcat:byteSize "90"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#template_parameters_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 template parameters commons dump dataset" ;
+ rdfs:label "template_parameters_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/template_parameters_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/template_parameters_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/template_parameters_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/template_parameters_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/template_parameters_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "template parameters commons" ;
+  dc:description "DBpedia dumpfile: template_parameters_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/template_parameters_commons.nq.bz2> ;
+  dcat:byteSize "856806"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/template_parameters_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "template parameters commons" ;
+  dc:description "DBpedia dumpfile: template_parameters_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/template_parameters_commons.nt.bz2> ;
+  dcat:byteSize "513437"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/template_parameters_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "template parameters commons" ;
+  dc:description "DBpedia dumpfile: template_parameters_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/template_parameters_commons.tql.bz2> ;
+  dcat:byteSize "857486"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/template_parameters_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "template parameters commons" ;
+  dc:description "DBpedia dumpfile: template_parameters_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/template_parameters_commons.ttl.bz2> ;
+  dcat:byteSize "513892"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://downloads.dbpedia.org/2014/commons/dataid.ttl#wikipedia_links_commons>
+ a dataid:Dataset ;
+ dc:title "DBpedia 2014 wikipedia links commons dump dataset" ;
+ rdfs:label "wikipedia_links_commons_2014" ;
+ dcat:landingPage <http://dbpedia.org/> ;
+ dataid:associatedAgent <http://wiki.dbpedia.org/Association> ;
+ dc:license <http://purl.org/NET/rdflicense/cc-by-sa3.0de> ;
+ dc:modified "09-10-2014" ;
+ dcat:distribution <http://downloads.dbpedia.org/2014/commons/wikipedia_links_commons.nq.bz2>, <http://downloads.dbpedia.org/2014/commons/wikipedia_links_commons.nt.bz2>, <http://downloads.dbpedia.org/2014/commons/wikipedia_links_commons.tql.bz2>, <http://downloads.dbpedia.org/2014/commons/wikipedia_links_commons.ttl.bz2> .
+
+<http://downloads.dbpedia.org/2014/commons/wikipedia_links_commons.nq.bz2>
+  a dcat:Distribution ;
+  dc:title "wikipedia links commons" ;
+  dc:description "DBpedia dumpfile: wikipedia_links_commons.nq.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/wikipedia_links_commons.nq.bz2> ;
+  dcat:byteSize "1117021623"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nq" .
+
+<http://downloads.dbpedia.org/2014/commons/wikipedia_links_commons.nt.bz2>
+  a dcat:Distribution ;
+  dc:title "wikipedia links commons" ;
+  dc:description "DBpedia dumpfile: wikipedia_links_commons.nt.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/wikipedia_links_commons.nt.bz2> ;
+  dcat:byteSize "723301742"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "nt" .
+
+<http://downloads.dbpedia.org/2014/commons/wikipedia_links_commons.tql.bz2>
+  a dcat:Distribution ;
+  dc:title "wikipedia links commons" ;
+  dc:description "DBpedia dumpfile: wikipedia_links_commons.tql.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/wikipedia_links_commons.tql.bz2> ;
+  dcat:byteSize "1112330027"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "tql" .
+
+<http://downloads.dbpedia.org/2014/commons/wikipedia_links_commons.ttl.bz2>
+  a dcat:Distribution ;
+  dc:title "wikipedia links commons" ;
+  dc:description "DBpedia dumpfile: wikipedia_links_commons.ttl.bz2" ;
+  dc:modified "09-10-2014"^^xsd:date ;
+  dcat:downloadURL <http://downloads.dbpedia.org/2014/commons/wikipedia_links_commons.ttl.bz2> ;
+  dcat:byteSize "720349919"^^xsd:decimal ;
+  dcat:mediaType "application/octet-stream" ;
+  dc:format "ttl" .
+
+<http://wiki.dbpedia.org/Association>
+ rdf:type dataid:Publisher, dataid:Maintainer ;
+ dataid:agentName "DBpedia Association" ;
+ dataid:agentMail "dbpedia@infai.org" .
+
+<https://github.com/dbpedia/extraction-framework/wiki/Extraction-Instructions>
+ rdf:type prov:Activity ;
+ dc:title "Extraction of DBpedia data from Wikipedia dumps" ;
+ prov:used <http://mappings.dbpedia.org/> ;
+ prov:used <https://github.com/dbpedia/extraction-framework> ;
+ prov:wasAssociatedWith <http://wiki.dbpedia.org/Association> .
+
+<http://mappings.dbpedia.org/>
+ rdf:type prov:Entity ;
+ dc:title "Mapping of Wikipedia articles to RDF" ;
+ dc:publisher <http://wiki.dbpedia.org/Association> .
+
+<https://github.com/dbpedia/extraction-framework>
+ rdf:type prov:Entity ;
+ dc:title "The DBpedia extraction framework" ;
+ dc:publisher  <http://wiki.dbpedia.org/Association> .
