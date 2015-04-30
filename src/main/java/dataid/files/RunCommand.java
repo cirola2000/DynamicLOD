@@ -17,6 +17,8 @@ public class RunCommand {
 	public void runRapper(String c, ConcurrentHashMap<String,Integer> subjectDomains,ConcurrentHashMap<String,Integer> objectDomains)
 			throws Exception {
 
+		if(c.contains("lexvo_latest.rdf")) throw new Exception("-");
+		
 		String[] cmd = { "/bin/sh", "-c", c };
 
 		logger.debug("<b>Running rapper command:</b> <i>" + c + "</i>");

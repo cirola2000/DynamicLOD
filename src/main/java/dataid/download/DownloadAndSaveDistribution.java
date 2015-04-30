@@ -98,6 +98,12 @@ public class DownloadAndSaveDistribution extends Download {
 				contentLengthAfterDownloaded = contentLengthAfterDownloaded
 						+ bytesRead;
 				countBytesReaded = countBytesReaded + bytesRead;
+				if (aux % 1000 == 0) {
+					logger.info(countBytesReaded / 1024 / 1024
+							+ "MB uncompressed/lodaded.");
+					aux = 0;
+				}
+				aux++;
 			}
 			outputStream.close();
 		} else {
