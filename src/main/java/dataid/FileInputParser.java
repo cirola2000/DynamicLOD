@@ -102,7 +102,7 @@ public class FileInputParser {
 
 			// case there's an distribution take the fist that has downloadURL
 			boolean downloadURLFound = false;
-			while (stmtDistribution.hasNext()) {
+			if (stmtDistribution.hasNext()) {
 				// while (stmtDistribution.hasNext() && downloadURLFound ==
 				// false) {
 
@@ -110,7 +110,7 @@ public class FileInputParser {
 				Statement distribution = stmtDistribution.next();
 
 				// if its a void file, don't need to find downloadURL property.
-				if (downloadProperty.equals(Void.dataDump)) {
+				if (isVoid) {
 					try {
 						if (FileUtils.acceptedFormats(distribution.getObject()
 								.toString())) {
@@ -223,7 +223,7 @@ public class FileInputParser {
 				// case there's an distribution take the fist that has
 				// downloadURL
 				boolean downloadURLFound = false;
-				while (stmtDistribution.hasNext() && downloadURLFound == false) {
+				if (stmtDistribution.hasNext() && downloadURLFound == false) {
 					// store distribution
 					Statement distribution = stmtDistribution.next();
 
