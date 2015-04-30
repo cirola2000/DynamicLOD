@@ -19,13 +19,6 @@ import dataid.mongodb.queries.DistributionQueries;
 import dataid.mongodb.queries.LinksetQueries;
 
 public class CreateD3JSONFormat extends HttpServlet {
-
-	JSONArray nodes = new JSONArray();
-	JSONArray links = new JSONArray();
-
-	ArrayList<String> nodeList = new ArrayList<String>();
-
-	String paramDataset = null;
 	
 
 	protected void doPost(HttpServletRequest request,
@@ -40,6 +33,12 @@ public class CreateD3JSONFormat extends HttpServlet {
 
 	public void printOutput(HttpServletRequest request,
 			HttpServletResponse response) {
+		JSONArray nodes = new JSONArray();
+		JSONArray links = new JSONArray();
+
+		ArrayList<String> nodeList = new ArrayList<String>();
+
+		String paramDataset = null;
 		boolean hasParameters = false;
 
 		try {
@@ -60,42 +59,8 @@ public class CreateD3JSONFormat extends HttpServlet {
 			System.out.println(hasParameters);
 
 			if (!hasParameters) {
-				System.out.println("no");
-//				if (paramDataset == null || paramDataset.equals("")) {
-				// ArrayList<DatasetMongoDBObject> nodeList = DatasetQueries
-				// .getDatasets();
-				// if (nodeList != null)
-				// for (DatasetMongoDBObject dataset : nodeList) {
-				// JSONObject node = new JSONObject();
-				// if (dataset.getLabel() != "")
-				// node.put("text", dataset.getLabel());
-				// else
-				// node.put("text", "-");
-				// // node.put("shape", "dot");
-				// node.put("radius", 25);
-				// node.put("color", "green");
-				// node.put("name", dataset.getUri());
-				// nodes.put(node);
-				// }
 				linkList = LinksetQueries.getLinksetsGroupByDatasets();
 			} else {
-				System.out.println("yep");
-
-				// ArrayList<DistributionMongoDBObject> nodeList =
-				// DistributionQueries
-				// .getDistributionsWithLinksFilterByDataset(paramDataset);
-				//
-				// if (nodeList != null)
-				// for (DistributionMongoDBObject singleNode : nodeList) {
-				// JSONObject node = new JSONObject();
-				// node.put("text", singleNode.getTitle());
-				// // node.put("shape", "dot");
-				// node.put("radius", 10);
-				// node.put("color", "green");
-				// node.put("name", singleNode.getUri());
-				// nodes.put(node);
-				// }
-				
 				linkList = LinksetQueries
 						.getLinksetsFilterByDataset(paramDataset);
 				
@@ -121,8 +86,8 @@ public class CreateD3JSONFormat extends HttpServlet {
 							edgeDetail.put("value", 5);
 							links.put(edgeDetail);
 							addNode(singleLink.getSubjectsDatasetTarget()
-									.toString(), hasParameters);
-							addNode(singleLink.getObjectsDatasetTarget().toString(), hasParameters);
+									.toString(), hasParameters, nodeList, nodes);
+							addNode(singleLink.getObjectsDatasetTarget().toString(), hasParameters, nodeList, nodes);
 
 						}
 						else{
@@ -134,8 +99,8 @@ public class CreateD3JSONFormat extends HttpServlet {
 							edgeDetail.put("value", 5);
 							links.put(edgeDetail);
 							addNode(singleLink.getSubjectsDistributionTarget()
-									.toString(), hasParameters);
-							addNode(singleLink.getObjectsDistributionTarget().toString(), hasParameters);
+									.toString(), hasParameters, nodeList, nodes);
+							addNode(singleLink.getObjectsDistributionTarget().toString(), hasParameters, nodeList, nodes);
 
 						}
 					}
@@ -150,7 +115,7 @@ public class CreateD3JSONFormat extends HttpServlet {
 		}
 	}
 
-	public void addNode(String link, boolean hasParameters) {
+	public void addNode(String link, boolean hasParameters, ArrayList<String> nodeList, JSONArray nodes) {
 		if (!nodeList.contains(link)) {
 			nodeList.add(link);
 			JSONObject node = new JSONObject();

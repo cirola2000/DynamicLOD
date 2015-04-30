@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
-
 path.link {
-  fill: none;
-  stroke: #666;
-  stroke-width: 1.5px;
+	fill: none;
+	stroke: #666;
+	stroke-width: 1.5px;
 }
 
 circle {
-  fill: #ccc;
-  stroke: #fff;
-  stroke-width: 1.5px;
+	fill: #ccc;
+	stroke: #fff;
+	stroke-width: 1.5px;
 }
 
 text {
-  fill: #000;
-  font: 10px sans-serif;
-  pointer-events: none;
+	fill: #000;
+	font: 10px sans-serif;
+	pointer-events: none;
 }
-
 </style>
 <body>
-<script src="../resources/js/d3.v3.min.js"></script>
+	<script src="../resources/js/d3.v3.min.js"></script>
 
 
-<script>
+	<script>
 
 //var circleData= {
 //		  "nodes":[
@@ -46,8 +44,10 @@ var height = 850;
 var color = d3.scale.category20();
   
 var force = d3.layout.force()
-.charge(-120)
-.linkDistance(158)
+//.charge(-120)
+.gravity(.03)
+//.charge(function(d, i) { return i ? 0 : -2000; })
+.linkDistance(130)
 .size([width, height]);  
                   
                   
@@ -132,6 +132,16 @@ var text = svgContainer.selectAll("text")
                            
 
 force.on("tick", function() {
+	
+	
+	var q = d3.geom.quadtree(circleData.nodes),
+    i = 0,
+    n = circleData.nodes.length;
+
+while (++i < n) q.visit(collide(circleData.nodes[i]));
+
+	
+	
     path.attr('d', function(d) {
     var deltaX = d.target.x - d.source.x,
         deltaY = d.target.y - d.source.y,
@@ -156,8 +166,33 @@ force.on("tick", function() {
   .attr("x", function(d) { return d.x; })
   .attr("y", function(d) { return d.y; });
   
-  
 	})
+	
+	
+	function collide(node) {
+  var r = node.radius + 16,
+      nx1 = node.x - r,
+      nx2 = node.x + r,
+      ny1 = node.y - r,
+      ny2 = node.y + r;
+  return function(quad, x1, y1, x2, y2) {
+    if (quad.point && (quad.point !== node)) {
+      var x = node.x - quad.point.x,
+          y = node.y - quad.point.y,
+          l = Math.sqrt(x * x + y * y),
+          r = node.radius+10 + quad.point.radius+10;
+      if (l < r) {
+        l = (l - r) / l * .5;
+        node.x -= x *= l;
+        node.y -= y *= l;
+        quad.point.x += x;
+        quad.point.y += y;
+      }
+    }
+    return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+  };
+}
+	
 });
 }
 
