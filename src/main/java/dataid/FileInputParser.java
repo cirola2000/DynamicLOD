@@ -50,7 +50,7 @@ public class FileInputParser {
 		this.distributionsLinks = distributionsLinks;
 		this.bean = bean;
 
-		boolean isVoid = true;
+		boolean isVoid = false;
 		if(isVoid){
 			downloadProperty = Void.dataDump;
 			distributionResource= Void.dataDump;

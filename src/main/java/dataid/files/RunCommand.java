@@ -121,6 +121,8 @@ public class RunCommand {
 	
 	
 	 public static String fixEncoding(String latin1) {
+		 if(latin1==null)
+			 return "";
 		  try {
 		   byte[] bytes = latin1.getBytes("ISO-8859-1");
 		   if (!validUTF8(bytes))
