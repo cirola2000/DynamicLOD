@@ -154,8 +154,8 @@ public class CreateD3JSONFormat extends HttpServlet {
 				
 			}
 			
-			text = text.replace(" ", "<br/>");
-			
+			if(text==null)
+				text = "";
 			node.put("text",text);
 			
 			node.put("color",color);
