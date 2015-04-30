@@ -120,9 +120,9 @@ public class CreateD3JSONFormat extends HttpServlet {
 			nodeList.add(link);
 			JSONObject node = new JSONObject();
 			
-			String text = null;
-			String name= null;
-			String color= null;
+			String text = "";
+			String name= "";
+			String color= "";
 
 			if (!hasParameters) {
 				DatasetMongoDBObject dt = new DatasetMongoDBObject(link);
