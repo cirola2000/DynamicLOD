@@ -35,22 +35,33 @@ public class FileInputParser {
 	private String datasetURI;
 	private String dataIDURL;
 	DataIDBean bean;
-	public static final Property downloadProperty2 = Void.dataDump;
-	public static final Property downloadProperty = Distribution.downloadURL;
+		
+	public static Property downloadProperty = Distribution.downloadURL;
 
-	public static final Property distributionResource2 = Void.dataDump;
-	public static final Property distributionResource = Distribution.dcatDistribution;
+	public static Property distributionResource = Distribution.dcatDistribution;
 
-	public static final Resource datasetResource2 = Void.voidDataset;
-	public static final Resource datasetResource = Dataset.dataIDDataset;
+	public static Resource datasetResource = Dataset.dataIDDataset;
 
 	DatasetMongoDBObject datasetMongoDBObj;
 
 	public List<DistributionModel> parseDistributions(
 			List<DistributionModel> distributionsLinks, DataIDBean bean) {
+		
 		this.distributionsLinks = distributionsLinks;
 		this.bean = bean;
 
+		boolean isVoid = false;
+		if(isVoid){
+			downloadProperty = Void.dataDump;
+			distributionResource= Void.dataDump;
+			datasetResource = Void.voidDataset;
+		}
+		else{
+			downloadProperty = Distribution.downloadURL;
+			distributionResource = Distribution.dcatDistribution;
+			datasetResource = Dataset.dataIDDataset;
+		}
+		
 		// select dataset
 		StmtIterator datasets = inModel.listStatements(null,
 				Dataset.dataIDType, datasetResource);

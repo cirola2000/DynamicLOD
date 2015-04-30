@@ -126,7 +126,11 @@ var text = svgContainer.selectAll("text")
 	.data(circleData.nodes)
 	.enter()
 	.append("text")
-	.text(function (d) { return d.text; });
+	.attr("x", 0)
+    .attr("dy", ".35em")
+    .attr("text-anchor", "middle")
+    .style("font-size","8px")
+	.html(function (d) { return d.text; });
 	
 	                       
                            

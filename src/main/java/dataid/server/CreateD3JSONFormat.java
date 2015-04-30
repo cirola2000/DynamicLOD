@@ -119,36 +119,48 @@ public class CreateD3JSONFormat extends HttpServlet {
 		if (!nodeList.contains(link)) {
 			nodeList.add(link);
 			JSONObject node = new JSONObject();
+			
+			String text = null;
+			String name= null;
+			String color= null;
 
 			if (!hasParameters) {
 				DatasetMongoDBObject dt = new DatasetMongoDBObject(link);
-				String text;
+				
 				if(dt.getTitle()!=null)
-					node.put("text", dt.getTitle());
+					text =dt.getTitle();
 				else
-					node.put("text", dt.getLabel());
+					text= dt.getLabel();
 				if(dt.getIsVocabulary())
-					node.put("color", "rgb(255, 127, 14)");
+					color = "rgb(255, 127, 14)";
 				else
-					node.put("color", "green");
+					color = "green";
 					
-				node.put("name", dt.getUri());
+				name= dt.getUri();
 			} else {
 				DistributionMongoDBObject dt = new DistributionMongoDBObject(
 						link);
-				String text;
+
 				if(dt.getTitle()!=null)
 					node.put("text", dt.getTitle());
 				else
 					node.put("text", dt.getDownloadUrl());
-				node.put("name", dt.getUri());
 				
 				if(dt.isVocabulary())
-					node.put("color", "rgb(255, 127, 14)");
+					color = "rgb(255, 127, 14)";
 				else
-					node.put("color", "green");
+					color =  "green";
+				name= dt.getUri();
 				
 			}
+			
+			text = text.replace(" ", "<br/>");
+			
+			node.put("text",text);
+			
+			node.put("color",color);
+			node.put("name",name);
+					
 			node.put("radius", 20);
 			nodes.put(node);
 		}
