@@ -6,10 +6,8 @@ public class NS {
 	// public static final String DATAID_URI =
 	// "http://dataid.dbpedia.org/ns/core2#";
 
-	 public static final String DATAID_URI =
 //	 "http://dataid.dbpedia.org/ns/core#";
-	 
-	 "http://schema.dbpedia.org/dataid#";
+	public static final String DATAID_URI =	 "http://schema.dbpedia.org/dataid#";
 
 //	public static final String DATAID_URI = "http://dataid.dbpedia.org/ns#";
 	public static final String RDFS_URI = "http://www.w3.org/2000/01/rdf-schema#";
