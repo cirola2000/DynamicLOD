@@ -156,6 +156,14 @@ public class CreateD3JSONFormat extends HttpServlet {
 			
 			if(text==null)
 				text = "";
+			text = text.split("@")[0];
+			text = text.split("http")[0];
+			if(text.length()>15){
+				text = text.substring(0, 15) + "...";
+			}
+//			text = text.split(" ")[0] + "<br>"+ text.split(" ")[1];
+//			if(text.split(" ").length > 1)
+//				text = text.split(" ")[0] + "<br>"+ text.split(" ")[1];
 			node.put("text",text);
 			
 			node.put("color",color);
