@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.EventListener;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import org.richfaces.application.push.MessageException;
@@ -21,7 +22,7 @@ import dataid.mongodb.queries.DatasetQueries;
 import dataid.mongodb.queries.DistributionQueries;
 import dataid.mongodb.queries.SubsetQueries;
 
-@ViewScoped
+@SessionScoped
 @ManagedBean
 public class DataIDBean implements Serializable, Runnable {
 
@@ -55,14 +56,6 @@ public class DataIDBean implements Serializable, Runnable {
 
 	// info about download
 	private String downloadDatasetURI;
-
-	private int downloadNumberOfTriplesLoaded;
-
-	private int downloadNumberTotalOfDistributions;
-
-	private int downloadNumberOfDownloadedDistributions;
-
-	private double downloadedMB;
 
 	// TODO implement a smarter way to choose between add dataid or update graph
 	String action = "";
@@ -131,7 +124,6 @@ public class DataIDBean implements Serializable, Runnable {
 	public void run() {
 		DataIDGeneralProperties a = new DataIDGeneralProperties();
 		a.loadProperties();
-		this.setDownloadNumberOfDownloadedDistributions(0);
 		this.setDownloadDatasetURI("");
 
 		try {
@@ -145,10 +137,10 @@ public class DataIDBean implements Serializable, Runnable {
 								DataIDBean.push();
 								updateLog = false;
 							}
-							if (updateDistributionList) {
-								DataIDBean.pushDistributionList();
-								updateDistributionList = false;
-							}
+//							if (updateDistributionList) {
+//								DataIDBean.pushDistributionList();
+//								updateDistributionList = false;
+//							}
 						}
 					} catch (Exception e) {
 					}
@@ -250,49 +242,7 @@ public class DataIDBean implements Serializable, Runnable {
 
 	public void setDownloadDatasetURI(String downloadDatasetURI) {
 		this.downloadDatasetURI = downloadDatasetURI;
-	}
-
-	public String getDownloadNumberOfTriplesLoaded() {
-		NumberFormat df = new DecimalFormat("#,###");
-		return df.format(downloadNumberOfTriplesLoaded);
-	}
-
-	public void setDownloadNumberOfTriplesLoaded(
-			int downloadNumberOfTriplesLoaded) {
-		this.downloadNumberOfTriplesLoaded = downloadNumberOfTriplesLoaded;
-	}
-
-	public int getDownloadNumberTotalOfDistributions() {
-		return downloadNumberTotalOfDistributions;
-	}
-
-	public void setDownloadNumberTotalOfDistributions(
-			int downloadNumberTotalOfDistributions) {
-		this.downloadNumberTotalOfDistributions = downloadNumberTotalOfDistributions;
-	}
-
-	public int getDownloadNumberOfDownloadedDistributions() {
-		return downloadNumberOfDownloadedDistributions;
-	}
-
-	public void setDownloadNumberOfDownloadedDistributions(
-			int downloadNumberOfDownloadedDistributions) {
-		this.downloadNumberOfDownloadedDistributions = downloadNumberOfDownloadedDistributions;
-	}
-
-	public String getDownloadedMB() {
-		NumberFormat df = new DecimalFormat("#,###.##");
-		return df.format(downloadedMB);
-	}
-
-	public void setDownloadedMB(double downloadPercentage) {
-		this.downloadedMB = downloadPercentage;
-	}
-	
-	public void shouldUpdateLog(double downloadPercentage) {
-		this.downloadedMB = downloadPercentage;
-	}
-	
+	}	
 	
 
 	public void addDisplayMessage(String level, String info) {
@@ -322,12 +272,7 @@ public class DataIDBean implements Serializable, Runnable {
 				+ "; width:340px\">" + "[" + level + "]" + timer
 				+ "<span style=\"margin-left:30px\">" + info + "</span>"
 				+ "</span>");
-		// try {
-		// // push();
-		// } catch (MessageException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
+
 	}
 
 }

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<body>
+	<ui:composition template="/templates/template.xhtml">
+
+		<ui:define name="title">Dynamic-LOD</ui:define>
+
+
+		<ui:define name="downloadDataID">
+			<h:form prependId="false">
+
+				<a4j:push address="downloadDataIDMessage">
+					<a4j:ajax event="dataavailable" render="downloadDataID" />
+				</a4j:push>
+
+
+				<h:inputText style="width:560px" id="nameInput"
+					value="#{dataIDBean.url}"></h:inputText>
+
+
+				<a4j:commandButton value="Add DataId file"
+					action="#{dataIDBean.start}" />
+				<br />
+
+				<div style="margin-left: 560px">
+					<a4j:commandButton value="Update Linksets"
+						action="#{dataIDBean.update}" />
+				</div>
+
+				<a4j:outputPanel id="downloadDataID">
+				Dataset name:
+				<h:outputText value="#{dataIDBean.downloadDatasetURI}"
+						escape="false" />
+					<br />	
+
+				</a4j:outputPanel>
+			</h:form>
+		</ui:define>
+
+		<ui:define name="shell">
+			<h:form prependId="false">
+
+				<a4j:push address="logMessage">
+					<a4j:ajax event="dataavailable" render="outputDate"
+						oncomplete="document.getElementById('divDisplay').scrollTop = document.getElementById('divDisplay').scrollHeight" />
+				</a4j:push>
+				<a4j:outputPanel id="outputDate">
+					<div
+						style="border: 1px solid; height: 500px; max-height: 500px; max-width: 700px; overflow: auto;"
+						id="divDisplay">
+
+						<h:outputText value="#{dataIDBean.display}"
+							 escape="false" />
+
+					</div>
+				</a4j:outputPanel>
+			</h:form>
+
+		</ui:define>
+
+		<ui:define name="distributionList">
+			<h:form prependId="false">
+
+				<a4j:push address="distributionListMessage">
+					<a4j:ajax event="dataavailable" render="outputdistributionList" />
+				</a4j:push>
+				<a4j:outputPanel id="outputdistributionList">
+
+				<div
+						style="border: 1px solid; height: 460px; max-height: 460px; max-width: 725px; overflow: auto;"
+						>
+					<h:outputText  value="#{dataIDBean.distributionList}" escape="false" />
+				</div>
+				</a4j:outputPanel>
+			</h:form>
+		</ui:define>
+
+
+		<ui:define name="stats">
+			<h:form prependId="false">
+
+				<a4j:push address="statsMessage">
+					<a4j:ajax event="dataavailable" render="outputStats" />
+				</a4j:push>
+				<a4j:outputPanel id="outputStats">
+					<table>
+						<tr>
+							<td>Number of datasets: <h:outputText
+									value="#{dataIDBean.numberOfDatasets}" escape="false" />
+							</td>
+							<td><span style="margin-left: 15px"> Number of subsets:</span> <h:outputText
+									value="#{dataIDBean.numberOfSubsets}" escape="false" />
+							</td>
+							<td><span style="margin-left: 15px">Number of distributions: </span><h:outputText
+									value="#{dataIDBean.numberOfDistributions}" escape="false" />
+							</td>
+
+						</tr>
+						<tr>
+							<td>Numer of triples: <h:outputText
+									value="#{dataIDBean.numberOfTriples}" escape="false" />
+
+							</td>
+						</tr>
+					</table>
+				</a4j:outputPanel>
+			</h:form>
+		</ui:define>
+
+
+
+	</ui:composition>
+
+</body>
+</html>

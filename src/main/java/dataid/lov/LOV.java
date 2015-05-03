@@ -18,6 +18,7 @@ import org.junit.Test;
 
 import com.hp.hpl.jena.graph.Graph;
 import com.hp.hpl.jena.graph.Node;
+import com.hp.hpl.jena.graph.NodeFactory;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
@@ -51,6 +52,8 @@ public class LOV extends Download {
 
 		
 		Model m = ModelFactory.createDefaultModel();
+		Model tmpModel = ModelFactory.createDefaultModel();
+		
 		new DataIDGeneralProperties().loadProperties();
 
 		setUrl(new URL(DataIDGeneralProperties.LOV_URL));
@@ -68,21 +71,40 @@ public class LOV extends Download {
 		simpleDownload(DataIDGeneralProperties.BASE_PATH + "lov.tmp",
 				inputStream);
 
+		
 		DatasetGraph dg = RDFDataMgr.loadDatasetGraph(
 				DataIDGeneralProperties.BASE_PATH + "lov.tmp", Lang.NQUADS);
 
-		// m.read(new InputStream(new FileInputStream(new
-		// File("/home/ciro/dataid/lov.nq"))),
-		// Lang.NQUADS);
 
+		Iterator<Node> tmpNodeIt = dg.listGraphNodes();
+		
+		int a = 0;
+		
+		Node tmpNode =null;
+		while (tmpNodeIt.hasNext()) {
+			tmpNode = tmpNodeIt.next();
+			Graph tmpGraph = dg.getGraph(tmpNode);			
+			
+			tmpModel = ModelFactory.createModelForGraph(tmpGraph);
+		
+			if(tmpNode.getURI().equals("http://lov.okfn.org/dataset/lov")){
+				System.out.println("Oiaaaa");
+				break;
+			}
+		
+		}
+
+		
+		
 		Iterator<Node> nodeIt = dg.listGraphNodes();
-
+		
+		
 		int i = 0;
 
 		while (nodeIt.hasNext()) {
 			Node node = nodeIt.next();
-			Graph graph = dg.getGraph(node);
-
+			Graph graph = dg.getGraph(node);			
+			
 			m = ModelFactory.createModelForGraph(graph);
 
 			Property p = ResourceFactory
@@ -92,21 +114,26 @@ public class LOV extends Download {
 					.createProperty("http://www.w3.org/2000/01/rdf-schema#label");
 
 			Resource r = ResourceFactory
-					.createResource("http://purl.org/vocommons/voaf#Vocabulary");
+					.createResource(node.getURI());
+			
+			System.out.println(node.getURI());
+			System.out.println(tmpNode.getURI());
 
 			// System.out.println(node.getNameSpace()+" "+i++);
 
 			// new dataset at mongodb
 			DatasetMongoDBObject d = new DatasetMongoDBObject(
 					node.getNameSpace());
-			StmtIterator stmt = m.listStatements(null, p, (RDFNode) null);
+			StmtIterator stmt = tmpModel.listStatements(r, p, (RDFNode) null);
+			
 			if (stmt.hasNext())
 				d.setTitle(stmt.next().getObject().toString());
+			
 
-			stmt = m.listStatements(null, p2, (RDFNode) null);
+			stmt = tmpModel.listStatements(r, p2, (RDFNode) null);
 			if (stmt.hasNext())
 				d.setLabel(stmt.next().getObject().toString());
-
+			
 			d.setIsVocabulary(true);
 
 			d.updateObject(true);
@@ -205,7 +232,7 @@ public class LOV extends Download {
 		dist.setTriples(subjects.size() + objects.size());
 		dist.setTimeToCreateFilter(timer);
 		dist.setFormat("nq");
-		dist.setVocabulary(true);
+		dist.setIsVocabulary(true);
 		dist.setNumberOfObjectTriples(String.valueOf(objects.size()));
 		dist.setNumberOfTriplesLoadedIntoFilter(String.valueOf(subjects.size()));
 		dist.setSuccessfullyDownloaded(true);

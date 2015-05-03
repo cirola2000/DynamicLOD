@@ -370,11 +370,11 @@ public class DistributionMongoDBObject extends DataIDDB {
 		this.status = status;
 	}
 
-	public boolean isVocabulary() {
+	public boolean getIsVocabulary() {
 		return isVocabulary;
 	}
 
-	public void setVocabulary(boolean isVocabulary) {
+	public void setIsVocabulary(boolean isVocabulary) {
 		this.isVocabulary = isVocabulary;
 	}
 	

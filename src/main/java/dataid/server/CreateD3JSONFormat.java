@@ -142,11 +142,11 @@ public class CreateD3JSONFormat extends HttpServlet {
 						link);
 
 				if(dt.getTitle()!=null)
-					node.put("text", dt.getTitle());
+					text = dt.getTitle();
 				else
-					node.put("text", dt.getDownloadUrl());
+					text = dt.getDownloadUrl();
 				
-				if(dt.isVocabulary())
+				if(dt.getIsVocabulary())
 					color = "rgb(255, 127, 14)";
 				else
 					color =  "green";
@@ -158,7 +158,7 @@ public class CreateD3JSONFormat extends HttpServlet {
 				text = "";
 			text = text.split("@")[0];
 			text = text.split("http")[0];
-			if(text.length()>15){
+			if(text.length()>1445){
 				text = text.substring(0, 15) + "...";
 			}
 //			text = text.split(" ")[0] + "<br>"+ text.split(" ")[1];

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<body>
+	<h:head>
+	</h:head>
+	<ui:include src="menu.xhtml">
+	</ui:include>
+	
+		
+	<div style="margin-left: 15px;">
+
+		<div class="page-header">
+			<h2>Statistics</h2>
+		</div>
+
+	<rich:dataTable value="#{statisticsBean.dataList}" var="dataItem"
+		rowClasses="row1, row2" id="taskList" rows="900"
+		columnClasses="50,100,100,100" width="350">
+
+		<f:facet name="header">
+			<h:outputText value="Loaded distributions" />
+		</f:facet>
+
+		<rich:column>
+			<f:facet name="header">DownloadURL</f:facet>
+			<h:outputText value="#{dataItem.downloadUrl}" />
+		</rich:column>
+
+		<rich:column>
+			<f:facet name="header">Triples</f:facet>
+			<h:outputText value="#{dataItem.triples}" />
+		</rich:column>
+
+		<rich:column>
+			<f:facet name="header">Subjects <BR /> in Bloom filter</f:facet>
+			<h:outputText value="#{dataItem.numberOfTriplesLoadedIntoFilter}" />
+		</rich:column>
+
+		<rich:column>
+			<f:facet name="header">Time to create <BR /> Bloom filter</f:facet>
+			<h:outputText value="#{dataItem.timeToCreateFilter}" />
+		</rich:column>
+
+		<rich:column>
+			<f:facet name="header">Status</f:facet>
+			<h:outputText value="#{dataItem.status}" />
+		</rich:column>
+
+		<rich:column>
+			<f:facet name="header">Is vocabulary</f:facet>
+			<h:outputText value="#{dataItem.isVocabulary}" />
+		</rich:column>
+
+		<rich:column>
+			<f:facet name="header">Last error <BR /> message</f:facet>
+			<h:outputText value="#{dataItem.lastErrorMsg}" />
+		</rich:column>
+
+
+
+		<!-- f:facet name="footer">
+			<h:outputText value="This is the footer" />
+		</f:facet -->
+
+	</rich:dataTable>
+</div>
+
+
+</body>
+</html>

@@ -324,8 +324,6 @@ public class Manager {
 							"Distribution saved!");
 					logger.info("Distribution saved! ");
 
-					bean.setDownloadNumberOfDownloadedDistributions(bean
-							.getDownloadNumberOfDownloadedDistributions() + 1);
 					try {
 						DataIDBean.pushDownloadInfo();
 					} catch (Exception exc) {
@@ -336,8 +334,6 @@ public class Manager {
 					bean.addDisplayMessage(
 							DataIDGeneralProperties.MESSAGE_ERROR,
 							e.getMessage());
-					bean.setDownloadNumberOfDownloadedDistributions(bean
-							.getDownloadNumberOfDownloadedDistributions() + 1);
 					DataIDBean.pushDownloadInfo();
 					bean.updateDistributionList = true;
 					e.printStackTrace();
@@ -352,8 +348,7 @@ public class Manager {
 					bean.addDisplayMessage(
 							DataIDGeneralProperties.MESSAGE_ERROR,
 							e.getMessage());
-					bean.setDownloadNumberOfDownloadedDistributions(bean
-							.getDownloadNumberOfDownloadedDistributions() + 1);
+
 					DataIDBean.pushDownloadInfo();
 					bean.updateDistributionList = true;
 					e.printStackTrace();
@@ -419,7 +414,6 @@ public class Manager {
 
 			// update view
 			if (numberOfDistributions > 0) {
-				bean.setDownloadNumberTotalOfDistributions(numberOfDistributions);
 				bean.setDownloadDatasetURI(listOfSubsets.get(0).getDatasetURI());
 				DataIDBean.pushDownloadInfo();
 			}
@@ -437,7 +431,7 @@ public class Manager {
 			// check if LOV was already downloaded
 			GeneralPropertiesMongoDBObject g = new GeneralPropertiesMongoDBObject();
 			System.out.println(g.getDownloadedLOV());
-			if (g.getDownloadedLOV()== null || !g.getDownloadedLOV())
+			if (g.getDownloadedLOV()== null || !g.getDownloadedLOV()){
 					logger.info("LOV vocabularies still not lodaded! Loading now...");
 					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "LOV vocabularies still not lodaded! Loading now...");
 					try {
@@ -453,6 +447,7 @@ public class Manager {
 						logger.info("We got an error trying to load LOV vocabularies! "+ e.getMessage());
 						bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "We got an error trying to load LOV vocabularies! "+ e.getMessage());
 					}
+			}
 
 			// try to load distributions and make filters
 			streamAndCreateFilters();
