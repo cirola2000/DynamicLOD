@@ -431,7 +431,7 @@ public class Manager {
 			// check if LOV was already downloaded
 			GeneralPropertiesMongoDBObject g = new GeneralPropertiesMongoDBObject();
 			System.out.println(g.getDownloadedLOV());
-			if (g.getDownloadedLOV()== null || !g.getDownloadedLOV()){
+//			if (g.getDownloadedLOV()== null || !g.getDownloadedLOV()){
 					logger.info("LOV vocabularies still not lodaded! Loading now...");
 					bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "LOV vocabularies still not lodaded! Loading now...");
 					try {
@@ -447,7 +447,7 @@ public class Manager {
 						logger.info("We got an error trying to load LOV vocabularies! "+ e.getMessage());
 						bean.addDisplayMessage(DataIDGeneralProperties.MESSAGE_INFO, "We got an error trying to load LOV vocabularies! "+ e.getMessage());
 					}
-			}
+//			}
 
 			// try to load distributions and make filters
 			streamAndCreateFilters();
