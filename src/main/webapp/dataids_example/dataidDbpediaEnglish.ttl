@@ -33,872 +33,771 @@
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dcat:contactPoint <http://wiki.dbpedia.org/Association> ;
  dataid:latestVersion <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
- void:subset <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_flickrwrappr_links_en>, <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en> ,<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_templates_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_category_labels_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_disambiguations_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_external_links_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_geo_coordinates_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_homepages_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_images_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_heuristic_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_interlanguage_links_chapters_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_iri_same_as_uri_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_labels_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_long_abstracts_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_mappingbased_properties_cleaned_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_page_ids_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_persondata_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_pnd_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_properties_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_property_definitions_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_redirects_transitive_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_ids_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_uris_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_short_abstracts_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_skos_categories_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_specific_mappingbased_properties_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_wikipedia_links_en> ,<http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_freebase_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_yago_links> , <http://dbpedia.org/dataid.ttl#DBpedia_ja_3.9_long_abstracts_en_uris_ja> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_eunis_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_disambiguations_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_short_abstracts_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_wikipedia_links_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_gutenberg_links> , <http://dbpedia.org/dataid.ttl#DBpedia_sv_3.9_short_abstracts_en_uris_sv> , <http://dbpedia.org/dataid.ttl#DBpedia_pl_3.9_labels_en_uris_pl> , <http://dbpedia.org/dataid.ttl#DBpedia_fr_3.9_long_abstracts_en_uris_fr> , <http://dbpedia.org/dataid.ttl#DBpedia_pt_3.9_long_abstracts_en_uris_pt> , <http://dbpedia.org/dataid.ttl#DBpedia_es_3.9_short_abstracts_en_uris_es> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_gadm_links> , <http://dbpedia.org/dataid.ttl#DBpedia_de_3.9_long_abstracts_en_uris_de> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_factbook_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_uris_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_external_links_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_redirects_transitive_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_dblp_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_italian_public_schools_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_musicbrainz_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_openei_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_bricklink_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_mappingbased_properties_cleaned_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_linkedmdb_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_interlanguage_links_chapters_en> , <http://dbpedia.org/dataid.ttl#DBpedia_fr_3.9_labels_en_uris_fr> , <http://dbpedia.org/dataid.ttl#DBpedia_sv_3.9_long_abstracts_en_uris_sv> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_linkedgeodata_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_labels_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_properties_en> , <http://dbpedia.org/dataid.ttl#DBpedia_it_3.9_long_abstracts_en_uris_it> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_yago_types> , <http://dbpedia.org/dataid.ttl#DBpedia_fr_3.9_short_abstracts_en_uris_fr> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_skos_categories_en> , <http://dbpedia.org/dataid.ttl#DBpedia_pl_3.9_short_abstracts_en_uris_pl> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_images_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_category_labels_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_geo_coordinates_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_eurostat_linkedstatistics_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_diseasome_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_yago_type_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_amsterdammuseum_links> , <http://dbpedia.org/dataid.ttl#DBpedia_ru_3.9_long_abstracts_en_uris_ru> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_revyu_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_specific_mappingbased_properties_en> , <http://dbpedia.org/dataid.ttl#DBpedia_de_3.9_short_abstracts_en_uris_de> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_wikicompany_links> , <http://dbpedia.org/dataid.ttl#DBpedia_es_3.9_labels_en_uris_es> , <http://dbpedia.org/dataid.ttl#DBpedia_zh_3.9_short_abstracts_en_uris_zh> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_yago_taxonomy> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_dailymed_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_property_definitions_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_sider_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_gho_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_iri_same_as_uri_en> , <http://dbpedia.org/dataid.ttl#DBpedia_pt_3.9_labels_en_uris_pt> , <http://dbpedia.org/dataid.ttl#DBpedia_nl_3.9_labels_en_uris_nl> , <http://dbpedia.org/dataid.ttl#DBpedia_zh_3.9_long_abstracts_en_uris_zh> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_heuristic_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_page_ids_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_tcm_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_ids_en> , <http://dbpedia.org/dataid.ttl#DBpedia_de_3.9_labels_en_uris_de> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_homepages_en> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_uscensus_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_umbel_links> , <http://dbpedia.org/dataid.ttl#DBpedia_pt_3.9_short_abstracts_en_uris_pt> , <http://dbpedia.org/dataid.ttl#DBpedia_ru_3.9_short_abstracts_en_uris_ru> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_cordis_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_opencyc_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_nytimes_links> , <http://dbpedia.org/dataid.ttl#DBpedia_de_3.9_pnd_en_uris_de> , <http://dbpedia.org/dataid.ttl#DBpedia_zh_3.9_labels_en_uris_zh> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_drugbank_links> , <http://dbpedia.org/dataid.ttl#DBpedia_links_3.9_geospecies_links> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_persondata_en> , <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_long_abstracts_en>, <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en>,  <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_pnd_en> .
-
- <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_categories_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English article categories en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English article categories en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> .
-
- <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_article_templates_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English article templates en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English article categories en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/article_templates_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_category_labels_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English category labels en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English category labels en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_disambiguations_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English disambiguations en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English disambiguations en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_external_links_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English external links en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English external links en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/external_links_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_flickrwrappr_links_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English flickrwrapp links en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English geo coordinates en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/flickrwrappr_links_en.nt.bz2>  .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_geo_coordinates_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English geo coordinates en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English geo coordinates en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2>  .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_homepages_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English homepages en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English homepages en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/homepages_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_images_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English images en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English images en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/images_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English instance types en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English instance types en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_instance_types_heuristic_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English instance types heuristic en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English instance types heuristic en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "30-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_interlanguage_links_chapters_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English interlanguage links chapters en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English interlanguage links chapters en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "12-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_iri_same_as_uri_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English iri same as uri en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English iri same as uri en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "09-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_labels_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English labels en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English labels en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels_en.nq.bz2> ,<http://downloads.dbpedia.org/3.9/en/labels_en.nt.bz2> ,<http://downloads.dbpedia.org/3.9/en/labels_en.tql.bz2> ,<http://downloads.dbpedia.org/3.9/en/labels_en.ttl.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_long_abstracts_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English long abstracts en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English long abstracts en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_mappingbased_properties_cleaned_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English mappingbased properties cleaned en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English mappingbased properties cleaned en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "07-Feb-2014"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_page_ids_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English page ids en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English page ids en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2>  .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_persondata_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English persondata en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English persondata en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "11-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/persondata_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_pnd_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English pnd en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English pnd en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "11-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_properties_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English raw infobox properties en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English raw infobox properties en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_raw_infobox_property_definitions_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English raw infobox property definitions en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English raw infobox property definitions en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "10-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_redirects_transitive_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English redirects transitive en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English redirects transitive en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "09-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_ids_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English revision ids en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English revision ids en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "11-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_revision_uris_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English revision uris en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English revision uris en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "11-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_short_abstracts_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English short abstracts en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English short abstracts en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "11-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_skos_categories_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English skos categories en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English skos categories en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "11-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_specific_mappingbased_properties_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English specific mappingbased properties en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English specific mappingbased properties en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "11-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2> .
-
-<http://dbpedia.org/dataid.ttl#DBpedia_en_3.9_wikipedia_links_en>
- a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
- dct:title "DBpedia English wikipedia links en" ;
- rdfs:label "DBpedia" ;
- dct:description "DBpedia English wikipedia links en" ;
- dct:issued "17-Sep-2013"^^xsd:date ;
- dct:modified "11-Aug-2013"^^xsd:date ;
- dct:publisher <http://wiki.dbpedia.org/Association> ;
- dct:language "en" ;
- dcat:landingPage <http://dbpedia.org/> ;
- prov:wasDerivedFrom <http://dumps.wikimedia.org/enwiki/20130403> ;
- prov:wasGeneratedBy <http://dbpedia.org/dataid.ttl#Extraction> ;
- dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
- dct:rights "Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the terms of the GNU Free Documentation License." ;
- dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
- dataid:versionInfo "3.9" ;
- dcat:distribution <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2> .
-
+ void:subset <http://dbpedia.org/dataid.ttl#article_categories_en> ,<http://dbpedia.org/dataid.ttl#article_templates_en> ,<http://dbpedia.org/dataid.ttl#category_labels_en> ,<http://dbpedia.org/dataid.ttl#disambiguations_en> ,<http://dbpedia.org/dataid.ttl#disambiguations_unredirected_en> ,<http://dbpedia.org/dataid.ttl#external_links_en> ,<http://dbpedia.org/dataid.ttl#flickrwrappr_links_en> ,<http://dbpedia.org/dataid.ttl#freebase_links_en> ,<http://dbpedia.org/dataid.ttl#geo_coordinates_en> ,<http://dbpedia.org/dataid.ttl#geonames_links_en> ,<http://dbpedia.org/dataid.ttl#homepages_en> ,<http://dbpedia.org/dataid.ttl#images_en> ,<http://dbpedia.org/dataid.ttl#instance_types_en> ,<http://dbpedia.org/dataid.ttl#instance_types_heuristic_en> ,<http://dbpedia.org/dataid.ttl#interlanguage_links_chapters_en> ,<http://dbpedia.org/dataid.ttl#interlanguage_links_en> ,<http://dbpedia.org/dataid.ttl#iri_same_as_uri_en> ,<http://dbpedia.org/dataid.ttl#labels_en> ,<http://dbpedia.org/dataid.ttl#long_abstracts_en> ,<http://dbpedia.org/dataid.ttl#mappingbased_properties_cleaned_en> ,<http://dbpedia.org/dataid.ttl#mappingbased_properties_en> ,<http://dbpedia.org/dataid.ttl#mappingbased_properties_unredirected_en> ,<http://dbpedia.org/dataid.ttl#old_interlanguage_links_en> ,<http://dbpedia.org/dataid.ttl#old_interlanguage_links_same_as_chapters_en> ,<http://dbpedia.org/dataid.ttl#old_interlanguage_links_same_as_en> ,<http://dbpedia.org/dataid.ttl#old_interlanguage_links_see_also_chapters_en> ,<http://dbpedia.org/dataid.ttl#old_interlanguage_links_see_also_en> ,<http://dbpedia.org/dataid.ttl#page_ids_en> ,<http://dbpedia.org/dataid.ttl#page_in_link_counts_en> ,<http://dbpedia.org/dataid.ttl#page_links_en> ,<http://dbpedia.org/dataid.ttl#page_links_unredirected_en> ,<http://dbpedia.org/dataid.ttl#page_out_link_counts_en> ,<http://dbpedia.org/dataid.ttl#persondata_en> ,<http://dbpedia.org/dataid.ttl#persondata_unredirected_en> ,<http://dbpedia.org/dataid.ttl#pnd_en> ,<http://dbpedia.org/dataid.ttl#raw_infobox_properties_en> ,<http://dbpedia.org/dataid.ttl#raw_infobox_properties_unredirected_en> ,<http://dbpedia.org/dataid.ttl#raw_infobox_property_definitions_en> ,<http://dbpedia.org/dataid.ttl#redirects_en> ,<http://dbpedia.org/dataid.ttl#redirects_transitive_en> ,<http://dbpedia.org/dataid.ttl#revision_ids_en> ,<http://dbpedia.org/dataid.ttl#revision_uris_en> ,<http://dbpedia.org/dataid.ttl#short_abstracts_en> ,<http://dbpedia.org/dataid.ttl#skos_categories_en> ,<http://dbpedia.org/dataid.ttl#specific_mappingbased_properties_en> ,<http://dbpedia.org/dataid.ttl#topical_concepts_en> ,<http://dbpedia.org/dataid.ttl#topical_concepts_unredirected_en> ,<http://dbpedia.org/dataid.ttl#wikipedia_links_en> .
+<http://dbpedia.org/dataid.ttl#article_categories_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "article categories en" ;
-  dct:description "DBpedia dumpfile: article_categories_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
-  dcat:byteSize "159000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "article categories en" ;
+dct:description "DBpedia dumpfile: article_categories_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#article_templates_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/article_templates_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/article_templates_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "article templates en" ;
-  dct:description "DBpedia dumpfile: article_templates_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/article_templates_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/article_templates_en.nt.bz2> ;
-  dcat:byteSize "159000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "article templates en" ;
+dct:description "DBpedia dumpfile: article_templates_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/article_templates_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/article_templates_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#category_labels_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "category labels en" ;
-  dct:description "DBpedia dumpfile: category_labels_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2> ;
-  dcat:byteSize "11000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "category labels en" ;
+dct:description "DBpedia dumpfile: category_labels_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#disambiguations_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "disambiguations en" ;
-  dct:description "DBpedia dumpfile: disambiguations_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nt.bz2> ;
-  dcat:byteSize "10000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "disambiguations en" ;
+dct:description "DBpedia dumpfile: disambiguations_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#disambiguations_unredirected_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/disambiguations_unredirected_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/disambiguations_unredirected_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "disambiguations unredirected en" ;
+dct:description "DBpedia dumpfile: disambiguations_unredirected_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/disambiguations_unredirected_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/disambiguations_unredirected_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#external_links_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/external_links_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/external_links_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "external links en" ;
-  dct:description "DBpedia dumpfile: external_links_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/external_links_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/external_links_en.nt.bz2> ;
-  dcat:byteSize "137000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "external links en" ;
+dct:description "DBpedia dumpfile: external_links_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/external_links_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/external_links_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#flickrwrappr_links_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/flickrwrappr_links_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/flickrwrappr_links_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "flickrwrappr links en" ;
-  dct:description "DBpedia dumpfile: flickrwrappr_links_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/flickrwrappr_links_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/flickrwrappr_links_en.nt.bz2> ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
-  
-  <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "geo coordinates en" ;
-  dct:description "DBpedia dumpfile: geo_coordinates_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2> ;
-  dcat:byteSize "14000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "flickrwrappr links en" ;
+dct:description "DBpedia dumpfile: flickrwrappr_links_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/flickrwrappr_links_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/flickrwrappr_links_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#freebase_links_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/freebase_links_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/freebase_links_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "freebase links en" ;
+dct:description "DBpedia dumpfile: freebase_links_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/freebase_links_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/freebase_links_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#geo_coordinates_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "geo coordinates en" ;
+dct:description "DBpedia dumpfile: geo_coordinates_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#geonames_links_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/geonames_links_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/geonames_links_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "geonames links en" ;
+dct:description "DBpedia dumpfile: geonames_links_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/geonames_links_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/geonames_links_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#homepages_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/homepages_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/homepages_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "homepages en" ;
-  dct:description "DBpedia dumpfile: homepages_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/homepages_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/homepages_en.nt.bz2> ;
-  dcat:byteSize "8500000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "homepages en" ;
+dct:description "DBpedia dumpfile: homepages_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/homepages_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/homepages_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#images_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/images_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/images_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "images en" ;
-  dct:description "DBpedia dumpfile: images_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/images_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/images_en.nt.bz2> ;
-  dcat:byteSize "85000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "images en" ;
+dct:description "DBpedia dumpfile: images_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/images_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/images_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#instance_types_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "instance types en" ;
-  dct:description "DBpedia dumpfile: instance_types_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2> ;
-  dcat:byteSize "71000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "instance types en" ;
+dct:description "DBpedia dumpfile: instance_types_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#instance_types_heuristic_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "instance types heuristic en" ;
-  dct:description "DBpedia dumpfile: instance_types_heuristic_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "30-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2> ;
-  dcat:byteSize "17000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "instance types heuristic en" ;
+dct:description "DBpedia dumpfile: instance_types_heuristic_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#interlanguage_links_chapters_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "interlanguage links chapters en" ;
-  dct:description "DBpedia dumpfile: interlanguage_links_chapters_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "12-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2> ;
-  dcat:byteSize "113000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "interlanguage links chapters en" ;
+dct:description "DBpedia dumpfile: interlanguage_links_chapters_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#interlanguage_links_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/interlanguage_links_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/interlanguage_links_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "interlanguage links en" ;
+dct:description "DBpedia dumpfile: interlanguage_links_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#iri_same_as_uri_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "iri same as uri en" ;
-  dct:description "DBpedia dumpfile: iri_same_as_uri_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2> ;
-  dcat:byteSize "11000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "iri same as uri en" ;
+dct:description "DBpedia dumpfile: iri_same_as_uri_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#labels_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/labels_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "labels en" ;
-  dct:description "DBpedia dumpfile: labels_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels_en.nt.bz2> ;
-  dcat:byteSize "144000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "labels en" ;
+dct:description "DBpedia dumpfile: labels_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#long_abstracts_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "long abstracts en" ;
-  dct:description "DBpedia dumpfile: long_abstracts_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2> ;
-  dcat:byteSize "667000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "long abstracts en" ;
+dct:description "DBpedia dumpfile: long_abstracts_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#mappingbased_properties_cleaned_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "mappingbased properties cleaned en" ;
-  dct:description "DBpedia dumpfile: mappingbased_properties_cleaned_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "07-Feb-2014"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2> ;
-  dcat:byteSize "213000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "mappingbased properties cleaned en" ;
+dct:description "DBpedia dumpfile: mappingbased_properties_cleaned_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#mappingbased_properties_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/mappingbased_properties_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "mappingbased properties en" ;
+dct:description "DBpedia dumpfile: mappingbased_properties_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#mappingbased_properties_unredirected_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_unredirected_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/mappingbased_properties_unredirected_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "mappingbased properties unredirected en" ;
+dct:description "DBpedia dumpfile: mappingbased_properties_unredirected_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_unredirected_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_unredirected_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#old_interlanguage_links_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "old interlanguage links en" ;
+dct:description "DBpedia dumpfile: old_interlanguage_links_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#old_interlanguage_links_same_as_chapters_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_chapters_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_chapters_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "old interlanguage links same as chapters en" ;
+dct:description "DBpedia dumpfile: old_interlanguage_links_same_as_chapters_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_chapters_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_chapters_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#old_interlanguage_links_same_as_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "old interlanguage links same as en" ;
+dct:description "DBpedia dumpfile: old_interlanguage_links_same_as_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#old_interlanguage_links_see_also_chapters_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_chapters_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_chapters_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "old interlanguage links see also chapters en" ;
+dct:description "DBpedia dumpfile: old_interlanguage_links_see_also_chapters_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_chapters_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_chapters_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#old_interlanguage_links_see_also_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "old interlanguage links see also en" ;
+dct:description "DBpedia dumpfile: old_interlanguage_links_see_also_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#page_ids_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "page ids en" ;
-  dct:description "DBpedia dumpfile: page_ids_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2> ;
-  dcat:byteSize "131000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "page ids en" ;
+dct:description "DBpedia dumpfile: page_ids_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#page_in_link_counts_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/page_in_link_counts_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/page_in_link_counts_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "page in link counts en" ;
+dct:description "DBpedia dumpfile: page_in_link_counts_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_in_link_counts_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_in_link_counts_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#page_links_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/page_links_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/page_links_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "page links en" ;
+dct:description "DBpedia dumpfile: page_links_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_links_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_links_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#page_links_unredirected_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/page_links_unredirected_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/page_links_unredirected_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "page links unredirected en" ;
+dct:description "DBpedia dumpfile: page_links_unredirected_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_links_unredirected_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_links_unredirected_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#page_out_link_counts_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/page_out_link_counts_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/page_out_link_counts_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "page out link counts en" ;
+dct:description "DBpedia dumpfile: page_out_link_counts_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_out_link_counts_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_out_link_counts_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#persondata_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/persondata_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/persondata_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "persondata en" ;
-  dct:description "DBpedia dumpfile: persondata_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/persondata_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/persondata_en.nt.bz2> ;
-  dcat:byteSize "47000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "persondata en" ;
+dct:description "DBpedia dumpfile: persondata_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/persondata_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/persondata_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#persondata_unredirected_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/persondata_unredirected_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/persondata_unredirected_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "persondata unredirected en" ;
+dct:description "DBpedia dumpfile: persondata_unredirected_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/persondata_unredirected_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/persondata_unredirected_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#pnd_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "pnd en" ;
-  dct:description "DBpedia dumpfile: pnd_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2> ;
-  dcat:byteSize "1000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "pnd en" ;
+dct:description "DBpedia dumpfile: pnd_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#raw_infobox_properties_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "raw infobox properties en" ;
-  dct:description "DBpedia dumpfile: raw_infobox_properties_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2> ;
-  dcat:byteSize "527000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "raw infobox properties en" ;
+dct:description "DBpedia dumpfile: raw_infobox_properties_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#raw_infobox_properties_unredirected_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_unredirected_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_unredirected_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "raw infobox properties unredirected en" ;
+dct:description "DBpedia dumpfile: raw_infobox_properties_unredirected_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_unredirected_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_unredirected_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#raw_infobox_property_definitions_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "raw infobox property definitions en" ;
-  dct:description "DBpedia dumpfile: raw_infobox_property_definitions_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2> ;
-  dcat:byteSize "686000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "raw infobox property definitions en" ;
+dct:description "DBpedia dumpfile: raw_infobox_property_definitions_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#redirects_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/redirects_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/redirects_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "redirects en" ;
+dct:description "DBpedia dumpfile: redirects_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/redirects_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/redirects_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#redirects_transitive_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "redirects transitive en" ;
-  dct:description "DBpedia dumpfile: redirects_transitive_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2> ;
-  dcat:byteSize "81000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "redirects transitive en" ;
+dct:description "DBpedia dumpfile: redirects_transitive_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#revision_ids_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "revision ids en" ;
-  dct:description "DBpedia dumpfile: revision_ids_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2> ;
-  dcat:byteSize "147000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "revision ids en" ;
+dct:description "DBpedia dumpfile: revision_ids_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#revision_uris_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "revision uris en" ;
-  dct:description "DBpedia dumpfile: revision_uris_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2> ;
-  dcat:byteSize "197000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "revision uris en" ;
+dct:description "DBpedia dumpfile: revision_uris_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#short_abstracts_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "short abstracts en" ;
-  dct:description "DBpedia dumpfile: short_abstracts_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2> ;
-  dcat:byteSize "363000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "short abstracts en" ;
+dct:description "DBpedia dumpfile: short_abstracts_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#skos_categories_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "skos categories en" ;
-  dct:description "DBpedia dumpfile: skos_categories_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2> ;
-  dcat:byteSize "29000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "skos categories en" ;
+dct:description "DBpedia dumpfile: skos_categories_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#specific_mappingbased_properties_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "specific mappingbased properties en" ;
-  dct:description "DBpedia dumpfile: specific_mappingbased_properties_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2> ;
-  dcat:byteSize "6700000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "specific mappingbased properties en" ;
+dct:description "DBpedia dumpfile: specific_mappingbased_properties_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#topical_concepts_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/topical_concepts_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/topical_concepts_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "topical concepts en" ;
+dct:description "DBpedia dumpfile: topical_concepts_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/topical_concepts_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/topical_concepts_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#topical_concepts_unredirected_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/topical_concepts_unredirected_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/topical_concepts_unredirected_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "topical concepts unredirected en" ;
+dct:description "DBpedia dumpfile: topical_concepts_unredirected_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/topical_concepts_unredirected_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/topical_concepts_unredirected_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#wikipedia_links_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "DBpedia English article categories en" ;
+rdfs:label "DBpedia" ;
+dct:description "DBpedia English article categories en" ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2>
-  a dcat:Distribution ;
-  dct:title "wikipedia links en" ;
-  dct:description "DBpedia dumpfile: wikipedia_links_en.nt.bz2" ;
-  dct:issued "17-Sep-2013"^^xsd:date ;
-  dct:modified "09-Aug-2013"^^xsd:date ;
-  dct:license <http://creativecommons.org/licenses/by-sa/4.0/rdf> ;
-  dcat:accessURL <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2> ;
-  dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2> ;
-  dcat:byteSize "215000000"^^xsd:decimal ;
-  dcat:mediaType "application/x-bzip" ;
-  dct:format  "nt" .
+a dcat:Distribution ;
+dct:title "wikipedia links en" ;
+dct:description "DBpedia dumpfile: wikipedia_links_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
