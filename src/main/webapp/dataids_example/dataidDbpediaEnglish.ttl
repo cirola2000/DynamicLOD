@@ -33,59 +33,166 @@
  dataid:licenseName "Creative Commons Attribution-ShareAlike 4.0" ; dataid:ontologyLocation <http://downloads.dbpedia.org/3.9/dbpedia_3.9.owl> ;
  dcat:contactPoint <http://wiki.dbpedia.org/Association> ;
  dataid:latestVersion <http://dbpedia.org/dataid.ttl#DBpedia_en_3.9> ;
- void:subset <http://dbpedia.org/dataid.ttl#article_categories_en> ,<http://dbpedia.org/dataid.ttl#article_templates_en> ,<http://dbpedia.org/dataid.ttl#category_labels_en> ,<http://dbpedia.org/dataid.ttl#disambiguations_en> ,<http://dbpedia.org/dataid.ttl#disambiguations_unredirected_en> ,<http://dbpedia.org/dataid.ttl#external_links_en> ,<http://dbpedia.org/dataid.ttl#flickrwrappr_links_en> ,<http://dbpedia.org/dataid.ttl#freebase_links_en> ,<http://dbpedia.org/dataid.ttl#geo_coordinates_en> ,<http://dbpedia.org/dataid.ttl#geonames_links_en> ,<http://dbpedia.org/dataid.ttl#homepages_en> ,<http://dbpedia.org/dataid.ttl#images_en> ,<http://dbpedia.org/dataid.ttl#instance_types_en> ,<http://dbpedia.org/dataid.ttl#instance_types_heuristic_en> ,<http://dbpedia.org/dataid.ttl#interlanguage_links_chapters_en> ,<http://dbpedia.org/dataid.ttl#interlanguage_links_en> ,<http://dbpedia.org/dataid.ttl#iri_same_as_uri_en> ,<http://dbpedia.org/dataid.ttl#labels_en> ,<http://dbpedia.org/dataid.ttl#long_abstracts_en> ,<http://dbpedia.org/dataid.ttl#mappingbased_properties_cleaned_en> ,<http://dbpedia.org/dataid.ttl#mappingbased_properties_en> ,<http://dbpedia.org/dataid.ttl#mappingbased_properties_unredirected_en> ,<http://dbpedia.org/dataid.ttl#old_interlanguage_links_en> ,<http://dbpedia.org/dataid.ttl#old_interlanguage_links_same_as_chapters_en> ,<http://dbpedia.org/dataid.ttl#old_interlanguage_links_same_as_en> ,<http://dbpedia.org/dataid.ttl#old_interlanguage_links_see_also_chapters_en> ,<http://dbpedia.org/dataid.ttl#old_interlanguage_links_see_also_en> ,<http://dbpedia.org/dataid.ttl#page_ids_en> ,<http://dbpedia.org/dataid.ttl#page_in_link_counts_en> ,<http://dbpedia.org/dataid.ttl#page_links_en> ,<http://dbpedia.org/dataid.ttl#page_links_unredirected_en> ,<http://dbpedia.org/dataid.ttl#page_out_link_counts_en> ,<http://dbpedia.org/dataid.ttl#persondata_en> ,<http://dbpedia.org/dataid.ttl#persondata_unredirected_en> ,<http://dbpedia.org/dataid.ttl#pnd_en> ,<http://dbpedia.org/dataid.ttl#raw_infobox_properties_en> ,<http://dbpedia.org/dataid.ttl#raw_infobox_properties_unredirected_en> ,<http://dbpedia.org/dataid.ttl#raw_infobox_property_definitions_en> ,<http://dbpedia.org/dataid.ttl#redirects_en> ,<http://dbpedia.org/dataid.ttl#redirects_transitive_en> ,<http://dbpedia.org/dataid.ttl#revision_ids_en> ,<http://dbpedia.org/dataid.ttl#revision_uris_en> ,<http://dbpedia.org/dataid.ttl#short_abstracts_en> ,<http://dbpedia.org/dataid.ttl#skos_categories_en> ,<http://dbpedia.org/dataid.ttl#specific_mappingbased_properties_en> ,<http://dbpedia.org/dataid.ttl#topical_concepts_en> ,<http://dbpedia.org/dataid.ttl#topical_concepts_unredirected_en> ,<http://dbpedia.org/dataid.ttl#wikipedia_links_en> .
-<http://dbpedia.org/dataid.ttl#article_categories_en>
-a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "DBpedia English article categories en" ;
-rdfs:label "DBpedia" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> .
+ void:subset <http://dbpedia.org/dataid.ttl#amsterdammuseum_links> ,<http://dbpedia.org/dataid.ttl#article-categories_en> ,<http://dbpedia.org/dataid.ttl#bbcwildlife_links> ,<http://dbpedia.org/dataid.ttl#bookmashup_links> ,<http://dbpedia.org/dataid.ttl#bricklink_links> ,<http://dbpedia.org/dataid.ttl#category-labels_en> ,<http://dbpedia.org/dataid.ttl#cordis_links> ,<http://dbpedia.org/dataid.ttl#dailymed_links> ,<http://dbpedia.org/dataid.ttl#dblp_links> ,<http://dbpedia.org/dataid.ttl#dbtune_links> ,<http://dbpedia.org/dataid.ttl#disambiguations_en> ,<http://dbpedia.org/dataid.ttl#diseasome_links> ,<http://dbpedia.org/dataid.ttl#drugbank_links> ,<http://dbpedia.org/dataid.ttl#eunis_links> ,<http://dbpedia.org/dataid.ttl#eurostat_linkedstatistics_links> ,<http://dbpedia.org/dataid.ttl#eurostat_wbsg_links> ,<http://dbpedia.org/dataid.ttl#external-links_en> ,<http://dbpedia.org/dataid.ttl#factbook_links> ,<http://dbpedia.org/dataid.ttl#flickrwrappr_links> ,<http://dbpedia.org/dataid.ttl#freebase-links_en> ,<http://dbpedia.org/dataid.ttl#gadm_links> ,<http://dbpedia.org/dataid.ttl#geo-coordinates_en> ,<http://dbpedia.org/dataid.ttl#geonames_links> ,<http://dbpedia.org/dataid.ttl#geonames_links_en> ,<http://dbpedia.org/dataid.ttl#geospecies_links> ,<http://dbpedia.org/dataid.ttl#gho_links> ,<http://dbpedia.org/dataid.ttl#gutenberg_links> ,<http://dbpedia.org/dataid.ttl#homepages_en> ,<http://dbpedia.org/dataid.ttl#images_en> ,<http://dbpedia.org/dataid.ttl#infobox-properties_en> ,<http://dbpedia.org/dataid.ttl#infobox-property-definitions_en> ,<http://dbpedia.org/dataid.ttl#instance-types-transitive_en> ,<http://dbpedia.org/dataid.ttl#instance-types_en> ,<http://dbpedia.org/dataid.ttl#instance_types_sdtyped-dbo_en> ,<http://dbpedia.org/dataid.ttl#> ,<http://dbpedia.org/dataid.ttl#iri-same-as-uri_en> ,<http://dbpedia.org/dataid.ttl#italian_public_schools_links> ,<http://dbpedia.org/dataid.ttl#labels-en-uris_ar> ,<http://dbpedia.org/dataid.ttl#labels-en-uris_de> ,<http://dbpedia.org/dataid.ttl#labels-en-uris_es> ,<http://dbpedia.org/dataid.ttl#labels-en-uris_fr> ,<http://dbpedia.org/dataid.ttl#labels-en-uris_it> ,<http://dbpedia.org/dataid.ttl#labels-en-uris_ja> ,<http://dbpedia.org/dataid.ttl#labels-en-uris_nl> ,<http://dbpedia.org/dataid.ttl#labels-en-uris_pl> ,<http://dbpedia.org/dataid.ttl#labels-en-uris_pt> ,<http://dbpedia.org/dataid.ttl#labels-en-uris_ru> ,<http://dbpedia.org/dataid.ttl#labels-en-uris_zh> ,<http://dbpedia.org/dataid.ttl#labels_en> ,<http://dbpedia.org/dataid.ttl#linkedgeodata_links> ,<http://dbpedia.org/dataid.ttl#linkedmdb_links> ,<http://dbpedia.org/dataid.ttl#lobid.org-manifestation> ,<http://dbpedia.org/dataid.ttl#lobid.org-organization> ,<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_ar> ,<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_de> ,<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_es> ,<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_fr> ,<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_it> ,<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_ja> ,<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_nl> ,<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_pl> ,<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_pt> ,<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_ru> ,<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_zh> ,<http://dbpedia.org/dataid.ttl#long-abstracts_en> ,<http://dbpedia.org/dataid.ttl#mappingbased-properties_en> ,<http://dbpedia.org/dataid.ttl#musicbrainz_links> ,<http://dbpedia.org/dataid.ttl#nuts_links> ,<http://dbpedia.org/dataid.ttl#nytimes_links> ,<http://dbpedia.org/dataid.ttl#opencyc_links> ,<http://dbpedia.org/dataid.ttl#openei_links> ,<http://dbpedia.org/dataid.ttl#page-ids_en> ,<http://dbpedia.org/dataid.ttl#persondata_en> ,<http://dbpedia.org/dataid.ttl#revision-ids_en> ,<http://dbpedia.org/dataid.ttl#revision-uris_en> ,<http://dbpedia.org/dataid.ttl#revyu_links> ,<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_ar> ,<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_de> ,<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_es> ,<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_fr> ,<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_it> ,<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_ja> ,<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_nl> ,<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_pl> ,<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_pt> ,<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_ru> ,<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_zh> ,<http://dbpedia.org/dataid.ttl#short-abstracts_en> ,<http://dbpedia.org/dataid.ttl#sider_links> ,<http://dbpedia.org/dataid.ttl#skos-categories_en> ,<http://dbpedia.org/dataid.ttl#specific-mappingbased-properties_en> ,<http://dbpedia.org/dataid.ttl#tcm_links> ,<http://dbpedia.org/dataid.ttl#transitive-redirects_en> ,<http://dbpedia.org/dataid.ttl#transparency_links> ,<http://dbpedia.org/dataid.ttl#uk-university_links> ,<http://dbpedia.org/dataid.ttl#umbel_links> ,<http://dbpedia.org/dataid.ttl#uscensus_links> ,<http://dbpedia.org/dataid.ttl#viaf_links> ,<http://dbpedia.org/dataid.ttl#wikicompany_links> ,<http://dbpedia.org/dataid.ttl#wikipedia-links_en> ,<http://dbpedia.org/dataid.ttl#wordnet_links> ,<http://dbpedia.org/dataid.ttl#yago_links> ,<http://dbpedia.org/dataid.ttl#yago_taxonomy> ,<http://dbpedia.org/dataid.ttl#yago_type_links> ,<http://dbpedia.org/dataid.ttl#yago_types> ,
 
-<http://dbpedia.org/dataid.ttl#article_categories_en>
-a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "article categories en" ;
-rdfs:label "article categories en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2>
+<http://dbpedia.org/dataid.ttl#amsterdammuseum_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "amsterdammuseum links" ;
+rdfs:label "amsterdammuseum links" ;
+dct:description "DBpedia "amsterdammuseum links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/amsterdammuseum_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/amsterdammuseum_links.nt.bz2>
 a dcat:Distribution ;
-dct:title "article categories en" ;
-dct:description "DBpedia dumpfile: article_categories_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/article_categories_en.nt.bz2> ;
+dct:title "amsterdammuseum links" ;
+dct:description "DBpedia dumpfile: amsterdammuseum_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/amsterdammuseum_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/amsterdammuseum_links.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#article_templates_en>
+<http://dbpedia.org/dataid.ttl#article-categories_en>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "article templates en" ;
-rdfs:label "article templates en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/article_templates_en.nt.bz2> .
+dct:title "article-categories en" ;
+rdfs:label "article-categories en" ;
+dct:description "DBpedia "article-categories en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/article-categories_en.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/article_templates_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/article-categories_en.nt.bz2>
 a dcat:Distribution ;
-dct:title "article templates en" ;
-dct:description "DBpedia dumpfile: article_templates_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/article_templates_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/article_templates_en.nt.bz2> ;
+dct:title "article-categories en" ;
+dct:description "DBpedia dumpfile: article-categories_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/article-categories_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/article-categories_en.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#category_labels_en>
+<http://dbpedia.org/dataid.ttl#bbcwildlife_links>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "category labels en" ;
-rdfs:label "category labels en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2> .
+dct:title "bbcwildlife links" ;
+rdfs:label "bbcwildlife links" ;
+dct:description "DBpedia "bbcwildlife links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/bbcwildlife_links.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/bbcwildlife_links.nt.bz2>
 a dcat:Distribution ;
-dct:title "category labels en" ;
-dct:description "DBpedia dumpfile: category_labels_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/category_labels_en.nt.bz2> ;
+dct:title "bbcwildlife links" ;
+dct:description "DBpedia dumpfile: bbcwildlife_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/bbcwildlife_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/bbcwildlife_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#bookmashup_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "bookmashup links" ;
+rdfs:label "bookmashup links" ;
+dct:description "DBpedia "bookmashup links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/bookmashup_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/bookmashup_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "bookmashup links" ;
+dct:description "DBpedia dumpfile: bookmashup_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/bookmashup_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/bookmashup_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#bricklink_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "bricklink links" ;
+rdfs:label "bricklink links" ;
+dct:description "DBpedia "bricklink links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/bricklink_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/bricklink_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "bricklink links" ;
+dct:description "DBpedia dumpfile: bricklink_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/bricklink_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/bricklink_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#category-labels_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "category-labels en" ;
+rdfs:label "category-labels en" ;
+dct:description "DBpedia "category-labels en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/category-labels_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/category-labels_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "category-labels en" ;
+dct:description "DBpedia dumpfile: category-labels_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/category-labels_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/category-labels_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#cordis_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "cordis links" ;
+rdfs:label "cordis links" ;
+dct:description "DBpedia "cordis links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/cordis_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/cordis_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "cordis links" ;
+dct:description "DBpedia dumpfile: cordis_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/cordis_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/cordis_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#dailymed_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "dailymed links" ;
+rdfs:label "dailymed links" ;
+dct:description "DBpedia "dailymed links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/dailymed_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/dailymed_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "dailymed links" ;
+dct:description "DBpedia dumpfile: dailymed_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/dailymed_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/dailymed_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#dblp_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "dblp links" ;
+rdfs:label "dblp links" ;
+dct:description "DBpedia "dblp links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/dblp_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/dblp_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "dblp links" ;
+dct:description "DBpedia dumpfile: dblp_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/dblp_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/dblp_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#dbtune_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "dbtune links" ;
+rdfs:label "dbtune links" ;
+dct:description "DBpedia "dbtune links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/dbtune_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/dbtune_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "dbtune links" ;
+dct:description "DBpedia dumpfile: dbtune_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/dbtune_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/dbtune_links.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
@@ -93,7 +200,7 @@ dct:format "nt" .
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
 dct:title "disambiguations en" ;
 rdfs:label "disambiguations en" ;
-dct:description "DBpedia English article categories en" ;
+dct:description "DBpedia "disambiguations en ;
 dcat:distribution <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nt.bz2>
@@ -105,83 +212,195 @@ dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/disambiguations_en.nt.bz2>
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#disambiguations_unredirected_en>
+<http://dbpedia.org/dataid.ttl#diseasome_links>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "disambiguations unredirected en" ;
-rdfs:label "disambiguations unredirected en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/disambiguations_unredirected_en.nt.bz2> .
+dct:title "diseasome links" ;
+rdfs:label "diseasome links" ;
+dct:description "DBpedia "diseasome links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/diseasome_links.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/disambiguations_unredirected_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/diseasome_links.nt.bz2>
 a dcat:Distribution ;
-dct:title "disambiguations unredirected en" ;
-dct:description "DBpedia dumpfile: disambiguations_unredirected_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/disambiguations_unredirected_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/disambiguations_unredirected_en.nt.bz2> ;
+dct:title "diseasome links" ;
+dct:description "DBpedia dumpfile: diseasome_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/diseasome_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/diseasome_links.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#external_links_en>
+<http://dbpedia.org/dataid.ttl#drugbank_links>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "external links en" ;
-rdfs:label "external links en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/external_links_en.nt.bz2> .
+dct:title "drugbank links" ;
+rdfs:label "drugbank links" ;
+dct:description "DBpedia "drugbank links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/drugbank_links.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/external_links_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/drugbank_links.nt.bz2>
 a dcat:Distribution ;
-dct:title "external links en" ;
-dct:description "DBpedia dumpfile: external_links_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/external_links_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/external_links_en.nt.bz2> ;
+dct:title "drugbank links" ;
+dct:description "DBpedia dumpfile: drugbank_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/drugbank_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/drugbank_links.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#flickrwrappr_links_en>
+<http://dbpedia.org/dataid.ttl#eunis_links>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "flickrwrappr links en" ;
-rdfs:label "flickrwrappr links en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/flickrwrappr_links_en.nt.bz2> .
+dct:title "eunis links" ;
+rdfs:label "eunis links" ;
+dct:description "DBpedia "eunis links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/eunis_links.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/flickrwrappr_links_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/eunis_links.nt.bz2>
 a dcat:Distribution ;
-dct:title "flickrwrappr links en" ;
-dct:description "DBpedia dumpfile: flickrwrappr_links_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/flickrwrappr_links_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/flickrwrappr_links_en.nt.bz2> ;
+dct:title "eunis links" ;
+dct:description "DBpedia dumpfile: eunis_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/eunis_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/eunis_links.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#freebase_links_en>
+<http://dbpedia.org/dataid.ttl#eurostat_linkedstatistics_links>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "freebase links en" ;
-rdfs:label "freebase links en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/freebase_links_en.nt.bz2> .
+dct:title "eurostat linkedstatistics links" ;
+rdfs:label "eurostat linkedstatistics links" ;
+dct:description "DBpedia "eurostat linkedstatistics links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/eurostat_linkedstatistics_links.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/freebase_links_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/eurostat_linkedstatistics_links.nt.bz2>
 a dcat:Distribution ;
-dct:title "freebase links en" ;
-dct:description "DBpedia dumpfile: freebase_links_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/freebase_links_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/freebase_links_en.nt.bz2> ;
+dct:title "eurostat linkedstatistics links" ;
+dct:description "DBpedia dumpfile: eurostat_linkedstatistics_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/eurostat_linkedstatistics_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/eurostat_linkedstatistics_links.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#geo_coordinates_en>
+<http://dbpedia.org/dataid.ttl#eurostat_wbsg_links>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "geo coordinates en" ;
-rdfs:label "geo coordinates en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2> .
+dct:title "eurostat wbsg links" ;
+rdfs:label "eurostat wbsg links" ;
+dct:description "DBpedia "eurostat wbsg links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/eurostat_wbsg_links.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/eurostat_wbsg_links.nt.bz2>
 a dcat:Distribution ;
-dct:title "geo coordinates en" ;
-dct:description "DBpedia dumpfile: geo_coordinates_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/geo_coordinates_en.nt.bz2> ;
+dct:title "eurostat wbsg links" ;
+dct:description "DBpedia dumpfile: eurostat_wbsg_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/eurostat_wbsg_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/eurostat_wbsg_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#external-links_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "external-links en" ;
+rdfs:label "external-links en" ;
+dct:description "DBpedia "external-links en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/external-links_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/external-links_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "external-links en" ;
+dct:description "DBpedia dumpfile: external-links_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/external-links_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/external-links_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#factbook_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "factbook links" ;
+rdfs:label "factbook links" ;
+dct:description "DBpedia "factbook links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/factbook_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/factbook_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "factbook links" ;
+dct:description "DBpedia dumpfile: factbook_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/factbook_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/factbook_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#flickrwrappr_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "flickrwrappr links" ;
+rdfs:label "flickrwrappr links" ;
+dct:description "DBpedia "flickrwrappr links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/flickrwrappr_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/flickrwrappr_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "flickrwrappr links" ;
+dct:description "DBpedia dumpfile: flickrwrappr_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/flickrwrappr_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/flickrwrappr_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#freebase-links_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "freebase-links en" ;
+rdfs:label "freebase-links en" ;
+dct:description "DBpedia "freebase-links en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/freebase-links_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/freebase-links_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "freebase-links en" ;
+dct:description "DBpedia dumpfile: freebase-links_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/freebase-links_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/freebase-links_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#gadm_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "gadm links" ;
+rdfs:label "gadm links" ;
+dct:description "DBpedia "gadm links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/gadm_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/gadm_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "gadm links" ;
+dct:description "DBpedia dumpfile: gadm_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/gadm_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/gadm_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#geo-coordinates_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "geo-coordinates en" ;
+rdfs:label "geo-coordinates en" ;
+dct:description "DBpedia "geo-coordinates en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/geo-coordinates_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/geo-coordinates_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "geo-coordinates en" ;
+dct:description "DBpedia dumpfile: geo-coordinates_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/geo-coordinates_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/geo-coordinates_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#geonames_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "geonames links" ;
+rdfs:label "geonames links" ;
+dct:description "DBpedia "geonames links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/geonames_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/geonames_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "geonames links" ;
+dct:description "DBpedia dumpfile: geonames_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/geonames_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/geonames_links.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
@@ -189,7 +408,7 @@ dct:format "nt" .
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
 dct:title "geonames links en" ;
 rdfs:label "geonames links en" ;
-dct:description "DBpedia English article categories en" ;
+dct:description "DBpedia "geonames links en ;
 dcat:distribution <http://downloads.dbpedia.org/3.9/en/geonames_links_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/geonames_links_en.nt.bz2>
@@ -201,11 +420,59 @@ dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/geonames_links_en.nt.bz2> 
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
+<http://dbpedia.org/dataid.ttl#geospecies_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "geospecies links" ;
+rdfs:label "geospecies links" ;
+dct:description "DBpedia "geospecies links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/geospecies_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/geospecies_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "geospecies links" ;
+dct:description "DBpedia dumpfile: geospecies_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/geospecies_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/geospecies_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#gho_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "gho links" ;
+rdfs:label "gho links" ;
+dct:description "DBpedia "gho links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/gho_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/gho_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "gho links" ;
+dct:description "DBpedia dumpfile: gho_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/gho_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/gho_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#gutenberg_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "gutenberg links" ;
+rdfs:label "gutenberg links" ;
+dct:description "DBpedia "gutenberg links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/gutenberg_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/gutenberg_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "gutenberg links" ;
+dct:description "DBpedia dumpfile: gutenberg_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/gutenberg_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/gutenberg_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
 <http://dbpedia.org/dataid.ttl#homepages_en>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
 dct:title "homepages en" ;
 rdfs:label "homepages en" ;
-dct:description "DBpedia English article categories en" ;
+dct:description "DBpedia "homepages en ;
 dcat:distribution <http://downloads.dbpedia.org/3.9/en/homepages_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/homepages_en.nt.bz2>
@@ -221,7 +488,7 @@ dct:format "nt" .
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
 dct:title "images en" ;
 rdfs:label "images en" ;
-dct:description "DBpedia English article categories en" ;
+dct:description "DBpedia "images en ;
 dcat:distribution <http://downloads.dbpedia.org/3.9/en/images_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/images_en.nt.bz2>
@@ -233,83 +500,307 @@ dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/images_en.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#instance_types_en>
+<http://dbpedia.org/dataid.ttl#infobox-properties_en>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "instance types en" ;
-rdfs:label "instance types en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2> .
+dct:title "infobox-properties en" ;
+rdfs:label "infobox-properties en" ;
+dct:description "DBpedia "infobox-properties en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/infobox-properties_en.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/infobox-properties_en.nt.bz2>
 a dcat:Distribution ;
-dct:title "instance types en" ;
-dct:description "DBpedia dumpfile: instance_types_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/instance_types_en.nt.bz2> ;
+dct:title "infobox-properties en" ;
+dct:description "DBpedia dumpfile: infobox-properties_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/infobox-properties_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/infobox-properties_en.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#instance_types_heuristic_en>
+<http://dbpedia.org/dataid.ttl#infobox-property-definitions_en>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "instance types heuristic en" ;
-rdfs:label "instance types heuristic en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2> .
+dct:title "infobox-property-definitions en" ;
+rdfs:label "infobox-property-definitions en" ;
+dct:description "DBpedia "infobox-property-definitions en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/infobox-property-definitions_en.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/infobox-property-definitions_en.nt.bz2>
 a dcat:Distribution ;
-dct:title "instance types heuristic en" ;
-dct:description "DBpedia dumpfile: instance_types_heuristic_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/instance_types_heuristic_en.nt.bz2> ;
+dct:title "infobox-property-definitions en" ;
+dct:description "DBpedia dumpfile: infobox-property-definitions_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/infobox-property-definitions_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/infobox-property-definitions_en.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#interlanguage_links_chapters_en>
+<http://dbpedia.org/dataid.ttl#instance-types-transitive_en>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "interlanguage links chapters en" ;
-rdfs:label "interlanguage links chapters en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2> .
+dct:title "instance-types-transitive en" ;
+rdfs:label "instance-types-transitive en" ;
+dct:description "DBpedia "instance-types-transitive en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/instance-types-transitive_en.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/instance-types-transitive_en.nt.bz2>
 a dcat:Distribution ;
-dct:title "interlanguage links chapters en" ;
-dct:description "DBpedia dumpfile: interlanguage_links_chapters_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_chapters_en.nt.bz2> ;
+dct:title "instance-types-transitive en" ;
+dct:description "DBpedia dumpfile: instance-types-transitive_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/instance-types-transitive_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/instance-types-transitive_en.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#interlanguage_links_en>
+<http://dbpedia.org/dataid.ttl#instance-types_en>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "interlanguage links en" ;
-rdfs:label "interlanguage links en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/interlanguage_links_en.nt.bz2> .
+dct:title "instance-types en" ;
+rdfs:label "instance-types en" ;
+dct:description "DBpedia "instance-types en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/instance-types_en.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/interlanguage_links_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/instance-types_en.nt.bz2>
 a dcat:Distribution ;
-dct:title "interlanguage links en" ;
-dct:description "DBpedia dumpfile: interlanguage_links_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/interlanguage_links_en.nt.bz2> ;
+dct:title "instance-types en" ;
+dct:description "DBpedia dumpfile: instance-types_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/instance-types_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/instance-types_en.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#iri_same_as_uri_en>
+<http://dbpedia.org/dataid.ttl#instance_types_sdtyped-dbo_en>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "iri same as uri en" ;
-rdfs:label "iri same as uri en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2> .
+dct:title "instance types sdtyped-dbo en" ;
+rdfs:label "instance types sdtyped-dbo en" ;
+dct:description "DBpedia "instance types sdtyped-dbo en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/instance_types_sdtyped-dbo_en.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/instance_types_sdtyped-dbo_en.nt.bz2>
 a dcat:Distribution ;
-dct:title "iri same as uri en" ;
-dct:description "DBpedia dumpfile: iri_same_as_uri_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.nt.bz2> ;
+dct:title "instance types sdtyped-dbo en" ;
+dct:description "DBpedia dumpfile: instance_types_sdtyped-dbo_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/instance_types_sdtyped-dbo_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/instance_types_sdtyped-dbo_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "interlanguage-links-chapters en" ;
+rdfs:label "interlanguage-links-chapters en" ;
+dct:description "DBpedia "interlanguage-links-chapters en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/interlanguage-links-chapters_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/interlanguage-links-chapters_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "interlanguage-links-chapters en" ;
+dct:description "DBpedia dumpfile: interlanguage-links-chapters_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/interlanguage-links-chapters_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/interlanguage-links-chapters_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#iri-same-as-uri_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "iri-same-as-uri en" ;
+rdfs:label "iri-same-as-uri en" ;
+dct:description "DBpedia "iri-same-as-uri en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/iri-same-as-uri_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/iri-same-as-uri_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "iri-same-as-uri en" ;
+dct:description "DBpedia dumpfile: iri-same-as-uri_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/iri-same-as-uri_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/iri-same-as-uri_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#italian_public_schools_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "italian public schools links" ;
+rdfs:label "italian public schools links" ;
+dct:description "DBpedia "italian public schools links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/italian_public_schools_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/italian_public_schools_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "italian public schools links" ;
+dct:description "DBpedia dumpfile: italian_public_schools_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/italian_public_schools_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/italian_public_schools_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#labels-en-uris_ar>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "labels-en-uris ar" ;
+rdfs:label "labels-en-uris ar" ;
+dct:description "DBpedia "labels-en-uris ar ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels-en-uris_ar.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/labels-en-uris_ar.nt.bz2>
+a dcat:Distribution ;
+dct:title "labels-en-uris ar" ;
+dct:description "DBpedia dumpfile: labels-en-uris_ar.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_ar.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_ar.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#labels-en-uris_de>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "labels-en-uris de" ;
+rdfs:label "labels-en-uris de" ;
+dct:description "DBpedia "labels-en-uris de ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels-en-uris_de.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/labels-en-uris_de.nt.bz2>
+a dcat:Distribution ;
+dct:title "labels-en-uris de" ;
+dct:description "DBpedia dumpfile: labels-en-uris_de.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_de.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_de.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#labels-en-uris_es>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "labels-en-uris es" ;
+rdfs:label "labels-en-uris es" ;
+dct:description "DBpedia "labels-en-uris es ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels-en-uris_es.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/labels-en-uris_es.nt.bz2>
+a dcat:Distribution ;
+dct:title "labels-en-uris es" ;
+dct:description "DBpedia dumpfile: labels-en-uris_es.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_es.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_es.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#labels-en-uris_fr>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "labels-en-uris fr" ;
+rdfs:label "labels-en-uris fr" ;
+dct:description "DBpedia "labels-en-uris fr ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels-en-uris_fr.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/labels-en-uris_fr.nt.bz2>
+a dcat:Distribution ;
+dct:title "labels-en-uris fr" ;
+dct:description "DBpedia dumpfile: labels-en-uris_fr.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_fr.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_fr.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#labels-en-uris_it>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "labels-en-uris it" ;
+rdfs:label "labels-en-uris it" ;
+dct:description "DBpedia "labels-en-uris it ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels-en-uris_it.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/labels-en-uris_it.nt.bz2>
+a dcat:Distribution ;
+dct:title "labels-en-uris it" ;
+dct:description "DBpedia dumpfile: labels-en-uris_it.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_it.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_it.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#labels-en-uris_ja>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "labels-en-uris ja" ;
+rdfs:label "labels-en-uris ja" ;
+dct:description "DBpedia "labels-en-uris ja ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels-en-uris_ja.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/labels-en-uris_ja.nt.bz2>
+a dcat:Distribution ;
+dct:title "labels-en-uris ja" ;
+dct:description "DBpedia dumpfile: labels-en-uris_ja.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_ja.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_ja.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#labels-en-uris_nl>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "labels-en-uris nl" ;
+rdfs:label "labels-en-uris nl" ;
+dct:description "DBpedia "labels-en-uris nl ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels-en-uris_nl.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/labels-en-uris_nl.nt.bz2>
+a dcat:Distribution ;
+dct:title "labels-en-uris nl" ;
+dct:description "DBpedia dumpfile: labels-en-uris_nl.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_nl.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_nl.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#labels-en-uris_pl>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "labels-en-uris pl" ;
+rdfs:label "labels-en-uris pl" ;
+dct:description "DBpedia "labels-en-uris pl ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels-en-uris_pl.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/labels-en-uris_pl.nt.bz2>
+a dcat:Distribution ;
+dct:title "labels-en-uris pl" ;
+dct:description "DBpedia dumpfile: labels-en-uris_pl.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_pl.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_pl.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#labels-en-uris_pt>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "labels-en-uris pt" ;
+rdfs:label "labels-en-uris pt" ;
+dct:description "DBpedia "labels-en-uris pt ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels-en-uris_pt.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/labels-en-uris_pt.nt.bz2>
+a dcat:Distribution ;
+dct:title "labels-en-uris pt" ;
+dct:description "DBpedia dumpfile: labels-en-uris_pt.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_pt.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_pt.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#labels-en-uris_ru>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "labels-en-uris ru" ;
+rdfs:label "labels-en-uris ru" ;
+dct:description "DBpedia "labels-en-uris ru ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels-en-uris_ru.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/labels-en-uris_ru.nt.bz2>
+a dcat:Distribution ;
+dct:title "labels-en-uris ru" ;
+dct:description "DBpedia dumpfile: labels-en-uris_ru.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_ru.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_ru.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#labels-en-uris_zh>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "labels-en-uris zh" ;
+rdfs:label "labels-en-uris zh" ;
+dct:description "DBpedia "labels-en-uris zh ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels-en-uris_zh.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/labels-en-uris_zh.nt.bz2>
+a dcat:Distribution ;
+dct:title "labels-en-uris zh" ;
+dct:description "DBpedia dumpfile: labels-en-uris_zh.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_zh.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels-en-uris_zh.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
@@ -317,7 +808,7 @@ dct:format "nt" .
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
 dct:title "labels en" ;
 rdfs:label "labels en" ;
-dct:description "DBpedia English article categories en" ;
+dct:description "DBpedia "labels en ;
 dcat:distribution <http://downloads.dbpedia.org/3.9/en/labels_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/labels_en.nt.bz2>
@@ -329,227 +820,371 @@ dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/labels_en.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#long_abstracts_en>
+<http://dbpedia.org/dataid.ttl#linkedgeodata_links>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "long abstracts en" ;
-rdfs:label "long abstracts en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2> .
+dct:title "linkedgeodata links" ;
+rdfs:label "linkedgeodata links" ;
+dct:description "DBpedia "linkedgeodata links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/linkedgeodata_links.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/linkedgeodata_links.nt.bz2>
 a dcat:Distribution ;
-dct:title "long abstracts en" ;
-dct:description "DBpedia dumpfile: long_abstracts_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long_abstracts_en.nt.bz2> ;
+dct:title "linkedgeodata links" ;
+dct:description "DBpedia dumpfile: linkedgeodata_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/linkedgeodata_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/linkedgeodata_links.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#mappingbased_properties_cleaned_en>
+<http://dbpedia.org/dataid.ttl#linkedmdb_links>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "mappingbased properties cleaned en" ;
-rdfs:label "mappingbased properties cleaned en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2> .
+dct:title "linkedmdb links" ;
+rdfs:label "linkedmdb links" ;
+dct:description "DBpedia "linkedmdb links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/linkedmdb_links.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/linkedmdb_links.nt.bz2>
 a dcat:Distribution ;
-dct:title "mappingbased properties cleaned en" ;
-dct:description "DBpedia dumpfile: mappingbased_properties_cleaned_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_cleaned_en.nt.bz2> ;
+dct:title "linkedmdb links" ;
+dct:description "DBpedia dumpfile: linkedmdb_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/linkedmdb_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/linkedmdb_links.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#mappingbased_properties_en>
+<http://dbpedia.org/dataid.ttl#lobid.org-manifestation>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "mappingbased properties en" ;
-rdfs:label "mappingbased properties en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_en.nt.bz2> .
+dct:title "lobid.org-manifestation" ;
+rdfs:label "lobid.org-manifestation" ;
+dct:description "DBpedia "lobid.org-manifestation ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/lobid.org-manifestation.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/mappingbased_properties_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/lobid.org-manifestation.nt.bz2>
 a dcat:Distribution ;
-dct:title "mappingbased properties en" ;
-dct:description "DBpedia dumpfile: mappingbased_properties_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_en.nt.bz2> ;
+dct:title "lobid.org-manifestation" ;
+dct:description "DBpedia dumpfile: lobid.org-manifestation.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/lobid.org-manifestation.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/lobid.org-manifestation.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#mappingbased_properties_unredirected_en>
+<http://dbpedia.org/dataid.ttl#lobid.org-organization>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "mappingbased properties unredirected en" ;
-rdfs:label "mappingbased properties unredirected en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_unredirected_en.nt.bz2> .
+dct:title "lobid.org-organization" ;
+rdfs:label "lobid.org-organization" ;
+dct:description "DBpedia "lobid.org-organization ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/lobid.org-organization.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/mappingbased_properties_unredirected_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/lobid.org-organization.nt.bz2>
 a dcat:Distribution ;
-dct:title "mappingbased properties unredirected en" ;
-dct:description "DBpedia dumpfile: mappingbased_properties_unredirected_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_unredirected_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/mappingbased_properties_unredirected_en.nt.bz2> ;
+dct:title "lobid.org-organization" ;
+dct:description "DBpedia dumpfile: lobid.org-organization.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/lobid.org-organization.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/lobid.org-organization.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#old_interlanguage_links_en>
+<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_ar>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "old interlanguage links en" ;
-rdfs:label "old interlanguage links en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_en.nt.bz2> .
+dct:title "long-abstracts-en-uris ar" ;
+rdfs:label "long-abstracts-en-uris ar" ;
+dct:description "DBpedia "long-abstracts-en-uris ar ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_ar.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_ar.nt.bz2>
 a dcat:Distribution ;
-dct:title "old interlanguage links en" ;
-dct:description "DBpedia dumpfile: old_interlanguage_links_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_en.nt.bz2> ;
+dct:title "long-abstracts-en-uris ar" ;
+dct:description "DBpedia dumpfile: long-abstracts-en-uris_ar.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_ar.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_ar.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#old_interlanguage_links_same_as_chapters_en>
+<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_de>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "old interlanguage links same as chapters en" ;
-rdfs:label "old interlanguage links same as chapters en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_chapters_en.nt.bz2> .
+dct:title "long-abstracts-en-uris de" ;
+rdfs:label "long-abstracts-en-uris de" ;
+dct:description "DBpedia "long-abstracts-en-uris de ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_de.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_chapters_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_de.nt.bz2>
 a dcat:Distribution ;
-dct:title "old interlanguage links same as chapters en" ;
-dct:description "DBpedia dumpfile: old_interlanguage_links_same_as_chapters_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_chapters_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_chapters_en.nt.bz2> ;
+dct:title "long-abstracts-en-uris de" ;
+dct:description "DBpedia dumpfile: long-abstracts-en-uris_de.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_de.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_de.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#old_interlanguage_links_same_as_en>
+<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_es>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "old interlanguage links same as en" ;
-rdfs:label "old interlanguage links same as en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_en.nt.bz2> .
+dct:title "long-abstracts-en-uris es" ;
+rdfs:label "long-abstracts-en-uris es" ;
+dct:description "DBpedia "long-abstracts-en-uris es ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_es.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_es.nt.bz2>
 a dcat:Distribution ;
-dct:title "old interlanguage links same as en" ;
-dct:description "DBpedia dumpfile: old_interlanguage_links_same_as_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_same_as_en.nt.bz2> ;
+dct:title "long-abstracts-en-uris es" ;
+dct:description "DBpedia dumpfile: long-abstracts-en-uris_es.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_es.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_es.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#old_interlanguage_links_see_also_chapters_en>
+<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_fr>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "old interlanguage links see also chapters en" ;
-rdfs:label "old interlanguage links see also chapters en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_chapters_en.nt.bz2> .
+dct:title "long-abstracts-en-uris fr" ;
+rdfs:label "long-abstracts-en-uris fr" ;
+dct:description "DBpedia "long-abstracts-en-uris fr ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_fr.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_chapters_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_fr.nt.bz2>
 a dcat:Distribution ;
-dct:title "old interlanguage links see also chapters en" ;
-dct:description "DBpedia dumpfile: old_interlanguage_links_see_also_chapters_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_chapters_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_chapters_en.nt.bz2> ;
+dct:title "long-abstracts-en-uris fr" ;
+dct:description "DBpedia dumpfile: long-abstracts-en-uris_fr.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_fr.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_fr.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#old_interlanguage_links_see_also_en>
+<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_it>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "old interlanguage links see also en" ;
-rdfs:label "old interlanguage links see also en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_en.nt.bz2> .
+dct:title "long-abstracts-en-uris it" ;
+rdfs:label "long-abstracts-en-uris it" ;
+dct:description "DBpedia "long-abstracts-en-uris it ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_it.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_it.nt.bz2>
 a dcat:Distribution ;
-dct:title "old interlanguage links see also en" ;
-dct:description "DBpedia dumpfile: old_interlanguage_links_see_also_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/old_interlanguage_links_see_also_en.nt.bz2> ;
+dct:title "long-abstracts-en-uris it" ;
+dct:description "DBpedia dumpfile: long-abstracts-en-uris_it.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_it.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_it.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#page_ids_en>
+<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_ja>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "page ids en" ;
-rdfs:label "page ids en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2> .
+dct:title "long-abstracts-en-uris ja" ;
+rdfs:label "long-abstracts-en-uris ja" ;
+dct:description "DBpedia "long-abstracts-en-uris ja ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_ja.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_ja.nt.bz2>
 a dcat:Distribution ;
-dct:title "page ids en" ;
-dct:description "DBpedia dumpfile: page_ids_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_ids_en.nt.bz2> ;
+dct:title "long-abstracts-en-uris ja" ;
+dct:description "DBpedia dumpfile: long-abstracts-en-uris_ja.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_ja.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_ja.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#page_in_link_counts_en>
+<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_nl>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "page in link counts en" ;
-rdfs:label "page in link counts en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/page_in_link_counts_en.nt.bz2> .
+dct:title "long-abstracts-en-uris nl" ;
+rdfs:label "long-abstracts-en-uris nl" ;
+dct:description "DBpedia "long-abstracts-en-uris nl ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_nl.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/page_in_link_counts_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_nl.nt.bz2>
 a dcat:Distribution ;
-dct:title "page in link counts en" ;
-dct:description "DBpedia dumpfile: page_in_link_counts_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_in_link_counts_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_in_link_counts_en.nt.bz2> ;
+dct:title "long-abstracts-en-uris nl" ;
+dct:description "DBpedia dumpfile: long-abstracts-en-uris_nl.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_nl.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_nl.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#page_links_en>
+<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_pl>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "page links en" ;
-rdfs:label "page links en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/page_links_en.nt.bz2> .
+dct:title "long-abstracts-en-uris pl" ;
+rdfs:label "long-abstracts-en-uris pl" ;
+dct:description "DBpedia "long-abstracts-en-uris pl ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_pl.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/page_links_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_pl.nt.bz2>
 a dcat:Distribution ;
-dct:title "page links en" ;
-dct:description "DBpedia dumpfile: page_links_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_links_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_links_en.nt.bz2> ;
+dct:title "long-abstracts-en-uris pl" ;
+dct:description "DBpedia dumpfile: long-abstracts-en-uris_pl.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_pl.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_pl.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#page_links_unredirected_en>
+<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_pt>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "page links unredirected en" ;
-rdfs:label "page links unredirected en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/page_links_unredirected_en.nt.bz2> .
+dct:title "long-abstracts-en-uris pt" ;
+rdfs:label "long-abstracts-en-uris pt" ;
+dct:description "DBpedia "long-abstracts-en-uris pt ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_pt.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/page_links_unredirected_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_pt.nt.bz2>
 a dcat:Distribution ;
-dct:title "page links unredirected en" ;
-dct:description "DBpedia dumpfile: page_links_unredirected_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_links_unredirected_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_links_unredirected_en.nt.bz2> ;
+dct:title "long-abstracts-en-uris pt" ;
+dct:description "DBpedia dumpfile: long-abstracts-en-uris_pt.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_pt.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_pt.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#page_out_link_counts_en>
+<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_ru>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "page out link counts en" ;
-rdfs:label "page out link counts en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/page_out_link_counts_en.nt.bz2> .
+dct:title "long-abstracts-en-uris ru" ;
+rdfs:label "long-abstracts-en-uris ru" ;
+dct:description "DBpedia "long-abstracts-en-uris ru ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_ru.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/page_out_link_counts_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_ru.nt.bz2>
 a dcat:Distribution ;
-dct:title "page out link counts en" ;
-dct:description "DBpedia dumpfile: page_out_link_counts_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page_out_link_counts_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page_out_link_counts_en.nt.bz2> ;
+dct:title "long-abstracts-en-uris ru" ;
+dct:description "DBpedia dumpfile: long-abstracts-en-uris_ru.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_ru.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_ru.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#long-abstracts-en-uris_zh>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "long-abstracts-en-uris zh" ;
+rdfs:label "long-abstracts-en-uris zh" ;
+dct:description "DBpedia "long-abstracts-en-uris zh ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_zh.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_zh.nt.bz2>
+a dcat:Distribution ;
+dct:title "long-abstracts-en-uris zh" ;
+dct:description "DBpedia dumpfile: long-abstracts-en-uris_zh.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_zh.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long-abstracts-en-uris_zh.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#long-abstracts_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "long-abstracts en" ;
+rdfs:label "long-abstracts en" ;
+dct:description "DBpedia "long-abstracts en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/long-abstracts_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/long-abstracts_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "long-abstracts en" ;
+dct:description "DBpedia dumpfile: long-abstracts_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/long-abstracts_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/long-abstracts_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#mappingbased-properties_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "mappingbased-properties en" ;
+rdfs:label "mappingbased-properties en" ;
+dct:description "DBpedia "mappingbased-properties en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/mappingbased-properties_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/mappingbased-properties_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "mappingbased-properties en" ;
+dct:description "DBpedia dumpfile: mappingbased-properties_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/mappingbased-properties_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/mappingbased-properties_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#musicbrainz_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "musicbrainz links" ;
+rdfs:label "musicbrainz links" ;
+dct:description "DBpedia "musicbrainz links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/musicbrainz_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/musicbrainz_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "musicbrainz links" ;
+dct:description "DBpedia dumpfile: musicbrainz_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/musicbrainz_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/musicbrainz_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#nuts_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "nuts links" ;
+rdfs:label "nuts links" ;
+dct:description "DBpedia "nuts links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/nuts_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/nuts_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "nuts links" ;
+dct:description "DBpedia dumpfile: nuts_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/nuts_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/nuts_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#nytimes_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "nytimes links" ;
+rdfs:label "nytimes links" ;
+dct:description "DBpedia "nytimes links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/nytimes_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/nytimes_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "nytimes links" ;
+dct:description "DBpedia dumpfile: nytimes_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/nytimes_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/nytimes_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#opencyc_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "opencyc links" ;
+rdfs:label "opencyc links" ;
+dct:description "DBpedia "opencyc links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/opencyc_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/opencyc_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "opencyc links" ;
+dct:description "DBpedia dumpfile: opencyc_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/opencyc_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/opencyc_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#openei_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "openei links" ;
+rdfs:label "openei links" ;
+dct:description "DBpedia "openei links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/openei_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/openei_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "openei links" ;
+dct:description "DBpedia dumpfile: openei_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/openei_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/openei_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#page-ids_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "page-ids en" ;
+rdfs:label "page-ids en" ;
+dct:description "DBpedia "page-ids en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/page-ids_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/page-ids_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "page-ids en" ;
+dct:description "DBpedia dumpfile: page-ids_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/page-ids_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/page-ids_en.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
@@ -557,7 +1192,7 @@ dct:format "nt" .
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
 dct:title "persondata en" ;
 rdfs:label "persondata en" ;
-dct:description "DBpedia English article categories en" ;
+dct:description "DBpedia "persondata en ;
 dcat:distribution <http://downloads.dbpedia.org/3.9/en/persondata_en.nt.bz2> .
 
 <http://downloads.dbpedia.org/3.9/en/persondata_en.nt.bz2>
@@ -569,242 +1204,514 @@ dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/persondata_en.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#persondata_unredirected_en>
+<http://dbpedia.org/dataid.ttl#revision-ids_en>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "persondata unredirected en" ;
-rdfs:label "persondata unredirected en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/persondata_unredirected_en.nt.bz2> .
+dct:title "revision-ids en" ;
+rdfs:label "revision-ids en" ;
+dct:description "DBpedia "revision-ids en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/revision-ids_en.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/persondata_unredirected_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/revision-ids_en.nt.bz2>
 a dcat:Distribution ;
-dct:title "persondata unredirected en" ;
-dct:description "DBpedia dumpfile: persondata_unredirected_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/persondata_unredirected_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/persondata_unredirected_en.nt.bz2> ;
+dct:title "revision-ids en" ;
+dct:description "DBpedia dumpfile: revision-ids_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision-ids_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision-ids_en.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#pnd_en>
+<http://dbpedia.org/dataid.ttl#revision-uris_en>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "pnd en" ;
-rdfs:label "pnd en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2> .
+dct:title "revision-uris en" ;
+rdfs:label "revision-uris en" ;
+dct:description "DBpedia "revision-uris en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/revision-uris_en.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/revision-uris_en.nt.bz2>
 a dcat:Distribution ;
-dct:title "pnd en" ;
-dct:description "DBpedia dumpfile: pnd_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/pnd_en.nt.bz2> ;
+dct:title "revision-uris en" ;
+dct:description "DBpedia dumpfile: revision-uris_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision-uris_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision-uris_en.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#raw_infobox_properties_en>
+<http://dbpedia.org/dataid.ttl#revyu_links>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "raw infobox properties en" ;
-rdfs:label "raw infobox properties en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2> .
+dct:title "revyu links" ;
+rdfs:label "revyu links" ;
+dct:description "DBpedia "revyu links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/revyu_links.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/revyu_links.nt.bz2>
 a dcat:Distribution ;
-dct:title "raw infobox properties en" ;
-dct:description "DBpedia dumpfile: raw_infobox_properties_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_en.nt.bz2> ;
+dct:title "revyu links" ;
+dct:description "DBpedia dumpfile: revyu_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revyu_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revyu_links.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#raw_infobox_properties_unredirected_en>
+<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_ar>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "raw infobox properties unredirected en" ;
-rdfs:label "raw infobox properties unredirected en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_unredirected_en.nt.bz2> .
+dct:title "short-abstracts-en-uris ar" ;
+rdfs:label "short-abstracts-en-uris ar" ;
+dct:description "DBpedia "short-abstracts-en-uris ar ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_ar.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_unredirected_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_ar.nt.bz2>
 a dcat:Distribution ;
-dct:title "raw infobox properties unredirected en" ;
-dct:description "DBpedia dumpfile: raw_infobox_properties_unredirected_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_unredirected_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_properties_unredirected_en.nt.bz2> ;
+dct:title "short-abstracts-en-uris ar" ;
+dct:description "DBpedia dumpfile: short-abstracts-en-uris_ar.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_ar.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_ar.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#raw_infobox_property_definitions_en>
+<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_de>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "raw infobox property definitions en" ;
-rdfs:label "raw infobox property definitions en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2> .
+dct:title "short-abstracts-en-uris de" ;
+rdfs:label "short-abstracts-en-uris de" ;
+dct:description "DBpedia "short-abstracts-en-uris de ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_de.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_de.nt.bz2>
 a dcat:Distribution ;
-dct:title "raw infobox property definitions en" ;
-dct:description "DBpedia dumpfile: raw_infobox_property_definitions_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/raw_infobox_property_definitions_en.nt.bz2> ;
+dct:title "short-abstracts-en-uris de" ;
+dct:description "DBpedia dumpfile: short-abstracts-en-uris_de.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_de.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_de.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#redirects_en>
+<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_es>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "redirects en" ;
-rdfs:label "redirects en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/redirects_en.nt.bz2> .
+dct:title "short-abstracts-en-uris es" ;
+rdfs:label "short-abstracts-en-uris es" ;
+dct:description "DBpedia "short-abstracts-en-uris es ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_es.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/redirects_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_es.nt.bz2>
 a dcat:Distribution ;
-dct:title "redirects en" ;
-dct:description "DBpedia dumpfile: redirects_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/redirects_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/redirects_en.nt.bz2> ;
+dct:title "short-abstracts-en-uris es" ;
+dct:description "DBpedia dumpfile: short-abstracts-en-uris_es.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_es.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_es.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#redirects_transitive_en>
+<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_fr>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "redirects transitive en" ;
-rdfs:label "redirects transitive en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2> .
+dct:title "short-abstracts-en-uris fr" ;
+rdfs:label "short-abstracts-en-uris fr" ;
+dct:description "DBpedia "short-abstracts-en-uris fr ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_fr.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_fr.nt.bz2>
 a dcat:Distribution ;
-dct:title "redirects transitive en" ;
-dct:description "DBpedia dumpfile: redirects_transitive_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/redirects_transitive_en.nt.bz2> ;
+dct:title "short-abstracts-en-uris fr" ;
+dct:description "DBpedia dumpfile: short-abstracts-en-uris_fr.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_fr.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_fr.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#revision_ids_en>
+<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_it>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "revision ids en" ;
-rdfs:label "revision ids en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2> .
+dct:title "short-abstracts-en-uris it" ;
+rdfs:label "short-abstracts-en-uris it" ;
+dct:description "DBpedia "short-abstracts-en-uris it ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_it.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_it.nt.bz2>
 a dcat:Distribution ;
-dct:title "revision ids en" ;
-dct:description "DBpedia dumpfile: revision_ids_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision_ids_en.nt.bz2> ;
+dct:title "short-abstracts-en-uris it" ;
+dct:description "DBpedia dumpfile: short-abstracts-en-uris_it.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_it.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_it.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#revision_uris_en>
+<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_ja>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "revision uris en" ;
-rdfs:label "revision uris en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2> .
+dct:title "short-abstracts-en-uris ja" ;
+rdfs:label "short-abstracts-en-uris ja" ;
+dct:description "DBpedia "short-abstracts-en-uris ja ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_ja.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_ja.nt.bz2>
 a dcat:Distribution ;
-dct:title "revision uris en" ;
-dct:description "DBpedia dumpfile: revision_uris_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/revision_uris_en.nt.bz2> ;
+dct:title "short-abstracts-en-uris ja" ;
+dct:description "DBpedia dumpfile: short-abstracts-en-uris_ja.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_ja.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_ja.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#short_abstracts_en>
+<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_nl>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "short abstracts en" ;
-rdfs:label "short abstracts en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2> .
+dct:title "short-abstracts-en-uris nl" ;
+rdfs:label "short-abstracts-en-uris nl" ;
+dct:description "DBpedia "short-abstracts-en-uris nl ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_nl.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_nl.nt.bz2>
 a dcat:Distribution ;
-dct:title "short abstracts en" ;
-dct:description "DBpedia dumpfile: short_abstracts_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short_abstracts_en.nt.bz2> ;
+dct:title "short-abstracts-en-uris nl" ;
+dct:description "DBpedia dumpfile: short-abstracts-en-uris_nl.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_nl.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_nl.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#skos_categories_en>
+<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_pl>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "skos categories en" ;
-rdfs:label "skos categories en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2> .
+dct:title "short-abstracts-en-uris pl" ;
+rdfs:label "short-abstracts-en-uris pl" ;
+dct:description "DBpedia "short-abstracts-en-uris pl ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_pl.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_pl.nt.bz2>
 a dcat:Distribution ;
-dct:title "skos categories en" ;
-dct:description "DBpedia dumpfile: skos_categories_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/skos_categories_en.nt.bz2> ;
+dct:title "short-abstracts-en-uris pl" ;
+dct:description "DBpedia dumpfile: short-abstracts-en-uris_pl.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_pl.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_pl.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#specific_mappingbased_properties_en>
+<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_pt>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "specific mappingbased properties en" ;
-rdfs:label "specific mappingbased properties en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2> .
+dct:title "short-abstracts-en-uris pt" ;
+rdfs:label "short-abstracts-en-uris pt" ;
+dct:description "DBpedia "short-abstracts-en-uris pt ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_pt.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_pt.nt.bz2>
 a dcat:Distribution ;
-dct:title "specific mappingbased properties en" ;
-dct:description "DBpedia dumpfile: specific_mappingbased_properties_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/specific_mappingbased_properties_en.nt.bz2> ;
+dct:title "short-abstracts-en-uris pt" ;
+dct:description "DBpedia dumpfile: short-abstracts-en-uris_pt.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_pt.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_pt.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#topical_concepts_en>
+<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_ru>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "topical concepts en" ;
-rdfs:label "topical concepts en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/topical_concepts_en.nt.bz2> .
+dct:title "short-abstracts-en-uris ru" ;
+rdfs:label "short-abstracts-en-uris ru" ;
+dct:description "DBpedia "short-abstracts-en-uris ru ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_ru.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/topical_concepts_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_ru.nt.bz2>
 a dcat:Distribution ;
-dct:title "topical concepts en" ;
-dct:description "DBpedia dumpfile: topical_concepts_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/topical_concepts_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/topical_concepts_en.nt.bz2> ;
+dct:title "short-abstracts-en-uris ru" ;
+dct:description "DBpedia dumpfile: short-abstracts-en-uris_ru.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_ru.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_ru.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#topical_concepts_unredirected_en>
+<http://dbpedia.org/dataid.ttl#short-abstracts-en-uris_zh>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "topical concepts unredirected en" ;
-rdfs:label "topical concepts unredirected en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/topical_concepts_unredirected_en.nt.bz2> .
+dct:title "short-abstracts-en-uris zh" ;
+rdfs:label "short-abstracts-en-uris zh" ;
+dct:description "DBpedia "short-abstracts-en-uris zh ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_zh.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/topical_concepts_unredirected_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_zh.nt.bz2>
 a dcat:Distribution ;
-dct:title "topical concepts unredirected en" ;
-dct:description "DBpedia dumpfile: topical_concepts_unredirected_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/topical_concepts_unredirected_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/topical_concepts_unredirected_en.nt.bz2> ;
+dct:title "short-abstracts-en-uris zh" ;
+dct:description "DBpedia dumpfile: short-abstracts-en-uris_zh.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_zh.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short-abstracts-en-uris_zh.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
 
-<http://dbpedia.org/dataid.ttl#wikipedia_links_en>
+<http://dbpedia.org/dataid.ttl#short-abstracts_en>
 a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
-dct:title "wikipedia links en" ;
-rdfs:label "wikipedia links en" ;
-dct:description "DBpedia English article categories en" ;
-dcat:distribution <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2> .
+dct:title "short-abstracts en" ;
+rdfs:label "short-abstracts en" ;
+dct:description "DBpedia "short-abstracts en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/short-abstracts_en.nt.bz2> .
 
-<http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2>
+<http://downloads.dbpedia.org/3.9/en/short-abstracts_en.nt.bz2>
 a dcat:Distribution ;
-dct:title "wikipedia links en" ;
-dct:description "DBpedia dumpfile: wikipedia_links_en.nt.bz2" ;
-dcat:accessURL <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2> ;
-dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/wikipedia_links_en.nt.bz2> ;
+dct:title "short-abstracts en" ;
+dct:description "DBpedia dumpfile: short-abstracts_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/short-abstracts_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/short-abstracts_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#sider_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "sider links" ;
+rdfs:label "sider links" ;
+dct:description "DBpedia "sider links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/sider_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/sider_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "sider links" ;
+dct:description "DBpedia dumpfile: sider_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/sider_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/sider_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#skos-categories_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "skos-categories en" ;
+rdfs:label "skos-categories en" ;
+dct:description "DBpedia "skos-categories en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/skos-categories_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/skos-categories_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "skos-categories en" ;
+dct:description "DBpedia dumpfile: skos-categories_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/skos-categories_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/skos-categories_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#specific-mappingbased-properties_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "specific-mappingbased-properties en" ;
+rdfs:label "specific-mappingbased-properties en" ;
+dct:description "DBpedia "specific-mappingbased-properties en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/specific-mappingbased-properties_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/specific-mappingbased-properties_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "specific-mappingbased-properties en" ;
+dct:description "DBpedia dumpfile: specific-mappingbased-properties_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/specific-mappingbased-properties_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/specific-mappingbased-properties_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#tcm_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "tcm links" ;
+rdfs:label "tcm links" ;
+dct:description "DBpedia "tcm links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/tcm_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/tcm_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "tcm links" ;
+dct:description "DBpedia dumpfile: tcm_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/tcm_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/tcm_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#transitive-redirects_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "transitive-redirects en" ;
+rdfs:label "transitive-redirects en" ;
+dct:description "DBpedia "transitive-redirects en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/transitive-redirects_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/transitive-redirects_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "transitive-redirects en" ;
+dct:description "DBpedia dumpfile: transitive-redirects_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/transitive-redirects_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/transitive-redirects_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#transparency_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "transparency links" ;
+rdfs:label "transparency links" ;
+dct:description "DBpedia "transparency links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/transparency_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/transparency_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "transparency links" ;
+dct:description "DBpedia dumpfile: transparency_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/transparency_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/transparency_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#uk-university_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "uk-university links" ;
+rdfs:label "uk-university links" ;
+dct:description "DBpedia "uk-university links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/uk-university_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/uk-university_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "uk-university links" ;
+dct:description "DBpedia dumpfile: uk-university_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/uk-university_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/uk-university_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#umbel_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "umbel links" ;
+rdfs:label "umbel links" ;
+dct:description "DBpedia "umbel links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/umbel_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/umbel_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "umbel links" ;
+dct:description "DBpedia dumpfile: umbel_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/umbel_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/umbel_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#uscensus_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "uscensus links" ;
+rdfs:label "uscensus links" ;
+dct:description "DBpedia "uscensus links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/uscensus_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/uscensus_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "uscensus links" ;
+dct:description "DBpedia dumpfile: uscensus_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/uscensus_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/uscensus_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#viaf_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "viaf links" ;
+rdfs:label "viaf links" ;
+dct:description "DBpedia "viaf links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/viaf_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/viaf_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "viaf links" ;
+dct:description "DBpedia dumpfile: viaf_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/viaf_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/viaf_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#wikicompany_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "wikicompany links" ;
+rdfs:label "wikicompany links" ;
+dct:description "DBpedia "wikicompany links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/wikicompany_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/wikicompany_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "wikicompany links" ;
+dct:description "DBpedia dumpfile: wikicompany_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/wikicompany_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/wikicompany_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#wikipedia-links_en>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "wikipedia-links en" ;
+rdfs:label "wikipedia-links en" ;
+dct:description "DBpedia "wikipedia-links en ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/wikipedia-links_en.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/wikipedia-links_en.nt.bz2>
+a dcat:Distribution ;
+dct:title "wikipedia-links en" ;
+dct:description "DBpedia dumpfile: wikipedia-links_en.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/wikipedia-links_en.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/wikipedia-links_en.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#wordnet_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "wordnet links" ;
+rdfs:label "wordnet links" ;
+dct:description "DBpedia "wordnet links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/wordnet_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/wordnet_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "wordnet links" ;
+dct:description "DBpedia dumpfile: wordnet_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/wordnet_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/wordnet_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#yago_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "yago links" ;
+rdfs:label "yago links" ;
+dct:description "DBpedia "yago links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/yago_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/yago_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "yago links" ;
+dct:description "DBpedia dumpfile: yago_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/yago_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/yago_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#yago_taxonomy>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "yago taxonomy" ;
+rdfs:label "yago taxonomy" ;
+dct:description "DBpedia "yago taxonomy ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/yago_taxonomy.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/yago_taxonomy.nt.bz2>
+a dcat:Distribution ;
+dct:title "yago taxonomy" ;
+dct:description "DBpedia dumpfile: yago_taxonomy.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/yago_taxonomy.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/yago_taxonomy.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#yago_type_links>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "yago type links" ;
+rdfs:label "yago type links" ;
+dct:description "DBpedia "yago type links ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/yago_type_links.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/yago_type_links.nt.bz2>
+a dcat:Distribution ;
+dct:title "yago type links" ;
+dct:description "DBpedia dumpfile: yago_type_links.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/yago_type_links.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/yago_type_links.nt.bz2> ;
+dcat:mediaType "application/x-bzip" ;
+dct:format "nt" .
+
+<http://dbpedia.org/dataid.ttl#yago_types>
+a dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+dct:title "yago types" ;
+rdfs:label "yago types" ;
+dct:description "DBpedia "yago types ;
+dcat:distribution <http://downloads.dbpedia.org/3.9/en/yago_types.nt.bz2> .
+
+<http://downloads.dbpedia.org/3.9/en/yago_types.nt.bz2>
+a dcat:Distribution ;
+dct:title "yago types" ;
+dct:description "DBpedia dumpfile: yago_types.nt.bz2" ;
+dcat:accessURL <http://downloads.dbpedia.org/3.9/en/yago_types.nt.bz2> ;
+dcat:downloadURL <http://downloads.dbpedia.org/3.9/en/yago_types.nt.bz2> ;
 dcat:mediaType "application/x-bzip" ;
 dct:format "nt" .
