@@ -1,0 +1,34 @@
+@prefix dataid: <http://dataid.dbpedia.org/ns/core#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<https://raw.githubusercontent.com/cirola2000/DynamicLOD/master/src/main/webapp/dataids_example/dataid-datasetTest>
+  a void:DatasetDescription;
+  foaf:primaryTopic <https://raw.githubusercontent.com/cirola2000/DynamicLOD/master/src/main/webapp/dataids_example/dataid-datasetTest#dataset>.
+
+<https://raw.githubusercontent.com/cirola2000/DynamicLOD/master/src/main/webapp/dataids_example/dataid-datasetTest#dataset>
+  a dataid:Dataset, dcat:Dataset, void:Dataset, sd:Dataset, prov:Entity ;
+  dc:title "Test Corpus" ;
+  rdfs:label "Test Corpus" ;
+  dc:description """ Test corpus  """ ;
+  void:exampleResource <https://raw.githubusercontent.com/cirola2000/DynamicLOD/master/src/main/webapp/dataids_example/dataid-datasetTest> ;
+  dcat:distribution <https://raw.githubusercontent.com/cirola2000/DynamicLOD/master/src/main/webapp/dataids_example/distributionTest1.ttl>, <https://raw.githubusercontent.com/cirola2000/DynamicLOD/master/src/main/webapp/dataids_example/distributionTest2.ttl> .
+
+<https://raw.githubusercontent.com/cirola2000/DynamicLOD/master/src/main/webapp/dataids_example/distributionTest1.ttl>  
+  a dataid:Distribution ;
+  dc:title "Distrution test 1" ;
+  dcat:downloadURL "https://raw.githubusercontent.com/cirola2000/DynamicLOD/master/src/main/webapp/dataids_example/distributionTest1.ttl" ;
+  dc:format "text/ntriples+turtle" .
+  
+  <https://raw.githubusercontent.com/cirola2000/DynamicLOD/master/src/main/webapp/dataids_example/distributionTest2.ttl>  
+  a dataid:Distribution ;
+  dc:title "Distrution test 2" ;
+  dcat:downloadURL "https://raw.githubusercontent.com/cirola2000/DynamicLOD/master/src/main/webapp/dataids_example/distributionTest2.ttl" ;
+  dc:format "text/ntriples+turtle" .
