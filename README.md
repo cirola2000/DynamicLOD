@@ -1,3 +1,3 @@
 DynamicLOD
 ==========
-This repository was moved to https://github.com/AKSW/dynamiclod .
+This repository was moved to https://github.com/AKSW/LODVader .
